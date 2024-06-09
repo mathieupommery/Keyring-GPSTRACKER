@@ -1,0 +1,9 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP QMC5883L
+D 3-Axis Magnetic Sensor
+K
+F https://datasheet.lcsc.com/lcsc/2012221837_QST-QMC5883L_C976032.pdf
+$ENDCMP
+#
+#End Doc Library

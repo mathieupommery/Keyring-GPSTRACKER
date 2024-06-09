@@ -1,0 +1,11 @@
+FILE_TYPE = MULTI_PHYS_TABLE;
+
+PART 'QMC5883L'
+CLASS = IC
+{========================================================================================}
+:"MANUFACTURER_NAME", "MANUFACTURER_PART_NUMBER"= "PART_NUMBER", "JEDEC_TYPE", "PACK_TYPE", "MOUSER_PART_NUMBER", "MOUSER_PRICE/STOCK", "ARROW_PART_NUMBER", "ARROW_PRICE/STOCK", "DESCRIPTION", "DATASHEET", "HEIGHT";
+{========================================================================================}
+ "QST", "QMC5883L" (!) = "", "QMC5883L", "Other", "", "", "", "", "3-Axis Magnetic Sensor", "https://datasheet.lcsc.com/lcsc/2012221837_QST-QMC5883L_C976032.pdf", "1.02 mm"
+END_PART
+
+END.
