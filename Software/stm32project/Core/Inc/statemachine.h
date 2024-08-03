@@ -20,8 +20,8 @@
 
 
 typedef enum{
-	STATE_INIT,
 	STATE_SPEED,
+	STATE_POS,
 	STATE_HEURE,
 	STATE_INFO,
 	STATE_CHOOSE
@@ -36,3 +36,24 @@ typedef enum{
 	STATE_VALID
 
 }COMPTEUR;
+
+typedef enum{
+	STATE_DIGIT,
+	STATE_OLD
+
+}HEURE;
+
+typedef enum{
+	STATE_SUMMARY,
+	STATE_COMPTEUR,
+	STATE_GRAPH
+
+}SPEED;
+
+typedef enum{
+	STATE_SUMMARY1,
+	STATE_LAT,
+	STATE_LONG,
+	STATE_ALT
+
+}POS;

@@ -68,11 +68,13 @@ char *vit[10];//pas utiliser pour l'instant mais sert à faire des test d'écrit
 GPS myData;//structure stockant toutes les informations que l'on  souhaite obtenir par le gps, ainsi que les informations sur sont port de connection
 int BTN_A=0;//variables servants à stocker les appuie sur le bouton a ou b, elles ne prendrons que les valeurs 0 ou 1.
 int BTN_B=0;
-STATE_TYPE state=STATE_INIT;//état principaux de la machine à état
+STATE_TYPE state=STATE_SPEED;//état principaux de la machine à état
 int boumheure=0;//variable pour le compte à rebours
 int boumminutes=0;//de meme
 int choose=0;//variable servant à switcher lecran montré sur l'état compte à rebours en fonction de si l'heure a été choisie de fin a été choisie ou non.
-
+HEURE hrstate=STATE_DIGIT;
+SPEED spdstate=STATE_SUMMARY;
+POS posstate=STATE_SUMMARY1;
 const unsigned char startimg[] = {//image de démarrage
 		0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
 		  0x7f, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xfe,
@@ -109,29 +111,8 @@ const unsigned char startimg[] = {//image de démarrage
 		};
 
 
-VILLE_t paris={"paris", 48.8534951, 2.3483915};
-VILLE_t londre={"londres", 51.5074456, -0.1277653};
-VILLE_t newyork={"newyork", 40.7127281, -74.0060152};
-VILLE_t shangai={"shangai", 31.2312707,121.4700152};
-VILLE_t ensea={"ensea", 49.0395063, 2.0724911};
-VILLE_t perpignan={"perpignan", 42.6985304, 2.8953121};
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+char eepromold[2048];
+char eepromnew[2048];
 
 
 
@@ -246,6 +227,20 @@ int main(void)
 
 	HAL_GPIO_WritePin(GPIOA,GPIO_PIN_1,GPIO_PIN_SET);//pour l'instant le gps est toujours alimenté
 	HAL_Delay(1500);
+//	memset(eepromold,'/0',sizeof(eepromold));
+//	ee_init();
+//	ee_read(0,2048,eepromold);
+//	if ((eepromold[0]&0xFF)==0xFF){
+//		memset(eepromnew,'/0',sizeof(eepromnew));
+//	}
+//	else{
+//		while(((eepromold[index])&0xFF])!= 0xFF){
+//			eepromnew[index]=eepromold[index];
+//			index++;
+//		}
+//
+//	}
+
 
 
 	HAL_UART_Abort(&hlpuart1);

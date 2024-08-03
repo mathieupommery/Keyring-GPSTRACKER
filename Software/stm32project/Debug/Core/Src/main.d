@@ -33,7 +33,8 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Core/Inc/QMC5883.h ../Core/Inc/main.h ../Core/Inc/ssd1306.h \
  ../Core/Inc/ssd1306_conf_template.h ../Core/Inc/ssd1306_fonts.h \
  ../Core/Inc/QMC5883.h ../Core/Inc/ssd1306.h ../Core/Inc/statemachine.h \
- ../Core/Inc/nmea_parse.h ../Core/Inc/ee.h ../Core/Inc/eeConfig.h
+ ../Core/Inc/nmea_parse.h ../Core/Inc/ee.h ../Core/Inc/eeConfig.h \
+ ../Core/Inc/ville.h
 ../Core/Inc/main.h:
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h:
 ../Core/Inc/stm32l4xx_hal_conf.h:
@@ -77,3 +78,4 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Core/Inc/nmea_parse.h:
 ../Core/Inc/ee.h:
 ../Core/Inc/eeConfig.h:
+../Core/Inc/ville.h:
