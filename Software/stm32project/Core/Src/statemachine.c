@@ -29,7 +29,13 @@ extern int choose;
 extern HEURE hrstate;
 extern SPEED spdstate;
 extern POS posstate;
-int graphindex=0;
+extern CHRONO chronostate;
+extern int chronoenable;
+extern int speedtimerenable;
+extern int seconde;
+extern int min;
+extern int deciseconde;
+
 
 
 char str[20];
@@ -77,7 +83,7 @@ const unsigned char speciale[] = {//logo arduino
 void statemachine(void){
 	switch(state){
 	 case STATE_SPEED:
-				  ssd1306_Fill(Black);
+				 ssd1306_Fill(Black);
 				 ssd1306_SetCursor(32, 32);
 				 nmea_parse(&myData, DataBuffer);
 				 if(myData.speed>=vitmax){
@@ -86,19 +92,13 @@ void statemachine(void){
 								 float pace=0;
 								 float sec=0;
 								 if (myData.speed!=0){
-									 pace=1000/(60*myData.speed);//ici on convertie la vitesse en m/s en un pace en mim/Km on ecarte les erreure possite comme la division par 0
+									 pace=1000/(60*myData.speed);
+									 sec=(pace-floor(pace))*60;
 								 }
 								 else {
 									 pace=9999;//en cas de division par 0, techniquement le temps devient infini mais ce n'est pas intérréssant
 								 }
 
-								 if((pace-floor(pace))>=0.60){//conversion en minute
-									 pace=pace+1;
-									 sec=(pace-floor(pace))-0.60;
-								 }
-								 if(pace<0.60){
-									 sec=pace;
-								 }
 
 				  switch(spdstate){
 
@@ -106,13 +106,13 @@ void statemachine(void){
 				 case STATE_SUMMARY:
 					 if(myData.fix == 1){ //if the GPS has a fix, print the data
 					 				 						char * str = (char*)malloc(sizeof(char)*20);
-					 				 						snprintf(str,15, "MaxSPD=%.1f",vitmax*3.6);//amélioration possible la stocker en eeprom
+					 				 						snprintf(str,15, "MaxV=%.1f",vitmax*3.6);//amélioration possible la stocker en eeprom
 					 				 						ssd1306_SetCursor(32, 32);
 					 				 						ssd1306_WriteString(str, Font_6x8, White);
 					 				 						snprintf(str,15, "V=%0.1f",(myData.speed)*3.6);
 					 				 						ssd1306_SetCursor(32, 42);
 					 				 						ssd1306_WriteString(str, Font_6x8, White);
-					 				 						snprintf(str,15, "p=%0.0fmin%0.0f s",floor(pace),floor(sec*100));//affichage au format minute puis seconde
+					 				 						snprintf(str,15, "p=%0.0fmin%0.0f s",floor(pace),floor(sec));//affichage au format minute puis seconde
 					 				 						ssd1306_SetCursor(32, 52);
 					 				 						ssd1306_WriteString(str, Font_6x8, White);
 					 				 						free(str);
@@ -139,7 +139,7 @@ void statemachine(void){
 					 				 						snprintf(str,15, "V=%0.1f",(myData.speed)*3.6);
 					 				 						ssd1306_SetCursor(32, 55);
 					 				 						ssd1306_WriteString(str, Font_6x8, White);
-					 				 						ssd1306_FillRectangle(32, 41, 95-floor(1+exp(-myData.speed)), 55, White);
+					 				 						ssd1306_FillRectangle(32, 41, 95-floor((1+exp(-(myData.speed/130)))*63), 55, White);
 					 				 						ssd1306_DrawRectangle(32, 41, 95, 55, White);
 
 					 				 						free(str);
@@ -158,38 +158,30 @@ void statemachine(void){
 					 				  	}
 					 break;
 				 case STATE_GRAPH:
-					 ssd1306_DrawRectangle(32, 41, 95, 53, White);
-					 if(myData.fix == 1){ //if the GPS has a fix, print the data
-					 				 						float spdsumhandler=0;
-					 				 						int spdindex=0;
-					 				 						while(spdindex<10){
-					 				 							spdsumhandler=spdsumhandler+(myData.speed)*3.6;
-					 				 							nmea_parse(&myData, DataBuffer);
-					 				 							HAL_Delay(1000);
-					 				 							spdindex++;
-
-					 				 						}
-					 				 						spdindex=0;
-					 				 						spdsumhandler=spdsumhandler/10;
-
-					 				 						if(graphindex<32){
-					 				 							ssd1306_FillRectangle(32+2*graphindex, 41, 32+2*graphindex, 41+floor(12*(vitmax/spdsumhandler)), White);
-					 				 							graphindex++;
-					 				 						}
-					 				 					}
-					 				 	else{ //if the GPS doesn't have a fix, print a message
+					 if(myData.fix == 1){
 					 				 						char *str = (char*)malloc(sizeof(char)*20);// message qui sra dans tous les etat si l'on ne capte pas de sattelites.
+
 					 				 						ssd1306_SetCursor(32, 32);
-					 				 						ssd1306_WriteString("Graph", Font_6x8, White);
-					 				 						ssd1306_SetCursor(32, 44);
-					 				 						ssd1306_WriteString("Wait GPS", Font_6x8, White);
+					 				 						snprintf(str,15, "%0.1f",(myData.speed)*3.6);
+					 				 						ssd1306_WriteString(str, Font_11x18, White);
+					 				 						ssd1306_SetCursor(32, 54);
+					 				 						ssd1306_WriteString("kmh", Font_6x8, White);
+
 					 				 						free(str);
-					 				 					}
+					 }
+					 else{
+						 char *str = (char*)malloc(sizeof(char)*20);// message qui sra dans tous les etat si l'on ne capte pas de sattelites.
+						 ssd1306_SetCursor(32, 32);
+						 ssd1306_WriteString("Speed 3", Font_6x8, White);
+						 ssd1306_SetCursor(32, 44);
+						 ssd1306_WriteString("Wait GPS", Font_6x8, White);
+						 free(str);
+					 }
+
 					 if(BTN_B>=1){
 					 					 				 					spdstate--;
 					 					 				 					spdstate--;
 					 					 				 					BTN_B=0;
-					 					 				 					graphindex=0;
 
 
 					 					 				  	}
@@ -197,11 +189,9 @@ void statemachine(void){
 
 
 				 }
-
 				 	if(BTN_A>=1){
 				 					state++;
 				 					BTN_A=0;
-				 					graphindex=0;
 				  	}
 				  break;
 
@@ -323,7 +313,7 @@ void statemachine(void){
 				  						snprintf(str,15, "Pressure:");
 				  						ssd1306_SetCursor(32, 48);
 				  						ssd1306_WriteString(str, Font_6x8, White);
-				  						snprintf(str,15, "%0.7f",myData.longitude);
+				  						snprintf(str,15, "%0.1fhpa",1000*expf((-0.0001148)*(myData.altitude)));
 				  						ssd1306_SetCursor(32, 56);
 				  						ssd1306_WriteString(str, Font_6x8, White);
 				  						free(str);
@@ -429,7 +419,6 @@ void statemachine(void){
 		  case STATE_INFO:
 			  ssd1306_Fill(Black);
 			  nmea_parse(&myData, DataBuffer);
-			  if(BTN_B==0){
 			  if(myData.fix == 1){ //if the GPS has a fix, print the data
 			 			 						char * str = (char*)malloc(sizeof(char)*20);
 			 			 						snprintf(str,15, "hdop=%.1f",myData.hdop);//sert a	connaitre la qualitée du fix si proche de 1 voir inférieur alors le fix est tres bon
@@ -448,20 +437,74 @@ void statemachine(void){
 			 			 						ssd1306_WriteString("Wait GPS", Font_6x8, White);
 			 			 						free(str);
 			 			 					}
-			  }
-			  else{
-			  		ssd1306_DrawBitmap(32, 32, speciale, 64, 64, White);
-			  		ssd1306_UpdateScreen();//easter egg
-			  		HAL_Delay(1500);
+			  if(BTN_A>=1){
+			  		state++;
+			  		BTN_A=0;
 			  		BTN_B=0;
 			  		}
-			  if(BTN_A>=1){
-			  		state--;
-			  		state--;
-			  		state--;
-			  		BTN_A=0;
-			  		}
 			  break;
+
+		  case STATE_CHRONOMETER:
+			  ssd1306_Fill(Black);
+			  ssd1306_SetCursor(32, 32);
+			  char *str = (char*)malloc(sizeof(char)*20);
+			  ssd1306_WriteString("chrono", Font_6x8, White);
+			  ssd1306_SetCursor(32, 42);
+			  switch(chronostate){
+			  case STATE_RESET:
+				  chronoenable=0;
+				  min=0;
+				  seconde=0;
+				  	 if(BTN_B>=1){
+				  		chronostate++;
+				  		BTN_B=0;
+				  }
+
+
+				  break;
+			  case STATE_RUN:
+				  chronoenable=1;
+				  if(BTN_B>=1){
+				  		chronostate++;
+				  		BTN_B=0;
+			  }
+
+
+				  break;
+			  case STATE_PAUSE:
+				  chronoenable=0;
+				  if(BTN_B>=1){
+				  			chronostate--;
+				  			chronostate--;
+				  			BTN_B=0;
+			 }
+
+				  break;
+			  }
+			  snprintf(str,15, "%dmin%ds",min,seconde);
+			  ssd1306_WriteString(str, Font_7x10, White);
+			  free(str);
+
+
+			  if(BTN_A>=1){
+			 	state--;
+			 	state--;
+			 	state--;
+			 	state--;
+			 	BTN_A=0;
+			 	BTN_B=0;
+	}
+
+
+
+			  break;
+
+
+	}
+
+return ;
+}
+
 //		  case STATE_CHOOSE:
 //		  		if(choose==0){//choose se met a jour à 1 dès que le choix de l'heure de fin a été fait ainsi on nous le redemande jamais avant que le compte a rebours soit finis
 //
@@ -606,10 +649,7 @@ void statemachine(void){
 //
 //		  		}
 //		  		 break;
-	}
 
-return ;
-}
 
 
 

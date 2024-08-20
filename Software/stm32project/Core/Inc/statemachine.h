@@ -24,7 +24,7 @@ typedef enum{
 	STATE_POS,
 	STATE_HEURE,
 	STATE_INFO,
-	STATE_CHOOSE
+	STATE_CHRONOMETER
 
 }STATE_TYPE;
 
@@ -57,3 +57,10 @@ typedef enum{
 	STATE_ALT
 
 }POS;
+
+typedef enum{
+	STATE_RESET,
+	STATE_RUN,
+	STATE_PAUSE
+
+}CHRONO;

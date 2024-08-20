@@ -41,7 +41,12 @@
 
 /* Private variables ---------------------------------------------------------*/
 /* USER CODE BEGIN PV */
-
+int chronoenable=0;
+int speedtimerenable=0;
+int seconde=0;
+int min=0;
+int time=0;
+int deciseconde=0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -55,6 +60,7 @@
 /* USER CODE END 0 */
 
 /* External variables --------------------------------------------------------*/
+extern LPTIM_HandleTypeDef hlptim1;
 extern DMA_HandleTypeDef hdma_lpuart_rx;
 extern UART_HandleTypeDef hlpuart1;
 /* USER CODE BEGIN EV */
@@ -191,8 +197,45 @@ void SysTick_Handler(void)
 {
   /* USER CODE BEGIN SysTick_IRQn 0 */
 
+
   /* USER CODE END SysTick_IRQn 0 */
   HAL_IncTick();
+
+  if(chronoenable==1){
+  time=time+1;
+
+  if(time==1000){
+	  time=0;
+	  seconde+=1;
+  }
+  if(seconde==60){
+	  seconde=0;
+	  min+=1;
+  }
+  if(min==60){
+	  min=0;
+  }
+  }
+  else{
+
+  }
+  if(speedtimerenable==1){
+	  if(time==100){
+	  	  time=0;
+	  	  deciseconde+=1;
+	    }
+	  if(deciseconde==10){
+	  	  seconde+=1;
+	  	  deciseconde=0;
+  }
+	  if(seconde=60){
+		  seconde=0;
+	  }
+  }
+
+  else{
+
+  }
   /* USER CODE BEGIN SysTick_IRQn 1 */
 
   /* USER CODE END SysTick_IRQn 1 */
@@ -218,6 +261,20 @@ void EXTI15_10_IRQHandler(void)
   HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_15);
   /* USER CODE BEGIN EXTI15_10_IRQn 1 */
   /* USER CODE END EXTI15_10_IRQn 1 */
+}
+
+/**
+  * @brief This function handles LPTIM1 global interrupt.
+  */
+void LPTIM1_IRQHandler(void)
+{
+  /* USER CODE BEGIN LPTIM1_IRQn 0 */
+
+  /* USER CODE END LPTIM1_IRQn 0 */
+  HAL_LPTIM_IRQHandler(&hlptim1);
+  /* USER CODE BEGIN LPTIM1_IRQn 1 */
+
+  /* USER CODE END LPTIM1_IRQn 1 */
 }
 
 /**
