@@ -31,6 +31,7 @@ typedef struct NMEA_DATA {
  ******************************************************************************/
 void nmea_parse(GPS *gps_data, uint8_t *buffer);
 int nmea_GNRMC(GPS *gps_data, char*inputString);
+void nmea_speed(GPS *gps_data, uint8_t *buffer);
 #endif //STM32_SERIAL_DMA_NEO6M_PARSE_H
 
 

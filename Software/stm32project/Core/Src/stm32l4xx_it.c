@@ -41,12 +41,6 @@
 
 /* Private variables ---------------------------------------------------------*/
 /* USER CODE BEGIN PV */
-int chronoenable=0;
-int speedtimerenable=0;
-int seconde=0;
-int min=0;
-int time=0;
-int deciseconde=0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -60,6 +54,8 @@ int deciseconde=0;
 /* USER CODE END 0 */
 
 /* External variables --------------------------------------------------------*/
+extern DMA_HandleTypeDef hdma_adc1;
+extern ADC_HandleTypeDef hadc1;
 extern LPTIM_HandleTypeDef hlptim1;
 extern DMA_HandleTypeDef hdma_lpuart_rx;
 extern UART_HandleTypeDef hlpuart1;
@@ -200,42 +196,6 @@ void SysTick_Handler(void)
 
   /* USER CODE END SysTick_IRQn 0 */
   HAL_IncTick();
-
-  if(chronoenable==1){
-  time=time+1;
-
-  if(time==1000){
-	  time=0;
-	  seconde+=1;
-  }
-  if(seconde==60){
-	  seconde=0;
-	  min+=1;
-  }
-  if(min==60){
-	  min=0;
-  }
-  }
-  else{
-
-  }
-  if(speedtimerenable==1){
-	  if(time==100){
-	  	  time=0;
-	  	  deciseconde+=1;
-	    }
-	  if(deciseconde==10){
-	  	  seconde+=1;
-	  	  deciseconde=0;
-  }
-	  if(seconde=60){
-		  seconde=0;
-	  }
-  }
-
-  else{
-
-  }
   /* USER CODE BEGIN SysTick_IRQn 1 */
 
   /* USER CODE END SysTick_IRQn 1 */
@@ -247,6 +207,34 @@ void SysTick_Handler(void)
 /* For the available peripheral interrupt handler names,                      */
 /* please refer to the startup file (startup_stm32l4xx.s).                    */
 /******************************************************************************/
+
+/**
+  * @brief This function handles DMA1 channel1 global interrupt.
+  */
+void DMA1_Channel1_IRQHandler(void)
+{
+  /* USER CODE BEGIN DMA1_Channel1_IRQn 0 */
+
+  /* USER CODE END DMA1_Channel1_IRQn 0 */
+  HAL_DMA_IRQHandler(&hdma_adc1);
+  /* USER CODE BEGIN DMA1_Channel1_IRQn 1 */
+
+  /* USER CODE END DMA1_Channel1_IRQn 1 */
+}
+
+/**
+  * @brief This function handles ADC1 global interrupt.
+  */
+void ADC1_IRQHandler(void)
+{
+  /* USER CODE BEGIN ADC1_IRQn 0 */
+
+  /* USER CODE END ADC1_IRQn 0 */
+  HAL_ADC_IRQHandler(&hadc1);
+  /* USER CODE BEGIN ADC1_IRQn 1 */
+
+  /* USER CODE END ADC1_IRQn 1 */
+}
 
 /**
   * @brief This function handles EXTI line[15:10] interrupts.
@@ -269,6 +257,24 @@ void EXTI15_10_IRQHandler(void)
 void LPTIM1_IRQHandler(void)
 {
   /* USER CODE BEGIN LPTIM1_IRQn 0 */
+//	if(chronoenable==1){
+//	time+=1;
+//	if(time==1000){
+//		time=0;
+//		seconde+=1;
+//	}
+//	if(seconde==60){
+//			seconde=0;
+//			min+=1;
+//		}
+//	if(min==60){
+//				min=0;
+//			}
+//	}
+//	else{
+//
+//	}
+
 
   /* USER CODE END LPTIM1_IRQn 0 */
   HAL_LPTIM_IRQHandler(&hlptim1);

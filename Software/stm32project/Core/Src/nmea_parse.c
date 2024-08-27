@@ -164,3 +164,28 @@ void nmea_parse(GPS *gps_data, uint8_t *buffer){
 
 
 }
+
+void nmea_speed(GPS *gps_data, uint8_t *buffer){
+	 memset(data, 0, sizeof(data));
+	    char * token = strtok(buffer, "$");
+	    int cnt = 0;
+	    while(token !=NULL){
+	        data[cnt++] = malloc(strlen(token)+1); //free later!!!!!
+	        strcpy(data[cnt-1], token);
+	        token = strtok(NULL, "$");
+	    }
+	    for(int i = 0; i<cnt; i++){
+	       if(strstr(data[i], "\r\n")!=NULL && gps_checksum(data[i])){
+	           if(strstr(data[i], "GNRMC")!=NULL){
+	               nmea_GNRMC(gps_data, data[i]);
+	           }
+	           else if(strstr(data[i], "GNGSA")!=NULL){
+	                          nmea_GPGSA(gps_data, data[i]);
+	                      }
+	       }
+
+	    }
+	    for(int i = 0; i<cnt; i++) free(data[i]);
+
+}
+

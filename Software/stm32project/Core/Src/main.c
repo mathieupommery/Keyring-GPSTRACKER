@@ -29,6 +29,7 @@
 #include "ee.h"
 #include "eeConfig.h"
 #include "ville.h"
+#include "stm32l4xx_hal.h"
 
 /* USER CODE END Includes */
 
@@ -38,6 +39,8 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
+//#define TS_CAL1 *((uint16_t*) 0x1FFF75A8)
+//#define TS_CAL2 *((uint16_t*) 0x1FFF75CA)
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -46,7 +49,8 @@
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
-DAC_HandleTypeDef hdac1;
+ADC_HandleTypeDef hadc1;
+DMA_HandleTypeDef hdma_adc1;
 
 I2C_HandleTypeDef hi2c1;
 I2C_HandleTypeDef hi2c3;
@@ -55,6 +59,8 @@ LPTIM_HandleTypeDef hlptim1;
 
 UART_HandleTypeDef hlpuart1;
 DMA_HandleTypeDef hdma_lpuart_rx;
+
+TIM_HandleTypeDef htim2;
 
 /* USER CODE BEGIN PV */
 
@@ -76,6 +82,8 @@ HEURE hrstate=STATE_DIGIT;
 SPEED spdstate=STATE_SUMMARY;
 POS posstate=STATE_SUMMARY1;
 CHRONO chronostate=STATE_RESET;
+float tscal2=1365.0;
+float tscal1=1034.0;
 
 
 const unsigned char startimg[] = {//image de démarrage
@@ -116,6 +124,9 @@ const unsigned char startimg[] = {//image de démarrage
 
 char eepromold[2048];
 char eepromnew[2048];
+uint16_t rawdata[2];
+float temp=0.0;
+float vrefint=0;
 
 
 
@@ -130,7 +141,8 @@ static void MX_I2C1_Init(void);
 static void MX_I2C3_Init(void);
 static void MX_LPUART1_UART_Init(void);
 static void MX_LPTIM1_Init(void);
-static void MX_DAC1_Init(void);
+static void MX_ADC1_Init(void);
+static void MX_TIM2_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -158,7 +170,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)//lors d'un appuie sur un bouton, 
 	}
 }
 
-void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
+ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
 	oldPos = newPos; //keep track of the last position in the buffer
 			if(oldPos + 64 > DataBuffer_SIZE){ //if the buffer is full, parse it, then reset the buffer
 
@@ -179,6 +191,23 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
 
 	HAL_UART_Receive_DMA(&hlpuart1, (uint8_t *)RxBuffer, RxBuffer_SIZE);//l'appel de cette fonction réactive l'intérruption.
 }
+
+void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc){
+
+	if(hadc->Instance==ADC1){
+		vrefint=(float) ((4095.0*1.212)/rawdata[0]);
+//		vtemp=(float) ((vrefint*rawdata[1])/4095.0);
+		temp=(float) (((100.0)/(tscal2-tscal1))*(rawdata[1]*(vrefint/3.0)-tscal1))+30.0;
+
+	}
+	HAL_ADC_Start_DMA(&hadc1,(uint32_t*)rawdata, 2);
+
+
+
+}
+
+
+
 
 
 
@@ -217,8 +246,11 @@ int main(void)
   MX_I2C3_Init();
   MX_LPUART1_UART_Init();
   MX_LPTIM1_Init();
-  MX_DAC1_Init();
+  MX_ADC1_Init();
+  MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
+
+
 
 	ssd1306_Init();
 	HAL_Delay(100);
@@ -229,7 +261,7 @@ int main(void)
 	QMC_init(&compasdata,&hi2c1,10);
 
 	HAL_GPIO_WritePin(GPIOA,GPIO_PIN_1,GPIO_PIN_SET);//pour l'instant le gps est toujours alimenté
-	HAL_Delay(1500);
+	HAL_Delay(1000);
 //	memset(eepromold,'/0',sizeof(eepromold));
 //	ee_init();
 //	ee_read(0,2048,eepromold);
@@ -245,6 +277,8 @@ int main(void)
 //	}
 
 
+	HAL_ADC_Start_DMA(&hadc1,(uint32_t*)rawdata, 2);
+	HAL_TIM_Base_Start(&htim2);
 
 	HAL_UART_Abort(&hlpuart1);
 	HAL_UART_Receive_DMA(&hlpuart1, (uint8_t *)RxBuffer, RxBuffer_SIZE);//lancement du dma pour le gps
@@ -336,45 +370,69 @@ void SystemClock_Config(void)
 }
 
 /**
-  * @brief DAC1 Initialization Function
+  * @brief ADC1 Initialization Function
   * @param None
   * @retval None
   */
-static void MX_DAC1_Init(void)
+static void MX_ADC1_Init(void)
 {
 
-  /* USER CODE BEGIN DAC1_Init 0 */
+  /* USER CODE BEGIN ADC1_Init 0 */
 
-  /* USER CODE END DAC1_Init 0 */
+  /* USER CODE END ADC1_Init 0 */
 
-  DAC_ChannelConfTypeDef sConfig = {0};
+  ADC_ChannelConfTypeDef sConfig = {0};
 
-  /* USER CODE BEGIN DAC1_Init 1 */
+  /* USER CODE BEGIN ADC1_Init 1 */
 
-  /* USER CODE END DAC1_Init 1 */
+  /* USER CODE END ADC1_Init 1 */
 
-  /** DAC Initialization
+  /** Common config
   */
-  hdac1.Instance = DAC1;
-  if (HAL_DAC_Init(&hdac1) != HAL_OK)
+  hadc1.Instance = ADC1;
+  hadc1.Init.ClockPrescaler = ADC_CLOCK_ASYNC_DIV1;
+  hadc1.Init.Resolution = ADC_RESOLUTION_12B;
+  hadc1.Init.DataAlign = ADC_DATAALIGN_RIGHT;
+  hadc1.Init.ScanConvMode = ADC_SCAN_ENABLE;
+  hadc1.Init.EOCSelection = ADC_EOC_SINGLE_CONV;
+  hadc1.Init.LowPowerAutoWait = DISABLE;
+  hadc1.Init.ContinuousConvMode = ENABLE;
+  hadc1.Init.NbrOfConversion = 2;
+  hadc1.Init.DiscontinuousConvMode = DISABLE;
+  hadc1.Init.ExternalTrigConv = ADC_EXTERNALTRIG_T2_TRGO;
+  hadc1.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_RISING;
+  hadc1.Init.DMAContinuousRequests = DISABLE;
+  hadc1.Init.Overrun = ADC_OVR_DATA_PRESERVED;
+  hadc1.Init.OversamplingMode = DISABLE;
+  if (HAL_ADC_Init(&hadc1) != HAL_OK)
   {
     Error_Handler();
   }
 
-  /** DAC channel OUT1 config
+  /** Configure Regular Channel
   */
-  sConfig.DAC_SampleAndHold = DAC_SAMPLEANDHOLD_DISABLE;
-  sConfig.DAC_Trigger = DAC_TRIGGER_NONE;
-  sConfig.DAC_OutputBuffer = DAC_OUTPUTBUFFER_ENABLE;
-  sConfig.DAC_ConnectOnChipPeripheral = DAC_CHIPCONNECT_DISABLE;
-  sConfig.DAC_UserTrimming = DAC_TRIMMING_FACTORY;
-  if (HAL_DAC_ConfigChannel(&hdac1, &sConfig, DAC_CHANNEL_1) != HAL_OK)
+  sConfig.Channel = ADC_CHANNEL_VREFINT;
+  sConfig.Rank = ADC_REGULAR_RANK_1;
+  sConfig.SamplingTime = ADC_SAMPLETIME_640CYCLES_5;
+  sConfig.SingleDiff = ADC_SINGLE_ENDED;
+  sConfig.OffsetNumber = ADC_OFFSET_NONE;
+  sConfig.Offset = 0;
+  if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
   {
     Error_Handler();
   }
-  /* USER CODE BEGIN DAC1_Init 2 */
 
-  /* USER CODE END DAC1_Init 2 */
+  /** Configure Regular Channel
+  */
+  sConfig.Channel = ADC_CHANNEL_TEMPSENSOR;
+  sConfig.Rank = ADC_REGULAR_RANK_2;
+  if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN ADC1_Init 2 */
+
+  /* USER CODE END ADC1_Init 2 */
 
 }
 
@@ -543,6 +601,51 @@ static void MX_LPUART1_UART_Init(void)
 }
 
 /**
+  * @brief TIM2 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_TIM2_Init(void)
+{
+
+  /* USER CODE BEGIN TIM2_Init 0 */
+
+  /* USER CODE END TIM2_Init 0 */
+
+  TIM_ClockConfigTypeDef sClockSourceConfig = {0};
+  TIM_MasterConfigTypeDef sMasterConfig = {0};
+
+  /* USER CODE BEGIN TIM2_Init 1 */
+
+  /* USER CODE END TIM2_Init 1 */
+  htim2.Instance = TIM2;
+  htim2.Init.Prescaler = 400-1;
+  htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim2.Init.Period = 10000-1;
+  htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  htim2.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+  if (HAL_TIM_Base_Init(&htim2) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
+  if (HAL_TIM_ConfigClockSource(&htim2, &sClockSourceConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_UPDATE;
+  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+  if (HAL_TIMEx_MasterConfigSynchronization(&htim2, &sMasterConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN TIM2_Init 2 */
+
+  /* USER CODE END TIM2_Init 2 */
+
+}
+
+/**
   * Enable DMA controller clock
   */
 static void MX_DMA_Init(void)
@@ -550,10 +653,14 @@ static void MX_DMA_Init(void)
 
   /* DMA controller clock enable */
   __HAL_RCC_DMA2_CLK_ENABLE();
+  __HAL_RCC_DMA1_CLK_ENABLE();
 
   /* DMA interrupt init */
+  /* DMA1_Channel1_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA1_Channel1_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(DMA1_Channel1_IRQn);
   /* DMA2_Channel7_IRQn interrupt configuration */
-  HAL_NVIC_SetPriority(DMA2_Channel7_IRQn, 0, 0);
+  HAL_NVIC_SetPriority(DMA2_Channel7_IRQn, 1, 0);
   HAL_NVIC_EnableIRQ(DMA2_Channel7_IRQn);
 
 }
@@ -591,6 +698,12 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : PA4 */
+  GPIO_InitStruct.Pin = GPIO_PIN_4;
+  GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
   /*Configure GPIO pin : PB0 */

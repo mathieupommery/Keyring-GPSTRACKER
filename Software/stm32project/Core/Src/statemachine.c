@@ -14,6 +14,7 @@
 #include "nmea_parse.h"
 #include "ee.h"
 #include "eeConfig.h"
+#include <stdio.h>
 
 extern int BTN_A;
 extern int BTN_B;
@@ -30,12 +31,12 @@ extern HEURE hrstate;
 extern SPEED spdstate;
 extern POS posstate;
 extern CHRONO chronostate;
-extern int chronoenable;
-extern int speedtimerenable;
-extern int seconde;
-extern int min;
-extern int deciseconde;
-
+float seconde=0;
+float min=0;
+extern __IO uint32_t uwTick;
+uint32_t starttime=0;
+uint32_t calctime=0;
+extern float temp;
 
 
 char str[20];
@@ -137,10 +138,10 @@ void statemachine(void){
 					 if(myData.fix == 1){ //if the GPS has a fix, print the data
 					 				 						char * str = (char*)malloc(sizeof(char)*20);
 					 				 						snprintf(str,15, "V=%0.1f",(myData.speed)*3.6);
-					 				 						ssd1306_SetCursor(32, 55);
+					 				 						ssd1306_SetCursor(32, 54);
 					 				 						ssd1306_WriteString(str, Font_6x8, White);
-					 				 						ssd1306_FillRectangle(32, 41, 95-floor((1+exp(-(myData.speed/130)))*63), 55, White);
-					 				 						ssd1306_DrawRectangle(32, 41, 95, 55, White);
+					 				 						ssd1306_DrawRectangle(32, 38, 95, 53, White);
+					 				 						ssd1306_FillRectangle(32, 38,(int) floor(32+(myData.speed*0.63)), 53, White);
 
 					 				 						free(str);
 					 				 					}
@@ -427,14 +428,20 @@ void statemachine(void){
 			 			 						snprintf(str,15, "SatNb :%d",myData.satelliteCount);
 			 			 						ssd1306_SetCursor(32, 42);
 			 			 						ssd1306_WriteString(str, Font_6x8, White);
+			 			 						ssd1306_SetCursor(32, 50);
+			 			 						snprintf(str,15,  "T=%0.2fC",temp);
+			 			 						ssd1306_WriteString(str, Font_6x8, White);
 			 			 						free(str);
 			 			 					}
 			 			 	else{ //if the GPS doesn't have a fix, print a message
 			 			 						char *str = (char*)malloc(sizeof(char)*20);
 			 			 						ssd1306_SetCursor(32, 32);
 			 			 						ssd1306_WriteString("INFO", Font_6x8, White);
-			 			 						ssd1306_SetCursor(32, 44);
+			 			 						ssd1306_SetCursor(32, 41);
 			 			 						ssd1306_WriteString("Wait GPS", Font_6x8, White);
+			 			 						ssd1306_SetCursor(32, 50);
+			 			 						snprintf(str,15, "T=%0.2fC",temp);
+			 			 						ssd1306_WriteString(str, Font_6x8, White);
 			 			 						free(str);
 			 			 					}
 			  if(BTN_A>=1){
@@ -445,25 +452,30 @@ void statemachine(void){
 			  break;
 
 		  case STATE_CHRONOMETER:
+
 			  ssd1306_Fill(Black);
 			  ssd1306_SetCursor(32, 32);
 			  char *str = (char*)malloc(sizeof(char)*20);
 			  ssd1306_WriteString("chrono", Font_6x8, White);
-			  ssd1306_SetCursor(32, 42);
+			  ssd1306_SetCursor(32, 40);
+
 			  switch(chronostate){
 			  case STATE_RESET:
-				  chronoenable=0;
 				  min=0;
 				  seconde=0;
+				  calctime=0;
 				  	 if(BTN_B>=1){
 				  		chronostate++;
 				  		BTN_B=0;
+				  		starttime=uwTick;
+
 				  }
 
 
 				  break;
 			  case STATE_RUN:
-				  chronoenable=1;
+				  calctime=uwTick-starttime;
+
 				  if(BTN_B>=1){
 				  		chronostate++;
 				  		BTN_B=0;
@@ -472,7 +484,6 @@ void statemachine(void){
 
 				  break;
 			  case STATE_PAUSE:
-				  chronoenable=0;
 				  if(BTN_B>=1){
 				  			chronostate--;
 				  			chronostate--;
@@ -481,23 +492,62 @@ void statemachine(void){
 
 				  break;
 			  }
-			  snprintf(str,15, "%dmin%ds",min,seconde);
+
+			  min=floor((float) calctime/60000);
+			  seconde=(float) ((calctime-(min*60000))/1000);
+			  snprintf(str,15, "%0.0fmin",min);
 			  ssd1306_WriteString(str, Font_7x10, White);
+			  ssd1306_SetCursor(32, 50);
+			  snprintf(str,15, "%0.3fsec",seconde);
+			  ssd1306_WriteString(str, Font_6x8, White);
 			  free(str);
 
 
 			  if(BTN_A>=1){
-			 	state--;
-			 	state--;
-			 	state--;
-			 	state--;
+			 	state++;
 			 	BTN_A=0;
 			 	BTN_B=0;
+
+
 	}
-
-
-
 			  break;
+			  case STATE_SPEEDTEST:
+				  ssd1306_Fill(Black);
+				  nmea_speed(&myData, DataBuffer);
+				  			  if(myData.fix == 1){ //if the GPS has a fix, print the data
+				  			 			 						char * str = (char*)malloc(sizeof(char)*20);
+				  			 			 					ssd1306_SetCursor(32, 32);
+				  			 			 					snprintf(str,15, "%0.1f",(myData.speed)*3.6);
+				  			 			 					ssd1306_WriteString(str, Font_11x18, White);
+				  			 			 					ssd1306_SetCursor(32, 54);
+				  			 			 					ssd1306_WriteString("kmh", Font_6x8, White);
+				  			 			 						free(str);
+				  			 			 					}
+				  			 			 	else{ //if the GPS doesn't have a fix, print a message
+				  			 			 						char *str = (char*)malloc(sizeof(char)*20);
+				  			 			 						ssd1306_SetCursor(32, 32);
+				  			 			 						ssd1306_WriteString("5HZ", Font_6x8, White);
+				  			 			 						ssd1306_SetCursor(32, 44);
+				  			 			 						ssd1306_WriteString("Wait GPS", Font_6x8, White);
+				  			 			 						free(str);
+				  			 			 					}
+
+
+
+
+				  if(BTN_A>=1){
+				  			 	state--;
+				  			 	state--;
+				  			 	state--;
+				  			 	state--;
+				  			 	state--;
+				  			 	BTN_A=0;
+				  			 	BTN_B=0;
+				  	}
+
+
+
+				  break;
 
 
 	}

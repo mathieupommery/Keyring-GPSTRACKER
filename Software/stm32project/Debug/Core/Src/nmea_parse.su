@@ -3,3 +3,4 @@
 ../Core/Src/nmea_parse.c:95:5:nmea_GPGSA	152	static
 ../Core/Src/nmea_parse.c:120:5:nmea_GNRMC	144	static
 ../Core/Src/nmea_parse.c:140:6:nmea_parse	40	static
+../Core/Src/nmea_parse.c:168:6:nmea_speed	40	static
