@@ -54,12 +54,14 @@
 /* USER CODE END 0 */
 
 /* External variables --------------------------------------------------------*/
+extern PCD_HandleTypeDef hpcd_USB_FS;
 extern DMA_HandleTypeDef hdma_adc1;
 extern ADC_HandleTypeDef hadc1;
-extern LPTIM_HandleTypeDef hlptim1;
 extern DMA_HandleTypeDef hdma_lpuart_rx;
 extern UART_HandleTypeDef hlpuart1;
+extern TIM_HandleTypeDef htim7;
 /* USER CODE BEGIN EV */
+int distanceparcouru=0;
 /* USER CODE END EV */
 
 /******************************************************************************/
@@ -192,6 +194,7 @@ void PendSV_Handler(void)
 void SysTick_Handler(void)
 {
   /* USER CODE BEGIN SysTick_IRQn 0 */
+	distanceparcouru+=1;
 
 
   /* USER CODE END SysTick_IRQn 0 */
@@ -252,35 +255,32 @@ void EXTI15_10_IRQHandler(void)
 }
 
 /**
-  * @brief This function handles LPTIM1 global interrupt.
+  * @brief This function handles TIM7 global interrupt.
   */
-void LPTIM1_IRQHandler(void)
+void TIM7_IRQHandler(void)
 {
-  /* USER CODE BEGIN LPTIM1_IRQn 0 */
-//	if(chronoenable==1){
-//	time+=1;
-//	if(time==1000){
-//		time=0;
-//		seconde+=1;
-//	}
-//	if(seconde==60){
-//			seconde=0;
-//			min+=1;
-//		}
-//	if(min==60){
-//				min=0;
-//			}
-//	}
-//	else{
-//
-//	}
+  /* USER CODE BEGIN TIM7_IRQn 0 */
+	distanceparcouru+=1;
 
+  /* USER CODE END TIM7_IRQn 0 */
+  HAL_TIM_IRQHandler(&htim7);
+  /* USER CODE BEGIN TIM7_IRQn 1 */
 
-  /* USER CODE END LPTIM1_IRQn 0 */
-  HAL_LPTIM_IRQHandler(&hlptim1);
-  /* USER CODE BEGIN LPTIM1_IRQn 1 */
+  /* USER CODE END TIM7_IRQn 1 */
+}
 
-  /* USER CODE END LPTIM1_IRQn 1 */
+/**
+  * @brief This function handles USB event interrupt through EXTI line 17.
+  */
+void USB_IRQHandler(void)
+{
+  /* USER CODE BEGIN USB_IRQn 0 */
+
+  /* USER CODE END USB_IRQn 0 */
+  HAL_PCD_IRQHandler(&hpcd_USB_FS);
+  /* USER CODE BEGIN USB_IRQn 1 */
+
+  /* USER CODE END USB_IRQn 1 */
 }
 
 /**
@@ -303,6 +303,7 @@ void DMA2_Channel7_IRQHandler(void)
 void LPUART1_IRQHandler(void)
 {
   /* USER CODE BEGIN LPUART1_IRQn 0 */
+
 
   /* USER CODE END LPUART1_IRQn 0 */
   HAL_UART_IRQHandler(&hlpuart1);

@@ -15,6 +15,7 @@
 #include "ee.h"
 #include "eeConfig.h"
 #include <stdio.h>
+#include "usbd_cdc_if.h"
 
 extern int BTN_A;
 extern int BTN_B;
@@ -37,6 +38,8 @@ extern __IO uint32_t uwTick;
 uint32_t starttime=0;
 uint32_t calctime=0;
 extern float temp;
+uint8_t usbbuffer[64];
+uint8_t usbtransmitbuf[64];
 
 
 char str[20];
@@ -512,25 +515,32 @@ void statemachine(void){
 	}
 			  break;
 			  case STATE_SPEEDTEST:
+				  uint8_t displaybuf[10];
 				  ssd1306_Fill(Black);
 				  nmea_speed(&myData, DataBuffer);
-				  			  if(myData.fix == 1){ //if the GPS has a fix, print the data
-				  			 			 						char * str = (char*)malloc(sizeof(char)*20);
-				  			 			 					ssd1306_SetCursor(32, 32);
-				  			 			 					snprintf(str,15, "%0.1f",(myData.speed)*3.6);
-				  			 			 					ssd1306_WriteString(str, Font_11x18, White);
-				  			 			 					ssd1306_SetCursor(32, 54);
-				  			 			 					ssd1306_WriteString("kmh", Font_6x8, White);
-				  			 			 						free(str);
-				  			 			 					}
-				  			 			 	else{ //if the GPS doesn't have a fix, print a message
-				  			 			 						char *str = (char*)malloc(sizeof(char)*20);
-				  			 			 						ssd1306_SetCursor(32, 32);
-				  			 			 						ssd1306_WriteString("5HZ", Font_6x8, White);
-				  			 			 						ssd1306_SetCursor(32, 44);
-				  			 			 						ssd1306_WriteString("Wait GPS", Font_6x8, White);
-				  			 			 						free(str);
-				  			 			 					}
+				  ssd1306_SetCursor(32, 32);
+				  ssd1306_WriteString("ecranusb", Font_6x8, White);
+				  ssd1306_SetCursor(32, 40);
+				  HAL_Delay(100);
+				  for(int i=0;i<10;i++){
+					  displaybuf[i]=usbbuffer[i];
+				  }
+				  ssd1306_WriteString((uint8_t*)displaybuf, Font_6x8, White);
+
+
+				  if(strcmp((uint8_t*)displaybuf,"temp")==0){
+					  ssd1306_SetCursor(32, 48);
+					  snprintf((uint8_t*)usbtransmitbuf,64, "la temperature du processeur est de:%0.2fC\n",temp);
+					  snprintf(str,15, "T=%0.2fC",temp);
+					  ssd1306_WriteString(str, Font_6x8, White);
+				  }
+				  else{
+					  ssd1306_SetCursor(32, 48);
+					  ssd1306_WriteString("nonvalide", Font_6x8, White);
+					  snprintf((uint8_t*)usbtransmitbuf,64, "Veuillez ecrire quelque chose\n");
+
+				  }
+				  CDC_Transmit_FS((uint8_t * )usbtransmitbuf,strlen(usbtransmitbuf));
 
 
 
