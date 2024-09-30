@@ -15,7 +15,10 @@
 #include "ee.h"
 #include "eeConfig.h"
 #include <stdio.h>
-#include "usbd_cdc_if.h"
+#include "usbd_def.h"
+#include "usbd_core.h"
+#include "usbd_hid.h"
+
 
 extern int BTN_A;
 extern int BTN_B;
@@ -32,6 +35,11 @@ extern HEURE hrstate;
 extern SPEED spdstate;
 extern POS posstate;
 extern CHRONO chronostate;
+extern KEYBOARD keyboardstate;
+
+
+
+
 float seconde=0;
 float min=0;
 extern __IO uint32_t uwTick;
@@ -40,10 +48,13 @@ uint32_t calctime=0;
 extern float temp;
 uint8_t usbbuffer[64];
 uint8_t usbtransmitbuf[64];
-
-
+extern uint8_t eepromold[2048];
+extern uint8_t eepromnew[2048];
+int keycount=0;
+extern keyboardHID keyboardhid;
 char str[20];
 QMC_t compasdata;
+extern USBD_HandleTypeDef hUsbDeviceFS;
 //notre machine à etat, le coeur de notre code, elle est amenée à changer afin d'avoir de nouvelles dispositions sur nos ecran de données
 
 const unsigned char speciale[] = {//logo arduino
@@ -515,45 +526,81 @@ void statemachine(void){
 	}
 			  break;
 			  case STATE_SPEEDTEST:
-				  uint8_t displaybuf[10];
 				  ssd1306_Fill(Black);
-				  nmea_speed(&myData, DataBuffer);
 				  ssd1306_SetCursor(32, 32);
-				  ssd1306_WriteString("ecranusb", Font_6x8, White);
+				  ssd1306_WriteString("clavierusb", Font_6x8, White);
 				  ssd1306_SetCursor(32, 40);
-				  HAL_Delay(100);
-				  for(int i=0;i<10;i++){
-					  displaybuf[i]=usbbuffer[i];
+
+				  switch(keyboardstate){
+
+				  case STATE_MARCHE:
+					  ssd1306_WriteString("NIGGER", Font_6x8, White);
+					  keyboardhid.MODIFIER = 0x02;
+					  keyboardhid.KEYCODE1 = 0x11;
+					  keyboardhid.KEYCODE2 = 0x0C;
+					  keyboardhid.KEYCODE3 = 0x0A;
+					  keyboardhid.KEYCODE4 = 0x08;
+					  keyboardhid.KEYCODE5 = 0x15;
+					  keyboardhid.KEYCODE6 = 0x58;
+					  USBD_HID_SendReport(&hUsbDeviceFS, &keyboardhid, sizeof (keyboardhid));
+					  HAL_Delay (50);
+					  keyboardhid.MODIFIER = 0x00;
+					  keyboardhid.KEYCODE1 = 0x00;
+					  keyboardhid.KEYCODE2 = 0x00;
+					  keyboardhid.KEYCODE3 = 0x00;
+					  keyboardhid.KEYCODE4 = 0x00;
+					  keyboardhid.KEYCODE5 = 0x00;
+					  keyboardhid.KEYCODE6 = 0x00;
+					  USBD_HID_SendReport(&hUsbDeviceFS, &keyboardhid, sizeof (keyboardhid));
+					  HAL_Delay (50);
+
+					  if(BTN_B>=1){
+						  keyboardstate++;
+						  BTN_B=0;
+					  }
+
+
+					  break;
+				  case STATE_REPOS:
+
+					  ssd1306_WriteString("repos", Font_6x8, White);
+
+					  if(BTN_B>=1){
+						  keyboardstate--;
+						  BTN_B=0;
+					  }
+
+
+					  break;
 				  }
-				  ssd1306_WriteString((uint8_t*)displaybuf, Font_6x8, White);
-
-
-				  if(strcmp((uint8_t*)displaybuf,"temp")==0){
-					  ssd1306_SetCursor(32, 48);
-					  snprintf((uint8_t*)usbtransmitbuf,64, "la temperature du processeur est de:%0.2fC\n",temp);
-					  snprintf(str,15, "T=%0.2fC",temp);
-					  ssd1306_WriteString(str, Font_6x8, White);
-				  }
-				  else{
-					  ssd1306_SetCursor(32, 48);
-					  ssd1306_WriteString("nonvalide", Font_6x8, White);
-					  snprintf((uint8_t*)usbtransmitbuf,64, "Veuillez ecrire quelque chose\n");
-
-				  }
-				  CDC_Transmit_FS((uint8_t * )usbtransmitbuf,strlen(usbtransmitbuf));
-
-
-
 
 				  if(BTN_A>=1){
-				  			 	state--;
-				  			 	state--;
-				  			 	state--;
-				  			 	state--;
-				  			 	state--;
-				  			 	BTN_A=0;
-				  			 	BTN_B=0;
-				  	}
+				  				  				  			 	state++;
+				  				  				  			 	BTN_A=0;
+				  				  				  			 	BTN_B=0;
+				  				  				  	}
+
+
+
+
+
+
+				  break;
+			  case STATE_MEMTEST:
+				  ssd1306_Fill(Black);
+				  ssd1306_SetCursor(32, 32);
+				  ssd1306_WriteString("memtest", Font_6x8, White);
+				  if(BTN_A>=1){
+				  				  			 	state--;
+				  				  			 	state--;
+				  				  			 	state--;
+				  				  			 	state--;
+				  				  			 	state--;
+				  				  			 	state--;
+				  				  			 	BTN_A=0;
+				  				  			 	BTN_B=0;
+				  				  	}
+
 
 
 
@@ -564,6 +611,24 @@ void statemachine(void){
 
 return ;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //		  case STATE_CHOOSE:
 //		  		if(choose==0){//choose se met a jour à 1 dès que le choix de l'heure de fin a été fait ainsi on nous le redemande jamais avant que le compte a rebours soit finis
@@ -718,10 +783,50 @@ return ;
 
 
 
+//				  HAL_Delay(100);
+//				  for(int i=0;i<10;i++){
+//					  displaybuf[i]=usbbuffer[i];
+//				  }
+//				  ssd1306_WriteString((uint8_t*)displaybuf, Font_6x8, White);
+//
+//
+//				  if(strcmp((uint8_t*)displaybuf,"temp")==0){
+//					  ssd1306_SetCursor(32, 48);
+//					  snprintf((uint8_t*)usbtransmitbuf,64, "la temperature du processeur est de:%0.2fC\n",temp);
+//					  snprintf(str,15, "T=%0.2fC",temp);
+//					  ssd1306_WriteString(str, Font_6x8, White);
+//				  }
+//				  else{
+//					  ssd1306_SetCursor(32, 48);
+//					  ssd1306_WriteString("nonvalide", Font_6x8, White);
+//					  snprintf((uint8_t*)usbtransmitbuf,64, "Veuillez ecrire quelque chose\n");
+//
+//				  }
+//				  CDC_Transmit_FS((uint8_t * )usbtransmitbuf,strlen(usbtransmitbuf));
 
 
 
-
+//				  ee_read(0, 2048, (uint8_t *)eepromold);
+//				  while((eepromold[eeindex]&0xFF)!=0xFF){
+//					  eeindex++;
+//				  }
+//				  ee_format(0);
+//
+//				  memset((uint8_t*)strb,'0',10);
+//				  memset((uint8_t*)eepromnew,'a',2048);
+//				  memcpy((uint8_t*)eepromnew,(uint8_t*)eepromold,eeindex);
+//
+//				  snprintf((uint8_t*)strb,10, "%0.2f\n",temp);
+//				  memcpy((uint8_t*)eepromnew[eeindex],(uint8_t*)strb,10);
+//				  eeindex=eeindex+10;
+//				  ee_write(0, 2048, (uint8_t *)eepromnew);
+//				  ssd1306_SetCursor(32, 42);
+//				  snprintf(str,15, "%d",eeindex);
+//				  ssd1306_WriteString(str, Font_6x8, White);
+//				  HAL_Delay(100);
+//				  if(eeindex>=2048){
+//					  eeindex=0;
+//				  }
 
 
 

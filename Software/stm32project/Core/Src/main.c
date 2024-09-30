@@ -82,8 +82,10 @@ HEURE hrstate=STATE_DIGIT;
 SPEED spdstate=STATE_SUMMARY;
 POS posstate=STATE_SUMMARY1;
 CHRONO chronostate=STATE_RESET;
+KEYBOARD keyboardstate=STATE_MARCHE;
 float tscal2=1365.0;
 float tscal1=1034.0;
+keyboardHID keyboardhid = {0,0,0,0,0,0,0,0};
 
 
 const unsigned char startimg[] = {//image de démarrage
@@ -122,8 +124,8 @@ const unsigned char startimg[] = {//image de démarrage
 		};
 
 
-char eepromold[2048];
-char eepromnew[2048];
+//uint8_t eepromold[2048];
+//uint8_t eepromnew[2048];
 uint16_t rawdata[2];
 float temp=0.0;
 float vrefint=0;
@@ -267,20 +269,9 @@ int main(void)
 
 	HAL_GPIO_WritePin(GPIOA,GPIO_PIN_1,GPIO_PIN_SET);//pour l'instant le gps est toujours alimenté
 	HAL_Delay(1000);
-//	memset(eepromold,'/0',sizeof(eepromold));
-//	ee_init();
-//	ee_read(0,2048,eepromold);
-//	if ((eepromold[0]&0xFF)==0xFF){
-//		memset(eepromnew,'/0',sizeof(eepromnew));
-//	}
-//	else{
-//		while(((eepromold[index])&0xFF])!= 0xFF){
-//			eepromnew[index]=eepromold[index];
-//			index++;
-//		}
-//
-//	}
-
+	//memset(eepromold,'/0',sizeof(eepromold));
+	//ee_init();
+	//ee_read(0,2048,(uint8_t*)eepromold);
 
 	HAL_ADC_Start_DMA(&hadc1,(uint32_t*)rawdata, 2);
 	HAL_TIM_Base_Start(&htim2);

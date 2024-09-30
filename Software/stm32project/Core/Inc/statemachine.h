@@ -25,7 +25,8 @@ typedef enum{
 	STATE_HEURE,
 	STATE_INFO,
 	STATE_CHRONOMETER,
-	STATE_SPEEDTEST
+	STATE_SPEEDTEST,
+	STATE_MEMTEST
 
 }STATE_TYPE;
 
@@ -65,3 +66,22 @@ typedef enum{
 	STATE_PAUSE
 
 }CHRONO;
+
+typedef enum{
+	STATE_MARCHE,
+	STATE_REPOS
+
+}KEYBOARD;
+
+typedef struct
+{
+	uint8_t MODIFIER;
+	uint8_t RESERVED;
+	uint8_t KEYCODE1;
+	uint8_t KEYCODE2;
+	uint8_t KEYCODE3;
+	uint8_t KEYCODE4;
+	uint8_t KEYCODE5;
+	uint8_t KEYCODE6;
+} keyboardHID;
+
