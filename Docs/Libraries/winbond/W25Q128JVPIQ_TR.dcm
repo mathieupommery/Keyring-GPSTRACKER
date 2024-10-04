@@ -1,0 +1,9 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP W25Q128JVPIQ_TR
+D NOR Flash spiFlash, 3V, 128M-bit, 4Kb Uniform Sector
+K
+F https://www.winbond.com/resource-files/w25q128jv%20revf%2003272018%20plus.pdf
+$ENDCMP
+#
+#End Doc Library
