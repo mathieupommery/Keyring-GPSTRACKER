@@ -4863,7 +4863,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "MS421R-IV03E:MS421R-IV03E"
+		(property "Footprint" "MS414:MS421R-IV03E"
 			(at 143.51 143.256 90)
 			(effects
 				(font
@@ -8010,7 +8010,7 @@
 				)
 			)
 		)
-		(property "Footprint" "USBC-WURTH:USBC-WURTH"
+		(property "Footprint" "vraieusbwurth:USBC-WURTH"
 			(at 45.72 52.07 0)
 			(effects
 				(font

@@ -2674,6 +2674,12 @@
 		(uuid "839abc6f-2d0a-4c57-8425-00fe0f5fd6ee")
 	)
 	(junction
+		(at 254 74.93)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "8b10506b-68af-4a2c-9320-aea031aa94ff")
+	)
+	(junction
 		(at 128.27 62.23)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -2734,10 +2740,6 @@
 	(no_connect
 		(at 233.68 64.77)
 		(uuid "a633bbc1-7243-4660-aa95-9387179c63ed")
-	)
-	(no_connect
-		(at 208.28 82.55)
-		(uuid "df1387d9-2aa5-4801-a5e1-e4d069d97514")
 	)
 	(wire
 		(pts
@@ -2988,6 +2990,16 @@
 			(type default)
 		)
 		(uuid "4ba1688c-264a-4efe-9a72-5b00c09f8a4c")
+	)
+	(wire
+		(pts
+			(xy 233.68 74.93) (xy 254 74.93)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4c7a11c2-c3b3-493a-b35f-7b4d9a8f937b")
 	)
 	(wire
 		(pts
@@ -3258,6 +3270,16 @@
 			(type default)
 		)
 		(uuid "c14b5dcd-e5bb-4822-ae64-ade7cef226cf")
+	)
+	(wire
+		(pts
+			(xy 254 72.39) (xy 254 74.93)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cd2126d3-c0b2-447f-abdd-32f88b910031")
 	)
 	(wire
 		(pts
@@ -3667,9 +3689,9 @@
 			)
 		)
 	)
-	(global_label "SPI_CS"
+	(global_label "vbat"
 		(shape input)
-		(at 233.68 74.93 0)
+		(at 58.42 50.8 90)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3677,14 +3699,36 @@
 			)
 			(justify left)
 		)
-		(uuid "3a5bfa99-8324-49b3-901d-67c60bef2776")
+		(uuid "2fef01c2-7146-4e89-b7e8-a344e8258c5e")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 243.1966 74.93 0)
+			(at 58.42 43.8235 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "SPI_CS"
+		(shape input)
+		(at 208.28 82.55 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "3a5bfa99-8324-49b3-901d-67c60bef2776")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 198.7634 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
 				(hide yes)
 			)
 		)
@@ -3724,6 +3768,28 @@
 		(uuid "4af037d3-adc0-4ffb-b716-079db950989e")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 115.57 101.9411 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "vbat"
+		(shape input)
+		(at 254 67.31 90)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "590c5062-a9ce-4bac-9550-a4b19251d1b6")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 254 60.3335 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5161,6 +5227,72 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 254 80.01 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "68dc416b-8db6-4124-83a0-999b7ade1723")
+		(property "Reference" "#PWR022"
+			(at 254 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 254 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 254 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 254 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 254 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "92cd11fa-706f-492d-ac0f-35ea620fe062")
+		)
+		(instances
+			(project ""
+				(path "/56e339ec-1256-431b-9e33-16e9a88fdd61"
+					(reference "#PWR022")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:C_Small")
 		(at 186.69 68.58 90)
 		(unit 1)
@@ -5488,6 +5620,76 @@
 			(project "projet s6"
 				(path "/56e339ec-1256-431b-9e33-16e9a88fdd61"
 					(reference "#PWR031")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R_Small")
+		(at 254 77.47 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "8a5d1992-50e7-4af8-a9b4-45875a3ed692")
+		(property "Reference" "R9"
+			(at 256.54 76.1999 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "50k"
+			(at 256.54 78.7399 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric_Pad0.72x0.64mm_HandSolder"
+			(at 254 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 254 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor, small symbol"
+			(at 254 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "dd9671f5-0f11-43d8-bc5e-fc2c3eb66b58")
+		)
+		(pin "2"
+			(uuid "ba1a6d95-d10b-4d8f-aca7-37e3bd7e1bf2")
+		)
+		(instances
+			(project "projet s6"
+				(path "/56e339ec-1256-431b-9e33-16e9a88fdd61"
+					(reference "R9")
 					(unit 1)
 				)
 			)
@@ -6051,6 +6253,76 @@
 			(project "projet s6"
 				(path "/56e339ec-1256-431b-9e33-16e9a88fdd61"
 					(reference "U3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R_Small")
+		(at 254 69.85 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "c3825519-1e45-4181-9ad4-1a822b075c9f")
+		(property "Reference" "R16"
+			(at 256.54 68.5799 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "50k"
+			(at 256.54 71.1199 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric_Pad0.72x0.64mm_HandSolder"
+			(at 254 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 254 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor, small symbol"
+			(at 254 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "ffd865c9-c752-4bce-8521-9323fd1e6b0c")
+		)
+		(pin "2"
+			(uuid "aecc9fb6-b25c-406e-a26c-8015df2cd782")
+		)
+		(instances
+			(project "projet s6"
+				(path "/56e339ec-1256-431b-9e33-16e9a88fdd61"
+					(reference "R16")
 					(unit 1)
 				)
 			)
