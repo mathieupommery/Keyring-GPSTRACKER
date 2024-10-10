@@ -3,7 +3,7 @@
 #ifndef __SSD1306_FONTS_H__
 #define __SSD1306_FONTS_H__
 
-#include "ssd1306_conf_template.h"
+#include <ssd1306_conf.h>
 
 
 typedef struct {

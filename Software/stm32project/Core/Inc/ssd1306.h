@@ -10,10 +10,10 @@
 
 #include <stddef.h>
 #include <_ansi.h>
+#include <ssd1306_conf.h>
 
 _BEGIN_STD_C
 
-#include "ssd1306_conf_template.h"
 #include "ssd1306_fonts.h"
 
 

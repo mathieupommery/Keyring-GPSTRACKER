@@ -12,8 +12,6 @@
 #include "math.h"
 #include "statemachine.h"
 #include "nmea_parse.h"
-#include "ee.h"
-#include "eeConfig.h"
 #include <stdio.h>
 #include "usbd_def.h"
 #include "usbd_core.h"
@@ -48,13 +46,14 @@ uint32_t calctime=0;
 extern float temp;
 uint8_t usbbuffer[64];
 uint8_t usbtransmitbuf[64];
-extern uint8_t eepromold[2048];
-extern uint8_t eepromnew[2048];
+uint8_t gpscommand[100];
 int keycount=0;
 extern keyboardHID keyboardhid;
 char str[20];
 QMC_t compasdata;
 extern USBD_HandleTypeDef hUsbDeviceFS;
+extern UART_HandleTypeDef hlpuart1;
+extern DMA_HandleTypeDef hdma_lpuart_rx;
 //notre machine à etat, le coeur de notre code, elle est amenée à changer afin d'avoir de nouvelles dispositions sur nos ecran de données
 
 const unsigned char speciale[] = {//logo arduino
@@ -534,14 +533,10 @@ void statemachine(void){
 				  switch(keyboardstate){
 
 				  case STATE_MARCHE:
-					  ssd1306_WriteString("NIGGER", Font_6x8, White);
+					  ssd1306_WriteString("NI", Font_6x8, White);
 					  keyboardhid.MODIFIER = 0x02;
 					  keyboardhid.KEYCODE1 = 0x11;
 					  keyboardhid.KEYCODE2 = 0x0C;
-					  keyboardhid.KEYCODE3 = 0x0A;
-					  keyboardhid.KEYCODE4 = 0x08;
-					  keyboardhid.KEYCODE5 = 0x15;
-					  keyboardhid.KEYCODE6 = 0x58;
 					  USBD_HID_SendReport(&hUsbDeviceFS, &keyboardhid, sizeof (keyboardhid));
 					  HAL_Delay (50);
 					  keyboardhid.MODIFIER = 0x00;
@@ -578,6 +573,21 @@ void statemachine(void){
 				  				  				  			 	state++;
 				  				  				  			 	BTN_A=0;
 				  				  				  			 	BTN_B=0;
+				  				  				  			uint8_t baudchange[]={0x24, 0x50, 0x4D, 0x54,0x4B ,0x32, 0x35 ,0x31 ,0x2C ,0x33, 0x38, 0x34 ,0x30, 0x30 ,0x2A, 0x32 ,0x37, 0x0A};
+				  				  				  		__HAL_DMA_DISABLE_IT(&hdma_lpuart_rx, DMA_IT_HT);
+				  				  				  	HAL_UART_Transmit_IT(&hlpuart1,(uint8_t *)baudchange,18);
+				  				  				  			uint8_t disablenmea[]={0x24, 0x50, 0x4D, 0x54, 0x4B, 0x33, 0x31, 0x34, 0x2C, 0x30, 0x2C, 0x31, 0x2C, 0x30, 0x2C, 0x30, 0x2C, 0x30, 0x2C, 0x30, 0x2C, 0x30, 0x2C, 0x30, 0x2C, 0x30,
+				  				  				  					0x2C, 0x30, 0x2C, 0x30, 0x2C, 0x30, 0x2C, 0x30, 0x2C, 0x30, 0x2C, 0x30, 0x2C, 0x30, 0x2C, 0x30, 0x2C, 0x30, 0x2C, 0x30, 0x2A, 0x32, 0x39};//$PMTK314,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0*29
+				  				  				  		HAL_UART_Transmit_IT(&hlpuart1,(uint8_t *)disablenmea,49);
+				  				  				  		uint8_t updaterate[]={0x24, 0x50, 0x4D, 0x54, 0x4B, 0x32, 0x32, 0x30, 0x2C, 0x20, 0x32, 0x30, 0x30, 0x2A, 0x32, 0x43};//$PMTK220, 200*2C
+				  				  				  	HAL_UART_Transmit_IT(&hlpuart1,(uint8_t *)updaterate,16);
+				  				  				  		HAL_UART_Abort(&hlpuart1);
+				  				  				  			HAL_UART_DeInit(&hlpuart1);
+				  				  				  			hlpuart1.Init.BaudRate = 38400;
+				  				  				  			HAL_UART_Init(&hlpuart1);
+				  				  				  			HAL_UART_Abort(&hlpuart1);
+				  				  				  			HAL_UART_Receive_DMA(&hlpuart1, (uint8_t *)RxBuffer, RxBuffer_SIZE);
+
 				  				  				  	}
 
 
@@ -589,7 +599,19 @@ void statemachine(void){
 			  case STATE_MEMTEST:
 				  ssd1306_Fill(Black);
 				  ssd1306_SetCursor(32, 32);
-				  ssd1306_WriteString("memtest", Font_6x8, White);
+				  ssd1306_WriteString("test", Font_6x8, White);
+				 nmea_parse(&myData, DataBuffer);
+
+				 			 			 						snprintf(str,15, "spd=%.1f",myData.speed);//sert a	connaitre la qualitée du fix si proche de 1 voir inférieur alors le fix est tres bon
+				 			 			 						ssd1306_SetCursor(32, 40);
+				 			 			 						ssd1306_WriteString(str, Font_6x8, White);
+				 			 			 						snprintf(str,15, "SatNb :%d",myData.satelliteCount);
+				 			 			 						ssd1306_SetCursor(32, 48);
+				 			 			 						ssd1306_WriteString(str, Font_6x8, White);
+				 			 			 						free(str);
+
+
+
 				  if(BTN_A>=1){
 				  				  			 	state--;
 				  				  			 	state--;

@@ -38,7 +38,7 @@ USB_DEVICE/Target/usbd_conf.o: ../USB_DEVICE/Target/usbd_conf.c \
  ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h \
  ../USB_DEVICE/Target/usbd_conf.h ../Core/Inc/main.h \
  ../Core/Inc/QMC5883.h ../Core/Inc/main.h ../Core/Inc/ssd1306.h \
- ../Core/Inc/ssd1306_conf_template.h ../Core/Inc/ssd1306_fonts.h \
+ ../Core/Inc/ssd1306_conf.h ../Core/Inc/ssd1306_fonts.h \
  ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h \
  ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h \
  ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h \
@@ -88,7 +88,7 @@ USB_DEVICE/Target/usbd_conf.o: ../USB_DEVICE/Target/usbd_conf.c \
 ../Core/Inc/QMC5883.h:
 ../Core/Inc/main.h:
 ../Core/Inc/ssd1306.h:
-../Core/Inc/ssd1306_conf_template.h:
+../Core/Inc/ssd1306_conf.h:
 ../Core/Inc/ssd1306_fonts.h:
 ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h:
 ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h:

@@ -57,6 +57,8 @@
 extern PCD_HandleTypeDef hpcd_USB_FS;
 extern DMA_HandleTypeDef hdma_adc1;
 extern ADC_HandleTypeDef hadc1;
+extern DMA_HandleTypeDef hdma_lpuart_rx;
+extern UART_HandleTypeDef hlpuart1;
 extern TIM_HandleTypeDef htim7;
 /* USER CODE BEGIN EV */
 int distanceparcouru=0;
@@ -238,6 +240,21 @@ void ADC1_IRQHandler(void)
 }
 
 /**
+  * @brief This function handles EXTI line[15:10] interrupts.
+  */
+void EXTI15_10_IRQHandler(void)
+{
+  /* USER CODE BEGIN EXTI15_10_IRQn 0 */
+
+  /* USER CODE END EXTI15_10_IRQn 0 */
+  HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_14);
+  HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_15);
+  /* USER CODE BEGIN EXTI15_10_IRQn 1 */
+
+  /* USER CODE END EXTI15_10_IRQn 1 */
+}
+
+/**
   * @brief This function handles TIM7 global interrupt.
   */
 void TIM7_IRQHandler(void)
@@ -264,6 +281,34 @@ void USB_IRQHandler(void)
   /* USER CODE BEGIN USB_IRQn 1 */
 
   /* USER CODE END USB_IRQn 1 */
+}
+
+/**
+  * @brief This function handles DMA2 channel7 global interrupt.
+  */
+void DMA2_Channel7_IRQHandler(void)
+{
+  /* USER CODE BEGIN DMA2_Channel7_IRQn 0 */
+
+  /* USER CODE END DMA2_Channel7_IRQn 0 */
+  HAL_DMA_IRQHandler(&hdma_lpuart_rx);
+  /* USER CODE BEGIN DMA2_Channel7_IRQn 1 */
+
+  /* USER CODE END DMA2_Channel7_IRQn 1 */
+}
+
+/**
+  * @brief This function handles LPUART1 global interrupt.
+  */
+void LPUART1_IRQHandler(void)
+{
+  /* USER CODE BEGIN LPUART1_IRQn 0 */
+
+  /* USER CODE END LPUART1_IRQn 0 */
+  HAL_UART_IRQHandler(&hlpuart1);
+  /* USER CODE BEGIN LPUART1_IRQn 1 */
+
+  /* USER CODE END LPUART1_IRQn 1 */
 }
 
 /* USER CODE BEGIN 1 */
