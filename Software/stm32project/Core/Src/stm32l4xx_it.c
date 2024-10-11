@@ -22,6 +22,7 @@
 #include "stm32l4xx_it.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "ssd1306.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -95,9 +96,7 @@ void HardFault_Handler(void)
     /* USER CODE BEGIN W1_HardFault_IRQn 0 */
 	  ssd1306_Fill(Black);
 	  ssd1306_SetCursor(33, 36);
-	  ssd1306_WriteString("rincee en", Font_6x8, White);
-	  ssd1306_SetCursor(33, 46);
-	  ssd1306_WriteString("code", Font_6x8, White);
+	  ssd1306_WriteString("hard_fault", Font_6x8, White);
 	  ssd1306_UpdateScreen();
 
     /* USER CODE END W1_HardFault_IRQn 0 */

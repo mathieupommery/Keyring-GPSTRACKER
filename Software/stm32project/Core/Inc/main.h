@@ -31,8 +31,7 @@ extern "C" {
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "QMC5883.h"
-#include "ssd1306.h"
+
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/

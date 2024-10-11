@@ -22,12 +22,12 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "QMC5883.h"
-#include "ssd1306.h"
+
+
 #include "math.h"
+#include "ssd1306.h"
 #include "statemachine.h"
 #include "nmea_parse.h"
-#include "ville.h"
 #include "stm32l4xx_hal.h"
 
 /* USER CODE END Includes */
@@ -118,12 +118,10 @@ const unsigned char startimg[] = {//image de démarrage
 		  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
 		};
 
-
-//uint8_t eepromold[2048];
-//uint8_t eepromnew[2048];
 uint16_t rawdata[2];
 float temp=0.0;
 float vrefint=0;
+
 
 
 
@@ -271,7 +269,7 @@ int main(void)
 	HAL_UART_Receive_DMA(&hlpuart1, (uint8_t *)RxBuffer, RxBuffer_SIZE);//lancement du dma pour le gps
 
 	ssd1306_Fill(Black);
-	ssd1306_UpdateScreen();
+
 
 
 
@@ -296,6 +294,7 @@ int main(void)
 
 		statemachine();
 		ssd1306_UpdateScreen();
+
 
 
 
@@ -464,7 +463,7 @@ static void MX_I2C3_Init(void)
 
   /* USER CODE END I2C3_Init 1 */
   hi2c3.Instance = I2C3;
-  hi2c3.Init.Timing = 0x00202538;
+  hi2c3.Init.Timing = 0x00100618;
   hi2c3.Init.OwnAddress1 = 0;
   hi2c3.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
   hi2c3.Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;
@@ -490,6 +489,10 @@ static void MX_I2C3_Init(void)
   {
     Error_Handler();
   }
+
+  /** I2C Fast mode Plus enable
+  */
+  HAL_I2CEx_EnableFastModePlus(I2C_FASTMODEPLUS_I2C3);
   /* USER CODE BEGIN I2C3_Init 2 */
 
   /* USER CODE END I2C3_Init 2 */
@@ -512,8 +515,8 @@ static void MX_LPUART1_UART_Init(void)
 
   /* USER CODE END LPUART1_Init 1 */
   hlpuart1.Instance = LPUART1;
-  hlpuart1.Init.BaudRate = 209700;
-  hlpuart1.Init.WordLength = UART_WORDLENGTH_7B;
+  hlpuart1.Init.BaudRate = 9600;
+  hlpuart1.Init.WordLength = UART_WORDLENGTH_8B;
   hlpuart1.Init.StopBits = UART_STOPBITS_1;
   hlpuart1.Init.Parity = UART_PARITY_NONE;
   hlpuart1.Init.Mode = UART_MODE_TX_RX;

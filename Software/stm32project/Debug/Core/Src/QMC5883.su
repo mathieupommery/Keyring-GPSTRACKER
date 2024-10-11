@@ -1,6 +1,0 @@
-../Core/Src/QMC5883.c:15:9:QMC_init	48	static
-../Core/Src/QMC5883.c:35:9:QMC_read	32	static
-../Core/Src/QMC5883.c:66:7:QMC_readHeading	16	static
-../Core/Src/QMC5883.c:72:9:QMC_Standby	40	static
-../Core/Src/QMC5883.c:78:9:QMC_Reset	40	static
-../Core/Src/QMC5883.c:85:6:QMC_arrow	16	static

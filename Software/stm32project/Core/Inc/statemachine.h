@@ -13,7 +13,6 @@
 #endif /* INC_STATEMACHINE_H_ */
 
 #include "main.h"
-#include "QMC5883.h"
 #include "ssd1306.h"
 #include "math.h"
 
@@ -25,7 +24,6 @@ typedef enum{
 	STATE_HEURE,
 	STATE_INFO,
 	STATE_CHRONOMETER,
-	STATE_SPEEDTEST,
 	STATE_MEMTEST
 
 }STATE_TYPE;
