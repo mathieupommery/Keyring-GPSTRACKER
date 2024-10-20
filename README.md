@@ -31,3 +31,11 @@ https://github.com/mathieupommery/Keyring-GPSTRACKER/assets/161692882/a2b60fe9-0
 
 this video didn't show how to choose your hour and minutes for the countdown, in order to do that, you have to go in the choose your houre menu by pressing A button for selecting the menu and then you press a to increase the hour, then you press b to choose the minutes, and the you press a to increase the minutes, finally you press b to valid.
 
+render of the pcb final version (v3):
+
+![image](https://github.com/user-attachments/assets/ba09b323-06d4-486f-b5c9-d023ff07456d)
+
+![image](https://github.com/user-attachments/assets/d007ec3d-60a8-4950-8905-ead666ac0d40)
+
+i added 128Mb of flahs in order to store the data and two connector to connect external sensor such as heart frequency sensor.
+
