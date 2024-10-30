@@ -6,7 +6,7 @@
 
 
 
-
+# Specs
 This is a keyring gps balise with onboard compas, gps, stm32l4 mcu, aoled 0.49inch display and a lipo battery charger,
 you can flash a new firmware throught dfu mode by the usb c(push the little button on the back of the card whe you plug in the usb to turn the mcu in dfu mode) or by swd solder pad and a stlink if you want to debug also.
 Usb c can also be used to charge the li ion battery inside.
