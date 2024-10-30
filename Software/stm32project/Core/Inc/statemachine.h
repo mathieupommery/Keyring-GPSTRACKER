@@ -24,7 +24,9 @@ typedef enum{
 	STATE_HEURE,
 	STATE_INFO,
 	STATE_CHRONOMETER,
-	STATE_MEMTEST
+	STATE_BALISE,
+	STATE_USB
+
 
 }STATE_TYPE;
 
@@ -70,6 +72,28 @@ typedef enum{
 	STATE_REPOS
 
 }KEYBOARD;
+
+typedef enum{
+	GIF1,
+	GIF2,
+	GIF3,
+	GIF4
+
+}GIF;
+
+typedef enum{
+	USBSTATE1,
+	USBSTATE2,
+	USBSTATE3
+
+}USBSTATE;
+
+typedef enum{
+	BALISESTATE1,
+	BALISESTATE2,
+	BALISESTATE3
+
+}BALISESTATE;
 
 typedef struct
 {

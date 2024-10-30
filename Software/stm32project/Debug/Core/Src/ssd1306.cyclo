@@ -25,3 +25,4 @@
 ../Core/Src/ssd1306.c:524:9:ssd1306_GetDisplayOn	1
 ../Core/Src/ssd1306.c:528:6:ssd1306_Drawarrow	9
 ../Core/Src/ssd1306.c:637:6:ssd1306_Drawarrow2	3
+../Core/Src/ssd1306.c:667:6:batterygauge	11

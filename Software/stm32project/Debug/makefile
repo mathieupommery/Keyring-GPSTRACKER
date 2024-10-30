@@ -11,8 +11,9 @@ RM := rm -rf
 -include sources.mk
 -include USB_DEVICE/Target/subdir.mk
 -include USB_DEVICE/App/subdir.mk
+-include Middlewares/Third_Party/NimaLTD_Driver/SPIF/subdir.mk
 -include Middlewares/ST/STM32_USB_Device_Library/Core/Src/subdir.mk
--include Middlewares/ST/STM32_USB_Device_Library/Class/HID/Src/subdir.mk
+-include Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/subdir.mk
 -include Drivers/STM32L4xx_HAL_Driver/Src/subdir.mk
 -include Core/Startup/subdir.mk
 -include Core/Src/subdir.mk
@@ -64,8 +65,8 @@ all: main-build
 main-build: projet\ vf.elf secondary-outputs
 
 # Tool invocations
-projet\ vf.elf projet\ vf.map: $(OBJS) $(USER_OBJS) C:\Users\mathi\Documents\GitHub\Keyring-GPSTRACKER\Software\stm32project\STM32L432KCUX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "projet vf.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\mathi\Documents\GitHub\Keyring-GPSTRACKER\Software\stm32project\STM32L432KCUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="projet vf.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+projet\ vf.elf projet\ vf.map: $(OBJS) $(USER_OBJS) C:\Users\mathieu\Documents\GitHub\Keyring-GPSTRACKER\Software\stm32project\STM32L432KCUX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "projet vf.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\mathieu\Documents\GitHub\Keyring-GPSTRACKER\Software\stm32project\STM32L432KCUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="projet vf.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

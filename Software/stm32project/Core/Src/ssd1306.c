@@ -664,4 +664,57 @@ void ssd1306_Drawarrow2(uint8_t x,uint8_t y, uint8_t r,float angle){
 
 }
 
+void batterygauge(float vbat,int x, int y,int currentsquare){
+	ssd1306_Line(x+15,y+1,x+15,y+5, White);
+	ssd1306_Line(x+16,y+1,x+16,y+5, White);
+	ssd1306_DrawRectangle(x, y, x+14, y+6, White);
+	if(vbat<=3.7){
+		ssd1306_DrawRectangle(x+2, y+2, x+3, y+4, White);
+		if(currentsquare==1){
+			ssd1306_DrawRectangle(x+2, y+2, x+3, y+4, White);
+		}
+		else{
+
+		}
+	}
+	if(vbat>3.7 && vbat<= 3.9){
+		ssd1306_DrawRectangle(x+2, y+2, x+3, y+4, White);
+		if(currentsquare==1){
+			ssd1306_DrawRectangle(x+5, y+2, x+6, y+4, White);
+				}
+				else{
+
+				}
+
+	}
+	if(vbat>3.9 && vbat<=4.1){
+		ssd1306_DrawRectangle(x+2, y+2, x+3, y+4, White);
+		ssd1306_DrawRectangle(x+5, y+2, x+6, y+4, White);
+
+		if(currentsquare==1){
+			ssd1306_DrawRectangle(x+8, y+2, x+9, y+4, White);
+
+				}
+				else{
+
+				}
+	}
+
+	if(vbat>4.1){
+		ssd1306_DrawRectangle(x+2, y+2, x+3, y+4, White);
+		ssd1306_DrawRectangle(x+5, y+2, x+6, y+4, White);
+		ssd1306_DrawRectangle(x+8, y+2, x+9, y+4, White);
+		if(currentsquare==1){
+			ssd1306_DrawRectangle(x+11, y+2, x+12, y+4, White);
+				}
+				else{
+
+				}
+	}
+
+
+
+
+}
+
 
