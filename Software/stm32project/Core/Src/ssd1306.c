@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <string.h>  // For memcpy
 
+extern char str[20];
 
 void ssd1306_Reset(void) {
     /* for I2C - do nothing */
@@ -713,6 +714,16 @@ void batterygauge(float vbat,int x, int y,int currentsquare){
 	}
 
 
+
+
+}
+
+void percentage(float percent){
+	ssd1306_FillRectangle(32, 40, floor(0.64*percent+32), 56, White);
+	ssd1306_DrawRectangle(32, 40, 95, 56, White);
+	snprintf((uint8_t *)str,20,"%0.2f %%",(float) percent);
+	ssd1306_SetCursor(45,44);
+	ssd1306_WriteString((uint8_t*)str,Font_6x8,White);
 
 
 }

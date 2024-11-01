@@ -674,13 +674,11 @@ void statemachine(void){
 				 					if(usbtransmiten==0){
 				 						while(i<pagenumber){
 				 							ssd1306_Fill(Black);
-				 							ssd1306_SetCursor(32,40);
+				 							ssd1306_SetCursor(32,32);
 				 							ssd1306_WriteString("write",Font_6x8,White);
-				 							ssd1306_SetCursor(32,48);
 				 							SPIF_ReadPage(&hspif1,i, (uint8_t *)flashread, 256, 0);
 				 							CDC_Transmit_FS((uint8_t * )flashread,256);
-				 							snprintf((uint8_t *)str,50,"w=%0.2f",(float) (i)/pagenumber);
-				 							ssd1306_WriteString((uint8_t*)str,Font_6x8,White);
+				 							percentage((float) (i*100)/pagenumber);
 				 							ssd1306_UpdateScreen();
 				 							HAL_Delay(125);
 				 							i++;
@@ -694,6 +692,9 @@ void statemachine(void){
 				 						usbpercent=1;
 
 				 					}
+				 					ssd1306_Fill(Black);
+				 					ssd1306_SetCursor(32,45);
+				 					ssd1306_WriteString("finish",Font_7x10,White);
 				 					}
 				 					else{
 				 							ssd1306_Fill(Black);
@@ -703,6 +704,7 @@ void statemachine(void){
 				 							ssd1306_WriteString("nothing",Font_6x8,White);
 
 				 						}
+
 
 
 
@@ -721,24 +723,11 @@ void statemachine(void){
 				 									  			 	state--;
 				 									  			 	BTN_A=0;
 				 									  			 	BTN_B=0;
-
-
 				 									  	}
 				 					 break;
-
-
-
 				 				  }
-
-
-
-
-
-
 				  break;
-
 	}
-
 return ;
 }
 

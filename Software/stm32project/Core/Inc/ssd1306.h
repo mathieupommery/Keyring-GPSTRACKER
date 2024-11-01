@@ -110,6 +110,7 @@ void ssd1306_DrawBitmap(uint8_t x, uint8_t y, const unsigned char* bitmap, uint8
 void ssd1306_Drawarrow(uint8_t x,uint8_t y, uint8_t type,SSD1306_COLOR color);
 void ssd1306_Drawarrow2(uint8_t x,uint8_t y, uint8_t r,float angle);
 void batterygauge(float vbat,int x, int y,int currentsquare);
+void percentage(float percent);
 
 /**
  * @brief Sets the contrast of the display.
