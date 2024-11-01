@@ -242,13 +242,6 @@ int main(void)
 	ssd1306_UpdateScreen();
 
 	HAL_Delay(1000);
-
-
-
-
-
-
-
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -258,33 +251,8 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-
-
-//		ssd1306_SetCursor(32, 32);
-//
-//		for(int i=0;i<256;i++){
-//
-//			ssd1306_SetCursor(32, 32);
-//			HAL_Delay(100);
-//
-//			ssd1306_Fill(Black);
-//			snprintf(str,20, "%d",flashread[i]);
-//			ssd1306_WriteString(str, Font_6x8, White);
-//
-//		}
-
-
-
-
 		statemachine();
 		ssd1306_UpdateScreen();
-
-
-
-
-
-
-
 	}
   /* USER CODE END 3 */
 }

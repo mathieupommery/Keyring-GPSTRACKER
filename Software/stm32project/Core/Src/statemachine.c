@@ -71,6 +71,7 @@ extern uint8_t numbuf2[10];
 int erasetime=0;
 int erasedisplay=0;
 int usbtransmiten=0;
+float usbpercent=0;
 
 void statemachine(void){
 	switch(state){
@@ -513,10 +514,10 @@ void statemachine(void){
 
 			  case STATE_BALISE:
 				  ssd1306_Fill(Black);
-				  ssd1306_SetCursor(32,32);
-				  ssd1306_WriteString("balise",Font_6x8,White);
 				  switch(balisestate){
 				  case BALISESTATE1:
+					  ssd1306_SetCursor(32,32);
+					  ssd1306_WriteString("balise",Font_6x8,White);
 					  ssd1306_SetCursor(32,40);
 					  ssd1306_WriteString("do nothing",Font_6x8,White);
 
@@ -536,11 +537,15 @@ void statemachine(void){
 
 					  flashbufferlen=csvframe((uint8_t *)flashwrite,temp,vbat,&myData,0,0.0);
 					  writebuffertoflash((uint8_t*)flashwrite,flashbufferlen);
-					  ssd1306_SetCursor(32,40);
-					  snprintf((uint8_t *)str1,50,"%d,%d",pageoffset,pagenumber);
+					  ssd1306_SetCursor(32,32);
+					  snprintf((uint8_t *)str1,50,"p=%d",pagenumber);
+					  ssd1306_WriteString((uint8_t*)str1,Font_7x10,White);
+					  ssd1306_SetCursor(32,42);
+					  snprintf((uint8_t *)str1,50, "sat=%d",myData.satelliteCount);
 					  ssd1306_WriteString((uint8_t*)str1,Font_6x8,White);
-					  ssd1306_SetCursor(32,48);
-					  snprintf((uint8_t *)str1,50, "len=%d",flashbufferlen);
+					  batterygauge(vbat,34, 50,1);
+					  ssd1306_SetCursor(60,50);
+					  snprintf((uint8_t *)str1,50, "%0.2fV",vbat);
 					  ssd1306_WriteString((uint8_t*)str1,Font_6x8,White);
 					  HAL_Delay(1000);
 					  if(BTN_B>=1){
@@ -656,21 +661,49 @@ void statemachine(void){
 				 			  break;
 
 				 				 case USBSTATE3:
+
+				 					ssd1306_Fill(Black);
 				 					ssd1306_SetCursor(32,40);
 				 					ssd1306_WriteString("write",Font_6x8,White);
+
+
+				 					if(pagenumber>0){
+
+
 				 					int i=0;
 				 					if(usbtransmiten==0){
-				 						while(i<=pagenumber){
+				 						while(i<pagenumber){
+				 							ssd1306_Fill(Black);
+				 							ssd1306_SetCursor(32,40);
+				 							ssd1306_WriteString("write",Font_6x8,White);
+				 							ssd1306_SetCursor(32,48);
 				 							SPIF_ReadPage(&hspif1,i, (uint8_t *)flashread, 256, 0);
 				 							CDC_Transmit_FS((uint8_t * )flashread,256);
-				 							HAL_Delay(100);
+				 							snprintf((uint8_t *)str,50,"w=%0.2f",(float) (i)/pagenumber);
+				 							ssd1306_WriteString((uint8_t*)str,Font_6x8,White);
+				 							ssd1306_UpdateScreen();
+				 							HAL_Delay(125);
 				 							i++;
 				 						}
+				 						SPIF_ReadPage(&hspif1,pagenumber, (uint8_t *)flashread, pageoffset, 0);
+				 						CDC_Transmit_FS((uint8_t * )flashread,pageoffset);
+
 				 						usbtransmiten=1;
 				 						}
-				 						else{
+				 					else{
+				 						usbpercent=1;
+
+				 					}
+				 					}
+				 					else{
+				 							ssd1306_Fill(Black);
+				 							ssd1306_SetCursor(32,40);
+				 							ssd1306_WriteString("write",Font_6x8,White);
+				 							ssd1306_SetCursor(32,48);
+				 							ssd1306_WriteString("nothing",Font_6x8,White);
 
 				 						}
+
 
 
 				 					if(BTN_B>=1){
