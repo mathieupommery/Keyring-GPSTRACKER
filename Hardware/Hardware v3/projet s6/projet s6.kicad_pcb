@@ -353,6 +353,17 @@
 			(thermal_bridge_angle 45)
 			(uuid "a597e202-091d-4eb5-bb2b-f37c32581ecf")
 		)
+		(model "C:/Users/mathi/Documents/GitHub/Keyring-GPSTRACKER/Hardware/3d schématic/composant/LDLN025PU50R.stp"
+			(offset
+				(xyz 0.6 0.5 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz -90 0 0)
+			)
+		)
 	)
 	(footprint "Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder"
 		(layer "F.Cu")
@@ -4779,6 +4790,17 @@
 			(thermal_bridge_angle 45)
 			(uuid "998149d0-6020-40b4-af25-0b073540a06a")
 		)
+		(model "C:/Users/mathi/Documents/GitHub/Keyring-GPSTRACKER/Hardware/3d schématic/composant/KXT321LHS.stp"
+			(offset
+				(xyz 1.9 0.75 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder"
 		(layer "F.Cu")
@@ -5915,6 +5937,17 @@
 			(pinfunction "S")
 			(pintype "passive")
 			(uuid "dcd4f16e-86c3-49dd-8d6b-747087b3da59")
+		)
+		(model "C:/Users/mathi/Documents/GitHub/Keyring-GPSTRACKER/Hardware/3d schématic/composant/LTC4065AEDCPBF.stp"
+			(offset
+				(xyz 0 0 0.4)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 90 0 90)
+			)
 		)
 	)
 	(footprint "Resistor_SMD:R_0402_1005Metric_Pad0.72x0.64mm_HandSolder"
@@ -7220,7 +7253,7 @@
 			(pintype "passive")
 			(uuid "33a0f728-8c48-4bac-8775-7c8f23481474")
 		)
-		(model "W25Q128JVPIQ_TR.stp"
+		(model "C:/Users/mathi/Documents/GitHub/Keyring-GPSTRACKER/Hardware/3d schématic/composant/W25Q128JVPIQ.stp"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -7349,6 +7382,17 @@
 			(pintype "passive")
 			(thermal_bridge_angle 45)
 			(uuid "bc4f56b9-32ca-48bb-9b8e-4874cf6cb083")
+		)
+		(model "C:/Users/mathi/Documents/GitHub/Keyring-GPSTRACKER/Hardware/3d schématic/composant/MS421R-IV03E.stp"
+			(offset
+				(xyz 1 2.5 0.5)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
 		)
 	)
 	(footprint "Resistor_SMD:R_0402_1005Metric_Pad0.72x0.64mm_HandSolder"
@@ -8941,18 +8985,6 @@
 			(layer "F.SilkS")
 			(uuid "f874e7eb-fefe-43ff-ba93-08dbda425c40")
 		)
-		(fp_text user "${REFERENCE}"
-			(at 0 2.5 90)
-			(unlocked yes)
-			(layer "F.Fab")
-			(uuid "d40277e9-8ba9-41da-bd92-6219e08261df")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
 		(pad "1" smd rect
 			(at 0.175 -0.25 90)
 			(size 0.35 0.5)
@@ -8991,6 +9023,17 @@
 			(pinfunction "D")
 			(pintype "passive")
 			(uuid "0335afbf-e15a-4bf4-9415-11dbf0871d15")
+		)
+		(model "C:/Users/mathi/Documents/GitHub/Keyring-GPSTRACKER/Hardware/3d schématic/composant/2N7002KQBZ.stp"
+			(offset
+				(xyz 0.1 0 0.5)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 90 0 0)
+			)
 		)
 	)
 	(footprint "Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder"
@@ -9444,6 +9487,7 @@
 			(at 0 1 0)
 			(unlocked yes)
 			(layer "F.Fab")
+			(hide yes)
 			(uuid "0bbaf3b6-342f-4166-a578-001a7b53c0bd")
 			(effects
 				(font
@@ -9506,18 +9550,6 @@
 			(layer "F.SilkS")
 			(uuid "e0b4f267-b8fa-4918-8cb7-da7a026de982")
 		)
-		(fp_text user "${REFERENCE}"
-			(at 0 2.5 0)
-			(unlocked yes)
-			(layer "F.Fab")
-			(uuid "8436edaf-af2b-483b-9dd2-c4d17dc4c900")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
 		(pad "1" smd rect
 			(at 0.275 -0.75)
 			(size 0.55 1.5)
@@ -9537,6 +9569,17 @@
 			(pintype "passive")
 			(thermal_bridge_angle 45)
 			(uuid "392d3bad-94d2-4b31-8f91-466b319d9ec6")
+		)
+		(model "C:/Users/mathi/Documents/GitHub/Keyring-GPSTRACKER/Hardware/3d schématic/composant/KXT321LHS.stp"
+			(offset
+				(xyz 1.9 0.75 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
 		)
 	)
 	(footprint "Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder"
@@ -10242,7 +10285,7 @@
 			(pintype "passive")
 			(uuid "f2e04904-7baf-490c-b1bb-d1a16a810f0f")
 		)
-		(model "${KICAD8_3DMODEL_DIR}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x04_P2.54mm_Vertical.wrl"
+		(model "${KICAD8_3DMODEL_DIR}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x04_P2.54mm_Vertical.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -10251,6 +10294,17 @@
 			)
 			(rotate
 				(xyz 0 0 0)
+			)
+		)
+		(model "C:/Users/mathi/Documents/GitHub/Keyring-GPSTRACKER/Hardware/3d schématic/composant/0.49 OLEd Assembly - No Glass.stp"
+			(offset
+				(xyz -7.8 -3.8 2.5)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 90)
 			)
 		)
 	)
@@ -10400,6 +10454,17 @@
 			(pintype "passive")
 			(thermal_bridge_angle 45)
 			(uuid "c73d3267-cef2-4fef-a725-d708bd9d171e")
+		)
+		(model "C:/Users/mathi/Documents/GitHub/Keyring-GPSTRACKER/Hardware/3d schématic/composant/PTS840GKSMTRLFS.stp"
+			(offset
+				(xyz 2.7 1.2 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz -90 0 0)
+			)
 		)
 	)
 	(footprint "PA1010D:PA1010D"
@@ -10609,6 +10674,17 @@
 			(thermal_bridge_angle 45)
 			(uuid "fa7cbaa1-2cb4-48d9-a516-c067cdd1bc7d")
 		)
+		(model "C:/Users/mathi/Documents/GitHub/Keyring-GPSTRACKER/Hardware/3d schématic/composant/CD-PA1010D--3DModel-STEP-271329.STEP"
+			(offset
+				(xyz 5 5 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "PCM:SW_PCM"
 		(layer "B.Cu")
@@ -10776,6 +10852,17 @@
 			(thermal_bridge_angle 45)
 			(uuid "d8f760fa-edd9-4be9-9f0b-31d2bb2f30ec")
 		)
+		(model "C:/Users/mathi/Documents/GitHub/Keyring-GPSTRACKER/Hardware/3d schématic/composant/PCM12SMTBR.stp"
+			(offset
+				(xyz 4.1 1.35 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz -90 0 180)
+			)
+		)
 	)
 	(footprint "PTS840:SW_PTS840"
 		(layer "B.Cu")
@@ -10923,6 +11010,17 @@
 			(pintype "passive")
 			(thermal_bridge_angle 45)
 			(uuid "81e23735-ad80-4f67-996d-f3703abf667a")
+		)
+		(model "C:/Users/mathi/Documents/GitHub/Keyring-GPSTRACKER/Hardware/3d schématic/composant/PTS840GKSMTRLFS.stp"
+			(offset
+				(xyz 2.7 1.2 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz -90 0 0)
+			)
 		)
 	)
 	(footprint "logopcb:trooperv2"
@@ -13592,9 +13690,9 @@
 			(pintype "passive")
 			(uuid "06d07c11-41e7-40f6-a162-0473182ce15e")
 		)
-		(model "${KICAD8_3DMODEL_DIR}/Connector_USB.3dshapes/USB_C_Receptacle_GCT_USB4110.wrl"
+		(model "C:/Users/mathi/Documents/GitHub/Keyring-GPSTRACKER/Hardware/3d schématic/composant/STP_629722000214 (rev1).stp"
 			(offset
-				(xyz 0 0 0)
+				(xyz 0 1 1.7)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -14070,15 +14168,15 @@
 			(net 41 "GND")
 			(uuid "a2a92e21-fe89-4b75-b66d-e285b4203c30")
 		)
-		(model "${KICAD8_3DMODEL_DIR}/Connector_JST.3dshapes/JST_SH_BM04B-SRSS-TB_1x04-1MP_P1.00mm_Vertical.wrl"
+		(model "C:/Users/mathi/Documents/GitHub/Keyring-GPSTRACKER/Hardware/3d schématic/composant/SM04B-SRSS-TB__LF__SN_.stp"
 			(offset
-				(xyz 0 0 0)
+				(xyz 0 -0.5 -0.4)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz -90 0 180)
 			)
 		)
 	)
@@ -14548,15 +14646,15 @@
 			(net 41 "GND")
 			(uuid "d4b8aee3-084c-4c2d-96ed-3283a6c6d037")
 		)
-		(model "${KICAD8_3DMODEL_DIR}/Connector_JST.3dshapes/JST_SH_BM04B-SRSS-TB_1x04-1MP_P1.00mm_Vertical.wrl"
+		(model "C:/Users/mathi/Documents/GitHub/Keyring-GPSTRACKER/Hardware/3d schématic/composant/SM04B-SRSS-TB__LF__SN_.stp"
 			(offset
-				(xyz 0 0 0)
+				(xyz 0 -0.5 -0.4)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz -90 0 180)
 			)
 		)
 	)
