@@ -14,15 +14,15 @@ render of the pcb final version (v3):
 ![image](https://github.com/user-attachments/assets/d007ec3d-60a8-4950-8905-ead666ac0d40)
 
 # Specs(v3)
--STM32L432 MCU 
--oled 0.49 inch display
--2 button to change data on screen
--firmware update throught USB C by DFU mode
--1H charging time for 2h autonomy min (continuous fix and store data) much more if you turn off gps by the mosfet onboard when it isn't used. 
--vbat indicator
--up to 128 Mo flash memory (100H+ data storage)
--2 external JST-SH sensor port (1 UART, 1 I2C ) for heart rate purpose for example.
--Can measure and store: mcu temp; vbat ; speed; lat; long ; alt ; sat number; hdop; time (utc and built in chrono) 
+* STM32L432 MCU 
+* oled 0.49 inch display
+* 2 button to change data on screen
+* firmware update throught USB C by DFU mode
+* 1H charging time for 2h autonomy min (continuous fix and store data) much more if you turn off gps by the mosfet onboard when it isn't used. 
+* vbat indicator
+* up to 128 Mo flash memory (100H+ data storage)
+* 2 external JST-SH sensor port (1 UART, 1 I2C ) for heart rate purpose for example.
+* Can measure and store: mcu temp; vbat ; speed; lat; long ; alt ; sat number; hdop; time (utc and built in chrono) 
 
 # ALL PCB VERSION:
 # v1(obsolete)
