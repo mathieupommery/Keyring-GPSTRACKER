@@ -9,9 +9,12 @@ create external I2C sensor with MAX30102 and MAX32664 heart rate ppg sensor and 
 
 render of the pcb final version (v3):
 
-![image](https://github.com/user-attachments/assets/ba09b323-06d4-486f-b5c9-d023ff07456d)
+![v3 top](https://github.com/user-attachments/assets/7c62bd4c-bef6-4dc5-8d68-f8357025eb33)
+![v3 bottom](https://github.com/user-attachments/assets/0ff3f03d-6d4a-4fff-99a5-071ec242e075)
 
-![image](https://github.com/user-attachments/assets/d007ec3d-60a8-4950-8905-ead666ac0d40)
+
+
+
 
 # Specs(v3)
 * STM32L432 MCU 
@@ -35,9 +38,11 @@ render of the pcb final version (v3):
 ![v2 bottom](https://github.com/user-attachments/assets/066c112f-2884-4bc9-9c6f-ac67cdb4ba49)
 ![v2 side](https://github.com/user-attachments/assets/1ff55117-55c8-4810-943c-c2a338e8ec45)
 
-# v3(up to 128Mo flash memory !)
-![image](https://github.com/user-attachments/assets/ba09b323-06d4-486f-b5c9-d023ff07456d)
-![image](https://github.com/user-attachments/assets/d007ec3d-60a8-4950-8905-ead666ac0d40)
+# v3(up to 128Mo flash memory ! and 2 ext port)
+
+![v3 top](https://github.com/user-attachments/assets/4a4b44ef-3b8c-4360-8704-396627efd014)
+![v3 bottom](https://github.com/user-attachments/assets/cd00da08-a375-4a12-9ec0-8f4e382e86c1)
+![v3 side](https://github.com/user-attachments/assets/8e459958-e515-4949-8b18-d1f3be7d769c)
 
 
 
