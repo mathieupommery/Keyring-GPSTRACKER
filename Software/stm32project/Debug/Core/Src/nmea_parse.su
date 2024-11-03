@@ -1,6 +1,7 @@
-../Core/Src/nmea_parse.c:12:5:gps_checksum	32	static
-../Core/Src/nmea_parse.c:35:5:nmea_GPGGA	232	static
-../Core/Src/nmea_parse.c:95:5:nmea_GPGSA	152	static
-../Core/Src/nmea_parse.c:120:5:nmea_GNRMC	144	static
-../Core/Src/nmea_parse.c:140:6:nmea_parse	40	static
-../Core/Src/nmea_parse.c:168:6:nmea_speed	40	static
+../Core/Src/nmea_parse.c:13:5:gps_checksum	32	static
+../Core/Src/nmea_parse.c:36:5:nmea_GPGGA	232	static
+../Core/Src/nmea_parse.c:96:5:nmea_GPGSA	152	static
+../Core/Src/nmea_parse.c:121:5:nmea_GNRMC	144	static
+../Core/Src/nmea_parse.c:141:6:nmea_parse	40	static
+../Core/Src/nmea_parse.c:169:6:nmea_speed	40	static
+../Core/Src/nmea_parse.c:195:8:distancecalc	64	static

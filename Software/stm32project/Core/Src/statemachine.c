@@ -47,7 +47,7 @@ extern float vbat;
 uint8_t usbbuffer[64];
 uint8_t usbtransmitbuf[64];
 uint8_t gpscommand[100];
-char str[20];
+char str[50];
 extern USBD_HandleTypeDef hUsbDeviceFS;
 extern UART_HandleTypeDef hlpuart1;
 extern DMA_HandleTypeDef hdma_lpuart_rx;
@@ -526,6 +526,13 @@ void statemachine(void){
 						  BTN_B=0;
 						  BTN_A=0;
 					  }
+					  if(BTN_A>=1){
+					  				  			 	state++;
+					  				  			 	BTN_A=0;
+					  				  			 	BTN_B=0;
+
+
+					  				  	}
 
 
 
@@ -535,7 +542,7 @@ void statemachine(void){
 					  nmea_parse(&myData, DataBuffer);
 					  if(pagenumber+1<MAX_WRITE_PAGE){
 
-					  flashbufferlen=csvframe((uint8_t *)flashwrite,temp,vbat,&myData,0,0.0);
+					  flashbufferlen=csvframe((uint8_t *)flashwrite,temp,vbat,&myData,myData.satelliteCount,myData.hdop);
 					  writebuffertoflash((uint8_t*)flashwrite,flashbufferlen);
 					  ssd1306_SetCursor(32,32);
 					  snprintf((uint8_t *)str1,50,"p=%d",pagenumber);
@@ -574,22 +581,23 @@ void statemachine(void){
 					  ssd1306_SetCursor(32,48);
 					  snprintf((uint8_t *)str1,50,"%d,%d",pageoffset,pagenumber);
 					  ssd1306_WriteString((uint8_t*)str1,Font_6x8,White);
+					  if(BTN_A>=1){
+					  				  			 	state++;
+					  				  			 	BTN_A=0;
+					  				  			 	BTN_B=0;
+
+
+					  				  	}
+
+
+
+
+
 					  break;
 
 
 
 				  }
-
-				  if(BTN_A>=1){
-				  			 	state++;
-				  			 	BTN_A=0;
-				  			 	BTN_B=0;
-
-
-				  	}
-
-
-
 
 
 				  break;
@@ -685,6 +693,10 @@ void statemachine(void){
 				 						}
 				 						SPIF_ReadPage(&hspif1,pagenumber, (uint8_t *)flashread, pageoffset, 0);
 				 						CDC_Transmit_FS((uint8_t * )flashread,pageoffset);
+				 						HAL_Delay(125);
+				 						int taillefin=0;
+										taillefin = snprintf((uint8_t *)str1,50,"kawakobeme\n\r");
+				 						CDC_Transmit_FS((uint8_t *)str1,taillefin);
 
 				 						usbtransmiten=1;
 				 						}
