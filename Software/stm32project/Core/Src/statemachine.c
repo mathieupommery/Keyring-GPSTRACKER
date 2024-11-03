@@ -19,59 +19,67 @@
 #include "spi.h"
 
 
-extern int BTN_A;
-extern int BTN_B;
-extern uint8_t RxBuffer[RxBuffer_SIZE];
+
+
+extern USBD_HandleTypeDef hUsbDeviceFS;
+extern UART_HandleTypeDef hlpuart1;
+extern DMA_HandleTypeDef hdma_lpuart_rx;
+extern SPIF_HandleTypeDef hspif1;
+
+
+
+extern char str[20];
 extern uint8_t DataBuffer[DataBuffer_SIZE];
 extern uint8_t flashwrite[256];
 extern uint8_t flashread[256];
+extern uint8_t usbbuffer[64];
+extern uint8_t indexbuffer[50];
+extern uint8_t bufferscreen[50];
+
+
 extern STATE_TYPE state;
-extern GPS myData;
 extern HEURE hrstate;
 extern SPEED spdstate;
 extern POS posstate;
 extern CHRONO chronostate;
 extern GIF gifstate;
-USBSTATE usbstate=USBSTATE1;
-BALISESTATE balisestate=BALISESTATE1;
+extern USBSTATE usbstate;
+extern BALISESTATE balisestate;
 
 
+extern int BTN_A;
+extern int BTN_B;
+extern GPS myData;
 
-float vitmax=0.0;
-float seconde=0;
-float min=0;
-uint32_t starttime=0;
-uint32_t calctime=0;
+extern float vitmax;
+extern float seconde;
+extern float min;
+extern uint32_t starttime;
+extern uint32_t calctime;
 extern float temp;
 extern float vbat;
-uint8_t usbbuffer[64];
-uint8_t usbtransmitbuf[64];
-uint8_t gpscommand[100];
-char str[50];
-extern USBD_HandleTypeDef hUsbDeviceFS;
-extern UART_HandleTypeDef hlpuart1;
-extern DMA_HandleTypeDef hdma_lpuart_rx;
-float t1=0;
-float t2=0;
-float t3=0;
-float moy=0;
-float framerate=0;
-extern const unsigned char* epd_bitmap_allArray[57];
-extern const unsigned char* gif2allArray[31];
-extern const unsigned char* gif3allArray[74];
-extern SPIF_HandleTypeDef hspif1;
-uint8_t str1[50];
-int flashbufferlen=0;
+extern float t1;
+extern float t2;
+extern float t3;
+extern float moy;
+extern float framerate;
+extern int flashbufferlen;
+
 extern int pageoffset;
 extern int pagenumber;
 extern int sectoreraseen;
-extern uint8_t indexbuffer[50];
-extern uint8_t numbuf1[10];
-extern uint8_t numbuf2[10];
-int erasetime=0;
-int erasedisplay=0;
-int usbtransmiten=0;
-float usbpercent=0;
+
+extern int erasetime;
+extern int erasedisplay;
+extern int usbtransmiten;
+extern float usbpercent;
+
+extern int doubledonnee;
+extern double distanceparcouru;
+extern double oldlat;
+extern double oldlong;
+extern int cptdoubledonnee;
+
 
 void statemachine(void){
 	switch(state){
@@ -89,7 +97,7 @@ void statemachine(void){
 									 sec=(pace-floor(pace))*60;
 								 }
 								 else {
-									 pace=9999;//en cas de division par 0, techniquement le temps devient infini mais ce n'est pas intérréssant
+									 pace=9999;
 								 }
 
 
@@ -97,21 +105,21 @@ void statemachine(void){
 
 
 				 case STATE_SUMMARY:
-					 if(myData.fix == 1){ //if the GPS has a fix, print the data
+					 if(myData.fix == 1){
 					 				 						char * str = (char*)malloc(sizeof(char)*20);
-					 				 						snprintf(str,15, "MaxV=%.1f",vitmax*3.6);//amélioration possible la stocker en eeprom
+					 				 						snprintf(str,15, "MaxV=%.1f",vitmax*3.6);
 					 				 						ssd1306_SetCursor(32, 32);
 					 				 						ssd1306_WriteString(str, Font_6x8, White);
 					 				 						snprintf(str,15, "V=%0.1f",(myData.speed)*3.6);
 					 				 						ssd1306_SetCursor(32, 42);
 					 				 						ssd1306_WriteString(str, Font_6x8, White);
-					 				 						snprintf(str,15, "p=%0.0fmin%0.0f s",floor(pace),floor(sec));//affichage au format minute puis seconde
+					 				 						snprintf(str,15, "p=%0.0fmin%0.0f s",floor(pace),floor(sec));
 					 				 						ssd1306_SetCursor(32, 52);
 					 				 						ssd1306_WriteString(str, Font_6x8, White);
 					 				 						free(str);
 					 				 					}
 					 				 	else{ //if the GPS doesn't have a fix, print a message
-					 				 						char *str = (char*)malloc(sizeof(char)*20);// message qui sra dans tous les etat si l'on ne capte pas de sattelites.
+					 				 						char *str = (char*)malloc(sizeof(char)*20);
 					 				 						ssd1306_SetCursor(32, 32);
 					 				 						ssd1306_WriteString("Speed 1", Font_6x8, White);
 					 				 						ssd1306_SetCursor(32, 44);
@@ -538,23 +546,40 @@ void statemachine(void){
 
 					  break;
 				  case BALISESTATE2:
-
+					  oldlat=myData.latitude;
+					  oldlong=myData.longitude;
 					  nmea_parse(&myData, DataBuffer);
+					  distanceparcouru=distanceparcouru+distancecalc(oldlat, myData.latitude, oldlong, myData.longitude);
+
+
 					  if(pagenumber+1<MAX_WRITE_PAGE){
 
 					  flashbufferlen=csvframe((uint8_t *)flashwrite,temp,vbat,&myData,myData.satelliteCount,myData.hdop);
 					  writebuffertoflash((uint8_t*)flashwrite,flashbufferlen);
-					  ssd1306_SetCursor(32,32);
-					  snprintf((uint8_t *)str1,50,"p=%d",pagenumber);
-					  ssd1306_WriteString((uint8_t*)str1,Font_7x10,White);
+					  if(doubledonnee==0){
+						  ssd1306_SetCursor(32,32);
+						  snprintf((uint8_t *)bufferscreen,50,"p=%d",pagenumber);
+						  ssd1306_WriteString((uint8_t*)bufferscreen,Font_7x10,White);
+					  }
+					  else{
+						  ssd1306_SetCursor(32,32);
+						  snprintf((uint8_t *)bufferscreen,50,"d=%0.1lfKm",distanceparcouru);
+						  ssd1306_WriteString((uint8_t*)bufferscreen,Font_7x10,White);
+					  }
 					  ssd1306_SetCursor(32,42);
-					  snprintf((uint8_t *)str1,50, "sat=%d",myData.satelliteCount);
-					  ssd1306_WriteString((uint8_t*)str1,Font_6x8,White);
+					  snprintf((uint8_t *)bufferscreen,50, "sat=%d",myData.satelliteCount);
+					  ssd1306_WriteString((uint8_t*)bufferscreen,Font_6x8,White);
 					  batterygauge(vbat,34, 50,1);
 					  ssd1306_SetCursor(60,50);
-					  snprintf((uint8_t *)str1,50, "%0.2fV",vbat);
-					  ssd1306_WriteString((uint8_t*)str1,Font_6x8,White);
+					  snprintf((uint8_t *)bufferscreen,50, "%0.2fV",vbat);
+					  ssd1306_WriteString((uint8_t*)bufferscreen,Font_6x8,White);
+					  if(cptdoubledonnee==3){
+						  doubledonnee=1-doubledonnee;
+						  cptdoubledonnee=0;
+					  }
+					  cptdoubledonnee+=1;
 					  HAL_Delay(1000);
+
 					  if(BTN_B>=1){
 					  						  balisestate--;
 					  						  BTN_B=0;
@@ -579,8 +604,8 @@ void statemachine(void){
 					  ssd1306_SetCursor(32,40);
 					  ssd1306_WriteString("memoire",Font_6x8,White);
 					  ssd1306_SetCursor(32,48);
-					  snprintf((uint8_t *)str1,50,"%d,%d",pageoffset,pagenumber);
-					  ssd1306_WriteString((uint8_t*)str1,Font_6x8,White);
+					  snprintf((uint8_t *)bufferscreen,50,"%d,%d",pageoffset,pagenumber);
+					  ssd1306_WriteString((uint8_t*)bufferscreen,Font_6x8,White);
 					  if(BTN_A>=1){
 					  				  			 	state++;
 					  				  			 	BTN_A=0;
@@ -641,9 +666,10 @@ void statemachine(void){
 				 					ssd1306_WriteString("to erase",Font_6x8,White);
 
 				 					if(erasedisplay==1){
-				 						snprintf((uint8_t *)str,50,"t=%0.2f",(float)erasetime/1000);
+
+				 						snprintf((uint8_t *)bufferscreen,50,"t=%0.2f",(float)erasetime/1000);
 				 						ssd1306_SetCursor(32,56);
-				 						ssd1306_WriteString((uint8_t*)str,Font_6x8,White);
+				 						ssd1306_WriteString((uint8_t*)bufferscreen,Font_6x8,White);
 				 					}
 
 
@@ -695,8 +721,8 @@ void statemachine(void){
 				 						CDC_Transmit_FS((uint8_t * )flashread,pageoffset);
 				 						HAL_Delay(125);
 				 						int taillefin=0;
-										taillefin = snprintf((uint8_t *)str1,50,"kawakobeme\n\r");
-				 						CDC_Transmit_FS((uint8_t *)str1,taillefin);
+										taillefin = snprintf((uint8_t *)usbbuffer,64,"kawakobeme\n\r");
+				 						CDC_Transmit_FS((uint8_t *)usbbuffer,taillefin);
 
 				 						usbtransmiten=1;
 				 						}

@@ -60,25 +60,30 @@
 /* USER CODE BEGIN PV */
 
 
-uint16_t oldPos = 0;//variables servants à mettre à remplir le databuffer de manière circulaire.
-uint16_t newPos = 0;
-uint8_t RxBuffer[RxBuffer_SIZE];//buffer permettant dans lequel le dma stocke les trames recu 64 caractères à la fois
-uint8_t DataBuffer[DataBuffer_SIZE];//grand buffer dans lequel on vient traiter les trames, il est mis à jour de manière circulaire.
-GPS myData;//structure stockant toutes les informations que l'on  souhaite obtenir par le gps, ainsi que les informations sur sont port de connection
-int BTN_A=0;//variables servants à stocker les appuie sur le bouton a ou b, elles ne prendrons que les valeurs 0 ou 1.
-int BTN_B=0;
-STATE_TYPE state=STATE_SPEED;//état principaux de la machine à état
+STATE_TYPE state=STATE_SPEED;
 HEURE hrstate=STATE_DIGIT;
 SPEED spdstate=STATE_SUMMARY;
 POS posstate=STATE_SUMMARY1;
 CHRONO chronostate=STATE_RESET;
 KEYBOARD keyboardstate=STATE_MARCHE;
-GIF gifstate=GIF1;
-keyboardHID keyboardhid = {0,0,0,0,0,0,0,0};
+USBSTATE usbstate=USBSTATE1;
+BALISESTATE balisestate=BALISESTATE1;
+
+
+uint16_t oldPos = 0;
+uint16_t newPos = 0;
+uint8_t RxBuffer[RxBuffer_SIZE];
+uint8_t DataBuffer[DataBuffer_SIZE];
+GPS myData;
+int BTN_A=0;
+int BTN_B=0;
+
+
+
 SPIF_HandleTypeDef hspif1;
 extern SPI_HandleTypeDef hspi1;
 
-const unsigned char startimg[] = {//image de démarrage
+const unsigned char startimg[] = {
 		0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
 		  0x7f, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xfe,
 		  0x7f, 0xff, 0xff, 0xff, 0xff, 0xff, 0xfe, 0x3e,
@@ -117,7 +122,8 @@ uint16_t rawdata[3];
 float temp=0.0;
 float vrefint=0;
 float vbat=0;
-extern char str[20];
+char str[20];
+extern uint8_t bufferscreen[50];
 
 uint8_t flashwrite[256];
 uint8_t flashread[256];
@@ -127,6 +133,32 @@ int pagenumber=0;
 int sectoreraseen=0;
 uint8_t numbuf1[10];
 uint8_t numbuf2[10];
+uint8_t bufferscreen[50];
+uint8_t usbbuffer[64];
+
+float vitmax=0.0;
+float seconde=0;
+float min=0;
+
+uint32_t starttime=0;
+uint32_t calctime=0;
+float t1=0;
+float t2=0;
+float t3=0;
+float moy=0;
+float framerate=0;
+int flashbufferlen=0;
+
+int erasetime=0;
+int erasedisplay=0;
+int usbtransmiten=0;
+float usbpercent=0;
+
+int doubledonnee=0;
+int cptdoubledonnee=0;
+double distanceparcouru=0;
+double oldlat=0;
+double oldlong=0;
 
 
 
@@ -226,6 +258,7 @@ int main(void)
 
 	memset(flashread,'1',256);
 	memset(flashwrite,'\0',256);
+	memset((uint8_t *)bufferscreen ,'\0',50);
 
 	SPIF_Init(&hspif1, &hspi1, GPIOB, GPIO_PIN_0);
 
