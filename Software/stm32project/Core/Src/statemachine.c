@@ -17,7 +17,7 @@
 #include "usbd_core.h"
 #include "spif.h"
 #include "spi.h"
-
+#include "WSEN_PADS_2511020213301.h"
 
 
 
@@ -79,6 +79,11 @@ extern double distanceparcouru;
 extern double oldlat;
 extern double oldlong;
 extern int cptdoubledonnee;
+extern int16_t barotemp;
+extern int32_t baropress;
+extern WE_sensorInterface_t pads;
+extern int baroenableinit;
+extern float altibaro;
 
 
 void statemachine(void){
@@ -520,6 +525,41 @@ void statemachine(void){
 	}
 			  break;
 
+			  case STATE_BARO:
+
+				  if(BTN_B>=1){
+				  if(baroenableinit==0){
+					  PADS_init();
+					  baroenableinit=1;
+				  }
+				  BTN_B=0;
+				  }
+				  ssd1306_Fill(Black);
+				  ssd1306_SetCursor(32,32);
+				  ssd1306_WriteString("baro",Font_6x8,White);
+				  PADS_getPressure_int(&pads, &baropress);
+				  PADS_getTemperature_int(&pads,&barotemp);
+				  ssd1306_SetCursor(32,40);
+				  snprintf((uint8_t *)bufferscreen,50,"P=%d",baropress);
+				  ssd1306_WriteString((uint8_t *)bufferscreen,Font_6x8,White);
+				  ssd1306_SetCursor(32,48);
+				  snprintf((uint8_t *)bufferscreen,50,"T=%d",barotemp);
+				  ssd1306_WriteString((uint8_t *)bufferscreen,Font_6x8,White);
+				  altibaro=altitudecalc(0);
+				  ssd1306_SetCursor(32,56);
+				  snprintf((uint8_t *)bufferscreen,50,"h=%0.1fm",(float) altibaro);
+				  ssd1306_WriteString((uint8_t *)bufferscreen,Font_6x8,White);
+
+
+				  if(BTN_A>=1){
+				  			 	state++;
+				  			 	BTN_A=0;
+				  			 	BTN_B=0;
+
+
+				  	}
+				  break;
+
 			  case STATE_BALISE:
 				  ssd1306_Fill(Black);
 				  switch(balisestate){
@@ -549,7 +589,7 @@ void statemachine(void){
 					  oldlat=myData.latitude;
 					  oldlong=myData.longitude;
 					  nmea_parse(&myData, DataBuffer);
-					  distanceparcouru=distanceparcouru+distancecalc(oldlat, myData.latitude, oldlong, myData.longitude);
+					  distanceparcouru=distanceparcouru+distancecalc(oldlat, myData.latitude,oldlong, myData.longitude);
 
 
 					  if(pagenumber+1<MAX_WRITE_PAGE){
@@ -563,7 +603,7 @@ void statemachine(void){
 					  }
 					  else{
 						  ssd1306_SetCursor(32,32);
-						  snprintf((uint8_t *)bufferscreen,50,"d=%0.1lfKm",distanceparcouru);
+						  snprintf((uint8_t *)bufferscreen,50,"d=%0.1lfm",distanceparcouru);
 						  ssd1306_WriteString((uint8_t*)bufferscreen,Font_7x10,White);
 					  }
 					  ssd1306_SetCursor(32,42);
@@ -644,6 +684,7 @@ void statemachine(void){
 				 						  BTN_A=0;
 				 					  }
 				 					 if(BTN_A>=1){
+				 									  			 	state--;
 				 									  			 	state--;
 				 									  			 	state--;
 				 									  			 	state--;
@@ -753,6 +794,7 @@ void statemachine(void){
 				 									 						  BTN_A=0;
 				 									 					  }
 				 					 if(BTN_A>=1){
+				 									  			 	state--;
 				 									  			 	state--;
 				 									  			 	state--;
 				 									  			 	state--;

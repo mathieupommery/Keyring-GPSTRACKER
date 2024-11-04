@@ -1,0 +1,8 @@
+../Core/Src/platform.c:87:15:WE_ReadReg	20
+../Core/Src/platform.c:201:15:WE_WriteReg	14
+../Core/Src/platform.c:295:8:WE_isSensorInterfaceReady	4
+../Core/Src/platform.c:335:26:I2Cx_ReadBytes	2
+../Core/Src/platform.c:374:26:I2Cx_WriteBytes	1
+../Core/Src/platform.c:396:6:WE_Delay	1
+../Core/Src/platform.c:414:26:SPIx_ReadBytes	2
+../Core/Src/platform.c:454:26:SPIx_WriteBytes	2

@@ -194,7 +194,7 @@ void nmea_speed(GPS *gps_data, uint8_t *buffer){
 
 double distancecalc(double lat1, double lat2, double long1, double long2){
 	double distance=0;
-	distance=(double) 6371000*acosl(fmin(1,sinl(lat1)*sinl(lat2)+cosl(lat1)*cosl(lat2)*cosl(long2-long1)));
+	distance=(double) 6371000*acosl(fmin(1,sinl(lat1*(M_PI/180))*sinl(lat2*(M_PI/180))+cosl(lat1*(M_PI/180))*cosl(lat2*(M_PI/180))*cosl((long2-long1)*(M_PI/180))));
 
 	return distance;
 }

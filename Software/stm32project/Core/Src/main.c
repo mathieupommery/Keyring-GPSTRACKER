@@ -37,6 +37,7 @@
 #include "nmea_parse.h"
 #include "stm32l4xx_hal.h"
 #include "spif.h"
+#include "WSEN_PADS_EXAMPLE.h"
 
 /* USER CODE END Includes */
 
@@ -159,6 +160,11 @@ int cptdoubledonnee=0;
 double distanceparcouru=0;
 double oldlat=0;
 double oldlong=0;
+
+int32_t baropress=0;
+int16_t barotemp=0;
+int baroenableinit=0;
+float altibaro=0;
 
 
 
