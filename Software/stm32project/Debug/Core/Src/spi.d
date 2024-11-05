@@ -37,11 +37,11 @@ Core/Src/spi.o: ../Core/Src/spi.c ../Core/Inc/spi.h ../Core/Inc/main.h \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_tim_ex.h \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart_ex.h \
- ../Core/Inc/nmea_parse.h ../Core/Inc/statemachine.h \
- ../Core/Inc/ssd1306.h ../Core/Inc/ssd1306_conf.h \
- ../Core/Inc/ssd1306_fonts.h \
+ ../Core/Inc/nmea_parse.h \
  ../Middlewares/Third_Party/NimaLTD_Driver/SPIF/spif.h \
- ../I-CUBE-SPIF/NimaLTD.I-CUBE-SPIF_conf.h ../Core/Inc/nmea_parse.h \
+ ../I-CUBE-SPIF/NimaLTD.I-CUBE-SPIF_conf.h ../Core/Inc/statemachine.h \
+ ../Core/Inc/ssd1306.h ../Core/Inc/ssd1306_conf.h \
+ ../Core/Inc/ssd1306_fonts.h ../Core/Inc/nmea_parse.h \
  ../Core/Inc/ssd1306.h
 ../Core/Inc/spi.h:
 ../Core/Inc/main.h:
@@ -84,11 +84,11 @@ Core/Src/spi.o: ../Core/Src/spi.c ../Core/Inc/spi.h ../Core/Inc/main.h \
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h:
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart_ex.h:
 ../Core/Inc/nmea_parse.h:
+../Middlewares/Third_Party/NimaLTD_Driver/SPIF/spif.h:
+../I-CUBE-SPIF/NimaLTD.I-CUBE-SPIF_conf.h:
 ../Core/Inc/statemachine.h:
 ../Core/Inc/ssd1306.h:
 ../Core/Inc/ssd1306_conf.h:
 ../Core/Inc/ssd1306_fonts.h:
-../Middlewares/Third_Party/NimaLTD_Driver/SPIF/spif.h:
-../I-CUBE-SPIF/NimaLTD.I-CUBE-SPIF_conf.h:
 ../Core/Inc/nmea_parse.h:
 ../Core/Inc/ssd1306.h:

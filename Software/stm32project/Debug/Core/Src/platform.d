@@ -38,7 +38,9 @@ Core/Src/platform.o: ../Core/Src/platform.c ../Core/Inc/platform.h \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_tim_ex.h \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart_ex.h \
- ../Core/Inc/spi.h ../Core/Inc/main.h ../Core/Inc/nmea_parse.h
+ ../Core/Inc/spi.h ../Core/Inc/main.h ../Core/Inc/nmea_parse.h \
+ ../Middlewares/Third_Party/NimaLTD_Driver/SPIF/spif.h \
+ ../I-CUBE-SPIF/NimaLTD.I-CUBE-SPIF_conf.h
 ../Core/Inc/platform.h:
 ../Core/Inc/WeSensorsSDK.h:
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h:
@@ -82,3 +84,5 @@ Core/Src/platform.o: ../Core/Src/platform.c ../Core/Inc/platform.h \
 ../Core/Inc/spi.h:
 ../Core/Inc/main.h:
 ../Core/Inc/nmea_parse.h:
+../Middlewares/Third_Party/NimaLTD_Driver/SPIF/spif.h:
+../I-CUBE-SPIF/NimaLTD.I-CUBE-SPIF_conf.h:

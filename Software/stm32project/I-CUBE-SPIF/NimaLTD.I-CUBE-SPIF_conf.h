@@ -43,7 +43,7 @@
 #define SPIF_DEBUG      SPIF_DEBUG_DISABLE
 
 /*---------- SPIF_PLATFORM  -----------*/
-#define SPIF_PLATFORM      SPIF_PLATFORM_HAL
+#define SPIF_PLATFORM      SPIF_PLATFORM_HAL_DMA
 
 /*---------- SPIF_RTOS  -----------*/
 #define SPIF_RTOS      SPIF_RTOS_DISABLE

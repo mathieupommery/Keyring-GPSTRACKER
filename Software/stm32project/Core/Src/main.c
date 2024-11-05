@@ -83,6 +83,7 @@ int BTN_B=0;
 
 SPIF_HandleTypeDef hspif1;
 extern SPI_HandleTypeDef hspi1;
+extern TIM_HandleTypeDef htim15;
 
 const unsigned char startimg[] = {
 		0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
@@ -157,7 +158,7 @@ float usbpercent=0;
 
 int doubledonnee=0;
 int cptdoubledonnee=0;
-double distanceparcouru=0;
+double * distanceparcouru=0;
 double oldlat=0;
 double oldlong=0;
 
@@ -165,6 +166,8 @@ int32_t baropress=0;
 int16_t barotemp=0;
 int baroenableinit=0;
 float altibaro=0;
+
+int enablewrite=0;
 
 
 
@@ -242,6 +245,7 @@ int main(void)
   MX_I2C1_Init();
   MX_USART1_UART_Init();
   MX_SPI1_Init();
+  MX_TIM7_Init();
   /* USER CODE BEGIN 2 */
 
 
@@ -254,7 +258,6 @@ int main(void)
 	ssd1306_DrawBitmap(32, 32, startimg, 64, 64, White);
 	ssd1306_UpdateScreen();
 
-	HAL_Delay(500);
 
 	HAL_ADC_Start_DMA(&hadc1,(uint32_t*)rawdata, 3);
 	HAL_TIM_Base_Start(&htim2);
@@ -268,19 +271,13 @@ int main(void)
 
 	SPIF_Init(&hspif1, &hspi1, GPIOB, GPIO_PIN_0);
 
-	ssd1306_Fill(Black);
+
 
 	getindex();
 
-	snprintf((uint8_t*)str,20, "off=%d",pageoffset);
-	ssd1306_SetCursor(32,40);
-	ssd1306_WriteString((uint8_t*)str,Font_6x8,White);
-	snprintf((uint8_t*)str,20, "page=%d",pagenumber);
-	ssd1306_SetCursor(32,48);
-	ssd1306_WriteString((uint8_t*)str,Font_6x8,White);
-	ssd1306_UpdateScreen();
+	ssd1306_Fill(Black);
 
-	HAL_Delay(1000);
+	HAL_Delay(700);
   /* USER CODE END 2 */
 
   /* Infinite loop */

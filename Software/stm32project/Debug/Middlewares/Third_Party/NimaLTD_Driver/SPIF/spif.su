@@ -2,7 +2,7 @@
 ../Middlewares/Third_Party/NimaLTD_Driver/SPIF/spif.c:137:6:SPIF_Lock	16	static
 ../Middlewares/Third_Party/NimaLTD_Driver/SPIF/spif.c:148:6:SPIF_UnLock	16	static
 ../Middlewares/Third_Party/NimaLTD_Driver/SPIF/spif.c:155:6:SPIF_CsPin	24	static
-../Middlewares/Third_Party/NimaLTD_Driver/SPIF/spif.c:163:6:SPIF_TransmitReceive	40	static
+../Middlewares/Third_Party/NimaLTD_Driver/SPIF/spif.c:163:6:SPIF_TransmitReceive	32	static
 ../Middlewares/Third_Party/NimaLTD_Driver/SPIF/spif.c:205:6:SPIF_Transmit	32	static
 ../Middlewares/Third_Party/NimaLTD_Driver/SPIF/spif.c:247:6:SPIF_Receive	32	static
 ../Middlewares/Third_Party/NimaLTD_Driver/SPIF/spif.c:289:6:SPIF_WriteEnable	24	static

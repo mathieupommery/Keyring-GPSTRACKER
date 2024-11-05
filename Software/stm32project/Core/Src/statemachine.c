@@ -17,6 +17,7 @@
 #include "usbd_core.h"
 #include "spif.h"
 #include "spi.h"
+#include "tim.h"
 #include "WSEN_PADS_2511020213301.h"
 
 
@@ -25,6 +26,7 @@ extern USBD_HandleTypeDef hUsbDeviceFS;
 extern UART_HandleTypeDef hlpuart1;
 extern DMA_HandleTypeDef hdma_lpuart_rx;
 extern SPIF_HandleTypeDef hspif1;
+extern TIM_HandleTypeDef htim7;
 
 
 
@@ -75,7 +77,7 @@ extern int usbtransmiten;
 extern float usbpercent;
 
 extern int doubledonnee;
-extern double distanceparcouru;
+extern double * distanceparcouru;
 extern double oldlat;
 extern double oldlong;
 extern int cptdoubledonnee;
@@ -84,6 +86,9 @@ extern int32_t baropress;
 extern WE_sensorInterface_t pads;
 extern int baroenableinit;
 extern float altibaro;
+
+extern int enablewrite;
+
 
 
 void statemachine(void){
@@ -527,6 +532,8 @@ void statemachine(void){
 
 			  case STATE_BARO:
 
+
+
 				  if(BTN_B>=1){
 				  if(baroenableinit==0){
 					  PADS_init();
@@ -550,7 +557,6 @@ void statemachine(void){
 				  snprintf((uint8_t *)bufferscreen,50,"h=%0.1fm",(float) altibaro);
 				  ssd1306_WriteString((uint8_t *)bufferscreen,Font_6x8,White);
 
-
 				  if(BTN_A>=1){
 				  			 	state++;
 				  			 	BTN_A=0;
@@ -565,14 +571,19 @@ void statemachine(void){
 				  switch(balisestate){
 				  case BALISESTATE1:
 					  ssd1306_SetCursor(32,32);
-					  ssd1306_WriteString("balise",Font_6x8,White);
+					  ssd1306_WriteString("Tracker",Font_6x8,White);
+					  snprintf((uint8_t*)bufferscreen,50, "off=%d",pageoffset);
 					  ssd1306_SetCursor(32,40);
-					  ssd1306_WriteString("do nothing",Font_6x8,White);
+					  ssd1306_WriteString((uint8_t*)bufferscreen,Font_6x8,White);
+					  snprintf((uint8_t*)bufferscreen,50, "page=%d",pagenumber);
+					  ssd1306_SetCursor(32,48);
+					  ssd1306_WriteString((uint8_t*)bufferscreen,Font_6x8,White);
 
 					  if(BTN_B>=1){
-						  balisestate++;
-						  BTN_B=0;
-						  BTN_A=0;
+						balisestate++;
+						BTN_B=0;
+						BTN_A=0;
+						HAL_TIM_Base_Start_IT(&htim7);
 					  }
 					  if(BTN_A>=1){
 					  				  			 	state++;
@@ -586,55 +597,67 @@ void statemachine(void){
 
 					  break;
 				  case BALISESTATE2:
-					  oldlat=myData.latitude;
-					  oldlong=myData.longitude;
-					  nmea_parse(&myData, DataBuffer);
-					  distanceparcouru=distanceparcouru+distancecalc(oldlat, myData.latitude,oldlong, myData.longitude);
 
 
-					  if(pagenumber+1<MAX_WRITE_PAGE){
 
-					  flashbufferlen=csvframe((uint8_t *)flashwrite,temp,vbat,&myData,myData.satelliteCount,myData.hdop);
-					  writebuffertoflash((uint8_t*)flashwrite,flashbufferlen);
+					  if(pagenumber+1>=MAX_WRITE_PAGE){
+						  HAL_TIM_Base_Stop_IT(&htim7);
+						  balisestate=2;
+
+					  }
+
+					  if(enablewrite==1){
+
+						  oldlat=myData.latitude;
+						  oldlong=myData.longitude;
+						  nmea_parse(&myData, DataBuffer);
+						  if(distancecalc(oldlat, myData.latitude,oldlong, myData.longitude)>= (10*myData.speed/7.2)){
+						    							  myData.latitude=oldlat;
+						    							  myData.longitude=oldlong;
+						    }
+
+						  flashbufferlen=csvframe((uint8_t *)flashwrite,temp,vbat,&myData,myData.satelliteCount,myData.hdop);
+						  writebuffertoflash((uint8_t*)flashwrite,flashbufferlen);
+						  enablewrite=0;
+
+					  }
+
 					  if(doubledonnee==0){
-						  ssd1306_SetCursor(32,32);
-						  snprintf((uint8_t *)bufferscreen,50,"p=%d",pagenumber);
-						  ssd1306_WriteString((uint8_t*)bufferscreen,Font_7x10,White);
-					  }
+					 	ssd1306_SetCursor(32,32);
+					 	snprintf((uint8_t *)bufferscreen,50,"p=%d",pagenumber);
+					 	ssd1306_WriteString((uint8_t*)bufferscreen,Font_7x10,White);
+					 	}
 					  else{
-						  ssd1306_SetCursor(32,32);
-						  snprintf((uint8_t *)bufferscreen,50,"d=%0.1lfm",distanceparcouru);
-						  ssd1306_WriteString((uint8_t*)bufferscreen,Font_7x10,White);
-					  }
-					  ssd1306_SetCursor(32,42);
-					  snprintf((uint8_t *)bufferscreen,50, "sat=%d",myData.satelliteCount);
-					  ssd1306_WriteString((uint8_t*)bufferscreen,Font_6x8,White);
-					  batterygauge(vbat,34, 50,1);
-					  ssd1306_SetCursor(60,50);
-					  snprintf((uint8_t *)bufferscreen,50, "%0.2fV",vbat);
-					  ssd1306_WriteString((uint8_t*)bufferscreen,Font_6x8,White);
-					  if(cptdoubledonnee==3){
-						  doubledonnee=1-doubledonnee;
-						  cptdoubledonnee=0;
-					  }
-					  cptdoubledonnee+=1;
-					  HAL_Delay(1000);
+					 	ssd1306_SetCursor(32,32);
+					 	snprintf((uint8_t *)bufferscreen,50,"d=%0.1lfm",*distanceparcouru);
+					 	ssd1306_WriteString((uint8_t*)bufferscreen,Font_7x10,White);
+					 	}
+					 	ssd1306_SetCursor(32,42);
+					 	snprintf((uint8_t *)bufferscreen,50, "sat=%d",myData.satelliteCount);
+					 	ssd1306_WriteString((uint8_t*)bufferscreen,Font_6x8,White);
+					 	batterygauge(vbat,34, 50,1);
+					 	ssd1306_SetCursor(60,50);
+					 	snprintf((uint8_t *)bufferscreen,50, "%0.2fV",vbat);
+					 	ssd1306_WriteString((uint8_t*)bufferscreen,Font_6x8,White);
+
+					 	if(cptdoubledonnee==3){
+					 	  		doubledonnee=1-doubledonnee;
+					 	  		cptdoubledonnee=0;
+					 	  	 }
+
+
+
+
+
+
+
 
 					  if(BTN_B>=1){
 					  						  balisestate--;
 					  						  BTN_B=0;
 					  						  BTN_A=0;
+					  						  HAL_TIM_Base_Stop_IT(&htim7);
 					  					  }
-
-					  }
-
-
-
-					  else{
-					 						  balisestate=2;
-					 					  }
-
-
 
 					  break;
 
@@ -816,7 +839,40 @@ return ;
 
 
 
-
+//					  oldlat=myData.latitude;
+//					  oldlong=myData.longitude;
+//					  nmea_parse(&myData, DataBuffer);
+//					  if(distancecalc(oldlat, myData.latitude,oldlong, myData.longitude)>= (10*myData.speed/7.2)){
+//						  myData.latitude=oldlat;
+//						  myData.longitude=oldlong;
+//					  }
+//					  if(pagenumber+1<MAX_WRITE_PAGE){
+//
+//					  flashbufferlen=csvframe((uint8_t *)flashwrite,temp,vbat,&myData,myData.satelliteCount,myData.hdop);
+//					  writebuffertoflash((uint8_t*)flashwrite,flashbufferlen);
+//					  if(doubledonnee==0){
+//						  ssd1306_SetCursor(32,32);
+//						  snprintf((uint8_t *)bufferscreen,50,"p=%d",pagenumber);
+//						  ssd1306_WriteString((uint8_t*)bufferscreen,Font_7x10,White);
+//					  }
+//					  else{
+//						  ssd1306_SetCursor(32,32);
+//						  snprintf((uint8_t *)bufferscreen,50,"d=%0.1lfm",*distanceparcouru);
+//						  ssd1306_WriteString((uint8_t*)bufferscreen,Font_7x10,White);
+//					  }
+//					  ssd1306_SetCursor(32,42);
+//					  snprintf((uint8_t *)bufferscreen,50, "sat=%d",myData.satelliteCount);
+//					  ssd1306_WriteString((uint8_t*)bufferscreen,Font_6x8,White);
+//					  batterygauge(vbat,34, 50,1);
+//					  ssd1306_SetCursor(60,50);
+//					  snprintf((uint8_t *)bufferscreen,50, "%0.2fV",vbat);
+//					  ssd1306_WriteString((uint8_t*)bufferscreen,Font_6x8,White);
+//					  if(cptdoubledonnee==3){
+//						  doubledonnee=1-doubledonnee;
+//						  cptdoubledonnee=0;
+//					  }
+//					  cptdoubledonnee+=1;
+//					  HAL_Delay(1000);
 
 
 

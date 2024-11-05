@@ -27,9 +27,12 @@ extern "C" {
 
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include "nmea_parse.h"
 
 /* USER CODE BEGIN Includes */
+#include "math.h"
+#include "nmea_parse.h"
+#include "stm32l4xx_hal.h"
+#include "spif.h"
 
 /* USER CODE END Includes */
 

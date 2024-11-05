@@ -3,6 +3,7 @@
 //
 #include "nmea_parse.h"
 #include "math.h"
+extern double * distanceparcouru;
 
 //code globalement recuperer, nous nous en somme inspiré afin de recuperer la vitesse sur la trame gnrmc, ce code se base sur des strtok afin de segmenter les trames puis sur des strtol
 //ou strtof afin d'en recuperer les informations et de les stocker dans la structure cf nmea_parsE.h
@@ -195,6 +196,7 @@ void nmea_speed(GPS *gps_data, uint8_t *buffer){
 double distancecalc(double lat1, double lat2, double long1, double long2){
 	double distance=0;
 	distance=(double) 6371000*acosl(fmin(1,sinl(lat1*(M_PI/180))*sinl(lat2*(M_PI/180))+cosl(lat1*(M_PI/180))*cosl(lat2*(M_PI/180))*cosl((long2-long1)*(M_PI/180))));
+	*distanceparcouru=*distanceparcouru + distance;
 
 	return distance;
 }
