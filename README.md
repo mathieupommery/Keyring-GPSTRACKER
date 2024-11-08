@@ -2,6 +2,8 @@
 
 # next update
 
+switch to stm32wb55: adding bluetooth !
+adding wsan pads barometer for precise altitude values.
 create external I2C sensor with MAX30102 and MAX32664 heart rate ppg sensor and hub.
 
 # NEWS
