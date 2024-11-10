@@ -158,7 +158,7 @@ float usbpercent=0;
 
 int doubledonnee=0;
 int cptdoubledonnee=0;
-double * distanceparcouru=0;
+double distanceparcouru=0;
 double oldlat=0;
 double oldlong=0;
 
@@ -168,6 +168,17 @@ int baroenableinit=0;
 float altibaro=0;
 
 int enablewrite=0;
+
+double distance1sec=0;
+
+
+uint8_t SEC=0;
+uint8_t HR=0;
+uint8_t MINUTE=0;
+uint8_t JOURS=10;
+uint8_t MOIS=11;
+uint16_t ANNEE=2024;
+MOIS_STATE mois=JANVIER;
 
 
 
@@ -188,18 +199,13 @@ void PeriphCommonClock_Config(void);
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)//lors d'un appuie sur un bouton, le systeme s'interrompt afin d'arriver dans cette fonction redefinie avec en parametre d'entre , le bouton sur lequel l'on a appuiyé
 {
 	if(GPIO_Pin==GPIO_PIN_8){
-//		ssd1306_SetCursor(33, 44);
-//		ssd1306_WriteString("btna", Font_6x8, White);
-//		ssd1306_UpdateScreen();
-		BTN_A++;//sert à reconnaitre lorsque le bouto na est appuyer, cette variable est mise à 1 par un e interruption.
 
+		BTN_A++;
 
 	}
 	if(GPIO_Pin==GPIO_PIN_1){
-		//ssd1306_SetCursor(33, 44);
-		//ssd1306_WriteString("btnb", Font_6x8, White);
-		//ssd1306_UpdateScreen();
-		BTN_B++;//de meme pour le bouton b
+
+		BTN_B++;
 
 	}
 }
@@ -246,6 +252,8 @@ int main(void)
   MX_USART1_UART_Init();
   MX_SPI1_Init();
   MX_TIM7_Init();
+  MX_TIM6_Init();
+  MX_TIM15_Init();
   /* USER CODE BEGIN 2 */
 
 
@@ -261,6 +269,7 @@ int main(void)
 
 	HAL_ADC_Start_DMA(&hadc1,(uint32_t*)rawdata, 3);
 	HAL_TIM_Base_Start(&htim2);
+	HAL_TIM_Base_Start_IT(&htim15);
 
 	HAL_UART_Abort(&hlpuart1);
 	HAL_UART_Receive_DMA(&hlpuart1, (uint8_t *)RxBuffer, RxBuffer_SIZE);

@@ -1,7 +1,7 @@
-../Core/Src/spi.c:47:6:MX_SPI1_Init	8	static
-../Core/Src/spi.c:81:6:HAL_SPI_MspInit	48	static
-../Core/Src/spi.c:158:6:HAL_SPI_MspDeInit	16	static
-../Core/Src/spi.c:191:5:csvframe	152	static
-../Core/Src/spi.c:198:6:storeindex	120	static
-../Core/Src/spi.c:208:6:getindex	32	static
-../Core/Src/spi.c:238:6:writebuffertoflash	24	static
+../Core/Src/spi.c:54:6:MX_SPI1_Init	8	static
+../Core/Src/spi.c:88:6:HAL_SPI_MspInit	48	static
+../Core/Src/spi.c:165:6:HAL_SPI_MspDeInit	16	static
+../Core/Src/spi.c:198:5:csvframe	200	static
+../Core/Src/spi.c:205:6:storeindex	120	static
+../Core/Src/spi.c:215:6:getindex	32	static
+../Core/Src/spi.c:245:6:writebuffertoflash	24	static

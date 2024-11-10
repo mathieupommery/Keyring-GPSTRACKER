@@ -40,7 +40,7 @@ Core/Src/stm32l4xx_it.o: ../Core/Src/stm32l4xx_it.c ../Core/Inc/main.h \
  ../Core/Inc/stm32l4xx_it.h \
  ../Middlewares/Third_Party/NimaLTD_Driver/SPIF/spif.h \
  ../I-CUBE-SPIF/NimaLTD.I-CUBE-SPIF_conf.h ../Core/Inc/spi.h \
- ../Core/Inc/main.h ../Core/Inc/nmea_parse.h
+ ../Core/Inc/main.h ../Core/Inc/nmea_parse.h ../Core/Inc/tim.h
 ../Core/Inc/main.h:
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h:
 ../Core/Inc/stm32l4xx_hal_conf.h:
@@ -86,3 +86,4 @@ Core/Src/stm32l4xx_it.o: ../Core/Src/stm32l4xx_it.c ../Core/Inc/main.h \
 ../Core/Inc/spi.h:
 ../Core/Inc/main.h:
 ../Core/Inc/nmea_parse.h:
+../Core/Inc/tim.h:

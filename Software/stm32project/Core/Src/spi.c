@@ -37,6 +37,13 @@ extern int pagenumber;
 extern uint8_t numbuf1[10];
 extern uint8_t numbuf2[10];
 extern int sectoreraseen;
+extern uint8_t SEC;
+extern uint8_t HR;
+extern uint8_t MINUTE;
+extern uint8_t JOURS;
+extern uint8_t MOIS;
+extern uint16_t ANNEE;
+
 /* USER CODE END 0 */
 
 SPI_HandleTypeDef hspi1;
@@ -190,7 +197,7 @@ void HAL_SPI_MspDeInit(SPI_HandleTypeDef* spiHandle)
 /* USER CODE BEGIN 1 */
 int csvframe(uint8_t* buffer,float temp,float vbat,GPS * gpsdata,int otherval1,float otherval2){
 	int framesize=0;
-	framesize=snprintf((uint8_t*)buffer,256, "%0.2f,%0.2f,%0.2f,%0.7f,%0.7f,%0.2f,%d,%0.2f\n\r",temp,vbat,(gpsdata->speed)*3.6,gpsdata->latitude,gpsdata->longitude,gpsdata->altitude,otherval1,otherval2);
+	framesize=snprintf((uint8_t*)buffer,256, "%0.2f,%0.3f,%0.2f,%0.7f,%0.7f,%0.2f,%d,%0.2f,%d-%02d-%02dT%02d:%02d:%02d.00+02:00\n\r",temp,vbat,(gpsdata->speed)*3.6,gpsdata->latitude,gpsdata->longitude,gpsdata->altitude,otherval1,otherval2,ANNEE,MOIS,JOURS,HR,MINUTE,SEC);
 	return framesize;
 }
 
