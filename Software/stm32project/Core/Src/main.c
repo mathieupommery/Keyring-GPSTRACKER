@@ -181,7 +181,12 @@ uint16_t ANNEE=2024;
 MOIS_STATE mois=JANVIER;
 
 
-
+int boutonAtime=0;
+int boutonBtime=0;
+int tbtn1=0;
+int tbtn2=0;
+int BTN_B_LONG=0;
+int BTN_A_LONG=0;
 
 /* USER CODE END PV */
 
@@ -200,12 +205,52 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)//lors d'un appuie sur un bouton, 
 {
 	if(GPIO_Pin==GPIO_PIN_8){
 
-		BTN_A++;
+		if(HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_8)== GPIO_PIN_RESET){
+
+					boutonAtime=0;
+					tbtn1=HAL_GetTick();
+
+
+				}
+				else{
+					BTN_A++;
+
+					boutonAtime=HAL_GetTick()-tbtn1;
+					tbtn1=0;
+
+
+				}
+
+				if(boutonAtime>=400){
+					BTN_A_LONG++;
+					BTN_A=0;
+				}
 
 	}
 	if(GPIO_Pin==GPIO_PIN_1){
 
-		BTN_B++;
+		if(HAL_GPIO_ReadPin(GPIOB,GPIO_PIN_1)== GPIO_PIN_RESET){
+
+			boutonBtime=0;
+			tbtn2=HAL_GetTick();
+
+
+		}
+		else{
+			BTN_B++;
+
+			boutonBtime=HAL_GetTick()-tbtn2;
+			tbtn2=0;
+
+
+		}
+
+		if(boutonBtime>=400){
+			BTN_B_LONG++;
+			BTN_B=0;
+		}
+
+
 
 	}
 }

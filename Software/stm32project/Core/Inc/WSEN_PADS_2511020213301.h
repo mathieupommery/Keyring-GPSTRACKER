@@ -554,7 +554,7 @@ extern "C"
   float PADS_convertPressure_float(int32_t rawPres);
   float PADS_convertDifferentialPressure_float(int32_t rawPres);
 #else
-  #warning "WSEN_PADS sensor driver: Float support is turned off by default. Define WE_USE_FLOAT to enable float support."
+
 #endif /* WE_USE_FLOAT */
 
 #ifdef __cplusplus
