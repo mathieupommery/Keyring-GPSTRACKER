@@ -2,7 +2,9 @@
 
 # next update
 
-create external I2C sensor with MAX30102 and MAX32664 heart rate ppg sensor and hub.
+* switch to stm32wb55: adding bluetooth !
+* adding wsan pads barometer for precise altitude values.
+* create external I2C sensor with MAX30102 and MAX32664 heart rate ppg sensor and hub.
 
 # NEWS
 -With v1.0 a 128Mb flash memory is onboard in order to store data in csv format and you can send them to computer by com port! On top of that there is two jst sh port to add i2c or uart external sensor powered by the keyring gps(3.3V and 50mA max power consuption) ! 
