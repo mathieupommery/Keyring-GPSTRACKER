@@ -677,8 +677,7 @@ void statemachine(void){
 						  oldlat=myData.latitude;
 						  oldlong=myData.longitude;
 						  nmea_parse(&myData, DataBuffer);
-						  distance1sec=distancecalc(oldlat, myData.latitude,oldlong, myData.longitude);
-						  if(distance1sec>=139){//correspond à 500kmh pendant 1sec
+						  if(distancecalc(oldlat, myData.latitude,oldlong, myData.longitude) > 139.0){//correspond à 500kmh pendant 1sec
 							  myData.latitude=oldlat;
 							  myData.longitude=oldlong;
 							  flashbufferlen=csvframe((uint8_t *)flashwrite,temp,vbat,&myData,myData.satelliteCount,myData.hdop);
@@ -687,7 +686,7 @@ void statemachine(void){
 						  }
 
 						  else{
-							  distanceparcouru=distanceparcouru + distance1sec;
+							  distanceparcouru=distanceparcouru + distancecalc(oldlat, myData.latitude,oldlong, myData.longitude);
 							  flashbufferlen=csvframe((uint8_t *)flashwrite,temp,vbat,&myData,myData.satelliteCount,myData.hdop);
 							  writebuffertoflash((uint8_t*)flashwrite,flashbufferlen);
 						  }
