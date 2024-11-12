@@ -1,0 +1,5 @@
+../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_bus.h:744:22:LL_AHB3_GRP1_EnableClock	24	static
+../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_bus.h:798:22:LL_AHB3_GRP1_DisableClock	16	static
+../Core/Src/ipcc.c:30:6:MX_IPCC_Init	8	static
+../Core/Src/ipcc.c:51:6:HAL_IPCC_MspInit	16	static
+../Core/Src/ipcc.c:73:6:HAL_IPCC_MspDeInit	16	static
