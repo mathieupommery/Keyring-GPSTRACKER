@@ -18,7 +18,8 @@
 #include "spif.h"
 #include "spi.h"
 #include "tim.h"
-#include "WSEN_PADS_2511020213301.h"
+#include "PADS.h"
+
 
 
 
@@ -27,6 +28,7 @@ extern UART_HandleTypeDef hlpuart1;
 extern DMA_HandleTypeDef hdma_lpuart_rx;
 extern SPIF_HandleTypeDef hspif1;
 extern TIM_HandleTypeDef htim7;
+extern I2C_HandleTypeDef hi2c1;
 
 
 
@@ -87,7 +89,6 @@ extern double oldlong;
 extern int cptdoubledonnee;
 extern int16_t barotemp;
 extern int32_t baropress;
-extern WE_sensorInterface_t pads;
 extern int baroenableinit;
 extern float altibaro;
 
@@ -105,6 +106,11 @@ extern uint16_t ANNEE;
 
 int maxtesttime=0;
 int settimeen=0;
+
+int barostatecheck=0;
+extern double finaltemp;
+extern double finalpress;
+extern double alt;
 
 
 
@@ -938,16 +944,45 @@ void statemachine(void){
 					  ssd1306_Fill(Black);
 					  ssd1306_SetCursor(32,32);
 					  ssd1306_WriteString("test",Font_6x8,White);
-					  ssd1306_SetCursor(32,40);
+
 
 					  if(BTN_B>=1){
-						  ssd1306_WriteString("cours",Font_6x8,White);
+						  ssd1306_Fill(Black);
+						  ssd1306_SetCursor(32,40);
+						  uint8_t dataBA=0;
+						  HAL_I2C_Mem_Read(&hi2c1, 0xBA, 0x0F, 1, &dataBA, 1, 100);
+						  snprintf((char  *)bufferscreen,50,"BA=%d",dataBA);
+						  ssd1306_WriteString((char *)bufferscreen,Font_6x8,White);
+						  ssd1306_UpdateScreen();
+						  HAL_Delay(1000);
+
+
+
+						  //HAL_I2C_DeInit(&hi2c1);
+						  //HAL_I2C_Init(&hi2c1);
+						  //HAL_Delay(20);
+						  //barostatecheck=PADS_continuous_init(&hi2c1);
+
+
 						  BTN_B=0;
 					  }
-					  if(BTN_B_LONG>=1){
-						  ssd1306_WriteString("long",Font_6x8,White);
-						  BTN_B_LONG=0;
-					  }
+
+					  barostatecheck=PADS_continuous_read(&hi2c1);
+					  //ssd1306_SetCursor(32,40);
+					  //snprintf((char  *)bufferscreen,50,"c=%d",barostatecheck);
+					  //ssd1306_WriteString((char *)bufferscreen,Font_6x8,White);
+					  ssd1306_SetCursor(32,48);
+					  snprintf((char  *)bufferscreen,50,"alt=%d",(int)floor(alt));
+					  ssd1306_WriteString((char *)bufferscreen,Font_6x8,White);
+
+					  ssd1306_SetCursor(32,56);
+					  snprintf((char  *)bufferscreen,50,"alt=%0.2lf",(double)alt);
+					  ssd1306_WriteString((char *)bufferscreen,Font_6x8,White);
+				  HAL_Delay(1000);
+//				  if(barostatecheck>=1){
+//					  barostatecheck=PADS_continuous_init(&hi2c1);
+//					  barostatecheck=0;
+//				  }
 
 
 

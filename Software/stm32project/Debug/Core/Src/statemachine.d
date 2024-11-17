@@ -50,8 +50,7 @@ Core/Src/statemachine.o: ../Core/Src/statemachine.c ../Core/Inc/main.h \
  ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h \
  ../Middlewares/Third_Party/NimaLTD_Driver/SPIF/spif.h \
  ../I-CUBE-SPIF/NimaLTD.I-CUBE-SPIF_conf.h ../Core/Inc/spi.h \
- ../Core/Inc/nmea_parse.h ../Core/Inc/tim.h \
- ../Core/Inc/WSEN_PADS_2511020213301.h ../Core/Inc/WeSensorsSDK.h
+ ../Core/Inc/nmea_parse.h ../Core/Inc/tim.h ../Core/Inc/PADS.h
 ../Core/Inc/main.h:
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h:
 ../Core/Inc/stm32l4xx_hal_conf.h:
@@ -110,5 +109,4 @@ Core/Src/statemachine.o: ../Core/Src/statemachine.c ../Core/Inc/main.h \
 ../Core/Inc/spi.h:
 ../Core/Inc/nmea_parse.h:
 ../Core/Inc/tim.h:
-../Core/Inc/WSEN_PADS_2511020213301.h:
-../Core/Inc/WeSensorsSDK.h:
+../Core/Inc/PADS.h:

@@ -1,8 +1,0 @@
-../Core/Src/platform.c:87:15:WE_ReadReg	64	static
-../Core/Src/platform.c:201:15:WE_WriteReg	64	static
-../Core/Src/platform.c:295:8:WE_isSensorInterfaceReady	16	static
-../Core/Src/platform.c:335:26:I2Cx_ReadBytes	40	static
-../Core/Src/platform.c:374:26:I2Cx_WriteBytes	40	static
-../Core/Src/platform.c:396:6:WE_Delay	16	static
-../Core/Src/platform.c:414:26:SPIx_ReadBytes	32	static
-../Core/Src/platform.c:454:26:SPIx_WriteBytes	32	static

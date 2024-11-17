@@ -1,0 +1,4 @@
+../Core/Src/PADS.c:20:9:PADS_init	3
+../Core/Src/PADS.c:37:9:PADS_single	8
+../Core/Src/PADS.c:94:9:PADS_continuous_init	5
+../Core/Src/PADS.c:129:9:PADS_continuous_read	7

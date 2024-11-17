@@ -1,5 +1,4 @@
-Core/Src/platform.o: ../Core/Src/platform.c ../Core/Inc/platform.h \
- ../Core/Inc/WeSensorsSDK.h \
+Core/Src/PADS.o: ../Core/Src/PADS.c ../Core/Inc/PADS.h ../Core/Inc/main.h \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h \
  ../Core/Inc/stm32l4xx_hal_conf.h \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h \
@@ -37,12 +36,9 @@ Core/Src/platform.o: ../Core/Src/platform.c ../Core/Inc/platform.h \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_tim.h \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_tim_ex.h \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h \
- ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart_ex.h \
- ../Core/Inc/spi.h ../Core/Inc/main.h ../Core/Inc/nmea_parse.h \
- ../Middlewares/Third_Party/NimaLTD_Driver/SPIF/spif.h \
- ../I-CUBE-SPIF/NimaLTD.I-CUBE-SPIF_conf.h
-../Core/Inc/platform.h:
-../Core/Inc/WeSensorsSDK.h:
+ ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart_ex.h
+../Core/Inc/PADS.h:
+../Core/Inc/main.h:
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h:
 ../Core/Inc/stm32l4xx_hal_conf.h:
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rcc.h:
@@ -81,8 +77,3 @@ Core/Src/platform.o: ../Core/Src/platform.c ../Core/Inc/platform.h \
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_tim_ex.h:
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h:
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart_ex.h:
-../Core/Inc/spi.h:
-../Core/Inc/main.h:
-../Core/Inc/nmea_parse.h:
-../Middlewares/Third_Party/NimaLTD_Driver/SPIF/spif.h:
-../I-CUBE-SPIF/NimaLTD.I-CUBE-SPIF_conf.h:

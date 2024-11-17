@@ -37,7 +37,7 @@
 #include "nmea_parse.h"
 #include "stm32l4xx_hal.h"
 #include "spif.h"
-#include "WSEN_PADS_EXAMPLE.h"
+#include "PADS.h"
 
 /* USER CODE END Includes */
 
@@ -188,6 +188,8 @@ int tbtn2=0;
 int BTN_B_LONG=0;
 int BTN_A_LONG=0;
 
+extern int barostatecheck;
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -324,6 +326,8 @@ int main(void)
 	memset((uint8_t *)bufferscreen ,'\0',50);
 
 	SPIF_Init(&hspif1, &hspi1, GPIOB, GPIO_PIN_0);
+
+	barostatecheck=PADS_continuous_init(&hi2c1);
 
 
 
