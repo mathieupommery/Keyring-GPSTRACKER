@@ -27,3 +27,4 @@
 ../Core/Src/ssd1306.c:638:6:ssd1306_Drawarrow2	56	static
 ../Core/Src/ssd1306.c:668:6:batterygauge	40	static
 ../Core/Src/ssd1306.c:721:6:percentage	24	static
+../Core/Src/ssd1306.c:732:10:scrollText	40	static

@@ -84,6 +84,7 @@ int BTN_B=0;
 SPIF_HandleTypeDef hspif1;
 extern SPI_HandleTypeDef hspi1;
 extern TIM_HandleTypeDef htim15;
+extern TIM_HandleTypeDef htim6;
 
 const unsigned char startimg[] = {
 		0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
@@ -124,8 +125,7 @@ uint16_t rawdata[3];
 float temp=0.0;
 float vrefint=0;
 float vbat=0;
-char str[20];
-extern uint8_t bufferscreen[50];
+
 
 uint8_t flashwrite[256];
 uint8_t flashread[256];
@@ -136,7 +136,10 @@ int sectoreraseen=0;
 uint8_t numbuf1[10];
 uint8_t numbuf2[10];
 uint8_t bufferscreen[50];
+uint8_t longbufferscreen[256];
 uint8_t usbbuffer[64];
+uint16_t offsetforscroltext=0;
+uint16_t scrolltextmax=0;
 
 float vitmax=0.0;
 float seconde=0;
@@ -144,6 +147,7 @@ float min=0;
 
 uint32_t starttime=0;
 uint32_t calctime=0;
+uint32_t timehandler=0;
 float t1=0;
 float t2=0;
 float t3=0;
@@ -179,6 +183,7 @@ uint8_t JOURS=10;
 uint8_t MOIS=11;
 uint16_t ANNEE=2024;
 MOIS_STATE mois=JANVIER;
+int settimeen=0;
 
 
 int boutonAtime=0;
@@ -188,7 +193,6 @@ int tbtn2=0;
 int BTN_B_LONG=0;
 int BTN_A_LONG=0;
 
-extern int barostatecheck;
 
 /* USER CODE END PV */
 
@@ -317,6 +321,7 @@ int main(void)
 	HAL_ADC_Start_DMA(&hadc1,(uint32_t*)rawdata, 3);
 	HAL_TIM_Base_Start(&htim2);
 	HAL_TIM_Base_Start_IT(&htim15);
+	HAL_TIM_Base_Start_IT(&htim6);
 
 	HAL_UART_Abort(&hlpuart1);
 	HAL_UART_Receive_DMA(&hlpuart1, (uint8_t *)RxBuffer, RxBuffer_SIZE);
@@ -326,8 +331,6 @@ int main(void)
 	memset((uint8_t *)bufferscreen ,'\0',50);
 
 	SPIF_Init(&hspif1, &hspi1, GPIOB, GPIO_PIN_0);
-
-	barostatecheck=PADS_continuous_init(&hi2c1);
 
 
 

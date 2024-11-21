@@ -1,5 +1,5 @@
-../Core/Src/main.c:206:6:HAL_GPIO_EXTI_Callback	7
-../Core/Src/main.c:265:5:main	1
-../Core/Src/main.c:358:6:SystemClock_Config	4
-../Core/Src/main.c:408:6:PeriphCommonClock_Config	2
-../Core/Src/main.c:438:6:Error_Handler	1
+../Core/Src/main.c:210:6:HAL_GPIO_EXTI_Callback	7
+../Core/Src/main.c:269:5:main	1
+../Core/Src/main.c:361:6:SystemClock_Config	4
+../Core/Src/main.c:411:6:PeriphCommonClock_Config	2
+../Core/Src/main.c:441:6:Error_Handler	1

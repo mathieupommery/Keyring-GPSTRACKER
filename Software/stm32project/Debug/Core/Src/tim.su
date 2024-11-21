@@ -3,5 +3,5 @@
 ../Core/Src/tim.c:112:6:MX_TIM7_Init	24	static
 ../Core/Src/tim.c:145:6:MX_TIM15_Init	40	static
 ../Core/Src/tim.c:186:6:HAL_TIM_Base_MspInit	32	static
-../Core/Src/tim.c:243:6:HAL_TIM_Base_MspDeInit	16	static
-../Core/Src/tim.c:299:6:updatedate	4	static
+../Core/Src/tim.c:247:6:HAL_TIM_Base_MspDeInit	16	static
+../Core/Src/tim.c:306:6:updatedate	4	static

@@ -31,15 +31,15 @@ extern TIM_HandleTypeDef htim7;
 extern I2C_HandleTypeDef hi2c1;
 
 
-
-extern char str[20];
 extern uint8_t DataBuffer[DataBuffer_SIZE];
 extern uint8_t flashwrite[256];
 extern uint8_t flashread[256];
 extern uint8_t usbbuffer[64];
 extern uint8_t indexbuffer[50];
 extern uint8_t bufferscreen[50];
-
+extern uint8_t longbufferscreen[256];
+extern uint16_t offsetforscroltext;
+extern uint16_t scrolltextmax;
 
 extern STATE_TYPE state;
 extern HEURE hrstate;
@@ -62,8 +62,15 @@ extern GPS myData;
 extern float vitmax;
 extern float seconde;
 extern float min;
+
+
 extern uint32_t starttime;
 extern uint32_t calctime;
+extern uint32_t timehandler;
+
+
+
+
 extern float temp;
 extern float vbat;
 extern float t1;
@@ -102,15 +109,8 @@ extern uint8_t MINUTE;
 extern uint8_t JOURS;
 extern uint8_t MOIS;
 extern uint16_t ANNEE;
+extern int settimeen;
 
-
-int maxtesttime=0;
-int settimeen=0;
-
-int barostatecheck=0;
-extern double finaltemp;
-extern double finalpress;
-extern double alt;
 
 
 
@@ -143,89 +143,59 @@ void statemachine(void){
 
 
 				 case STATE_SUMMARY:
-					 if(myData.fix == 1){
-					 				 						char * str = (char*)malloc(sizeof(char)*20);
-					 				 						snprintf(str,15, "MaxV=%.1f",vitmax*3.6);
-					 				 						ssd1306_SetCursor(32, 32);
-					 				 						ssd1306_WriteString(str, Font_6x8, White);
-					 				 						snprintf(str,15, "V=%0.1f",(myData.speed)*3.6);
-					 				 						ssd1306_SetCursor(32, 42);
-					 				 						ssd1306_WriteString(str, Font_6x8, White);
-					 				 						snprintf(str,15, "p=%0.0fmin%0.0f s",floor(pace),floor(sec));
-					 				 						ssd1306_SetCursor(32, 52);
-					 				 						ssd1306_WriteString(str, Font_6x8, White);
-					 				 						free(str);
-					 				 					}
-					 				 	else{ //if the GPS doesn't have a fix, print a message
-					 				 						char *str = (char*)malloc(sizeof(char)*20);
-					 				 						ssd1306_SetCursor(32, 32);
-					 				 						ssd1306_WriteString("Speed 1", Font_6x8, White);
-					 				 						ssd1306_SetCursor(32, 44);
-					 				 						ssd1306_WriteString("Wait GPS", Font_6x8, White);
-					 				 						batterygauge(vbat,35, 54,1);
-					 				 						free(str);
-					 				 					}
+
+						snprintf((char *)bufferscreen,15, "MaxV=%.1f",vitmax*3.6);
+						ssd1306_SetCursor(32, 32);
+						ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
+						snprintf((char *)bufferscreen,15, "V=%0.1f",(myData.speed)*3.6);
+						ssd1306_SetCursor(32, 42);
+						ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
+						snprintf((char *)bufferscreen,15, "p=%0.0fmin%0.0f s",floor(pace),floor(sec));
+						ssd1306_SetCursor(32, 52);
+						ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
+
+
+
 					 if(BTN_B>=1){
-					 					 				 					spdstate++;
-					 					 				 					BTN_B=0;
+								spdstate++;
+								BTN_B=0;
 					 					 				  	}
 					 if(BTN_B_LONG>=1){
-					 					  vitmax=0;
-					 					BTN_B_LONG=0;
-					 				}
+							  vitmax=0;
+							BTN_B_LONG=0;
+						}
 
 
 
 					 break;
 				 case STATE_COMPTEUR:
-					 if(myData.fix == 1){ //if the GPS has a fix, print the data
-					 				 						char * str = (char*)malloc(sizeof(char)*20);
-					 				 						snprintf(str,15, "V=%0.1f",(myData.speed)*3.6);
-					 				 						ssd1306_SetCursor(32, 54);
-					 				 						ssd1306_WriteString(str, Font_6x8, White);
-					 				 						ssd1306_DrawRectangle(32, 38, 95, 53, White);
-					 				 						ssd1306_FillRectangle(32, 38,(int) floor(32+(myData.speed*0.63)), 53, White);
 
-					 				 						free(str);
-					 				 					}
-					 				 	else{ //if the GPS doesn't have a fix, print a message
-					 				 						char *str = (char*)malloc(sizeof(char)*20);// message qui sra dans tous les etat si l'on ne capte pas de sattelites.
-					 				 						ssd1306_SetCursor(32, 32);
-					 				 						ssd1306_WriteString("Speed 2", Font_6x8, White);
-					 				 						ssd1306_SetCursor(32, 44);
-					 				 						ssd1306_WriteString("Wait GPS", Font_6x8, White);
-					 				 						free(str);
-					 				 					}
+
+						snprintf((char *)bufferscreen,15, "V=%0.1f",(myData.speed)*3.6);
+						ssd1306_SetCursor(32, 54);
+						ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
+						ssd1306_DrawRectangle(32, 38, 95, 53, White);
+						ssd1306_FillRectangle(32, 38,(int) floor(32+(myData.speed*0.63)), 53, White);
+
+
+
 					 if(BTN_B>=1){
-					 				 					spdstate++;
-					 				 					BTN_B=0;
+							spdstate++;
+							BTN_B=0;
 					 				  	}
 					 break;
 				 case STATE_GRAPH:
-					 if(myData.fix == 1){
-					 				 						char *str = (char*)malloc(sizeof(char)*20);// message qui sra dans tous les etat si l'on ne capte pas de sattelites.
 
-					 				 						ssd1306_SetCursor(32, 32);
-					 				 						snprintf(str,15, "%0.1f",(myData.speed)*3.6);
-					 				 						ssd1306_WriteString(str, Font_11x18, White);
-					 				 						batterygauge(vbat,35, 54,1);
 
-					 				 						free(str);
-					 }
-					 else{
-						 char *str = (char*)malloc(sizeof(char)*20);
-						 ssd1306_SetCursor(32, 32);
-						 ssd1306_WriteString("Speed 3", Font_6x8, White);
-						 ssd1306_SetCursor(32, 44);
-						 ssd1306_WriteString("Wait GPS", Font_6x8, White);
-						 batterygauge(vbat,35, 54,1);
-						 free(str);
-					 }
+						ssd1306_SetCursor(32, 32);
+						snprintf((char *)bufferscreen,15, "%0.1f",(myData.speed)*3.6);
+						ssd1306_WriteString((char *)bufferscreen, Font_11x18, White);
+						batterygauge(vbat,35, 54,1);
 
 					 if(BTN_B>=1){
-					 					 				 					spdstate--;
-					 					 				 					spdstate--;
-					 					 				 					BTN_B=0;
+							spdstate--;
+							spdstate--;
+							BTN_B=0;
 
 
 					 					 				  	}
@@ -238,6 +208,17 @@ void statemachine(void){
 				 					BTN_A=0;
 				 					BTN_B=0;
 				  	}
+				 	 if(BTN_A_LONG>=1){
+				 						 				 									state++;
+				 						 				 									state++;
+				 						 				 									state++;
+				 						 				 									state++;
+				 						 				 									state++;
+				 						 				 									state++;
+				 						 				 									state++;
+				 						 				 									  			 	BTN_A_LONG=0;
+				 						 				 									  			 	BTN_B=0;
+				 						 				 									  	}
 				  break;
 
 
@@ -247,32 +228,19 @@ void statemachine(void){
 			  switch(posstate){
 
 			  case STATE_SUMMARY1:
-				  if(myData.fix == 1){
-				  				  char * str = (char*)malloc(sizeof(char)*20);//tout le long, on utilisera le meme buffer str pour tous les affichages
-				  						ssd1306_SetCursor(32, 32);
-				  						snprintf(str,15, "Latitude:");
-				  						ssd1306_WriteString(str, Font_6x8, White);
-				  						snprintf(str,15, "%0.7f",myData.latitude);//pas forcement utile d'afficher 7 decimales apres la virgule, 6 donne une precision au metre ce qui est le max du gps
-				  						ssd1306_SetCursor(32, 40);
-				  						ssd1306_WriteString(str, Font_6x8, White);
-				  						snprintf(str,15, "Longitude:");
-				  						ssd1306_SetCursor(32, 48);
-				  						ssd1306_WriteString(str, Font_6x8, White);
-				  						snprintf(str,15, "%0.7f",myData.longitude);
-				  						ssd1306_SetCursor(32, 56);
-				  						ssd1306_WriteString(str, Font_6x8, White);
-				  						free(str);
-				  					}
-				  				else{ //if the GPS doesn't have a fix, print a message
-				  						char *str = (char*)malloc(sizeof(char)*20);
-				  						ssd1306_SetCursor(32, 32);
-				  						ssd1306_WriteString("Pos1", Font_6x8, White);
-				  						ssd1306_SetCursor(32, 44);
-				  						ssd1306_WriteString("Wait GPS", Font_6x8, White);
-				  						ssd1306_SetCursor(32, 54);
-				  						batterygauge(vbat,35, 54,1);
-				  						free(str);
-				  					}
+
+						ssd1306_SetCursor(32, 32);
+						snprintf((char *)bufferscreen,15, "Latitude:");
+						ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
+						snprintf((char *)bufferscreen,15, "%0.7f",myData.latitude);//pas forcement utile d'afficher 7 decimales apres la virgule, 6 donne une precision au metre ce qui est le max du gps
+						ssd1306_SetCursor(32, 40);
+						ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
+						snprintf((char *)bufferscreen,15, "Longitude:");
+						ssd1306_SetCursor(32, 48);
+						ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
+						snprintf((char *)bufferscreen,15, "%0.7f",myData.longitude);
+						ssd1306_SetCursor(32, 56);
+						ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
 				  if(BTN_B>=1){
 					  posstate++;
 					  BTN_B=0;
@@ -284,30 +252,20 @@ void statemachine(void){
 
 				  break;
 			  case STATE_LAT:
-				  if(myData.fix == 1){
-				  				  char * str = (char*)malloc(sizeof(char)*20);//tout le long, on utilisera le meme buffer str pour tous les affichages
-				  						ssd1306_SetCursor(32, 32);
-				  						snprintf(str,15, "LatSide:");
-				  						ssd1306_WriteString(str, Font_6x8, White);
-				  						snprintf(str,15, "%c",myData.latSide);//pas forcement utile d'afficher 7 decimales apres la virgule, 6 donne une precision au metre ce qui est le max du gps
-				  						ssd1306_SetCursor(32, 40);
-				  						ssd1306_WriteString(str, Font_6x8, White);
-				  						snprintf(str,15, "Latitude:");
-				  						ssd1306_SetCursor(32, 48);
-				  						ssd1306_WriteString(str, Font_6x8, White);
-				  						snprintf(str,15, "%0.7f",myData.latitude);
-				  						ssd1306_SetCursor(32, 56);
-				  						ssd1306_WriteString(str, Font_6x8, White);
-				  						free(str);
-				  					}
-				  				else{ //if the GPS doesn't have a fix, print a message
-				  						char *str = (char*)malloc(sizeof(char)*20);
-				  						ssd1306_SetCursor(32, 32);
-				  						ssd1306_WriteString("Pos2", Font_6x8, White);
-				  						ssd1306_SetCursor(32, 44);
-				  						ssd1306_WriteString("Wait GPS", Font_6x8, White);
-				  						free(str);
-				  					}
+						ssd1306_SetCursor(32, 32);
+						snprintf((char *)bufferscreen,15, "LatSide:");
+						ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
+						snprintf((char *)bufferscreen,15, "%c",myData.latSide);//pas forcement utile d'afficher 7 decimales apres la virgule, 6 donne une precision au metre ce qui est le max du gps
+						ssd1306_SetCursor(32, 40);
+						ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
+						snprintf((char *)bufferscreen,15, "Latitude:");
+						ssd1306_SetCursor(32, 48);
+						ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
+						snprintf((char *)bufferscreen,15, "%0.7f",myData.latitude);
+						ssd1306_SetCursor(32, 56);
+						ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
+
+
 				  if(BTN_B>=1){
 				  					  posstate++;
 				  					  BTN_B=0;
@@ -321,30 +279,20 @@ void statemachine(void){
 
 				  break;
 			  case STATE_LONG:
-				  if(myData.fix == 1){
-				  				  char * str = (char*)malloc(sizeof(char)*20);//tout le long, on utilisera le meme buffer str pour tous les affichages
-				  						ssd1306_SetCursor(32, 32);
-				  						snprintf(str,15, "LonSide:");
-				  						ssd1306_WriteString(str, Font_6x8, White);
-				  						snprintf(str,15, "%c",myData.lonSide);//pas forcement utile d'afficher 7 decimales apres la virgule, 6 donne une precision au metre ce qui est le max du gps
-				  						ssd1306_SetCursor(32, 40);
-				  						ssd1306_WriteString(str, Font_6x8, White);
-				  						snprintf(str,15, "Longitude:");
-				  						ssd1306_SetCursor(32, 48);
-				  						ssd1306_WriteString(str, Font_6x8, White);
-				  						snprintf(str,15, "%0.7f",myData.longitude);
-				  						ssd1306_SetCursor(32, 56);
-				  						ssd1306_WriteString(str, Font_6x8, White);
-				  						free(str);
-				  					}
-				  				else{ //if the GPS doesn't have a fix, print a message
-				  						char *str = (char*)malloc(sizeof(char)*20);
-				  						ssd1306_SetCursor(32, 32);
-				  						ssd1306_WriteString("Pos3", Font_6x8, White);
-				  						ssd1306_SetCursor(32, 44);
-				  						ssd1306_WriteString("Wait GPS", Font_6x8, White);
-				  						free(str);
-				  					}
+
+					ssd1306_SetCursor(32, 32);
+					snprintf((char *)bufferscreen,15, "LonSide:");
+					ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
+					snprintf((char *)bufferscreen,15, "%c",myData.lonSide);//pas forcement utile d'afficher 7 decimales apres la virgule, 6 donne une precision au metre ce qui est le max du gps
+					ssd1306_SetCursor(32, 40);
+					ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
+					snprintf((char *)bufferscreen,15, "Longitude:");
+					ssd1306_SetCursor(32, 48);
+					ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
+					snprintf((char *)bufferscreen,15, "%0.7f",myData.longitude);
+					ssd1306_SetCursor(32, 56);
+					ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
+
 				  if(BTN_B>=1){
 				  					  posstate++;
 				  					  BTN_B=0;
@@ -356,30 +304,21 @@ void statemachine(void){
 
 				  break;
 			  case STATE_ALT:
-				  if(myData.fix == 1){
-				  				  char * str = (char*)malloc(sizeof(char)*20);//tout le long, on utilisera le meme buffer str pour tous les affichages
+
+
 				  						ssd1306_SetCursor(32, 32);
-				  						snprintf(str,15, "altitude:");
-				  						ssd1306_WriteString(str, Font_6x8, White);
-				  						snprintf(str,15, "%0.1f m",myData.altitude);//pas forcement utile d'afficher 7 decimales apres la virgule, 6 donne une precision au metre ce qui est le max du gps
+				  						snprintf((char *)bufferscreen,15, "altitude:");
+				  						ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
+				  						snprintf((char *)bufferscreen,15, "%0.1f m",myData.altitude);//pas forcement utile d'afficher 7 decimales apres la virgule, 6 donne une precision au metre ce qui est le max du gps
 				  						ssd1306_SetCursor(32, 40);
-				  						ssd1306_WriteString(str, Font_6x8, White);
-				  						snprintf(str,15, "Pressure:");
+				  						ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
+				  						snprintf((char *)bufferscreen,15, "Pressure:");
 				  						ssd1306_SetCursor(32, 48);
-				  						ssd1306_WriteString(str, Font_6x8, White);
-				  						snprintf(str,15, "%0.1fhpa",1000*expf((-0.0001148)*(myData.altitude)));
+				  						ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
+				  						snprintf((char *)bufferscreen,15, "%0.1fhpa",1000*expf((-0.0001148)*(myData.altitude)));
 				  						ssd1306_SetCursor(32, 56);
-				  						ssd1306_WriteString(str, Font_6x8, White);
-				  						free(str);
-				  					}
-				  				else{ //if the GPS doesn't have a fix, print a message
-				  						char *str = (char*)malloc(sizeof(char)*20);
-				  						ssd1306_SetCursor(32, 32);
-				  						ssd1306_WriteString("Pos4", Font_6x8, White);
-				  						ssd1306_SetCursor(32, 44);
-				  						ssd1306_WriteString("Wait GPS", Font_6x8, White);
-				  						free(str);
-				  					}
+				  						ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
+
 				  if(BTN_B>=1){
 				  					posstate--;
 				  					posstate--;
@@ -413,47 +352,30 @@ void statemachine(void){
 			  nmea_parse(&myData, DataBuffer);
 			  if(settimeen==0){
 
-						  if(myData.fix==1){
 							settimeen=1;
 							HR=(myData.lastMeasure[0]&0x0f)*10+(myData.lastMeasure[1]&0x0f);
 							MINUTE=(myData.lastMeasure[2]&0x0f)*10+(myData.lastMeasure[3]&0x0f);
 							SEC=(myData.lastMeasure[4]&0x0f)*10+(myData.lastMeasure[5]&0x0f);
-
-						  }
 
 
 
 					  }
 
 
-
-			  if(myData.fix == 0){
-				  ssd1306_SetCursor(32, 32);
-				  ssd1306_WriteString("no fix", Font_6x8, White);
-
-			  }
-			  else{
-
 				  ssd1306_SetCursor(32, 32);
 				  ssd1306_WriteString("hr GMT:", Font_6x8, White);
 
-
-			  }
 
 
 
 				  switch(hrstate){
 				  case STATE_DIGIT:
-					  char * str = (char*)malloc(sizeof(char)*20);
-
-
 					 ssd1306_SetCursor(32, 42);
-					 snprintf(str,15, "%02d:%02d",HR,MINUTE);
-					ssd1306_WriteString(str, Font_7x10, White);
+					 snprintf((char *)bufferscreen,15, "%02d:%02d",HR,MINUTE);
+					ssd1306_WriteString((char *)bufferscreen, Font_7x10, White);
 					ssd1306_SetCursor(32, 50);
-					snprintf(str,15, "%02d sec",SEC);
-					ssd1306_WriteString(str, Font_6x8, White);
-					free(str);
+					snprintf((char *)bufferscreen,15, "%02d sec",SEC);
+					ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
 					if(BTN_B>=1){
 												hrstate++;
 												BTN_B=0;
@@ -504,31 +426,16 @@ void statemachine(void){
 		  case STATE_INFO:
 			  ssd1306_Fill(Black);
 			  nmea_parse(&myData, DataBuffer);
-			  if(myData.fix == 1){ //if the GPS has a fix, print the data
-			 			 						char * str = (char*)malloc(sizeof(char)*20);
-			 			 						snprintf(str,15, "hdop=%.1f",myData.hdop);//sert a	connaitre la qualitée du fix si proche de 1 voir inférieur alors le fix est tres bon
-			 			 						ssd1306_SetCursor(32, 32);
-			 			 						ssd1306_WriteString(str, Font_6x8, White);
-			 			 						snprintf(str,20, "v=%0.2fV",vbat);
-			 			 						ssd1306_SetCursor(32, 42);
-			 			 						ssd1306_WriteString(str, Font_6x8, White);
-			 			 						ssd1306_SetCursor(32, 50);
-			 			 						snprintf(str,15,  "T=%0.2fC",temp);
-			 			 						ssd1306_WriteString(str, Font_6x8, White);
-			 			 						free(str);
-			 			 					}
-			 			 	else{ //if the GPS doesn't have a fix, print a message
-			 			 						char *str = (char*)malloc(sizeof(char)*20);
-			 			 						ssd1306_SetCursor(32, 32);
-			 			 						ssd1306_WriteString("INFO", Font_6x8, White);
-			 			 						ssd1306_SetCursor(32, 41);
-			 			 						snprintf(str,15, "vbat=%0.2fV",vbat);
-			 			 						ssd1306_WriteString(str, Font_6x8, White);
-			 			 						ssd1306_SetCursor(32, 50);
-			 			 						snprintf(str,15, "T=%0.2fC",temp);
-			 			 						ssd1306_WriteString(str, Font_6x8, White);
-			 			 						free(str);
-			 			 					}
+			snprintf((char *)bufferscreen,15, "hdop=%.1f",myData.hdop);//sert a	connaitre la qualitée du fix si proche de 1 voir inférieur alors le fix est tres bon
+			ssd1306_SetCursor(32, 32);
+			ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
+			snprintf((char *)bufferscreen,20, "v=%0.2fV",vbat);
+			ssd1306_SetCursor(32, 42);
+			ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
+			ssd1306_SetCursor(32, 50);
+			snprintf((char *)bufferscreen,15,  "T=%0.2fC",temp);
+			ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
+
 			  if(BTN_A>=1){
 			  		state++;
 			  		BTN_A=0;
@@ -546,7 +453,6 @@ void statemachine(void){
 
 			  ssd1306_Fill(Black);
 			  ssd1306_SetCursor(32, 32);
-			  char *str = (char*)malloc(sizeof(char)*20);
 			  ssd1306_WriteString("chrono", Font_6x8, White);
 			  ssd1306_SetCursor(32, 40);
 
@@ -555,6 +461,7 @@ void statemachine(void){
 				  min=0;
 				  seconde=0;
 				  calctime=0;
+
 				  	 if(BTN_B>=1){
 				  		chronostate++;
 				  		BTN_B=0;
@@ -565,7 +472,7 @@ void statemachine(void){
 
 				  break;
 			  case STATE_RUN:
-				  calctime=uwTick-starttime;
+				  calctime=uwTick-starttime+timehandler;
 
 				  if(BTN_B>=1){
 				  		chronostate++;
@@ -575,23 +482,32 @@ void statemachine(void){
 
 				  break;
 			  case STATE_PAUSE:
+				  timehandler=calctime;
+
 				  if(BTN_B>=1){
 				  			chronostate--;
-				  			chronostate--;
 				  			BTN_B=0;
+				  			starttime=uwTick;
+
 			 }
+				  if(BTN_B_LONG>=1){
+				  				  	chronostate--;
+				  				  	chronostate--;
+				  				  	BTN_B_LONG=0;
+				  				  	timehandler=0;
+				  			 }
+
 
 				  break;
 			  }
 
 			  min=floor((float) calctime/60000);
 			  seconde=(float) ((calctime-(min*60000))/1000);
-			  snprintf(str,15, "%0.0fmin",min);
-			  ssd1306_WriteString(str, Font_7x10, White);
+			  snprintf((char *)bufferscreen,15, "%0.0fmin",min);
+			  ssd1306_WriteString((char *)bufferscreen, Font_7x10, White);
 			  ssd1306_SetCursor(32, 50);
-			  snprintf(str,15, "%0.3fsec",seconde);
-			  ssd1306_WriteString(str, Font_6x8, White);
-			  free(str);
+			  snprintf((char *)bufferscreen,15, "%0.3fs",seconde);
+			  ssd1306_WriteString((char *)bufferscreen, Font_7x10, White);
 
 
 			  if(BTN_A>=1){
@@ -723,11 +639,11 @@ void statemachine(void){
 					 	  		cptdoubledonnee=0;
 					 	  	 }
 					 	erasetime=HAL_GetTick()-erasetime;
-					 	if(maxtesttime<=erasetime){
-					 		maxtesttime=erasetime;
-					 	}
-					 	snprintf((char  *)bufferscreen,50,"%d",maxtesttime);
-					 	ssd1306_WriteString((char *)bufferscreen,Font_6x8,White);
+//					 	if(maxtesttime<=erasetime){
+//					 		maxtesttime=erasetime;
+//					 	}
+//					 	snprintf((char  *)bufferscreen,50,"%d",maxtesttime);
+//					 	ssd1306_WriteString((char *)bufferscreen,Font_6x8,White);
 
 
 
@@ -944,45 +860,16 @@ void statemachine(void){
 					  ssd1306_Fill(Black);
 					  ssd1306_SetCursor(32,32);
 					  ssd1306_WriteString("test",Font_6x8,White);
-
-
-					  if(BTN_B>=1){
-						  ssd1306_Fill(Black);
-						  ssd1306_SetCursor(32,40);
-						  uint8_t dataBA=0;
-						  HAL_I2C_Mem_Read(&hi2c1, 0xBA, 0x0F, 1, &dataBA, 1, 100);
-						  snprintf((char  *)bufferscreen,50,"BA=%d",dataBA);
-						  ssd1306_WriteString((char *)bufferscreen,Font_6x8,White);
-						  ssd1306_UpdateScreen();
-						  HAL_Delay(1000);
-
-
-
-						  //HAL_I2C_DeInit(&hi2c1);
-						  //HAL_I2C_Init(&hi2c1);
-						  //HAL_Delay(20);
-						  //barostatecheck=PADS_continuous_init(&hi2c1);
-
-
-						  BTN_B=0;
-					  }
-
-					  barostatecheck=PADS_continuous_read(&hi2c1);
-					  //ssd1306_SetCursor(32,40);
-					  //snprintf((char  *)bufferscreen,50,"c=%d",barostatecheck);
-					  //ssd1306_WriteString((char *)bufferscreen,Font_6x8,White);
-					  ssd1306_SetCursor(32,48);
-					  snprintf((char  *)bufferscreen,50,"alt=%d",(int)floor(alt));
+					  memcpy((char  *)longbufferscreen,"ceci est un text plutot long, qui ne s'arrette toujours pas et pourtant il s'affiche complet",sizeof("ceci est un text plutot long, qui ne s'arrette toujours pas et pourtant il s'affiche complet"));
+					  scrolltextmax=scrollText(longbufferscreen,Font_7x10,32,40,32,offsetforscroltext);
+					  ssd1306_SetCursor(32,55);
+					  snprintf((char *)bufferscreen,50,"%d",offsetforscroltext);
 					  ssd1306_WriteString((char *)bufferscreen,Font_6x8,White);
 
-					  ssd1306_SetCursor(32,56);
-					  snprintf((char  *)bufferscreen,50,"alt=%0.2lf",(double)alt);
-					  ssd1306_WriteString((char *)bufferscreen,Font_6x8,White);
-				  HAL_Delay(1000);
-//				  if(barostatecheck>=1){
-//					  barostatecheck=PADS_continuous_init(&hi2c1);
-//					  barostatecheck=0;
-//				  }
+
+					  if(offsetforscroltext>=scrolltextmax+16){
+					  	  offsetforscroltext=0;
+					                }
 
 
 

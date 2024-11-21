@@ -111,6 +111,7 @@ void ssd1306_Drawarrow(uint8_t x,uint8_t y, uint8_t type,SSD1306_COLOR color);
 void ssd1306_Drawarrow2(uint8_t x,uint8_t y, uint8_t r,float angle);
 void batterygauge(float vbat,int x, int y,int currentsquare);
 void percentage(float percent);
+uint16_t scrollText(uint8_t *text,FontDef Font,uint8_t x,uint8_t y,uint8_t widthonscreen,uint16_t offset);
 
 /**
  * @brief Sets the contrast of the display.

@@ -197,7 +197,7 @@ void HAL_SPI_MspDeInit(SPI_HandleTypeDef* spiHandle)
 /* USER CODE BEGIN 1 */
 int csvframe(uint8_t* buffer,float temp,float vbat,GPS * gpsdata,int otherval1,float otherval2){
 	int framesize=0;
-	framesize=snprintf((uint8_t*)buffer,256, "%0.2f,%0.3f,%0.2f,%0.7f,%0.7f,%0.2f,%d,%0.2f,%d-%02d-%02dT%02d:%02d:%02d.00+02:00\n\r",temp,vbat,(gpsdata->speed)*3.6,gpsdata->latitude,gpsdata->longitude,gpsdata->altitude,otherval1,otherval2,ANNEE,MOIS,JOURS,HR,MINUTE,SEC);
+	framesize=snprintf((char *)buffer,256, "%0.2f,%0.3f,%0.2f,%0.7f,%0.7f,%0.2f,%d,%0.2f,%d-%02d-%02dT%02d:%02d:%02d.00+02:00\n\r",temp,vbat,(gpsdata->speed)*3.6,gpsdata->latitude,gpsdata->longitude,gpsdata->altitude,otherval1,otherval2,ANNEE,MOIS,JOURS,HR,MINUTE,SEC);
 	return framesize;
 }
 
@@ -206,7 +206,7 @@ void storeindex(void){
 	int writepage=MAX_WRITE_PAGE+1;
 	uint8_t writebuffer[100];
 	memset((uint8_t*)writebuffer,'\0',100);
-	snprintf((uint8_t*)writebuffer,100, "%d$%d$",pageoffset,pagenumber);
+	snprintf((char *)writebuffer,100, "%d$%d$",pageoffset,pagenumber);
 	SPIF_EraseSector(&hspif1, (int)floor((writepage)/16));
 	SPIF_WritePage(&hspif1,writepage, (uint8_t *)writebuffer, 100,0);
 
@@ -233,8 +233,8 @@ void getindex(void){
 		  		  cnt++;
 		  	  }
 
-		 pageoffset=atoi((uint8_t*)numbuf1);
-		 pagenumber=atoi((uint8_t*)numbuf2);
+		 pageoffset=atoi((char *)numbuf1);
+		 pagenumber=atoi((char *)numbuf2);
 	}
 	else{
 		storeindex();

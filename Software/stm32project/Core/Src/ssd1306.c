@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>  // For memcpy
 
-extern char str[20];
+extern uint8_t bufferscreen[50];
 
 void ssd1306_Reset(void) {
     /* for I2C - do nothing */
@@ -721,11 +721,34 @@ void batterygauge(float vbat,int x, int y,int currentsquare){
 void percentage(float percent){
 	ssd1306_FillRectangle(32, 40, floor(0.64*percent+32), 56, White);
 	ssd1306_DrawRectangle(32, 40, 95, 56, White);
-	snprintf((uint8_t *)str,20,"%0.2f %%",(float) percent);
+	snprintf((char  *)bufferscreen,20,"%0.2f %%",(float) percent);
 	ssd1306_SetCursor(45,44);
-	ssd1306_WriteString((uint8_t*)str,Font_6x8,White);
+	ssd1306_WriteString((char  *)bufferscreen,Font_6x8,White);
 
 
 }
 
+
+uint16_t scrollText(uint8_t *text,FontDef Font,uint8_t x,uint8_t y,uint8_t widthonscreen,uint16_t offset) {
+    uint8_t text_len = strlen((char *)text);
+    uint16_t text_width = text_len * Font.FontWidth;
+
+        for (uint8_t i = x; i < widthonscreen; x++) {
+            for (uint8_t j = y; y < Font.FontHeight; y++) {
+                ssd1306_DrawPixel(i, j, Black);
+            }
+        }
+
+
+
+        for (uint8_t i = 0; i < text_len; i++) {
+            int32_t char_x = x+widthonscreen + (i * Font.FontWidth) - offset;
+
+            if (char_x >= x && char_x < x+widthonscreen) {
+                ssd1306_SetCursor(char_x, y);
+                ssd1306_WriteChar(text[i], Font, White);
+        }
+        }
+        return text_width;
+}
 
