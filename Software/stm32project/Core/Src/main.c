@@ -311,7 +311,7 @@ int main(void)
 
 	ssd1306_Init();
 
-	HAL_Delay(100);
+	HAL_Delay(10);
 	ssd1306_Fill(Black);
 
 	ssd1306_DrawBitmap(32, 32, startimg, 64, 64, White);
@@ -323,6 +323,9 @@ int main(void)
 	HAL_TIM_Base_Start_IT(&htim15);
 	HAL_TIM_Base_Start_IT(&htim6);
 
+	HAL_GPIO_WritePin(GPIOA,GPIO_PIN_1,GPIO_PIN_SET);
+
+	HAL_Delay(100);
 	HAL_UART_Abort(&hlpuart1);
 	HAL_UART_Receive_DMA(&hlpuart1, (uint8_t *)RxBuffer, RxBuffer_SIZE);
 

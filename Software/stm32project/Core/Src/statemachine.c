@@ -816,7 +816,7 @@ void statemachine(void){
 				 						CDC_Transmit_FS((uint8_t   * )flashread,pageoffset);
 				 						HAL_Delay(125);
 				 						int taillefin=0;
-										taillefin = snprintf((char  *)usbbuffer,64,"kawakobeme\n\r");
+										taillefin = snprintf((char  *)usbbuffer,64,"findetrame\n\r");
 				 						CDC_Transmit_FS((char  *)usbbuffer,taillefin);
 
 				 						usbtransmiten=1;
