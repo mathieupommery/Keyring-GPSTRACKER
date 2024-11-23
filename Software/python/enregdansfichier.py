@@ -2,11 +2,10 @@ from serial import Serial
 import time
 import matplotlib.pyplot as plt
 import numpy as np
-import gpxpy
-import gpxpy.gpx
 from matplotlib.animation import FuncAnimation
-
-ser = Serial('COM19')
+import xml.etree.ElementTree as ET
+from xml.dom import minidom
+ser = Serial('COM12')
 print("connected to: " + ser.portstr)
 count=1
 array=[]
@@ -20,17 +19,22 @@ handler=0.0
 
 try:
     # Ouvre le fichier en mode ajout
-    with open("donnees_recue.txt", "a") as fichier:
+    with open("test1.txt", "a") as fichier:
         while True:
             if ser.in_waiting > 0:  # Vérifie s'il y a des données à lire
                 ligne = ser.readline().decode('utf-8').strip()  # Lit une ligne et la décode
                 fichier.write(ligne + "\n")
                 data_array = ligne.split(',')
-                if(len(data_array)==8):
-                    data_array = [float(x) for x in data_array]
+                if(len(data_array)==9):
+                    string=data_array[8]
+                    data_array = [float(data_array[i]) for i in range (len(data_array)-1)]
+                    data_array.append(string)
                     array.append(data_array)
                 else:
                     print("problem")
+                if(ligne == "findetrame"):
+                    print(ligne)
+                    break
 except KeyboardInterrupt:
     print("Arrêt par l'utilisateur")
 finally:
@@ -49,25 +53,25 @@ x_data, y_data = [], []
 line, = ax.plot([], [], lw=2)
 
 
-fig, axs = plt.subplots(3, 1, figsize=(8, 12))
-
-axs[0].plot(timearray, speedarray, color="blue")
-axs[0].set_title("temps")
-axs[0].set_ylabel("speed")
-
-# Deuxième graphique
-axs[1].plot(timearray, vbat, color="green")
-axs[1].set_title("temps")
-axs[1].set_ylabel("vbat")
-
-# Troisième graphique
-axs[2].plot(timearray, altitude, color="red")
-axs[2].set_title("temps")
-axs[2].set_ylabel("altitude")
-
-plt.tight_layout()
-
-plt.show()
+# fig, axs = plt.subplots(3, 1, figsize=(8, 12))
+# 
+# axs[0].plot(timearray, speedarray, color="blue")
+# axs[0].set_title("temps")
+# axs[0].set_ylabel("speed")
+# 
+# # Deuxième graphique
+# axs[1].plot(timearray, vbat, color="green")
+# axs[1].set_title("temps")
+# axs[1].set_ylabel("vbat")
+# 
+# # Troisième graphique
+# axs[2].plot(timearray, altitude, color="red")
+# axs[2].set_title("temps")
+# axs[2].set_ylabel("altitude")
+# 
+# plt.tight_layout()
+# 
+# plt.show()
 # coordonnees=[]  
 # 
 # for i in range(len(array)):
@@ -95,4 +99,43 @@ plt.show()
 # 
 # print("Fichier GPX créé avec succès.")
 # 
-# 
+#
+
+
+
+
+def create_gpx(data, output_filename="test1.gpx"):
+    # Créer l'élément racine GPX
+    gpx = ET.Element("gpx", version="1.1", creator="PythonGPX")
+    trk = ET.SubElement(gpx, "trk")
+    trkseg = ET.SubElement(trk, "trkseg")
+
+    # Itérer sur chaque entrée dans les données
+    for entry in data:
+        # Extraire les champs requis
+        print(entry)
+        timestamp = str(entry[8])
+        print(timestamp)# 9e position : temps
+        latitude = entry[3]       # 4e position : latitude
+        longitude = entry[4]      # 5e position : longitude
+        altitude = entry[5]       # 6e position : altitude
+
+        # Créer un point de tracé (trkpt)
+        trkpt = ET.SubElement(trkseg, "trkpt", lat=str(latitude), lon=str(longitude))
+        ET.SubElement(trkpt, "ele").text = str(altitude)  # Élément pour l'altitude
+        ET.SubElement(trkpt, "time").text = timestamp     # Élément pour le temps
+
+    # Convertir en chaîne XML et indenter
+    xml_str = ET.tostring(gpx, encoding="utf-8")
+    parsed_xml = minidom.parseString(xml_str)
+    pretty_xml_str = parsed_xml.toprettyxml(indent="  ")
+
+    # Sauvegarder dans un fichier
+    with open(output_filename, "w") as file:
+        file.write(pretty_xml_str)
+
+# Exemple d'utilisation avec des données fictives
+
+
+create_gpx(array)
+print("Fichier GPX généré : output.gpx")

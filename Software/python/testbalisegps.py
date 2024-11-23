@@ -6,7 +6,7 @@ import gpxpy
 import gpxpy.gpx
 from matplotlib.animation import FuncAnimation
 
-ser = Serial('COM19')
+ser = Serial('COM12')
 print("connected to: " + ser.portstr)
 count=1
 array=[]
@@ -21,12 +21,18 @@ handler=0.0
 while True:
     ligne = ser.readline().decode('utf-8').strip()
     data_array = ligne.split(',')
-    if(len(data_array)==8):
-        data_array = [float(x) for x in data_array]
+    
+    if(len(data_array)==9):
+        string=data_array[8]
+        data_array = [float(data_array[i]) for i in range (len(data_array)-1)]
+        data_array.append(string)        
         array.append(data_array)
             
     else:
         print("problem")
+    if(ligne == "findetrame"):
+        print(ligne)
+        break
     if not ligne:
         print("Aucune donnée reçue. Fin de la lecture.")
         break
@@ -34,6 +40,41 @@ while True:
         print(len(array))
 ser.close()
 print("Port série fermé.")
+
+
+for i in range (len(array)):
+    speedarray.append(array[i][2])
+    vbat.append(array[i][1])
+    altitude.append(array[i][5])
+    timearray.append(i)
+    if(i>0):
+        speedarray[i]=(speedarray[i-1]+array[i][2])/2
+
+fig, ax = plt.subplots()
+x_data, y_data = [], []
+line, = ax.plot([], [], lw=2)
+
+
+fig, axs = plt.subplots(3, 1, figsize=(8, 12))
+
+axs[0].plot(timearray, speedarray, color="blue")
+axs[0].set_title("temps")
+axs[0].set_ylabel("speed")
+
+# Deuxième graphique
+axs[1].plot(timearray, vbat, color="green")
+axs[1].set_title("temps")
+axs[1].set_ylabel("vbat")
+
+# Troisième graphique
+axs[2].plot(timearray, altitude, color="red")
+axs[2].set_title("temps")
+axs[2].set_ylabel("altitude")
+
+plt.tight_layout()
+
+plt.show()
+
 
 coordonnees=[]  
 
@@ -59,13 +100,11 @@ for lat, lon, ele in coordonnees:
     segment.points.append(point)
 
 # Écrire le fichier GPX
-with open("coursesamedi.gpx", "w") as f:
+with open("train.gpx", "w") as f:
     f.write(gpx.to_xml())
 
 print("Fichier GPX créé avec succès.")
  
-
-
 # for i in range (len(array)):
 #     speedarray.append(array[i][2]*3.6)
 #     vbat.append(array[i][1])
