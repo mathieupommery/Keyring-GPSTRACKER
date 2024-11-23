@@ -15,10 +15,12 @@
 #include <stdio.h>
 #include "usbd_def.h"
 #include "usbd_core.h"
+#include "usbd_cdc_if.h"
 #include "spif.h"
 #include "spi.h"
 #include "tim.h"
 #include "PADS.h"
+#include "usb.h"
 
 
 
@@ -110,6 +112,10 @@ extern uint8_t JOURS;
 extern uint8_t MOIS;
 extern uint16_t ANNEE;
 extern int settimeen;
+
+
+int gputemp=0;
+int gpupower=0;
 
 
 
@@ -856,6 +862,51 @@ void statemachine(void){
 				 				  }
 				  break;
 
+
+
+				  case STATE_MONITOR:
+					  ssd1306_Fill(Black);
+					  ssd1306_SetCursor(32,32);
+					  ssd1306_WriteString("gputemp",Font_6x8,White);
+
+					  usbbuffer[60]='$';
+					  getgpu((uint8_t  *)usbbuffer);
+					  ssd1306_SetCursor(32,40);
+					  snprintf((char  *)bufferscreen,50,"T=%d*C",gputemp);
+					  ssd1306_WriteString((char  *)bufferscreen,Font_7x10,White);
+					  ssd1306_SetCursor(32,50);
+					  snprintf((char  *)bufferscreen,50,"p=%dW",(int) gpupower);
+					  ssd1306_WriteString((char  *)bufferscreen,Font_7x10,White);
+					  //snprintf((char  *)longbufferscreen,150,"gputemp=%d et gpupower=%0.2f",gputemp,gpupower);
+					  //scrolltextmax=scrollText(longbufferscreen,Font_7x10,32,40,63,offsetforscroltext);
+
+
+
+
+					  if(BTN_A>=1){
+					 				 									  			 	state++;
+					 				 									  			 	BTN_A=0;
+					 				 									  			 	BTN_B=0;
+					 				 									  	}
+					 				 					if(BTN_A_LONG>=1){
+					 				 									 									  			 	state--;
+					 				 									 									  			 	BTN_A=0;
+					 				 									 									  			 	BTN_B=0;
+					 				 									 									  			 	BTN_A_LONG=0;
+					 				 									 									  	}
+
+
+					  break;
+
+
+
+
+
+
+
+
+
+
 				  case STATE_TEST:
 					  ssd1306_Fill(Black);
 					  ssd1306_SetCursor(32,32);
@@ -877,6 +928,7 @@ void statemachine(void){
 
 
 					  if(BTN_A>=1){
+					 				 									state--;
 					 				 									state--;
 					 				 									state--;
 					 				 									state--;
