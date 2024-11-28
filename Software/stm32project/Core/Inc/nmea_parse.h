@@ -33,6 +33,7 @@ void nmea_parse(GPS *gps_data, uint8_t *buffer);
 int nmea_GNRMC(GPS *gps_data, char*inputString);
 void nmea_speed(GPS *gps_data, uint8_t *buffer);
 double distancecalc(double lat1, double lat2, double long1, double long2);
+uint16_t checksumcalculate(uint8_t * cmdbuffer);
 #endif //STM32_SERIAL_DMA_NEO6M_PARSE_H
 
 

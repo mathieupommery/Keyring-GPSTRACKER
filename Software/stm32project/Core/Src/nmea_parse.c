@@ -200,6 +200,39 @@ double distancecalc(double lat1, double lat2, double long1, double long2){
 	return distance;
 }
 
+uint16_t checksumcalculate(uint8_t * cmdbuffer){
+	int index=0;
+	uint16_t checksum=0;
+	uint8_t checksum1=0;
+	uint8_t checksum2=0;
+	while(cmdbuffer[index]!='$'){
+		index++;
+	}
+	index++;
+	while(cmdbuffer[index]!='*'){
+		checksum^=cmdbuffer[index];
+		index++;
+	}
+	index++;
+	checksum1=(uint8_t) floor(checksum/16);
+	checksum2=(uint8_t) (checksum%16);
+
+	if(checksum1==0){
+		cmdbuffer[index]=checksum2;
+	}
+	else{
+		cmdbuffer[index]=checksum1;
+		index++;
+		cmdbuffer[index]=checksum2;
+	}
+	index++;
+	cmdbuffer[index]='\r';
+	index++;
+	cmdbuffer[index]='\n';
+	return checksum;
+}
+
+
 
 
 

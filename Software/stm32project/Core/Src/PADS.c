@@ -11,9 +11,12 @@
 #include "math.h"
 
 
-double finaltemp=0;
-double finalpress=0;
-double alt=0;
+float finaltemp=0;
+float finalpress=0;
+float alt=0;
+
+int inttemp=0;
+int intpress=0;
 
 
 
@@ -76,10 +79,13 @@ uint8_t PADS_single(I2C_HandleTypeDef *i2c){
 
 	intbufferpres=(recarray[2]<<16)|(recarray[1]<<8)|(recarray[0]);
 	intbuffertemp=(recarray[4]<<8)|(recarray[3]);
-	finaltemp=(double)intbuffertemp*0.01;
-	finalpress=(double) intbufferpres*(0.00002441406);
+	inttemp=intbuffertemp;
+	intpress=intbufferpres;
 
-	alt=(double)(298.15/0.0065)*(1-pow((double)(finalpress*1000)/101325.0, (double)(287.05*0.0065)/9.80665));
+	finaltemp=(float)intbuffertemp*0.01;
+	finalpress=(float) intbufferpres*(0.00002441406);
+
+	alt=(float)(298.15/0.0065)*(1-powf((float)(finalpress*1000)/101325.0, (float)(287.05*0.0065)/9.80665));
 
 	return check;
 
@@ -152,13 +158,13 @@ uint8_t PADS_continuous_read(I2C_HandleTypeDef *i2c){
 
 		intbufferpres=(recarray[2]<<16)|(recarray[1]<<8)|(recarray[0]);
 		intbuffertemp=(recarray[4]<<8)|(recarray[3]);
-		finaltemp=(double)intbuffertemp*0.01;
-		finalpress=(double) intbufferpres*(0.00002441406);
+		finaltemp=(float)intbuffertemp*0.01;
+		finalpress=(float) intbufferpres*(0.00002441406);
 
 		//alt=(double)(288.15/0.0065)*(1-pow((double)(finalpress*1000.0)/101325.0, (double)(287.05*0.0065)/(9.80665)));
-		alt=(double) ((8.314*293.15)/(9.80665*0.028964))*log((double)101325.0/(finalpress*1000.0));
-		tmoy=(double) 293.15+finaltemp+(0.0065*alt)/2;
-		alt=(double) ((8.314*tmoy)/(9.80665*0.028964))*log((double)101325.0/(finalpress*1000.0));
+		alt=(float) ((8.314*293.15)/(9.80665*0.028964))*logf((float)101325.0/(finalpress*1000.0));
+		tmoy=(float) 293.15+finaltemp+(0.0065*alt)/2;
+		alt=(float) ((8.314*tmoy)/(9.80665*0.028964))*logf((float)101325.0/(finalpress*1000.0));
 
 
 

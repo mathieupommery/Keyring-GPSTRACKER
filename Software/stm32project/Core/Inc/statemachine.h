@@ -27,6 +27,8 @@ typedef enum{
 	STATE_BALISE,
 	STATE_USB,
 	STATE_MONITOR,
+	STATE_TARVOS,
+	STATE_BARO,
 	STATE_TEST
 
 
@@ -96,6 +98,20 @@ typedef enum{
 	BALISESTATE3
 
 }BALISESTATE;
+
+typedef enum{
+	TARVOS1,
+	TARVOS2,
+	TARVOS3
+
+}TARVOSSTATE;
+
+typedef enum{
+	BARO1,
+	BARO2
+
+}BAROSTATE;
+
 
 typedef struct
 {

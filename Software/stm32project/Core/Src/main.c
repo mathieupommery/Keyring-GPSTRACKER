@@ -69,6 +69,8 @@ CHRONO chronostate=STATE_RESET;
 KEYBOARD keyboardstate=STATE_MARCHE;
 USBSTATE usbstate=USBSTATE1;
 BALISESTATE balisestate=BALISESTATE1;
+TARVOSSTATE tarvosstate=TARVOS1;
+BAROSTATE barostate=BARO1;
 
 
 uint16_t oldPos = 0;
@@ -306,6 +308,10 @@ int main(void)
   MX_TIM6_Init();
   MX_TIM15_Init();
   /* USER CODE BEGIN 2 */
+  HAL_UART_Abort(&huart1);
+  HAL_UART_DeInit(&huart1);
+
+  HAL_I2C_DeInit(&hi2c1);
 
 
 

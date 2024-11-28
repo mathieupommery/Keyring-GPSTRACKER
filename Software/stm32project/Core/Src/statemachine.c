@@ -31,6 +31,7 @@ extern DMA_HandleTypeDef hdma_lpuart_rx;
 extern SPIF_HandleTypeDef hspif1;
 extern TIM_HandleTypeDef htim7;
 extern I2C_HandleTypeDef hi2c1;
+extern UART_HandleTypeDef huart1;
 
 
 extern uint8_t DataBuffer[DataBuffer_SIZE];
@@ -51,6 +52,8 @@ extern CHRONO chronostate;
 extern GIF gifstate;
 extern USBSTATE usbstate;
 extern BALISESTATE balisestate;
+extern TARVOSSTATE tarvosstate;
+extern BAROSTATE barostate;
 
 
 extern int BTN_A;
@@ -113,9 +116,17 @@ extern uint8_t MOIS;
 extern uint16_t ANNEE;
 extern int settimeen;
 
+extern int inttemp;
+extern int intpress;
+
+
 
 int gputemp=0;
 int gpupower=0;
+
+uint8_t tarvosbuf[50];
+int correctentarvos=0;
+int i2cerrcheck=0;
 
 
 
@@ -215,6 +226,9 @@ void statemachine(void){
 				 					BTN_B=0;
 				  	}
 				 	 if(BTN_A_LONG>=1){
+				 						 				 									state++;
+				 						 				 									state++;
+				 						 				 									state++;
 				 						 				 									state++;
 				 						 				 									state++;
 				 						 				 									state++;
@@ -877,10 +891,6 @@ void statemachine(void){
 					  ssd1306_SetCursor(32,50);
 					  snprintf((char  *)bufferscreen,50,"p=%dW",(int) gpupower);
 					  ssd1306_WriteString((char  *)bufferscreen,Font_7x10,White);
-					  //snprintf((char  *)longbufferscreen,150,"gputemp=%d et gpupower=%0.2f",gputemp,gpupower);
-					  //scrolltextmax=scrollText(longbufferscreen,Font_7x10,32,40,63,offsetforscroltext);
-
-
 
 
 					  if(BTN_A>=1){
@@ -899,12 +909,253 @@ void statemachine(void){
 					  break;
 
 
+				  case STATE_TARVOS:
+					  ssd1306_Fill(Black);
+					  				  ssd1306_SetCursor(32,32);
+					  				  ssd1306_WriteString("tarvos",Font_6x8,White);
+					  				  switch(tarvosstate){
+					  				 				  case TARVOS1:
+					  				 					  ssd1306_SetCursor(32,40);
+					  				 					  ssd1306_WriteString("push B",Font_6x8,White);
+
+
+					  									  if(BTN_A>=1){
+					  											state++;
+					  											BTN_A=0;
+					  											BTN_B=0;
+					  									  }
+					  									if(BTN_A_LONG>=1){
+					  											state--;
+					  											BTN_A=0;
+					  											BTN_B=0;
+					  											BTN_A_LONG=0;
+					  									}
 
 
 
 
 
 
+
+
+					  				 					  if(BTN_B_LONG>=1){
+
+					  				 						 huart1.Instance = USART1;
+					  				 						 huart1.Init.BaudRate = 115200;
+					  				 						 huart1.Init.WordLength = UART_WORDLENGTH_8B;
+					  				 						 huart1.Init.StopBits = UART_STOPBITS_1;
+					  				 						 huart1.Init.Parity = UART_PARITY_NONE;
+					  				 						 huart1.Init.Mode = UART_MODE_TX_RX;
+					  				 						 huart1.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+					  				 						 huart1.Init.OverSampling = UART_OVERSAMPLING_16;
+					  				 						 huart1.Init.OneBitSampling = UART_ONE_BIT_SAMPLE_DISABLE;
+					  				 						 huart1.AdvancedInit.AdvFeatureInit = UART_ADVFEATURE_NO_INIT;
+					  				 						  if (HAL_UART_Init(&huart1) != HAL_OK)
+					  				 						  {
+					  				 						ssd1306_Fill(Black);
+					  				 						 ssd1306_WriteString("problem",Font_6x8,White);
+					  				 						ssd1306_UpdateScreen();
+					  				 						HAL_Delay(1500);
+					  				 						correctentarvos=0;
+
+					  				 						  }
+					  				 						  else{
+					  				 							correctentarvos=1;
+					  				 						  }
+					  				 						  HAL_Delay(10);
+					  				 						  tarvosstate++;
+					  				 						BTN_B_LONG=0;
+					  				 						BTN_A=0;
+					  				 					  }
+
+
+
+					  				 					  break;
+					  				 				  case TARVOS2:
+
+					  				 					 ssd1306_SetCursor(32,40);
+					  				 					ssd1306_WriteString("send1",Font_6x8,White);
+
+					  				 					if(correctentarvos==1){
+
+					  				 					snprintf((char  *)tarvosbuf,50,"cputemp=%0.2f\n\r",temp);
+					  				 					HAL_UART_Transmit(&huart1,(uint8_t  *)tarvosbuf,sizeof(tarvosbuf),HAL_MAX_DELAY);
+					  				 					HAL_Delay(1000);
+
+
+					  				 					}
+					  				 					if(BTN_B>=1){
+
+					  					 						tarvosstate++;
+					  					 						  BTN_B=0;
+					  					 						  BTN_A=0;
+					  					 					  }
+
+					  				 			  break;
+
+					  				 				 case TARVOS3:
+
+					  				 					ssd1306_Fill(Black);
+					  				 					ssd1306_SetCursor(32,40);
+					  				 					ssd1306_WriteString("send2",Font_6x8,White);
+
+					  				 					if(correctentarvos==1){
+
+					  				 						snprintf((char  *)tarvosbuf,50,"je suis à =%0.2f\n\r",vbat);
+					  				 						HAL_UART_Transmit(&huart1,(uint8_t  *)tarvosbuf,sizeof(tarvosbuf),HAL_MAX_DELAY);
+					  				 						HAL_Delay(1000);
+
+
+
+
+					  				 					}
+
+
+
+
+					  				 					if(BTN_B>=1){
+					  				 									 						tarvosstate--;
+					  				 									 						  BTN_B=0;
+					  				 									 						  BTN_A=0;
+					  				 									 					  }
+					  				 					if(BTN_B_LONG>=1){
+					  				 						HAL_UART_Abort(&huart1);
+					  				 						HAL_UART_DeInit(&huart1);
+					  				 										  				 									 						tarvosstate--;
+					  				 										  				 									 					tarvosstate--;
+					  				 										  				 									 						  BTN_B_LONG=0;
+					  				 										  				 									 						  BTN_B=0;
+					  				 										  				 									 						  BTN_A=0;
+					  				 										  				 									 					  }
+
+					  				 					 break;
+					  				 				  }
+
+
+
+
+
+
+
+					  break;
+
+
+
+					  				 case STATE_BARO:
+					  									  ssd1306_Fill(Black);
+					  									  				  ssd1306_SetCursor(32,32);
+					  									  				  ssd1306_WriteString("baro",Font_6x8,White);
+					  									  				  switch(barostate){
+					  									  				 				  case BARO1:
+					  									  				 					  ssd1306_SetCursor(32,40);
+					  									  				 					  ssd1306_WriteString("push B",Font_6x8,White);
+
+
+					  									  									  if(BTN_A>=1){
+					  									  											state++;
+					  									  											BTN_A=0;
+					  									  											BTN_B=0;
+					  									  									  }
+					  									  									if(BTN_A_LONG>=1){
+					  									  											state--;
+					  									  											BTN_A=0;
+					  									  											BTN_B=0;
+					  									  											BTN_A_LONG=0;
+					  									  									}
+
+
+
+
+
+
+
+
+					  									  				 					  if(BTN_B_LONG>=1){
+
+					  									  				 					 hi2c1.Instance = I2C1;
+					  									  				 					  hi2c1.Init.Timing = 0x00202538;
+					  									  				 					  hi2c1.Init.OwnAddress1 = 0;
+					  									  				 					  hi2c1.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
+					  									  				 					  hi2c1.Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;
+					  									  				 					  hi2c1.Init.OwnAddress2 = 0;
+					  									  				 					  hi2c1.Init.OwnAddress2Masks = I2C_OA2_NOMASK;
+					  									  				 					  hi2c1.Init.GeneralCallMode = I2C_GENERALCALL_DISABLE;
+					  									  				 					  hi2c1.Init.NoStretchMode = I2C_NOSTRETCH_DISABLE;
+					  									  				 					  if (HAL_I2C_Init(&hi2c1) != HAL_OK)
+					  									  				 					  {
+					  									  				 						i2cerrcheck=1;
+					  									  				 					  }
+					  									  				 					  if (HAL_I2CEx_ConfigAnalogFilter(&hi2c1, I2C_ANALOGFILTER_ENABLE) != HAL_OK)
+					  									  				 					  {
+					  									  				 						i2cerrcheck=1;
+					  									  				 					  }
+
+					  									  				 					  if (HAL_I2CEx_ConfigDigitalFilter(&hi2c1, 0) != HAL_OK)
+					  									  				 					  {
+					  									  				 						i2cerrcheck=1;
+					  									  				 					  }
+
+					  									  				 					  if(i2cerrcheck>=1){
+					  									  				 						ssd1306_Fill(Black);
+					  									  				 						 ssd1306_WriteString("problem",Font_6x8,White);
+					  									  				 						ssd1306_UpdateScreen();
+					  									  				 						HAL_Delay(1500);
+
+					  									  				 						  }
+					  									  				 					  else{
+					  									  				 						HAL_Delay(10);
+					  									  				 						  barostate++;
+					  									  				 						PADS_continuous_init(&hi2c1);
+
+					  									  				 					  }
+					  									  				 					BTN_B_LONG=0;
+					  									  				 					BTN_A=0;
+
+					  									  				 					  }
+
+
+
+					  									  				 					  break;
+					  									  				 				  case BARO2:
+
+					  									  				 					 ssd1306_SetCursor(32,40);
+					  									  				 					ssd1306_WriteString("read",Font_6x8,White);
+
+
+
+
+
+					  									  				 					if(i2cerrcheck==0){
+
+					  									  				 					PADS_continuous_read(&hi2c1);
+
+					  									  				 				ssd1306_SetCursor(32,48);
+
+					  									  				 			snprintf((char  *)bufferscreen,50,"t=%d",inttemp);
+					  									  				 			ssd1306_WriteString((char  *)bufferscreen,Font_6x8,White);
+					  									  				 			snprintf((char  *)bufferscreen,50,"p=%d",intpress);
+					  									  				 		ssd1306_SetCursor(32,56);
+					  									  				 	ssd1306_WriteString((char  *)bufferscreen,Font_6x8,White);
+					  									  				 	HAL_Delay(500);
+
+
+					  									  				 					}
+					  									  				 					if(BTN_B_LONG>=1){
+
+					  									  				 					HAL_I2C_DeInit(&hi2c1);
+
+					  									  					 						barostate--;
+					  									  					 						  BTN_B_LONG=0;
+					  									  					 						  BTN_A=0;
+
+					  									  					 					  }
+
+					  									  				 			  break;
+
+
+					  									  				 				  }
+
+					  									  break;
 
 
 				  case STATE_TEST:
@@ -928,6 +1179,8 @@ void statemachine(void){
 
 
 					  if(BTN_A>=1){
+					 				 									state--;
+					 				 									state--;
 					 				 									state--;
 					 				 									state--;
 					 				 									state--;
