@@ -1,0 +1,7 @@
+../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_rcc.h:2883:22:LL_RCC_EnableRTC	4	static
+../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_rcc.h:2893:22:LL_RCC_DisableRTC	4	static
+../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_bus.h:939:22:LL_APB1_GRP1_EnableClock	24	static
+../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_bus.h:1038:22:LL_APB1_GRP1_DisableClock	16	static
+../Core/Src/rtc.c:30:6:MX_RTC_Init	8	static
+../Core/Src/rtc.c:68:6:HAL_RTC_MspInit	96	static
+../Core/Src/rtc.c:100:6:HAL_RTC_MspDeInit	16	static

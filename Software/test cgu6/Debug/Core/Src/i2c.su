@@ -1,7 +1,0 @@
-../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_bus.h:539:22:LL_AHB2_GRP1_EnableClock	24	static
-../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_bus.h:939:22:LL_APB1_GRP1_EnableClock	24	static
-../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_bus.h:1038:22:LL_APB1_GRP1_DisableClock	16	static
-../Core/Src/i2c.c:31:6:MX_I2C1_Init	8	static
-../Core/Src/i2c.c:74:6:MX_I2C3_Init	8	static
-../Core/Src/i2c.c:117:6:HAL_I2C_MspInit	120	static
-../Core/Src/i2c.c:198:6:HAL_I2C_MspDeInit	16	static
