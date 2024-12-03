@@ -17,7 +17,6 @@
 ../Core/Src/stm32wbxx_it.c:337:6:TIM1_TRG_COM_TIM17_IRQHandler	8	static
 ../Core/Src/stm32wbxx_it.c:354:6:SPI1_IRQHandler	8	static
 ../Core/Src/stm32wbxx_it.c:368:6:LPUART1_IRQHandler	8	static
-../Core/Src/stm32wbxx_it.c:382:6:EXTI15_10_IRQHandler	8	static
-../Core/Src/stm32wbxx_it.c:397:6:IPCC_C1_RX_IRQHandler	8	static
-../Core/Src/stm32wbxx_it.c:411:6:IPCC_C1_TX_IRQHandler	8	static
-../Core/Src/stm32wbxx_it.c:425:6:HSEM_IRQHandler	8	static
+../Core/Src/stm32wbxx_it.c:382:6:IPCC_C1_RX_IRQHandler	8	static
+../Core/Src/stm32wbxx_it.c:396:6:IPCC_C1_TX_IRQHandler	8	static
+../Core/Src/stm32wbxx_it.c:410:6:HSEM_IRQHandler	8	static

@@ -27,4 +27,6 @@
 ../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_cortex.c:370:13:HAL_SYSTICK_Callback	1
 ../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_cortex.c:382:6:HAL_MPU_Disable	1
 ../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_cortex.c:405:6:HAL_MPU_Enable	1
-../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_cortex.c:424:6:HAL_MPU_ConfigRegion	2
+../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_cortex.c:422:6:HAL_MPU_EnableRegion	1
+../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_cortex.c:438:6:HAL_MPU_DisableRegion	1
+../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_cortex.c:456:6:HAL_MPU_ConfigRegion	1

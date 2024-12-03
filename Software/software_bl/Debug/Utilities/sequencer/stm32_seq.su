@@ -15,4 +15,4 @@
 ../Utilities/sequencer/stm32_seq.c:482:13:UTIL_SEQ_Idle	4	static
 ../Utilities/sequencer/stm32_seq.c:487:13:UTIL_SEQ_PreIdle	4	static
 ../Utilities/sequencer/stm32_seq.c:495:13:UTIL_SEQ_PostIdle	4	static
-../Utilities/sequencer/stm32_seq.c:518:9:SEQ_BitPosition	24	static
+../Utilities/sequencer/stm32_seq.c:537:9:SEQ_BitPosition	24	static

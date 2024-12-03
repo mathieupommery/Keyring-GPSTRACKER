@@ -65,7 +65,6 @@ void TIM1_UP_TIM16_IRQHandler(void);
 void TIM1_TRG_COM_TIM17_IRQHandler(void);
 void SPI1_IRQHandler(void);
 void LPUART1_IRQHandler(void);
-void EXTI15_10_IRQHandler(void);
 void IPCC_C1_RX_IRQHandler(void);
 void IPCC_C1_TX_IRQHandler(void);
 void HSEM_IRQHandler(void);
