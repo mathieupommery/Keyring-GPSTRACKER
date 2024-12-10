@@ -1,5 +1,6 @@
-../Core/Src/main.c:207:6:HAL_GPIO_EXTI_Callback	7
-../Core/Src/main.c:266:5:main	1
-../Core/Src/main.c:379:6:SystemClock_Config	3
-../Core/Src/main.c:429:6:PeriphCommonClock_Config	2
-../Core/Src/main.c:465:6:Error_Handler	1
+../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_hsem.h:233:26:LL_HSEM_1StepLock	2
+../Core/Src/main.c:214:6:HAL_GPIO_EXTI_Callback	7
+../Core/Src/main.c:273:5:main	1
+../Core/Src/main.c:386:6:SystemClock_Config	3
+../Core/Src/main.c:436:6:PeriphCommonClock_Config	2
+../Core/Src/main.c:473:6:Error_Handler	1

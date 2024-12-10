@@ -1,5 +1,6 @@
-../Core/Src/main.c:207:6:HAL_GPIO_EXTI_Callback	16	static
-../Core/Src/main.c:266:5:main	16	static
-../Core/Src/main.c:379:6:SystemClock_Config	112	static
-../Core/Src/main.c:429:6:PeriphCommonClock_Config	88	static
-../Core/Src/main.c:465:6:Error_Handler	4	static,ignoring_inline_asm
+../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_hsem.h:233:26:LL_HSEM_1StepLock	16	static
+../Core/Src/main.c:214:6:HAL_GPIO_EXTI_Callback	16	static
+../Core/Src/main.c:273:5:main	16	static
+../Core/Src/main.c:386:6:SystemClock_Config	112	static
+../Core/Src/main.c:436:6:PeriphCommonClock_Config	88	static
+../Core/Src/main.c:473:6:Error_Handler	4	static,ignoring_inline_asm
