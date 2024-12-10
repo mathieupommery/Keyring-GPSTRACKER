@@ -1,12 +1,11 @@
 /*****************************************************************************
  * @file    ble_gap_aci.c
- * @author  MDG
  * @brief   STM32WB BLE API (gap_aci)
  *          Auto-generated file: do not edit!
  *****************************************************************************
  * @attention
  *
- * Copyright (c) 2018-2023 STMicroelectronics.
+ * Copyright (c) 2018-2024 STMicroelectronics.
  * All rights reserved.
  *
  * This software is licensed under terms that can be found in the LICENSE file
@@ -1295,6 +1294,30 @@ tBleStatus aci_gap_add_devices_to_list( uint8_t Num_of_List_Entries,
   Osal_MemSet( &rq, 0, sizeof(rq) );
   rq.ogf = 0x3f;
   rq.ocf = 0x0ab;
+  rq.cparam = cmd_buffer;
+  rq.clen = index_input;
+  rq.rparam = &status;
+  rq.rlen = 1;
+  if ( hci_send_req(&rq, FALSE) < 0 )
+    return BLE_STATUS_TIMEOUT;
+  return status;
+}
+
+tBleStatus aci_gap_pairing_request_reply( uint16_t Connection_Handle,
+                                          uint8_t Accept )
+{
+  struct hci_request rq;
+  uint8_t cmd_buffer[BLE_CMD_MAX_PARAM_LEN];
+  aci_gap_pairing_request_reply_cp0 *cp0 = (aci_gap_pairing_request_reply_cp0*)(cmd_buffer);
+  tBleStatus status = 0;
+  int index_input = 0;
+  cp0->Connection_Handle = Connection_Handle;
+  index_input += 2;
+  cp0->Accept = Accept;
+  index_input += 1;
+  Osal_MemSet( &rq, 0, sizeof(rq) );
+  rq.ogf = 0x3f;
+  rq.ocf = 0x0ad;
   rq.cparam = cmd_buffer;
   rq.clen = index_input;
   rq.rparam = &status;

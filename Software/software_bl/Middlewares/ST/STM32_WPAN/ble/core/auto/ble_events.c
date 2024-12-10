@@ -1,12 +1,11 @@
 /*****************************************************************************
  * @file    ble_events.c
- * @author  MDG
  * @brief   STM32WB BLE API (event callbacks)
  *          Auto-generated file: do not edit!
  *****************************************************************************
  * @attention
  *
- * Copyright (c) 2018-2023 STMicroelectronics.
+ * Copyright (c) 2018-2024 STMicroelectronics.
  * All rights reserved.
  *
  * This software is licensed under terms that can be found in the LICENSE file
@@ -54,6 +53,7 @@ static void aci_gap_proc_complete_event_process( const uint8_t* in );
 static void aci_gap_addr_not_resolved_event_process( const uint8_t* in );
 static void aci_gap_numeric_comparison_value_event_process( const uint8_t* in );
 static void aci_gap_keypress_notification_event_process( const uint8_t* in );
+static void aci_gap_pairing_request_event_process( const uint8_t* in );
 static void aci_l2cap_connection_update_resp_event_process( const uint8_t* in );
 static void aci_l2cap_proc_timeout_event_process( const uint8_t* in );
 static void aci_l2cap_connection_update_req_event_process( const uint8_t* in );
@@ -144,6 +144,7 @@ const hci_event_table_t hci_vs_event_table[HCI_VS_EVENT_TABLE_SIZE] =
   { 0x0408U, aci_gap_addr_not_resolved_event_process },
   { 0x0409U, aci_gap_numeric_comparison_value_event_process },
   { 0x040AU, aci_gap_keypress_notification_event_process },
+  { 0x040BU, aci_gap_pairing_request_event_process },
   { 0x0800U, aci_l2cap_connection_update_resp_event_process },
   { 0x0801U, aci_l2cap_proc_timeout_event_process },
   { 0x0802U, aci_l2cap_connection_update_req_event_process },
@@ -319,14 +320,14 @@ static void hci_le_advertising_report_event_process( const uint8_t* in )
   hci_le_advertising_report_event_rp0 *rp0 = (void*)in;
   Advertising_Report_t Advertising_Report[1];
   int i;
-  for ( i = 0; i < rp0->Num_Reports; i++ ) 
+  for ( i = 0; i < rp0->Num_Reports; i++ )
   {
     in += 1;
     Osal_MemCpy( (void*)&Advertising_Report[0], (const void*)in, 9 );
     Advertising_Report[0].Data = &in[9];
     in += 9 + in[8];
     Advertising_Report[0].RSSI = in[0];
-    hci_le_advertising_report_event( 1, Advertising_Report );
+    (void)hci_le_advertising_report_event( 1, Advertising_Report );
   }
 }
 
@@ -772,6 +773,22 @@ static void aci_gap_keypress_notification_event_process( const uint8_t* in )
   aci_gap_keypress_notification_event_rp0 *rp0 = (void*)in;
   aci_gap_keypress_notification_event( rp0->Connection_Handle,
                                        rp0->Notification_Type );
+}
+
+/* ACI_GAP_PAIRING_REQUEST_EVENT callback function */
+__WEAK void aci_gap_pairing_request_event( uint16_t Connection_Handle,
+                                           uint8_t Bonded,
+                                           uint8_t Auth_Req )
+{
+}
+
+/* ACI_GAP_PAIRING_REQUEST_EVENT process function */
+static void aci_gap_pairing_request_event_process( const uint8_t* in )
+{
+  aci_gap_pairing_request_event_rp0 *rp0 = (void*)in;
+  aci_gap_pairing_request_event( rp0->Connection_Handle,
+                                 rp0->Bonded,
+                                 rp0->Auth_Req );
 }
 
 /* ACI_L2CAP_CONNECTION_UPDATE_RESP_EVENT callback function */

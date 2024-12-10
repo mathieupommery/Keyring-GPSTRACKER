@@ -225,9 +225,10 @@ uint8_t index_con_int, mutex;
 /**
  * Advertising Data
  */
-uint8_t a_AdvData[12] =
+uint8_t a_AdvData[14] =
 {
-  11, AD_TYPE_COMPLETE_LOCAL_NAME, 'B', 'A', 'L', 'I', 'S', 'E', '-', 'G', 'P', 'S',  /* Complete name */
+  2, AD_TYPE_TX_POWER_LEVEL, 4 /* 4dBm */, /* Transmission Power */
+  10, AD_TYPE_COMPLETE_LOCAL_NAME, 'B', 'A', 'L', 'I', 'S', 'E', 'G', 'P', 'S',  /* Complete name */
 
 };
 
@@ -466,6 +467,20 @@ SVCCTL_UserEvtFlowStatus_t SVCCTL_App_Notification(void *p_Pckt)
       break; /* HCI_DISCONNECTION_COMPLETE_EVT_CODE */
     }
 
+    case HCI_HARDWARE_ERROR_EVT_CODE:
+    {
+      hci_hardware_error_event_rp0 *p_hardware_error_event;
+
+      p_hardware_error_event = (hci_hardware_error_event_rp0 *)p_event_pckt->data;
+	  UNUSED(p_hardware_error_event);
+      APP_DBG_MSG(">>== HCI_HARDWARE_ERROR_EVT_CODE\n");
+      APP_DBG_MSG("Hardware Code = 0x%02X\n",p_hardware_error_event->Hardware_Code);
+      /* USER CODE BEGIN HCI_EVT_LE_HARDWARE_ERROR */
+
+      /* USER CODE END HCI_EVT_LE_HARDWARE_ERROR */
+      break; /* HCI_HARDWARE_ERROR_EVT_CODE */
+    }
+
     case HCI_LE_META_EVT_CODE:
     {
       p_meta_evt = (evt_le_meta_event*) p_event_pckt->data;
@@ -648,7 +663,26 @@ SVCCTL_UserEvtFlowStatus_t SVCCTL_App_Notification(void *p_Pckt)
           /* USER CODE END ACI_GAP_PAIRING_COMPLETE_VSEVT_CODE*/
           break;
         /* PAIRING */
+        case ACI_GATT_INDICATION_VSEVT_CODE:
+        {
+          APP_DBG_MSG(">>== ACI_GATT_INDICATION_VSEVT_CODE \r");
+          aci_gatt_confirm_indication(BleApplicationContext.BleApplicationContext_legacy.connectionHandle);
+        }
+        break;
 
+        case ACI_HAL_FW_ERROR_VSEVT_CODE:
+        {
+          aci_hal_fw_error_event_rp0 *p_fw_error_event;
+
+	      p_fw_error_event = (aci_hal_fw_error_event_rp0 *)p_blecore_evt->data;
+		  UNUSED(p_fw_error_event);
+          APP_DBG_MSG(">>== ACI_HAL_FW_ERROR_VSEVT_CODE\n");
+          APP_DBG_MSG("FW Error Type = 0x%02X\n", p_fw_error_event->FW_Error_Type);
+	      /* USER CODE BEGIN ACI_HAL_FW_ERROR_VSEVT_CODE */
+
+          /* USER CODE END ACI_HAL_FW_ERROR_VSEVT_CODE */
+          break;
+        }
         /* USER CODE BEGIN BLUE_EVT */
 
         /* USER CODE END BLUE_EVT */
@@ -742,46 +776,6 @@ static void Ble_Hci_Gap_Gatt_Init(void)
    * The lowest 32bits is read from the UDN to differentiate between devices
    * The RNG may be used to provide a random number on each power on
    */
-#if (CFG_IDENTITY_ADDRESS == GAP_STATIC_RANDOM_ADDR)
-#if defined(CFG_STATIC_RANDOM_ADDRESS)
-  a_srd_bd_addr[0] = CFG_STATIC_RANDOM_ADDRESS & 0xFFFFFFFF;
-  a_srd_bd_addr[1] = (uint32_t)((uint64_t)CFG_STATIC_RANDOM_ADDRESS >> 32);
-  a_srd_bd_addr[1] |= 0xC000; /* The two upper bits shall be set to 1 */
-#else
-  /* Get RNG semaphore */
-  while(LL_HSEM_1StepLock(HSEM, CFG_HW_RNG_SEMID));
-
-  /* Enable RNG */
-  __HAL_RNG_ENABLE(&hrng);
-
-  /* Enable HSI48 oscillator */
-  LL_RCC_HSI48_Enable();
-  /* Wait until HSI48 is ready */
-  while(! LL_RCC_HSI48_IsReady());
-
-  if (HAL_RNG_GenerateRandomNumber(&hrng, &a_srd_bd_addr[1]) != HAL_OK)
-  {
-    /* Random number generation error */
-    Error_Handler();
-  }
-  if (HAL_RNG_GenerateRandomNumber(&hrng, &a_srd_bd_addr[0]) != HAL_OK)
-  {
-    /* Random number generation error */
-    Error_Handler();
-  }
-  a_srd_bd_addr[1] |= 0xC000; /* The two upper bits shall be set to 1 */
-
-  /* Disable HSI48 oscillator */
-  LL_RCC_HSI48_Disable();
-
-  /* Disable RNG */
-  __HAL_RNG_DISABLE(&hrng);
-
-  /* Release RNG semaphore */
-  LL_HSEM_ReleaseLock(HSEM, CFG_HW_RNG_SEMID, 0);
-#endif /* CFG_STATIC_RANDOM_ADDRESS */
-#endif
-
 #if (CFG_BLE_ADDRESS_TYPE != GAP_PUBLIC_ADDR)
 
   ret = aci_hal_write_config_data(CONFIG_DATA_RANDOM_ADDRESS_OFFSET, CONFIG_DATA_RANDOM_ADDRESS_LEN, (uint8_t*)a_srd_bd_addr);

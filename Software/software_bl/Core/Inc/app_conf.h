@@ -30,13 +30,12 @@
 /******************************************************************************
  * Application Config
  ******************************************************************************/
-
 /**< generic parameters ******************************************************/
 
 /**
  * Define Tx Power
  */
-#define CFG_TX_POWER                      (0x18) /* -0.15dBm */
+#define CFG_TX_POWER                      (0x1D) /* 4dBm */
 
 /**
  * Define Advertising parameters
@@ -47,7 +46,6 @@
  * Define BD_ADDR type: define proper address. Can only be GAP_PUBLIC_ADDR (0x00) or GAP_STATIC_RANDOM_ADDR (0x01)
  */
 #define CFG_IDENTITY_ADDRESS              GAP_PUBLIC_ADDR
-
 /**
  * Define privacy: PRIVACY_DISABLED or PRIVACY_ENABLED
  */
@@ -68,7 +66,6 @@
 #define ADV_TYPE                          ADV_IND
 #define BLE_ADDR_TYPE                     GAP_PUBLIC_ADDR
 #define ADV_FILTER                        NO_WHITE_LIST_USE
-
 /**
  * Define IO Authentication
  */
@@ -123,8 +120,8 @@
 /**
  * Device name configuration for Generic Access Service
  */
-#define CFG_GAP_DEVICE_NAME             "TEMPLATE"
-#define CFG_GAP_DEVICE_NAME_LENGTH      (8)
+#define CFG_GAP_DEVICE_NAME             "BALISE"
+#define CFG_GAP_DEVICE_NAME_LENGTH      (6)
 
 /**
  * Define PHY
@@ -647,7 +644,7 @@ typedef enum
 #define MAX_DBG_TRACE_MSG_SIZE   1024
 
 /* USER CODE BEGIN Defines */
-
+#define CFG_BLE_LSE_SOURCE (SHCI_C2_BLE_INIT_CFG_BLE_LSE_CALIB | SHCI_C2_BLE_INIT_CFG_BLE_LSE_OTHER_DEV)
 /* USER CODE END Defines */
 
 /******************************************************************************
@@ -698,6 +695,7 @@ typedef enum
   /* USER CODE BEGIN CFG_SCH_Prio_Id_t */
 
   /* USER CODE END CFG_SCH_Prio_Id_t */
+  CFG_SCH_PRIO_NBR
 } CFG_SCH_Prio_Id_t;
 
 /**
@@ -736,4 +734,3 @@ typedef enum
 #define CFG_OTP_END_ADRESS      OTP_AREA_END_ADDR
 
 #endif /*APP_CONF_H */
-

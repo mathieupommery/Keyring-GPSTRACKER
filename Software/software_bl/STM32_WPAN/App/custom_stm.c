@@ -36,6 +36,7 @@ typedef struct{
 /* USER CODE END Context */
 }CustomContext_t;
 
+extern uint16_t Connection_Handle;
 /* USER CODE BEGIN PTD */
 
 /* USER CODE END PTD */
@@ -63,7 +64,7 @@ typedef struct{
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
-uint8_t SizeCharwrite = 1;
+uint16_t SizeCharwrite = 1;
 
 /**
  * START of Section BLE_DRIVER_CONTEXT
@@ -80,6 +81,8 @@ static CustomContext_t CustomContext;
 
 /* Private function prototypes -----------------------------------------------*/
 static SVCCTL_EvtAckStatus_t Custom_STM_Event_Handler(void *pckt);
+
+static tBleStatus Generic_STM_App_Update_Char_Ext(uint16_t ConnectionHandle, uint16_t ServiceHandle, uint16_t CharHandle, uint16_t CharValueLen, uint8_t *pPayload);
 
 /* USER CODE BEGIN PFP */
 
@@ -100,14 +103,6 @@ do {\
     uuid_struct[12] = uuid_12; uuid_struct[13] = uuid_13; uuid_struct[14] = uuid_14; uuid_struct[15] = uuid_15; \
 }while(0)
 
-/* Hardware Characteristics Service */
-/*
- The following 128bits UUIDs have been generated from the random UUID
- generator:
- D973F2E0-B19E-11E2-9E96-0800200C9A66: Service 128bits UUID
- D973F2E1-B19E-11E2-9E96-0800200C9A66: Characteristic_1 128bits UUID
- D973F2E2-B19E-11E2-9E96-0800200C9A66: Characteristic_2 128bits UUID
- */
 #define COPY_BPSERVICE_UUID(uuid_struct)          COPY_UUID_128(uuid_struct,0x00,0x00,0x00,0x00,0xcc,0x7a,0x48,0x2a,0x98,0x4a,0x7f,0x2e,0xd5,0xb3,0xe5,0x8f)
 #define COPY_CHARWRITE_UUID(uuid_struct)    COPY_UUID_128(uuid_struct,0x00,0x00,0x00,0x00,0x8e,0x22,0x45,0x41,0x9d,0x4c,0x21,0xed,0xae,0x82,0xed,0x19)
 
@@ -126,6 +121,7 @@ static SVCCTL_EvtAckStatus_t Custom_STM_Event_Handler(void *Event)
   hci_event_pckt *event_pckt;
   evt_blecore_aci *blecore_evt;
   aci_gatt_attribute_modified_event_rp0 *attribute_modified;
+  aci_gatt_notification_complete_event_rp0    *notification_complete;
   Custom_STM_App_Notification_evt_t     Notification;
   /* USER CODE BEGIN Custom_STM_Event_Handler_1 */
 
@@ -174,6 +170,22 @@ static SVCCTL_EvtAckStatus_t Custom_STM_Event_Handler(void *Event)
 
           /* USER CODE END EVT_BLUE_GATT_WRITE_PERMIT_REQ_END */
           break;
+
+		case ACI_GATT_NOTIFICATION_COMPLETE_VSEVT_CODE:
+        {
+          /* USER CODE BEGIN EVT_BLUE_GATT_NOTIFICATION_COMPLETE_BEGIN */
+
+          /* USER CODE END EVT_BLUE_GATT_NOTIFICATION_COMPLETE_BEGIN */
+          notification_complete = (aci_gatt_notification_complete_event_rp0*)blecore_evt->data;
+          Notification.Custom_Evt_Opcode = CUSTOM_STM_NOTIFICATION_COMPLETE_EVT;
+          Notification.AttrHandle = notification_complete->Attr_Handle;
+          Custom_STM_App_Notification(&Notification);
+          /* USER CODE BEGIN EVT_BLUE_GATT_NOTIFICATION_COMPLETE_END */
+
+          /* USER CODE END EVT_BLUE_GATT_NOTIFICATION_COMPLETE_END */
+          break;
+        }
+
         /* USER CODE BEGIN BLECORE_EVT */
 
         /* USER CODE END BLECORE_EVT */
@@ -284,7 +296,7 @@ void SVCCTL_InitCustomSvc(void)
     APP_DBG_MSG("  Success: aci_gatt_add_char command   : CHARWRITE \n\r");
   }
 
-  /* USER CODE BEGIN SVCCTL_Init_Service1_Char1/ */
+  /* USER CODE BEGIN SVCCTL_Init_Service1_Char1 */
   /* Place holder for Characteristic Descriptors */
 
   /* USER CODE END SVCCTL_Init_Service1_Char1 */
@@ -341,3 +353,166 @@ tBleStatus Custom_STM_App_Update_Char(Custom_STM_Char_Opcode_t CharOpcode, uint8
 
   return ret;
 }
+
+/**
+ * @brief  Characteristic update
+ * @param  CharOpcode: Characteristic identifier
+ * @param  pPayload: Characteristic value
+ * @param  size: Length of the characteristic value in octets
+ *
+ */
+tBleStatus Custom_STM_App_Update_Char_Variable_Length(Custom_STM_Char_Opcode_t CharOpcode, uint8_t *pPayload, uint8_t size)
+{
+  tBleStatus ret = BLE_STATUS_INVALID_PARAMS;
+  /* USER CODE BEGIN Custom_STM_App_Update_Char_Variable_Length_1 */
+
+  /* USER CODE END Custom_STM_App_Update_Char_Variable_Length_1 */
+
+  switch (CharOpcode)
+  {
+
+    case CUSTOM_STM_CHARWRITE:
+      ret = aci_gatt_update_char_value(CustomContext.CustomBpserviceHdle,
+                                       CustomContext.CustomCharwriteHdle,
+                                       0, /* charValOffset */
+                                       size, /* charValueLen */
+                                       (uint8_t *)  pPayload);
+      if (ret != BLE_STATUS_SUCCESS)
+      {
+        APP_DBG_MSG("  Fail   : aci_gatt_update_char_value CHARWRITE command, result : 0x%x \n\r", ret);
+      }
+      else
+      {
+        APP_DBG_MSG("  Success: aci_gatt_update_char_value CHARWRITE command\n\r");
+      }
+      /* USER CODE BEGIN Custom_STM_App_Update_Char_Variable_Length_Service_1_Char_1*/
+
+      /* USER CODE END Custom_STM_App_Update_Char_Variable_Length_Service_1_Char_1*/
+      break;
+
+    default:
+      break;
+  }
+
+  /* USER CODE BEGIN Custom_STM_App_Update_Char_Variable_Length_2 */
+
+  /* USER CODE END Custom_STM_App_Update_Char_Variable_Length_2 */
+
+  return ret;
+}
+
+/**
+ * @brief  Characteristic update
+ * @param  Connection_Handle
+ * @param  CharOpcode: Characteristic identifier
+ * @param  pPayload: Characteristic value
+ *
+ */
+tBleStatus Custom_STM_App_Update_Char_Ext(uint16_t Connection_Handle, Custom_STM_Char_Opcode_t CharOpcode, uint8_t *pPayload)
+{
+  tBleStatus ret = BLE_STATUS_INVALID_PARAMS;
+  /* USER CODE BEGIN Custom_STM_App_Update_Char_Ext_1 */
+
+  /* USER CODE END Custom_STM_App_Update_Char_Ext_1 */
+
+  switch (CharOpcode)
+  {
+
+    case CUSTOM_STM_CHARWRITE:
+      /* USER CODE BEGIN Updated_Length_Service_1_Char_1*/
+
+      /* USER CODE END Updated_Length_Service_1_Char_1*/
+	  Generic_STM_App_Update_Char_Ext(Connection_Handle, CustomContext.CustomBpserviceHdle, CustomContext.CustomCharwriteHdle, SizeCharwrite, pPayload);
+
+      break;
+
+    default:
+      break;
+  }
+
+  /* USER CODE BEGIN Custom_STM_App_Update_Char_Ext_2 */
+
+  /* USER CODE END Custom_STM_App_Update_Char_Ext_2 */
+
+  return ret;
+}
+
+static tBleStatus Generic_STM_App_Update_Char_Ext(uint16_t ConnectionHandle, uint16_t ServiceHandle, uint16_t CharHandle, uint16_t CharValueLen, uint8_t *pPayload)
+{
+  tBleStatus ret = BLE_STATUS_INVALID_PARAMS;
+
+  ret = aci_gatt_update_char_value_ext(ConnectionHandle,
+                                       ServiceHandle,
+                                       CharHandle,
+                                       0, /* update type:0 do not notify, 1 notify, 2 indicate */
+                                       CharValueLen, /* charValueLen */
+                                       0, /* value offset */
+                                       243, /* value length */
+                                       (uint8_t *)  pPayload);
+  if (ret != BLE_STATUS_SUCCESS)
+  {
+    APP_DBG_MSG("  Fail   : aci_gatt_update_char_value_ext command, part 1, result : 0x%x \n\r", ret);
+  }
+  else
+  {
+    APP_DBG_MSG("  Success: aci_gatt_update_char_value_ext command, part 1\n\r");
+  }
+  /* USER CODE BEGIN Custom_STM_App_Update_Char_Ext_Service_1_Char_1*/
+
+  if (CharValueLen-243<=243)
+  {
+    ret = aci_gatt_update_char_value_ext(ConnectionHandle,
+                                         ServiceHandle,
+                                         CharHandle,
+                                         1, /* update type:0 do not notify, 1 notify, 2 indicate */
+                                         CharValueLen, /* charValueLen */
+                                         243, /* value offset */
+                                         CharValueLen-243, /* value length */
+                                         (uint8_t *)  ((pPayload)+243));
+    if (ret != BLE_STATUS_SUCCESS)
+    {
+      APP_DBG_MSG("  Fail   : aci_gatt_update_char_value_ext command, part 2, result : 0x%x \n\r", ret);
+    }
+    else
+    {
+      APP_DBG_MSG("  Success: aci_gatt_update_char_value_ext command, part 2\n\r");
+    }
+  }
+  else
+  {
+    ret = aci_gatt_update_char_value_ext(ConnectionHandle,
+                                         ServiceHandle,
+                                         CharHandle,
+                                         0, /* update type:0 do not notify, 1 notify, 2 indicate */
+                                         CharValueLen, /* charValueLen */
+                                         243, /* value offset */
+                                         243, /* value length */
+                                         (uint8_t *)  ((pPayload)+243));
+    if (ret != BLE_STATUS_SUCCESS)
+    {
+      APP_DBG_MSG("  Fail   : aci_gatt_update_char_value_ext command, part 3, result : 0x%x \n\r", ret);
+    }
+    else
+    {
+      APP_DBG_MSG("  Success: aci_gatt_update_char_value_ext command, part 3\n\r");
+    }
+    ret = aci_gatt_update_char_value_ext(ConnectionHandle,
+                                         ServiceHandle,
+                                         CharHandle,
+                                         1, /* update type:0 do not notify, 1 notify, 2 indicate */
+                                         CharValueLen, /* charValueLen */
+                                         243+243, /* value offset */
+                                         CharValueLen-243-243, /* value length */
+                                         (uint8_t *)  ((pPayload)+243+243));
+    if (ret != BLE_STATUS_SUCCESS)
+    {
+      APP_DBG_MSG("  Fail   : aci_gatt_update_char_value_ext command, part 4, result : 0x%x \n\r", ret);
+    }
+    else
+    {
+      APP_DBG_MSG("  Success: aci_gatt_update_char_value_ext command, part 4\n\r");
+    }
+  }
+  return ret;
+}
+

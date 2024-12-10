@@ -1,12 +1,11 @@
 /*****************************************************************************
  * @file    ble_types.h
- * @author  MDG
  * @brief   STM32WB BLE command/event types
  *          Auto-generated file: do not edit!
  *****************************************************************************
  * @attention
  *
- * Copyright (c) 2018-2023 STMicroelectronics.
+ * Copyright (c) 2018-2024 STMicroelectronics.
  * All rights reserved.
  *
  * This software is licensed under terms that can be found in the LICENSE file
@@ -369,7 +368,7 @@ typedef __PACKED_STRUCT
   uint8_t Length_Data;
   /**
    * Octets of advertising or scan response data formatted as defined in
-   * Bluetooth spec. v.5.4 [Vol 3, Part C, 11].
+   * Bluetooth spec. [Vol 3, Part C, 11].
    */
   const uint8_t* Data;
   /**
@@ -1395,6 +1394,22 @@ typedef __PACKED_STRUCT
 
 typedef __PACKED_STRUCT
 {
+  uint8_t Mode;
+  uint8_t Key[16];
+  uint8_t IV[8];
+  uint16_t In_Data_Length;
+  uint8_t In_Data[BLE_CMD_MAX_PARAM_LEN - 27];
+} aci_hal_ead_encrypt_decrypt_cp0;
+
+typedef __PACKED_STRUCT
+{
+  uint8_t Status;
+  uint16_t Out_Data_Length;
+  uint8_t Out_Data[(BLE_EVT_MAX_PARAM_LEN - 3) - 3];
+} aci_hal_ead_encrypt_decrypt_rp0;
+
+typedef __PACKED_STRUCT
+{
   uint8_t Register_Address;
 } aci_hal_read_radio_reg_cp0;
 
@@ -1995,6 +2010,17 @@ typedef __PACKED_STRUCT
 {
   uint8_t Status;
 } aci_gap_add_devices_to_list_rp0;
+
+typedef __PACKED_STRUCT
+{
+  uint16_t Connection_Handle;
+  uint8_t Accept;
+} aci_gap_pairing_request_reply_cp0;
+
+typedef __PACKED_STRUCT
+{
+  uint8_t Status;
+} aci_gap_pairing_request_reply_rp0;
 
 typedef __PACKED_STRUCT
 {
@@ -3131,6 +3157,13 @@ typedef __PACKED_STRUCT
   uint16_t Connection_Handle;
   uint8_t Notification_Type;
 } aci_gap_keypress_notification_event_rp0;
+
+typedef __PACKED_STRUCT
+{
+  uint16_t Connection_Handle;
+  uint8_t Bonded;
+  uint8_t Auth_Req;
+} aci_gap_pairing_request_event_rp0;
 
 typedef __PACKED_STRUCT
 {

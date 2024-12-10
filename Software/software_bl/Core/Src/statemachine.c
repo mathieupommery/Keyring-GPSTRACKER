@@ -249,17 +249,17 @@ void statemachine(void){
 
 			  case STATE_SUMMARY1:
 
-						ssd1306_SetCursor(32, 32);
+						ssd1306_SetCursor(32, 12);
 						snprintf((char *)bufferscreen,15, "Latitude:");
 						ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
 						snprintf((char *)bufferscreen,15, "%0.7f",myData.latitude);//pas forcement utile d'afficher 7 decimales apres la virgule, 6 donne une precision au metre ce qui est le max du gps
-						ssd1306_SetCursor(32, 40);
+						ssd1306_SetCursor(32, 20);
 						ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
 						snprintf((char *)bufferscreen,15, "Longitude:");
-						ssd1306_SetCursor(32, 48);
+						ssd1306_SetCursor(32, 28);
 						ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
 						snprintf((char *)bufferscreen,15, "%0.7f",myData.longitude);
-						ssd1306_SetCursor(32, 56);
+						ssd1306_SetCursor(32, 36);
 						ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
 				  if(BTN_B>=1){
 					  posstate++;
@@ -272,17 +272,17 @@ void statemachine(void){
 
 				  break;
 			  case STATE_LAT:
-						ssd1306_SetCursor(32, 32);
+						ssd1306_SetCursor(32, 12);
 						snprintf((char *)bufferscreen,15, "LatSide:");
 						ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
 						snprintf((char *)bufferscreen,15, "%c",myData.latSide);//pas forcement utile d'afficher 7 decimales apres la virgule, 6 donne une precision au metre ce qui est le max du gps
-						ssd1306_SetCursor(32, 40);
+						ssd1306_SetCursor(32, 20);
 						ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
 						snprintf((char *)bufferscreen,15, "Latitude:");
-						ssd1306_SetCursor(32, 48);
+						ssd1306_SetCursor(32, 28);
 						ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
 						snprintf((char *)bufferscreen,15, "%0.7f",myData.latitude);
-						ssd1306_SetCursor(32, 56);
+						ssd1306_SetCursor(32, 36);
 						ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
 
 
@@ -300,17 +300,17 @@ void statemachine(void){
 				  break;
 			  case STATE_LONG:
 
-					ssd1306_SetCursor(32, 32);
+					ssd1306_SetCursor(32, 12);
 					snprintf((char *)bufferscreen,15, "LonSide:");
 					ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
 					snprintf((char *)bufferscreen,15, "%c",myData.lonSide);//pas forcement utile d'afficher 7 decimales apres la virgule, 6 donne une precision au metre ce qui est le max du gps
-					ssd1306_SetCursor(32, 40);
+					ssd1306_SetCursor(32, 20);
 					ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
 					snprintf((char *)bufferscreen,15, "Longitude:");
-					ssd1306_SetCursor(32, 48);
+					ssd1306_SetCursor(32, 28);
 					ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
 					snprintf((char *)bufferscreen,15, "%0.7f",myData.longitude);
-					ssd1306_SetCursor(32, 56);
+					ssd1306_SetCursor(32, 36);
 					ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
 
 				  if(BTN_B>=1){
@@ -326,17 +326,17 @@ void statemachine(void){
 			  case STATE_ALT:
 
 
-				  						ssd1306_SetCursor(32, 32);
+				  						ssd1306_SetCursor(32, 12);
 				  						snprintf((char *)bufferscreen,15, "altitude:");
 				  						ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
 				  						snprintf((char *)bufferscreen,15, "%0.1f m",myData.altitude);//pas forcement utile d'afficher 7 decimales apres la virgule, 6 donne une precision au metre ce qui est le max du gps
-				  						ssd1306_SetCursor(32, 40);
+				  						ssd1306_SetCursor(32, 20);
 				  						ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
 				  						snprintf((char *)bufferscreen,15, "Pressure:");
-				  						ssd1306_SetCursor(32, 48);
+				  						ssd1306_SetCursor(32, 28);
 				  						ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
 				  						snprintf((char *)bufferscreen,15, "%0.1fhpa",1000*expf((-0.0001148)*(myData.altitude)));
-				  						ssd1306_SetCursor(32, 56);
+				  						ssd1306_SetCursor(32, 36);
 				  						ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
 
 				  if(BTN_B>=1){
@@ -382,7 +382,7 @@ void statemachine(void){
 					  }
 
 
-				  ssd1306_SetCursor(32, 32);
+				  ssd1306_SetCursor(32, 12);
 				  ssd1306_WriteString("hr GMT:", Font_6x8, White);
 
 
@@ -390,10 +390,10 @@ void statemachine(void){
 
 				  switch(hrstate){
 				  case STATE_DIGIT:
-					 ssd1306_SetCursor(32, 42);
+					 ssd1306_SetCursor(32, 22);
 					 snprintf((char *)bufferscreen,15, "%02d:%02d",HR,MINUTE);
 					ssd1306_WriteString((char *)bufferscreen, Font_7x10, White);
-					ssd1306_SetCursor(32, 50);
+					ssd1306_SetCursor(32, 32);
 					snprintf((char *)bufferscreen,15, "%02d sec",SEC);
 					ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
 					if(BTN_B>=1){
@@ -447,12 +447,12 @@ void statemachine(void){
 			  ssd1306_Fill(Black);
 			  nmea_parse(&myData, DataBuffer);
 			snprintf((char *)bufferscreen,15, "hdop=%.1f",myData.hdop);//sert a	connaitre la qualitée du fix si proche de 1 voir inférieur alors le fix est tres bon
-			ssd1306_SetCursor(32, 32);
+			ssd1306_SetCursor(32, 12);
 			ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
 			snprintf((char *)bufferscreen,20, "v=%0.2fV",vbat);
-			ssd1306_SetCursor(32, 42);
+			ssd1306_SetCursor(32, 20);
 			ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
-			ssd1306_SetCursor(32, 50);
+			ssd1306_SetCursor(32, 28);
 			snprintf((char *)bufferscreen,15,  "T=%0.2fC",temp);
 			ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
 
@@ -472,9 +472,9 @@ void statemachine(void){
 		  case STATE_CHRONOMETER:
 
 			  ssd1306_Fill(Black);
-			  ssd1306_SetCursor(32, 32);
+			  ssd1306_SetCursor(32, 12);
 			  ssd1306_WriteString("chrono", Font_6x8, White);
-			  ssd1306_SetCursor(32, 40);
+			  ssd1306_SetCursor(32, 32);
 
 			  switch(chronostate){
 			  case STATE_RESET:
@@ -525,7 +525,7 @@ void statemachine(void){
 			  seconde=(float) ((calctime-(min*60000))/1000);
 			  snprintf((char *)bufferscreen,15, "%0.0fmin",min);
 			  ssd1306_WriteString((char *)bufferscreen, Font_7x10, White);
-			  ssd1306_SetCursor(32, 50);
+			  ssd1306_SetCursor(32, 44);
 			  snprintf((char *)bufferscreen,15, "%0.3fs",seconde);
 			  ssd1306_WriteString((char *)bufferscreen, Font_7x10, White);
 
@@ -558,9 +558,6 @@ void statemachine(void){
 						SEC=(myData.lastMeasure[4]&0x0f)*10+(myData.lastMeasure[5]&0x0f);
 
 					  }
-
-
-
 				  }
 
 
@@ -571,14 +568,14 @@ void statemachine(void){
 
 				  switch(balisestate){
 				  case BALISESTATE1:
-					  ssd1306_SetCursor(32,32);
+					  ssd1306_SetCursor(32,12);
 					  ssd1306_WriteString("Tracker",Font_6x8,White);
-					  snprintf((char *)bufferscreen,50, "off=%d",pageoffset);
-					  ssd1306_SetCursor(32,40);
-					  ssd1306_WriteString((char *)bufferscreen,Font_6x8,White);
+					  snprintf((char *)bufferscreen,50, "offset=%d",pageoffset);
+					  ssd1306_SetCursor(32,22);
+					  ssd1306_WriteString((char *)bufferscreen,Font_7x10,White);
 					  snprintf((char *)bufferscreen,50, "page=%d",pagenumber);
-					  ssd1306_SetCursor(32,48);
-					  ssd1306_WriteString((char *)bufferscreen,Font_6x8,White);
+					  ssd1306_SetCursor(32,32);
+					  ssd1306_WriteString((char *)bufferscreen,Font_7x10,White);
 
 					  if(BTN_B>=1){
 						balisestate++;
@@ -595,11 +592,11 @@ void statemachine(void){
 
 					  				  	}
 					  if(BTN_A_LONG>=1){
-					  				 									 									  			 	state--;
-					  				 									 									  			 	BTN_A=0;
-					  				 									 									  			 	BTN_B=0;
-					  				 									 									  			 	BTN_A_LONG=0;
-					  				 									 									  	}
+								  state--;
+								BTN_A_LONG=0;
+								BTN_B=0;
+								settimeen=0;
+					  					}
 
 					  break;
 				  case BALISESTATE2:
@@ -637,20 +634,20 @@ void statemachine(void){
 					  }
 
 					  if(doubledonnee==0){
-					 	ssd1306_SetCursor(32,32);
+					 	ssd1306_SetCursor(32,12);
 					 	snprintf((char *)bufferscreen,50,"p=%d",pagenumber);
 					 	ssd1306_WriteString((char *)bufferscreen,Font_7x10,White);
 					 	}
 					  else{
-					 	ssd1306_SetCursor(32,32);
+					 	ssd1306_SetCursor(32,12);
 					 	snprintf((char  *)bufferscreen,50,"d=%0.1lfm",distanceparcouru);
 					 	ssd1306_WriteString((char *)bufferscreen,Font_7x10,White);
 					 	}
-					 	ssd1306_SetCursor(32,42);
+					 	ssd1306_SetCursor(32,22);
 					 	snprintf((char  *)bufferscreen,50, "sat=%d",myData.satelliteCount);
 					 	ssd1306_WriteString((char *)bufferscreen,Font_6x8,White);
-					 	batterygauge(vbat,34, 50,1);
-					 	ssd1306_SetCursor(60,50);
+					 	batterygauge(vbat,34, 32,1);
+					 	ssd1306_SetCursor(55,32);
 					 	snprintf((char  *)bufferscreen,50, "%0.2fV",vbat);
 					 	//ssd1306_WriteString((uint8_t*)bufferscreen,Font_6x8,White);
 
@@ -685,11 +682,11 @@ void statemachine(void){
 					  break;
 
 				  case BALISESTATE3:
-					  ssd1306_SetCursor(32,32);
+					  ssd1306_SetCursor(32,12);
 					  ssd1306_WriteString("fin de",Font_6x8,White);
-					  ssd1306_SetCursor(32,40);
+					  ssd1306_SetCursor(32,20);
 					  ssd1306_WriteString("memoire",Font_6x8,White);
-					  ssd1306_SetCursor(32,48);
+					  ssd1306_SetCursor(32,28);
 					  snprintf((char *)bufferscreen,50,"%d,%d",pageoffset,pagenumber);
 					  ssd1306_WriteString((char *)bufferscreen,Font_6x8,White);
 					  if(BTN_A>=1){
@@ -715,11 +712,11 @@ void statemachine(void){
 
 			  case STATE_USB:
 				  ssd1306_Fill(Black);
-				  ssd1306_SetCursor(32,32);
+				  ssd1306_SetCursor(32,12);
 				  ssd1306_WriteString("usb",Font_6x8,White);
 				  switch(usbstate){
 				 				  case USBSTATE1:
-				 					  ssd1306_SetCursor(32,40);
+				 					  ssd1306_SetCursor(32,20);
 				 					  ssd1306_WriteString("do nothing",Font_6x8,White);
 				 					  usbtransmiten=0;
 
@@ -748,18 +745,18 @@ void statemachine(void){
 				 					  break;
 				 				  case USBSTATE2:
 
-				 					 ssd1306_SetCursor(32,40);
+				 					 ssd1306_SetCursor(32,20);
 				 					ssd1306_WriteString("Push A",Font_6x8,White);
-				 					ssd1306_SetCursor(32,48);
+				 					ssd1306_SetCursor(32,28);
 				 					ssd1306_WriteString("to erase",Font_6x8,White);
 
 				 					if(erasedisplay==1){
 					 					 ssd1306_Fill(Black);
-					 					 ssd1306_SetCursor(32,32);
+					 					 ssd1306_SetCursor(32,12);
 					 					ssd1306_WriteString("usb",Font_6x8,White);
-					 					ssd1306_SetCursor(32,40);
+					 					ssd1306_SetCursor(32,20);
 					 					ssd1306_WriteString("FIN",Font_7x10,White);
-					 					ssd1306_SetCursor(32,56);
+					 					ssd1306_SetCursor(32,30);
 				 						snprintf((char  *)bufferscreen,50,"t=%0.2f",(float)erasetime/1000);
 				 						ssd1306_WriteString((char *)bufferscreen,Font_6x8,White);
 				 					}
@@ -806,7 +803,7 @@ void statemachine(void){
 				 				 case USBSTATE3:
 
 				 					ssd1306_Fill(Black);
-				 					ssd1306_SetCursor(32,40);
+				 					ssd1306_SetCursor(32,20);
 				 					ssd1306_WriteString("write",Font_6x8,White);
 
 
@@ -817,7 +814,7 @@ void statemachine(void){
 				 					if(usbtransmiten==0){
 				 						while(i<pagenumber){
 				 							ssd1306_Fill(Black);
-				 							ssd1306_SetCursor(32,32);
+				 							ssd1306_SetCursor(32,12);
 				 							ssd1306_WriteString("write",Font_6x8,White);
 				 							SPIF_ReadPage(&hspif1,i, (uint8_t  *)flashread, 256, 0);
 				 							CDC_Transmit_FS((char  * )flashread,256);
@@ -840,14 +837,14 @@ void statemachine(void){
 
 				 					}
 				 					ssd1306_Fill(Black);
-				 					ssd1306_SetCursor(32,45);
+				 					ssd1306_SetCursor(32,35);
 				 					ssd1306_WriteString("finish",Font_7x10,White);
 				 					}
 				 					else{
 				 							ssd1306_Fill(Black);
-				 							ssd1306_SetCursor(32,40);
+				 							ssd1306_SetCursor(32,20);
 				 							ssd1306_WriteString("write",Font_6x8,White);
-				 							ssd1306_SetCursor(32,48);
+				 							ssd1306_SetCursor(32,28);
 				 							ssd1306_WriteString("nothing",Font_6x8,White);
 
 				 						}
@@ -880,15 +877,15 @@ void statemachine(void){
 
 				  case STATE_MONITOR:
 					  ssd1306_Fill(Black);
-					  ssd1306_SetCursor(32,32);
+					  ssd1306_SetCursor(32,12);
 					  ssd1306_WriteString("gputemp",Font_6x8,White);
 
 					  usbbuffer[60]='$';
 					  getgpu((uint8_t  *)usbbuffer);
-					  ssd1306_SetCursor(32,40);
+					  ssd1306_SetCursor(32,20);
 					  snprintf((char  *)bufferscreen,50,"T=%d*C",gputemp);
 					  ssd1306_WriteString((char  *)bufferscreen,Font_7x10,White);
-					  ssd1306_SetCursor(32,50);
+					  ssd1306_SetCursor(32,30);
 					  snprintf((char  *)bufferscreen,50,"p=%dW",(int) gpupower);
 					  ssd1306_WriteString((char  *)bufferscreen,Font_7x10,White);
 
@@ -911,11 +908,11 @@ void statemachine(void){
 
 				  case STATE_TARVOS:
 					  ssd1306_Fill(Black);
-					  				  ssd1306_SetCursor(32,32);
+					  				  ssd1306_SetCursor(32,12);
 					  				  ssd1306_WriteString("tarvos",Font_6x8,White);
 					  				  switch(tarvosstate){
 					  				 				  case TARVOS1:
-					  				 					  ssd1306_SetCursor(32,40);
+					  				 					  ssd1306_SetCursor(32,20);
 					  				 					  ssd1306_WriteString("push B",Font_6x8,White);
 
 
@@ -973,7 +970,7 @@ void statemachine(void){
 					  				 					  break;
 					  				 				  case TARVOS2:
 
-					  				 					 ssd1306_SetCursor(32,40);
+					  				 					 ssd1306_SetCursor(32,20);
 					  				 					ssd1306_WriteString("send1",Font_6x8,White);
 
 					  				 					if(correctentarvos==1){
@@ -996,7 +993,7 @@ void statemachine(void){
 					  				 				 case TARVOS3:
 
 					  				 					ssd1306_Fill(Black);
-					  				 					ssd1306_SetCursor(32,40);
+					  				 					ssd1306_SetCursor(32,12);
 					  				 					ssd1306_WriteString("send2",Font_6x8,White);
 
 					  				 					if(correctentarvos==1){
@@ -1043,11 +1040,11 @@ void statemachine(void){
 
 					  				 case STATE_BARO:
 					  									  ssd1306_Fill(Black);
-					  									  				  ssd1306_SetCursor(32,32);
+					  									  				  ssd1306_SetCursor(32,12);
 					  									  				  ssd1306_WriteString("baro",Font_6x8,White);
 					  									  				  switch(barostate){
 					  									  				 				  case BARO1:
-					  									  				 					  ssd1306_SetCursor(32,40);
+					  									  				 					  ssd1306_SetCursor(32,20);
 					  									  				 					  ssd1306_WriteString("push B",Font_6x8,White);
 
 
@@ -1118,7 +1115,7 @@ void statemachine(void){
 					  									  				 					  break;
 					  									  				 				  case BARO2:
 
-					  									  				 					 ssd1306_SetCursor(32,40);
+					  									  				 					 ssd1306_SetCursor(32,20);
 					  									  				 					ssd1306_WriteString("read",Font_6x8,White);
 
 
@@ -1129,12 +1126,12 @@ void statemachine(void){
 
 					  									  				 					PADS_continuous_read(&hi2c1);
 
-					  									  				 				ssd1306_SetCursor(32,48);
+					  									  				 				ssd1306_SetCursor(32,28);
 
 					  									  				 			snprintf((char  *)bufferscreen,50,"t=%d",inttemp);
 					  									  				 			ssd1306_WriteString((char  *)bufferscreen,Font_6x8,White);
 					  									  				 			snprintf((char  *)bufferscreen,50,"p=%d",intpress);
-					  									  				 		ssd1306_SetCursor(32,56);
+					  									  				 		ssd1306_SetCursor(32,36);
 					  									  				 	ssd1306_WriteString((char  *)bufferscreen,Font_6x8,White);
 					  									  				 	HAL_Delay(500);
 
@@ -1160,11 +1157,11 @@ void statemachine(void){
 
 				  case STATE_TEST:
 					  ssd1306_Fill(Black);
-					  ssd1306_SetCursor(32,32);
+					  ssd1306_SetCursor(32,12);
 					  ssd1306_WriteString("test",Font_6x8,White);
 					  memcpy((char  *)longbufferscreen,"ceci est un text plutot long, qui ne s'arrette toujours pas et pourtant il s'affiche complet",sizeof("ceci est un text plutot long, qui ne s'arrette toujours pas et pourtant il s'affiche complet"));
-					  scrolltextmax=scrollText(longbufferscreen,Font_7x10,32,40,32,offsetforscroltext);
-					  ssd1306_SetCursor(32,55);
+					  scrolltextmax=scrollText(longbufferscreen,Font_7x10,32,20,32,offsetforscroltext);
+					  ssd1306_SetCursor(32,35);
 					  snprintf((char *)bufferscreen,50,"%d",offsetforscroltext);
 					  ssd1306_WriteString((char *)bufferscreen,Font_6x8,White);
 

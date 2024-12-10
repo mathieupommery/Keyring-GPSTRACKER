@@ -75,6 +75,19 @@ void Error_Handler(void);
 #define RxBuffer_SIZE 64
 #define DataBuffer_SIZE 512
 
+
+//#if defined(STM32WB5Mxx)
+//	#define CFG_BLE_LSE_SOURCE (SHCI_C2_BLE_INIT_CFG_BLE_LSE_NOCALIB | SHCI_C2_BLE_INIT_CFG_BLE_LSE_MOD5MM_DEV)
+//#else
+
+
+
+
+
+
+
+
+
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus

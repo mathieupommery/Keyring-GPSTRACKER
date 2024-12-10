@@ -31,6 +31,6 @@
 ../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_pcd.c:1645:19:HAL_PCD_ActivateRemoteWakeup	16	static
 ../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_pcd.c:1655:19:HAL_PCD_DeActivateRemoteWakeup	16	static
 ../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_pcd.c:1684:18:HAL_PCD_GetState	16	static
-../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_pcd.c:1708:26:PCD_EP_ISR_Handler	96	static
-../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_pcd.c:1987:17:HAL_PCD_EP_DB_Receive	40	static
-../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_pcd.c:2068:26:HAL_PCD_EP_DB_Transmit	152	static
+../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_pcd.c:1708:26:PCD_EP_ISR_Handler	80	static
+../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_pcd.c:1986:17:HAL_PCD_EP_DB_Receive	40	static
+../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_pcd.c:2067:26:HAL_PCD_EP_DB_Transmit	160	static
