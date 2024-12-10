@@ -101,6 +101,12 @@ void Custom_STM_App_Notification(Custom_STM_App_Notification_evt_t *pNotificatio
       /* USER CODE END CUSTOM_STM_CHARWRITE_WRITE_EVT */
       break;
 
+    case CUSTOM_STM_SENDNUM_WRITE_EVT:
+      /* USER CODE BEGIN CUSTOM_STM_SENDNUM_WRITE_EVT */
+
+      /* USER CODE END CUSTOM_STM_SENDNUM_WRITE_EVT */
+      break;
+
     case CUSTOM_STM_NOTIFICATION_COMPLETE_EVT:
       /* USER CODE BEGIN CUSTOM_STM_NOTIFICATION_COMPLETE_EVT */
 

@@ -36,12 +36,15 @@ typedef enum
 {
   /* bpservice */
   CUSTOM_STM_CHARWRITE,
+  CUSTOM_STM_SENDNUM,
 } Custom_STM_Char_Opcode_t;
 
 typedef enum
 {
   /* charWrite */
   CUSTOM_STM_CHARWRITE_WRITE_EVT,
+  /* sendnum */
+  CUSTOM_STM_SENDNUM_WRITE_EVT,
   CUSTOM_STM_NOTIFICATION_COMPLETE_EVT,
 
   CUSTOM_STM_BOOT_REQUEST_EVT
@@ -68,6 +71,7 @@ typedef struct
 
 /* Exported constants --------------------------------------------------------*/
 extern uint16_t SizeCharwrite;
+extern uint16_t SizeSendnum;
 
 /* USER CODE BEGIN EC */
 
