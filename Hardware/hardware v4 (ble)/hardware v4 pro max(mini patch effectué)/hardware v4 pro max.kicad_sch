@@ -5546,6 +5546,12 @@
 		(uuid "7d3831a8-7f4b-41a9-923e-db5dc4df1ac2")
 	)
 	(junction
+		(at 147.828 185.42)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "810e7a28-9649-4da5-a694-92096296bb20")
+	)
+	(junction
 		(at 91.44 104.14)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -5740,10 +5746,6 @@
 	(no_connect
 		(at 189.738 134.874)
 		(uuid "94079ab8-4ca1-4012-b6e4-d40a4f7da791")
-	)
-	(no_connect
-		(at 141.478 190.5)
-		(uuid "b2891fd7-0fe6-4fc3-89ab-09bc17eab146")
 	)
 	(no_connect
 		(at 49.53 130.81)
@@ -6107,6 +6109,16 @@
 	)
 	(wire
 		(pts
+			(xy 147.828 185.42) (xy 147.32 185.42)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "37f1132b-a9a9-4bce-b5c7-e220916d400d")
+	)
+	(wire
+		(pts
 			(xy 81.28 133.35) (xy 90.17 133.35)
 		)
 		(stroke
@@ -6324,6 +6336,16 @@
 			(type default)
 		)
 		(uuid "5550e52f-ee30-4afb-9850-7a6204cd0366")
+	)
+	(wire
+		(pts
+			(xy 148.336 185.42) (xy 147.828 185.42)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5696e636-567a-4e4b-b178-c503656c6960")
 	)
 	(wire
 		(pts
@@ -6727,6 +6749,16 @@
 	)
 	(wire
 		(pts
+			(xy 141.478 190.5) (xy 147.828 190.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8d8258b5-49e2-4816-83b5-f367959ce633")
+	)
+	(wire
+		(pts
 			(xy 281.94 65.786) (xy 281.94 67.564)
 		)
 		(stroke
@@ -6814,6 +6846,16 @@
 			(type default)
 		)
 		(uuid "a11e7ee7-3dfd-4f99-986c-4d4e6d76206a")
+	)
+	(wire
+		(pts
+			(xy 147.828 190.5) (xy 147.828 185.42)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a148690a-add2-4ca7-8b03-1bb0d8921985")
 	)
 	(wire
 		(pts
@@ -13444,7 +13486,7 @@
 	)
 	(symbol
 		(lib_id "power:+3.3V")
-		(at 147.32 185.42 270)
+		(at 148.336 185.42 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -13453,7 +13495,7 @@
 		(fields_autoplaced yes)
 		(uuid "9e7487ae-00ed-4903-8d49-27ddef6edde3")
 		(property "Reference" "#PWR048"
-			(at 143.51 185.42 0)
+			(at 144.526 185.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13462,7 +13504,7 @@
 			)
 		)
 		(property "Value" "+3.3V"
-			(at 150.876 185.4199 90)
+			(at 151.892 185.4199 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13471,7 +13513,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 147.32 185.42 0)
+			(at 148.336 185.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13480,7 +13522,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 147.32 185.42 0)
+			(at 148.336 185.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13489,7 +13531,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+3.3V\""
-			(at 147.32 185.42 0)
+			(at 148.336 185.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)

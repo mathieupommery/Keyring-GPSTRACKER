@@ -36,6 +36,7 @@
 typedef struct
 {
   /* bpservice */
+  uint8_t               Sendnum_Notification_Status;
   /* USER CODE BEGIN CUSTOM_APP_Context_t */
 
   /* USER CODE END CUSTOM_APP_Context_t */
@@ -72,14 +73,31 @@ uint8_t UpdateCharData[512];
 uint8_t NotifyCharData[512];
 uint16_t Connection_Handle;
 /* USER CODE BEGIN PV */
-
+extern float temp;
+extern int bluetoothsend;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 /* bpservice */
+static void Custom_Sendnum_Update_Char(void);
+static void Custom_Sendnum_Send_Notification(void);
 
 /* USER CODE BEGIN PFP */
 
+void myTask(void){
+
+	if(bluetoothsend>=1){
+		UpdateCharData[0]=123;
+			 Custom_Sendnum_Update_Char();
+		bluetoothsend=0;
+		UTIL_SEQ_SetTask(1<<CFG_TASK_MY_TASK,CFG_SCH_PRIO_0);
+	}
+
+
+
+
+
+}
 /* USER CODE END PFP */
 
 /* Functions Definition ------------------------------------------------------*/
@@ -101,10 +119,16 @@ void Custom_STM_App_Notification(Custom_STM_App_Notification_evt_t *pNotificatio
       /* USER CODE END CUSTOM_STM_CHARWRITE_WRITE_EVT */
       break;
 
-    case CUSTOM_STM_SENDNUM_WRITE_EVT:
-      /* USER CODE BEGIN CUSTOM_STM_SENDNUM_WRITE_EVT */
+    case CUSTOM_STM_SENDNUM_NOTIFY_ENABLED_EVT:
+      /* USER CODE BEGIN CUSTOM_STM_SENDNUM_NOTIFY_ENABLED_EVT */
 
-      /* USER CODE END CUSTOM_STM_SENDNUM_WRITE_EVT */
+      /* USER CODE END CUSTOM_STM_SENDNUM_NOTIFY_ENABLED_EVT */
+      break;
+
+    case CUSTOM_STM_SENDNUM_NOTIFY_DISABLED_EVT:
+      /* USER CODE BEGIN CUSTOM_STM_SENDNUM_NOTIFY_DISABLED_EVT */
+
+      /* USER CODE END CUSTOM_STM_SENDNUM_NOTIFY_DISABLED_EVT */
       break;
 
     case CUSTOM_STM_NOTIFICATION_COMPLETE_EVT:
@@ -181,6 +205,44 @@ void Custom_APP_Init(void)
  *************************************************************/
 
 /* bpservice */
+__USED void Custom_Sendnum_Update_Char(void) /* Property Read */
+{
+  uint8_t updateflag = 0;
+
+  /* USER CODE BEGIN Sendnum_UC_1*/
+
+  /* USER CODE END Sendnum_UC_1*/
+
+  if (updateflag != 0)
+  {
+    Custom_STM_App_Update_Char(CUSTOM_STM_SENDNUM, (uint8_t *)UpdateCharData);
+  }
+
+  /* USER CODE BEGIN Sendnum_UC_Last*/
+
+  /* USER CODE END Sendnum_UC_Last*/
+  return;
+}
+
+void Custom_Sendnum_Send_Notification(void) /* Property Notification */
+{
+  uint8_t updateflag = 0;
+
+  /* USER CODE BEGIN Sendnum_NS_1*/
+
+  /* USER CODE END Sendnum_NS_1*/
+
+  if (updateflag != 0)
+  {
+    Custom_STM_App_Update_Char(CUSTOM_STM_SENDNUM, (uint8_t *)NotifyCharData);
+  }
+
+  /* USER CODE BEGIN Sendnum_NS_Last*/
+
+  /* USER CODE END Sendnum_NS_Last*/
+
+  return;
+}
 
 /* USER CODE BEGIN FD_LOCAL_FUNCTIONS*/
 

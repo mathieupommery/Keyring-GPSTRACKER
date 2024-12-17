@@ -1165,6 +1165,213 @@
 				)
 			)
 		)
+		(symbol "MMBZ33VB-QBZ:MMBZ33VB-QBZ"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "D"
+				(at 21.59 7.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+				)
+			)
+			(property "Value" "MMBZ33VB-QBZ"
+				(at 21.59 5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+				)
+			)
+			(property "Footprint" "BC847BQBZ"
+				(at 21.59 -94.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://assets.nexperia.com/documents/data-sheet/MMBZ33VB-QB.pdf"
+				(at 21.59 -194.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Description" "Low capacitance bidirectional dual line ESD protection diode"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Height" "0.5"
+				(at 21.59 -394.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Manufacturer_Name" "Nexperia"
+				(at 21.59 -494.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Manufacturer_Part_Number" "MMBZ33VB-QBZ"
+				(at 21.59 -594.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Mouser Part Number" "771-MMBZ33VBQBZ"
+				(at 21.59 -694.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Nexperia/MMBZ33VB-QBZ?qs=olJun0bQHM%2F4IJBwkSgIfQ%3D%3D"
+				(at 21.59 -794.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Arrow Part Number" ""
+				(at 21.59 -894.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Arrow Price/Stock" ""
+				(at 21.59 -994.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(symbol "MMBZ33VB-QBZ_1_1"
+				(rectangle
+					(start 5.08 2.54)
+					(end 20.32 -5.08)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin passive line
+					(at 0 0 0)
+					(length 5.08)
+					(name "K1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -2.54 0)
+					(length 5.08)
+					(name "K2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 25.4 0 180)
+					(length 5.08)
+					(name "CC_1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 25.4 -2.54 180)
+					(length 5.08)
+					(name "CC_2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
 		(symbol "SM06B-SRSS:SM06B-SRSS-TB"
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -2268,10 +2475,34 @@
 		(uuid "37e9f45a-c962-417a-881b-d9c68ca7952c")
 	)
 	(junction
+		(at 193.802 68.58)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "3862a35d-d3d1-498c-a698-86e8a9d7bdac")
+	)
+	(junction
+		(at 149.606 68.072)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "3b878775-3f88-4101-b2f4-259885152102")
+	)
+	(junction
 		(at 258.572 96.266)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "497ee729-5c53-4c9f-ac95-3b880c134b7d")
+	)
+	(junction
+		(at 154.178 94.996)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "59861935-b94b-46f1-bba0-eb2655062140")
+	)
+	(junction
+		(at 182.118 68.58)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "62ce7eee-c68e-4f93-bc78-1d724b1644aa")
 	)
 	(junction
 		(at 58.928 45.466)
@@ -2310,6 +2541,12 @@
 		(uuid "90e3eef3-a642-4d01-bd20-5c8bb60dc5c3")
 	)
 	(junction
+		(at 160.528 68.072)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "98396bbe-404f-4055-92da-392602aa1a0a")
+	)
+	(junction
 		(at 66.04 174.244)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -2322,7 +2559,7 @@
 		(uuid "b8ab3d0e-36ba-4d9e-ade9-4fe0e7a70f34")
 	)
 	(junction
-		(at 167.64 36.576)
+		(at 184.658 27.686)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "d7a68dc2-1184-45c5-ac73-bc5c685dc224")
@@ -2332,6 +2569,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "e8439984-aa9a-4590-8748-8885860f7757")
+	)
+	(junction
+		(at 186.436 95.758)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "ec13aae3-cee8-4c6f-ab1b-d606c34e7551")
 	)
 	(junction
 		(at 238.252 133.096)
@@ -2347,7 +2590,7 @@
 	)
 	(wire
 		(pts
-			(xy 167.64 36.576) (xy 167.64 39.37)
+			(xy 184.658 27.686) (xy 181.864 27.686)
 		)
 		(stroke
 			(width 0)
@@ -2397,6 +2640,16 @@
 	)
 	(wire
 		(pts
+			(xy 177.038 50.546) (xy 177.038 60.198)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "088cfb66-6024-40a4-b8ca-1f4b47c2729c")
+	)
+	(wire
+		(pts
 			(xy 252.222 122.936) (xy 257.302 122.936)
 		)
 		(stroke
@@ -2414,6 +2667,16 @@
 			(type default)
 		)
 		(uuid "08dca6f8-dc94-4e4b-b94c-cfb5085093dd")
+	)
+	(wire
+		(pts
+			(xy 187.706 95.758) (xy 186.436 95.758)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0a6cef56-9d07-43d9-be83-13b09ccb2027")
 	)
 	(wire
 		(pts
@@ -2444,6 +2707,26 @@
 			(type default)
 		)
 		(uuid "17e37386-91ad-4d79-8ee2-cc2dd6f067cd")
+	)
+	(wire
+		(pts
+			(xy 149.606 68.072) (xy 152.908 68.072)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1b9216bc-3910-4774-a830-fcad3c86e05c")
+	)
+	(wire
+		(pts
+			(xy 182.118 50.546) (xy 182.118 68.58)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1f160f0d-183a-45fe-82a1-1ed3fe376db6")
 	)
 	(wire
 		(pts
@@ -2597,6 +2880,26 @@
 	)
 	(wire
 		(pts
+			(xy 185.166 93.98) (xy 185.166 95.758)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "37be09be-4fc9-4019-aa94-a7eada259f0d")
+	)
+	(wire
+		(pts
+			(xy 160.528 68.072) (xy 166.878 68.072)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3a43fdfa-6b30-4900-baa3-652fe49ad918")
+	)
+	(wire
+		(pts
 			(xy 258.572 96.266) (xy 264.922 96.266)
 		)
 		(stroke
@@ -2614,6 +2917,16 @@
 			(type default)
 		)
 		(uuid "40961b36-2cf7-41a0-b406-b2c4bde6e78e")
+	)
+	(wire
+		(pts
+			(xy 186.436 95.758) (xy 185.166 95.758)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "46f25a53-a525-49c7-a9c1-8ff451579c06")
 	)
 	(wire
 		(pts
@@ -2657,6 +2970,16 @@
 	)
 	(wire
 		(pts
+			(xy 154.178 94.996) (xy 155.448 94.996)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5597cef8-8f58-495e-9505-fb89f126497d")
+	)
+	(wire
+		(pts
 			(xy 236.982 106.426) (xy 258.572 106.426)
 		)
 		(stroke
@@ -2667,6 +2990,16 @@
 	)
 	(wire
 		(pts
+			(xy 187.706 93.98) (xy 187.706 95.758)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5e47035f-25d0-4068-aa0d-ac317c6df801")
+	)
+	(wire
+		(pts
 			(xy 105.41 142.494) (xy 106.68 142.494)
 		)
 		(stroke
@@ -2674,6 +3007,16 @@
 			(type default)
 		)
 		(uuid "660d49ad-74ae-4dbe-a0fe-4a9498bc1b7a")
+	)
+	(wire
+		(pts
+			(xy 182.118 68.58) (xy 185.166 68.58)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "75e29327-ed5a-42ff-a3df-8ec14e61fc57")
 	)
 	(wire
 		(pts
@@ -2707,6 +3050,16 @@
 	)
 	(wire
 		(pts
+			(xy 184.658 63.5) (xy 193.802 63.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "85f5db5e-1770-4347-a2cf-0aa4ad72ec7c")
+	)
+	(wire
+		(pts
 			(xy 243.332 50.038) (xy 243.332 51.308)
 		)
 		(stroke
@@ -2714,6 +3067,16 @@
 			(type default)
 		)
 		(uuid "868ff29e-7322-408d-9352-749995a9585e")
+	)
+	(wire
+		(pts
+			(xy 149.606 60.198) (xy 149.606 68.072)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "872f612a-9881-4a85-b563-2559604b07cf")
 	)
 	(wire
 		(pts
@@ -2727,6 +3090,16 @@
 	)
 	(wire
 		(pts
+			(xy 179.578 68.58) (xy 182.118 68.58)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "925b5a1b-ef77-4637-9244-cf71426f0ea2")
+	)
+	(wire
+		(pts
 			(xy 228.092 44.958) (xy 235.712 44.958)
 		)
 		(stroke
@@ -2734,6 +3107,16 @@
 			(type default)
 		)
 		(uuid "96ec8187-ef6a-4a99-a94c-9054b4f4e9d9")
+	)
+	(wire
+		(pts
+			(xy 198.882 68.58) (xy 193.802 68.58)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9c6e68c1-3eea-42ea-b426-daaa36fb3cef")
 	)
 	(wire
 		(pts
@@ -2767,6 +3150,16 @@
 	)
 	(wire
 		(pts
+			(xy 146.558 68.072) (xy 149.606 68.072)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a9acd4a4-1f30-4d65-969e-34d7daaeb382")
+	)
+	(wire
+		(pts
 			(xy 44.45 162.814) (xy 44.45 164.084)
 		)
 		(stroke
@@ -2787,6 +3180,26 @@
 	)
 	(wire
 		(pts
+			(xy 177.038 60.198) (xy 149.606 60.198)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bee5c0cb-b384-4ad2-9dec-ecd0740757ef")
+	)
+	(wire
+		(pts
+			(xy 152.908 94.996) (xy 154.178 94.996)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c2daf8cd-5c16-4a76-82e1-91c0d3c39a89")
+	)
+	(wire
+		(pts
 			(xy 39.878 45.466) (xy 58.928 45.466)
 		)
 		(stroke
@@ -2794,6 +3207,16 @@
 			(type default)
 		)
 		(uuid "c2e9d270-4cf2-4018-9e28-df995862c030")
+	)
+	(wire
+		(pts
+			(xy 155.448 68.072) (xy 160.528 68.072)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c58e0a1d-ce9e-48e7-9f95-93fe736d5a75")
 	)
 	(wire
 		(pts
@@ -2827,6 +3250,46 @@
 	)
 	(wire
 		(pts
+			(xy 184.658 50.546) (xy 184.658 63.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "dc1cc2fc-bb00-4149-9dc5-aefefea78536")
+	)
+	(wire
+		(pts
+			(xy 193.802 63.5) (xy 193.802 68.58)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "df7a7b9c-4fba-423d-b48a-4a54e52cf41d")
+	)
+	(wire
+		(pts
+			(xy 160.528 63.246) (xy 160.528 68.072)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e5752a40-a94a-4017-8217-c85eab1e2082")
+	)
+	(wire
+		(pts
+			(xy 179.578 63.246) (xy 160.528 63.246)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e80a1b32-f9ce-4c46-965f-5755f8372c0d")
+	)
+	(wire
+		(pts
 			(xy 58.928 45.466) (xy 58.928 49.276)
 		)
 		(stroke
@@ -2844,6 +3307,16 @@
 			(type default)
 		)
 		(uuid "ea4622db-43e0-46ce-ae8a-84d9043cf3cc")
+	)
+	(wire
+		(pts
+			(xy 187.706 68.58) (xy 193.802 68.58)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "eb0edaff-0765-48e4-8e2d-1eb4f0b22cf1")
 	)
 	(wire
 		(pts
@@ -2877,6 +3350,36 @@
 	)
 	(wire
 		(pts
+			(xy 152.908 93.472) (xy 152.908 94.996)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f8ce185b-ba20-4590-9e1d-93f75d00eee2")
+	)
+	(wire
+		(pts
+			(xy 179.578 50.546) (xy 179.578 63.246)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f9055722-5c2f-40aa-9889-6b2905bb8670")
+	)
+	(wire
+		(pts
+			(xy 155.448 94.996) (xy 155.448 93.472)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f9ab3da8-e2c9-4514-b37b-4065925dbdae")
+	)
+	(wire
+		(pts
 			(xy 117.348 56.896) (xy 117.348 54.356)
 		)
 		(stroke
@@ -2887,7 +3390,7 @@
 	)
 	(wire
 		(pts
-			(xy 167.64 34.036) (xy 167.64 36.576)
+			(xy 187.198 27.686) (xy 184.658 27.686)
 		)
 		(stroke
 			(width 0)
@@ -2920,8 +3423,8 @@
 		(uuid 72458a7a-d0f5-4e8a-b6c4-8bb93e79deaa)
 	)
 	(rectangle
-		(start 160.782 17.018)
-		(end 207.772 74.168)
+		(start 142.748 17.018)
+		(end 206.756 107.188)
 		(stroke
 			(width 0)
 			(type default)
@@ -3165,44 +3668,44 @@
 	)
 	(global_label "USART_RX"
 		(shape input)
-		(at 190.5 41.656 0)
+		(at 166.878 68.072 270)
 		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "3b697617-f80e-4e0f-9baf-b0604cf3b7bf")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 202.7985 41.656 0)
+			(at 166.878 80.3705 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+				(justify right)
 				(hide yes)
 			)
 		)
 	)
 	(global_label "USART_TX"
 		(shape input)
-		(at 190.5 44.196 0)
+		(at 146.558 68.072 270)
 		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "3fb711dd-aee8-47b3-95d1-397c1d0cf7f8")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 202.4961 44.196 0)
+			(at 146.558 80.0681 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+				(justify right)
 				(hide yes)
 			)
 		)
@@ -3253,22 +3756,22 @@
 	)
 	(global_label "COMPASSDA"
 		(shape input)
-		(at 190.5 36.576 0)
+		(at 198.882 68.58 270)
 		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "86a2135f-9b1b-447a-8857-89d2c16c8b8f")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 204.6733 36.576 0)
+			(at 198.882 82.7533 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+				(justify right)
 				(hide yes)
 			)
 		)
@@ -3297,22 +3800,22 @@
 	)
 	(global_label "COMPASSCL"
 		(shape input)
-		(at 190.5 39.116 0)
+		(at 179.578 68.58 270)
 		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left)
+			(justify right)
 		)
 		(uuid "a2384a4d-78aa-4f8b-a8c8-e4e728a4518c")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 204.6128 39.116 0)
+			(at 179.578 82.6928 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+				(justify right)
 				(hide yes)
 			)
 		)
@@ -3976,6 +4479,73 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 186.436 95.758 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "3f1f2c8e-1461-4894-b65c-771183badbb5")
+		(property "Reference" "#PWR050"
+			(at 186.436 102.108 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 186.4361 99.568 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" ""
+			(at 186.436 95.758 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 186.436 95.758 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 186.436 95.758 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "1036804b-5f67-43de-9993-005a19f8200f")
+		)
+		(instances
+			(project "hardware v4 pro max"
+				(path "/e491fdb3-646d-47e4-8ebb-9632fba4f524/42e3e1b1-9911-4d5d-8c18-366c2d58b563"
+					(reference "#PWR050")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:R_Small")
 		(at 250.952 96.266 90)
 		(unit 1)
@@ -4249,7 +4819,7 @@
 	)
 	(symbol
 		(lib_id "power:+3.3V")
-		(at 190.5 34.036 270)
+		(at 187.198 50.546 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -4258,7 +4828,7 @@
 		(fields_autoplaced yes)
 		(uuid "6c0d4ec0-8c26-4a5a-bae7-902ec6be6ec2")
 		(property "Reference" "#PWR09"
-			(at 186.69 34.036 0)
+			(at 183.388 50.546 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4267,7 +4837,7 @@
 			)
 		)
 		(property "Value" "+3.3V"
-			(at 194.31 34.0359 90)
+			(at 190.5 50.5459 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4276,7 +4846,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 190.5 34.036 0)
+			(at 187.198 50.546 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4285,7 +4855,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 190.5 34.036 0)
+			(at 187.198 50.546 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4294,7 +4864,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+3.3V\""
-			(at 190.5 34.036 0)
+			(at 187.198 50.546 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4792,6 +5362,154 @@
 		)
 	)
 	(symbol
+		(lib_id "MMBZ33VB-QBZ:MMBZ33VB-QBZ")
+		(at 155.448 68.072 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "9c5748fa-d8eb-4e86-abc9-c514f9bd5c9a")
+		(property "Reference" "D4"
+			(at 158.75 79.5019 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "MMBZ33VB-QBZ"
+			(at 158.75 82.0419 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "MMBZ33VB-QBZ:BC847BQBZ"
+			(at 60.528 89.662 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://assets.nexperia.com/documents/data-sheet/MMBZ33VB-QB.pdf"
+			(at -39.472 89.662 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Description" "Low capacitance bidirectional dual line ESD protection diode"
+			(at 155.448 68.072 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Height" "0.5"
+			(at -239.472 89.662 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Name" "Nexperia"
+			(at -339.472 89.662 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Part_Number" "MMBZ33VB-QBZ"
+			(at -439.472 89.662 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Mouser Part Number" "771-MMBZ33VBQBZ"
+			(at -539.472 89.662 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Nexperia/MMBZ33VB-QBZ?qs=olJun0bQHM%2F4IJBwkSgIfQ%3D%3D"
+			(at -639.472 89.662 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Arrow Part Number" ""
+			(at -739.472 89.662 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Arrow Price/Stock" ""
+			(at -839.472 89.662 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(pin "3"
+			(uuid "e95ab13e-4812-438a-841b-2b661147ac66")
+		)
+		(pin "2"
+			(uuid "2c676094-3eb3-46e1-b237-ba594627abe7")
+		)
+		(pin "4"
+			(uuid "139001b4-978d-45b7-b417-9c6fdc3e879f")
+		)
+		(pin "1"
+			(uuid "bc64ce6c-33cb-4a8a-8b9d-18c1779c7b8b")
+		)
+		(instances
+			(project ""
+				(path "/e491fdb3-646d-47e4-8ebb-9632fba4f524/42e3e1b1-9911-4d5d-8c18-366c2d58b563"
+					(reference "D4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:C_Small")
 		(at 257.302 125.476 0)
 		(unit 1)
@@ -5083,7 +5801,7 @@
 	)
 	(symbol
 		(lib_id "SM06B-SRSS:SM06B-SRSS-TB")
-		(at 167.64 34.036 0)
+		(at 187.198 27.686 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -5092,7 +5810,7 @@
 		(fields_autoplaced yes)
 		(uuid "abb5a4c3-ffb7-40ad-999e-7cdff193c9c1")
 		(property "Reference" "J1"
-			(at 179.07 26.67 0)
+			(at 194.564 39.116 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5100,7 +5818,7 @@
 			)
 		)
 		(property "Value" "SM06B-SRSS-TB"
-			(at 179.07 29.21 0)
+			(at 192.024 39.116 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5108,7 +5826,7 @@
 			)
 		)
 		(property "Footprint" "SM06B-SRSS:SM06BSRSSTB"
-			(at 186.69 128.956 0)
+			(at 92.278 46.736 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5118,7 +5836,7 @@
 			)
 		)
 		(property "Datasheet" "https://media.digikey.com/pdf/Data%20Sheets/JST%20PDFs/SR%20Connector.pdf"
-			(at 186.69 228.956 0)
+			(at -7.722 46.736 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5128,7 +5846,7 @@
 			)
 		)
 		(property "Description" "CONN HEADER SH 6POS SIDE 1MM TIN"
-			(at 167.64 34.036 0)
+			(at 187.198 27.686 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5137,7 +5855,7 @@
 			)
 		)
 		(property "Height" "2.95"
-			(at 186.69 428.956 0)
+			(at -207.722 46.736 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5147,7 +5865,7 @@
 			)
 		)
 		(property "Manufacturer_Name" "JST (JAPAN SOLDERLESS TERMINALS)"
-			(at 186.69 528.956 0)
+			(at -307.722 46.736 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5157,7 +5875,7 @@
 			)
 		)
 		(property "Manufacturer_Part_Number" "SM06B-SRSS-TB"
-			(at 186.69 628.956 0)
+			(at -407.722 46.736 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5167,7 +5885,7 @@
 			)
 		)
 		(property "Mouser Part Number" ""
-			(at 186.69 728.956 0)
+			(at -507.722 46.736 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5177,7 +5895,7 @@
 			)
 		)
 		(property "Mouser Price/Stock" ""
-			(at 186.69 828.956 0)
+			(at -607.722 46.736 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5187,7 +5905,7 @@
 			)
 		)
 		(property "Arrow Part Number" ""
-			(at 186.69 928.956 0)
+			(at -707.722 46.736 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5197,7 +5915,7 @@
 			)
 		)
 		(property "Arrow Price/Stock" ""
-			(at 186.69 1028.956 0)
+			(at -807.722 46.736 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5241,7 +5959,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 167.64 39.37 0)
+		(at 181.864 27.686 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -5250,7 +5968,7 @@
 		(fields_autoplaced yes)
 		(uuid "ac421924-4080-4773-b606-7b64e498c4fc")
 		(property "Reference" "#PWR07"
-			(at 167.64 45.72 0)
+			(at 175.514 27.686 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5259,7 +5977,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 167.64 44.196 0)
+			(at 177.038 27.686 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5267,7 +5985,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 167.64 39.37 0)
+			(at 181.864 27.686 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5276,7 +5994,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 167.64 39.37 0)
+			(at 181.864 27.686 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5285,7 +6003,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 167.64 39.37 0)
+			(at 181.864 27.686 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5370,6 +6088,73 @@
 			(project "hardware v4 pro max"
 				(path "/e491fdb3-646d-47e4-8ebb-9632fba4f524/42e3e1b1-9911-4d5d-8c18-366c2d58b563"
 					(reference "R7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 154.178 94.996 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "b77b5f26-a75b-4304-bb8e-5e69a1665b44")
+		(property "Reference" "#PWR049"
+			(at 154.178 101.346 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 154.1781 98.806 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" ""
+			(at 154.178 94.996 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 154.178 94.996 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 154.178 94.996 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e3f29c07-17a1-403b-a5de-aaf52bc054ca")
+		)
+		(instances
+			(project "hardware v4 pro max"
+				(path "/e491fdb3-646d-47e4-8ebb-9632fba4f524/42e3e1b1-9911-4d5d-8c18-366c2d58b563"
+					(reference "#PWR049")
 					(unit 1)
 				)
 			)
@@ -5653,16 +6438,15 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 190.5 46.736 90)
+		(at 174.498 50.546 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "d7824774-1fe8-4f05-bd90-a909e6d06896")
 		(property "Reference" "#PWR010"
-			(at 196.85 46.736 0)
+			(at 168.148 50.546 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5671,16 +6455,15 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 194.31 46.7359 90)
+			(at 168.148 50.546 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify right)
 			)
 		)
 		(property "Footprint" ""
-			(at 190.5 46.736 0)
+			(at 174.498 50.546 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5689,7 +6472,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 190.5 46.736 0)
+			(at 174.498 50.546 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5698,7 +6481,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 190.5 46.736 0)
+			(at 174.498 50.546 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5915,6 +6698,154 @@
 			(project "hardware v4 pro max"
 				(path "/e491fdb3-646d-47e4-8ebb-9632fba4f524/42e3e1b1-9911-4d5d-8c18-366c2d58b563"
 					(reference "R4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "MMBZ33VB-QBZ:MMBZ33VB-QBZ")
+		(at 187.706 68.58 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "e1c9d76a-a75c-4976-9037-4d694f9293c2")
+		(property "Reference" "D5"
+			(at 191.77 80.0099 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "MMBZ33VB-QBZ"
+			(at 191.77 82.5499 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "MMBZ33VB-QBZ:BC847BQBZ"
+			(at 92.786 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://assets.nexperia.com/documents/data-sheet/MMBZ33VB-QB.pdf"
+			(at -7.214 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Description" "Low capacitance bidirectional dual line ESD protection diode"
+			(at 187.706 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Height" "0.5"
+			(at -207.214 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Name" "Nexperia"
+			(at -307.214 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Part_Number" "MMBZ33VB-QBZ"
+			(at -407.214 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Mouser Part Number" "771-MMBZ33VBQBZ"
+			(at -507.214 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Nexperia/MMBZ33VB-QBZ?qs=olJun0bQHM%2F4IJBwkSgIfQ%3D%3D"
+			(at -607.214 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Arrow Part Number" ""
+			(at -707.214 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Arrow Price/Stock" ""
+			(at -807.214 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(pin "3"
+			(uuid "9a4c1fb1-842a-4577-921f-ddec96c5b290")
+		)
+		(pin "2"
+			(uuid "8efd886b-da27-4534-a805-5a1dc81b1b1e")
+		)
+		(pin "4"
+			(uuid "373ce707-18f3-4051-a9d4-b1aabb8add73")
+		)
+		(pin "1"
+			(uuid "35b43a68-da32-40d7-817a-f867a308eaae")
+		)
+		(instances
+			(project "hardware v4 pro max"
+				(path "/e491fdb3-646d-47e4-8ebb-9632fba4f524/42e3e1b1-9911-4d5d-8c18-366c2d58b563"
+					(reference "D5")
 					(unit 1)
 				)
 			)

@@ -200,6 +200,13 @@ int tbtn1=0;
 int tbtn2=0;
 int BTN_B_LONG=0;
 int BTN_A_LONG=0;
+
+
+
+
+int bluetoothsend=0;
+uint8_t blereceivebuf[256];
+uint8_t bletransmitbuf[256];
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -336,7 +343,7 @@ int main(void)
   	HAL_ADC_Start_DMA(&hadc1,(uint32_t*)rawdata, 3);
   	HAL_TIM_Base_Start(&htim2);
   	HAL_TIM_Base_Start_IT(&htim16);
-  	HAL_TIM_Base_Start_IT(&htim17);
+  	//HAL_TIM_Base_Start_IT(&htim17);
 
   	HAL_GPIO_WritePin(GPIOA,GPIO_PIN_0,GPIO_PIN_SET);
 

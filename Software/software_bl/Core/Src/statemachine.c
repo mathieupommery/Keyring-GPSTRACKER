@@ -127,8 +127,11 @@ uint8_t tarvosbuf[50];
 int correctentarvos=0;
 int i2cerrcheck=0;
 
-char receivedbluetooth;
 
+
+extern uint8_t blereceivebuf[256];
+extern uint8_t bletransmitbuf[256];
+extern int   bluetoothsend;
 
 
 
@@ -808,7 +811,17 @@ void statemachine(void){
 					  ssd1306_WriteString("bluetooth",Font_6x8,White);
 					  ssd1306_SetCursor(32,20);
 
-					  ssd1306_WriteChar(receivedbluetooth, Font_7x10, White);
+					  ssd1306_WriteString((char *) blereceivebuf, Font_7x10, White);
+
+
+
+					  if(BTN_B>=1){
+
+
+						  bluetoothsend=1;
+						  BTN_B=0;
+						  BTN_B_LONG=0;
+					  }
 
 
 				  if(BTN_A>=1){

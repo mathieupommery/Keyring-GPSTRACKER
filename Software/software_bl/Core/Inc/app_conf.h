@@ -645,6 +645,13 @@ typedef enum
 
 /* USER CODE BEGIN Defines */
 #define CFG_BLE_LSE_SOURCE (SHCI_C2_BLE_INIT_CFG_BLE_LSE_CALIB | SHCI_C2_BLE_INIT_CFG_BLE_LSE_OTHER_DEV)
+
+void myTask(void);
+
+
+
+
+
 /* USER CODE END Defines */
 
 /******************************************************************************
@@ -667,6 +674,8 @@ typedef enum
 #endif
   CFG_TASK_HCI_ASYNCH_EVT_ID,
   /* USER CODE BEGIN CFG_Task_Id_With_HCI_Cmd_t */
+
+  CFG_TASK_MY_TASK,
 
   /* USER CODE END CFG_Task_Id_With_HCI_Cmd_t */
   CFG_LAST_TASK_ID_WITH_HCICMD,                                               /**< Shall be LAST in the list */

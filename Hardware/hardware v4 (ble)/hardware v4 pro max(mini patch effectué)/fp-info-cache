@@ -1,4 +1,4 @@
-23794897206686956
+23801831932966797
 2N7002KQBZ
 2N7002KQB
 
@@ -64455,6 +64455,13 @@ Integrated Circuit
 0
 6
 6
+MMBZ33VB-QBZ
+BC847BQBZ
+DFN1110D-3(SOT8015)
+Diode ESD (Bi-directional)
+0
+4
+4
 MS414
 MS421R-IV03E
 
@@ -96557,6 +96564,13 @@ Integrated Circuit
 0
 10
 10
+cm4
+MODULE_CM4102008
+
+
+0
+204
+204
 custom_testpoint
 TestPoint_Pad_1.0x1.0mm
 SMD rectangular pad as test Point, square 1.0mm side length
@@ -96564,3 +96578,17 @@ test point SMD pad rectangle square
 0
 1
 1
+miniswitchwurth
+435151014824
+435151014824-2
+Switch
+0
+6
+6
+pts845
+PTS845VM20PSMTR4LFS
+PTS845
+Switch
+0
+5
+5

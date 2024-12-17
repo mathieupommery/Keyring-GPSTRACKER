@@ -38,6 +38,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
+#include "app_conf.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -171,6 +172,193 @@ typedef struct
 #define BD_ADDR_SIZE_LOCAL    6
 
 /* USER CODE BEGIN PD */
+/* USER CODE BEGIN PV */
+
+/* USER CODE END PD */
+
+/* Private macro -------------------------------------------------------------*/
+/* USER CODE BEGIN PM */
+
+/* USER CODE END PM */
+
+/* Private variables ---------------------------------------------------------*/
+PLACE_IN_SECTION("MB_MEM1") ALIGN(4) static TL_CmdPacket_t BleCmdBuffer;
+
+//static const uint8_t a_MBdAddr[BD_ADDR_SIZE_LOCAL] =
+//{
+//  (uint8_t)((CFG_ADV_BD_ADDRESS & 0x0000000000FF)),
+//  (uint8_t)((CFG_ADV_BD_ADDRESS & 0x00000000FF00) >> 8),
+//  (uint8_t)((CFG_ADV_BD_ADDRESS & 0x000000FF0000) >> 16),
+//  (uint8_t)((CFG_ADV_BD_ADDRESS & 0x0000FF000000) >> 24),
+//  (uint8_t)((CFG_ADV_BD_ADDRESS & 0x00FF00000000) >> 32),
+//  (uint8_t)((CFG_ADV_BD_ADDRESS & 0xFF0000000000) >> 40)
+//};
+
+static uint8_t a_BdAddrUdn[BD_ADDR_SIZE_LOCAL];
+
+/**
+ *   Identity root key used to derive IRK and DHK(Legacy)
+ */
+//static const uint8_t a_BLE_CfgIrValue[16] = CFG_BLE_IR;
+
+/**
+ * Encryption root key used to derive LTK(Legacy) and CSRK
+ */
+//static const uint8_t a_BLE_CfgErValue[16] = CFG_BLE_ER;
+
+/**
+ * These are the two tags used to manage a power failure during OTA
+ * The MagicKeywordAdress shall be mapped @0x140 from start of the binary image
+ * The MagicKeywordvalue is checked in the ble_ota application
+ */
+//PLACE_IN_SECTION("TAG_OTA_END") const uint32_t MagicKeywordValue = 0x94448A29 ;
+//PLACE_IN_SECTION("TAG_OTA_START") const uint32_t MagicKeywordAddress = (uint32_t)&MagicKeywordValue;
+
+static BleApplicationContext_t BleApplicationContext;
+
+Custom_App_ConnHandle_Not_evt_t HandleNotification;
+
+#if (L2CAP_REQUEST_NEW_CONN_PARAM != 0)
+#define SIZE_TAB_CONN_INT            2
+float a_ConnInterval[SIZE_TAB_CONN_INT] = {50, 1000}; /* ms */
+uint8_t index_con_int, mutex;
+#endif /* L2CAP_REQUEST_NEW_CONN_PARAM != 0 */
+
+/**
+ * Advertising Data
+ */
+//uint8_t a_AdvData[14] =
+//{
+//  2, AD_TYPE_TX_POWER_LEVEL, 4 /* 4dBm */, /* Transmission Power */
+//  10, AD_TYPE_COMPLETE_LOCAL_NAME, 'B', 'A', 'L', 'I', 'S', 'E', 'G', 'P', 'S',  /* Complete name */
+//
+//};
+
+/* USER CODE BEGIN PV */
+
+/* USER CODE END PD */
+
+/* Private macro -------------------------------------------------------------*/
+/* USER CODE BEGIN PM */
+
+/* USER CODE END PM */
+
+/* Private variables ---------------------------------------------------------*/
+PLACE_IN_SECTION("MB_MEM1") ALIGN(4) static TL_CmdPacket_t BleCmdBuffer;
+
+//static const uint8_t a_MBdAddr[BD_ADDR_SIZE_LOCAL] =
+//{
+//  (uint8_t)((CFG_ADV_BD_ADDRESS & 0x0000000000FF)),
+//  (uint8_t)((CFG_ADV_BD_ADDRESS & 0x00000000FF00) >> 8),
+//  (uint8_t)((CFG_ADV_BD_ADDRESS & 0x000000FF0000) >> 16),
+//  (uint8_t)((CFG_ADV_BD_ADDRESS & 0x0000FF000000) >> 24),
+//  (uint8_t)((CFG_ADV_BD_ADDRESS & 0x00FF00000000) >> 32),
+//  (uint8_t)((CFG_ADV_BD_ADDRESS & 0xFF0000000000) >> 40)
+//};
+
+static uint8_t a_BdAddrUdn[BD_ADDR_SIZE_LOCAL];
+
+/**
+ *   Identity root key used to derive IRK and DHK(Legacy)
+ */
+//static const uint8_t a_BLE_CfgIrValue[16] = CFG_BLE_IR;
+
+/**
+ * Encryption root key used to derive LTK(Legacy) and CSRK
+ */
+//static const uint8_t a_BLE_CfgErValue[16] = CFG_BLE_ER;
+
+/**
+ * These are the two tags used to manage a power failure during OTA
+ * The MagicKeywordAdress shall be mapped @0x140 from start of the binary image
+ * The MagicKeywordvalue is checked in the ble_ota application
+ */
+//PLACE_IN_SECTION("TAG_OTA_END") const uint32_t MagicKeywordValue = 0x94448A29 ;
+//PLACE_IN_SECTION("TAG_OTA_START") const uint32_t MagicKeywordAddress = (uint32_t)&MagicKeywordValue;
+
+static BleApplicationContext_t BleApplicationContext;
+
+Custom_App_ConnHandle_Not_evt_t HandleNotification;
+
+#if (L2CAP_REQUEST_NEW_CONN_PARAM != 0)
+#define SIZE_TAB_CONN_INT            2
+float a_ConnInterval[SIZE_TAB_CONN_INT] = {50, 1000}; /* ms */
+uint8_t index_con_int, mutex;
+#endif /* L2CAP_REQUEST_NEW_CONN_PARAM != 0 */
+
+/**
+ * Advertising Data
+ */
+//uint8_t a_AdvData[14] =
+//{
+//  2, AD_TYPE_TX_POWER_LEVEL, 4 /* 4dBm */, /* Transmission Power */
+//  10, AD_TYPE_COMPLETE_LOCAL_NAME, 'B', 'A', 'L', 'I', 'S', 'E', 'G', 'P', 'S',  /* Complete name */
+//
+//};
+
+/* USER CODE BEGIN PV */
+
+/* USER CODE END PD */
+
+/* Private macro -------------------------------------------------------------*/
+/* USER CODE BEGIN PM */
+
+/* USER CODE END PM */
+
+/* Private variables ---------------------------------------------------------*/
+PLACE_IN_SECTION("MB_MEM1") ALIGN(4) static TL_CmdPacket_t BleCmdBuffer;
+
+//static const uint8_t a_MBdAddr[BD_ADDR_SIZE_LOCAL] =
+//{
+//  (uint8_t)((CFG_ADV_BD_ADDRESS & 0x0000000000FF)),
+//  (uint8_t)((CFG_ADV_BD_ADDRESS & 0x00000000FF00) >> 8),
+//  (uint8_t)((CFG_ADV_BD_ADDRESS & 0x000000FF0000) >> 16),
+//  (uint8_t)((CFG_ADV_BD_ADDRESS & 0x0000FF000000) >> 24),
+//  (uint8_t)((CFG_ADV_BD_ADDRESS & 0x00FF00000000) >> 32),
+//  (uint8_t)((CFG_ADV_BD_ADDRESS & 0xFF0000000000) >> 40)
+//};
+
+static uint8_t a_BdAddrUdn[BD_ADDR_SIZE_LOCAL];
+
+/**
+ *   Identity root key used to derive IRK and DHK(Legacy)
+ */
+//static const uint8_t a_BLE_CfgIrValue[16] = CFG_BLE_IR;
+
+/**
+ * Encryption root key used to derive LTK(Legacy) and CSRK
+ */
+//static const uint8_t a_BLE_CfgErValue[16] = CFG_BLE_ER;
+
+/**
+ * These are the two tags used to manage a power failure during OTA
+ * The MagicKeywordAdress shall be mapped @0x140 from start of the binary image
+ * The MagicKeywordvalue is checked in the ble_ota application
+ */
+//PLACE_IN_SECTION("TAG_OTA_END") const uint32_t MagicKeywordValue = 0x94448A29 ;
+//PLACE_IN_SECTION("TAG_OTA_START") const uint32_t MagicKeywordAddress = (uint32_t)&MagicKeywordValue;
+
+static BleApplicationContext_t BleApplicationContext;
+
+Custom_App_ConnHandle_Not_evt_t HandleNotification;
+
+#if (L2CAP_REQUEST_NEW_CONN_PARAM != 0)
+#define SIZE_TAB_CONN_INT            2
+float a_ConnInterval[SIZE_TAB_CONN_INT] = {50, 1000}; /* ms */
+uint8_t index_con_int, mutex;
+#endif /* L2CAP_REQUEST_NEW_CONN_PARAM != 0 */
+
+/**
+ * Advertising Data
+ */
+//uint8_t a_AdvData[14] =
+//{
+//  2, AD_TYPE_TX_POWER_LEVEL, 4 /* 4dBm */, /* Transmission Power */
+//  10, AD_TYPE_COMPLETE_LOCAL_NAME, 'B', 'A', 'L', 'I', 'S', 'E', 'G', 'P', 'S',  /* Complete name */
+//
+//};
+
+/* USER CODE BEGIN PV */
 
 /* USER CODE END PD */
 
@@ -268,6 +456,8 @@ void APP_BLE_Init(void)
 #endif /* RADIO_ACTIVITY_EVENT != 0 */
   /* USER CODE BEGIN APP_BLE_Init_1 */
 
+  UTIL_SEQ_RegTask(1<<CFG_TASK_MY_TASK,UTIL_SEQ_RFU,myTask);
+  UTIL_SEQ_SetTask(1<<CFG_TASK_MY_TASK,CFG_SCH_PRIO_0);
   /* USER CODE END APP_BLE_Init_1 */
   SHCI_C2_Ble_Init_Cmd_Packet_t ble_init_cmd_packet =
   {
