@@ -1522,7 +1522,7 @@
 			(pintype "passive+no_connect")
 			(uuid "e1d7b672-15cf-4e0c-aab0-2d38a89dd19e")
 		)
-		(model "74889302450.stp"
+		(model "C:/Users/mathi/Documents/librairie kikad/74889302450(antenne)/74889302450.stp"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -1986,7 +1986,7 @@
 			(pintype "passive")
 			(uuid "28e68133-fc62-42ba-a212-8cd1232c06fe")
 		)
-		(model "830069494.stp"
+		(model "C:/Users/mathi/Documents/librairie kikad/fichier 3d composant/MCSJK-7U-12.00-10-10-80-B-10.stp"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -2785,15 +2785,26 @@
 			(pintype "passive")
 			(uuid "fff19320-e267-48c6-9ee5-7d14bdb8153b")
 		)
-		(model "${KICAD8_3DMODEL_DIR}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x04_P2.54mm_Vertical.wrl"
+		(model "C:/Users/mathi/Documents/GitHub/Keyring-GPSTRACKER/Hardware/3d schématic/composant/0.49 OLEd Assembly - No Glass.stp"
 			(offset
-				(xyz 0 0 0)
+				(xyz 7.8 -3.8 -5.5)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 180 -90)
+			)
+		)
+		(model "${KICAD8_3DMODEL_DIR}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x04_P2.54mm_Vertical.step"
+			(offset
+				(xyz 0 0 -1.6)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 -180 0)
 			)
 		)
 	)
@@ -3134,6 +3145,17 @@
 			(pinfunction "S")
 			(pintype "passive")
 			(uuid "eee0a0b7-fbb3-480b-8ebc-77cb0777c05a")
+		)
+		(model "C:/Users/mathi/Documents/librairie kikad/fichier 3d composant/LTC4065AEDCPBF.stp"
+			(offset
+				(xyz 0 0 0.25)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 90 0 90)
+			)
 		)
 	)
 	(footprint "custom_testpoint:TestPoint_Pad_1.0x1.0mm"
@@ -4648,7 +4670,7 @@
 			(pintype "passive")
 			(uuid "bef79b53-b560-4768-9e27-0388e2f5dbb8")
 		)
-		(model "MLPF-WB-01E3.stp"
+		(model "C:/Users/mathi/Documents/GitHub/Keyring-GPSTRACKER/Hardware/hardware v4 (ble)/step/MLPF-WB-01E3.stp"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -5585,6 +5607,17 @@
 			(thermal_bridge_angle 45)
 			(uuid "ad0e9986-446d-4e3b-829f-aab9fb96f2a0")
 		)
+		(model "C:/Users/mathi/Documents/librairie kikad/fichier 3d composant/MS421R-IV03E.stp"
+			(offset
+				(xyz 1 2.5 0.5)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
 	)
 	(footprint "custom_testpoint:TestPoint_Pad_1.0x1.0mm"
 		(layer "F.Cu")
@@ -6006,7 +6039,7 @@
 			(pintype "passive")
 			(uuid "c4859b68-67eb-4c77-b8fe-de19a5cc1ce5")
 		)
-		(model "C:/Users/mathi/Documents/GitHub/2425_PROJET2A_CANSAT/hardware/librairie/fichier 3d composant/LDO40LPU33RY.stp"
+		(model "C:/Users/mathi/Documents/librairie kikad/fichier 3d composant/LDO40LPU33RY.stp"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -10098,6 +10131,17 @@
 			(thermal_bridge_angle 45)
 			(uuid "16cbaf5a-c9f6-43ff-a1d2-96834376a083")
 		)
+		(model "C:/Users/mathi/Documents/librairie kikad/fichier 3d composant/PCM12SMTBR.stp"
+			(offset
+				(xyz 4 1.25 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz -90 0 180)
+			)
+		)
 	)
 	(footprint "Capacitor_SMD:C_0402_1005Metric"
 		(layer "F.Cu")
@@ -10657,7 +10701,7 @@
 			(pintype "passive")
 			(uuid "0026c453-2a33-43af-a05b-a4bd3be6bc0c")
 		)
-		(model "W25Q128JVPIQ_TR.stp"
+		(model "C:/Users/mathi/Documents/librairie kikad/fichier 3d composant/W25Q128JVPIQ.stp"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -12036,6 +12080,17 @@
 			(pinfunction "D")
 			(pintype "passive")
 			(uuid "1001acc5-3af3-4aa3-a87c-c8575f1ac693")
+		)
+		(model "C:/Users/mathi/Documents/librairie kikad/fichier 3d composant/2N7002KQBZ.stp"
+			(offset
+				(xyz 0.1 0 0.5)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 90 0 0)
+			)
 		)
 	)
 	(footprint "Resistor_SMD:R_0402_1005Metric"
@@ -14926,9 +14981,9 @@
 			(pintype "power_in")
 			(uuid "48acfd74-03e0-44d1-8f71-0550c36de7bb")
 		)
-		(model "${KICAD8_3DMODEL_DIR}/Connector_USB.3dshapes/USB_C_Receptacle_GCT_USB4110.wrl"
+		(model "C:/Users/mathi/Documents/GitHub/Keyring-GPSTRACKER/Hardware/3d schématic/composant/STP_629722000214 (rev1).stp"
 			(offset
-				(xyz 0 0 0)
+				(xyz 0 1 1.6)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -15667,7 +15722,7 @@
 			(pintype "input")
 			(uuid "042c928c-f90d-4e2b-959b-8094d268812f")
 		)
-		(model "2511020213301.stp"
+		(model "C:/Users/mathi/Documents/librairie kikad/WSEN-PADS/2511020213301.stp"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -20176,7 +20231,7 @@
 			(xy 146.71 108.22) (xy 145.11 108.22)
 		)
 		(height -3.34)
-		(gr_text "1,6000 mm"
+		(gr_text "1.6000 mm"
 			(at 151.72 110.41 0)
 			(layer "User.1")
 			(uuid "5d1ec935-9d8e-4b16-8edb-26e89ba9e560")
@@ -20209,7 +20264,7 @@
 			(xy 152.39 91.06) (xy 119.28 91.06)
 		)
 		(height 3.94)
-		(gr_text "33,1100 mm"
+		(gr_text "33.1100 mm"
 			(at 135.835 85.97 0)
 			(layer "User.1")
 			(uuid "7dab17b2-e181-4f44-ae73-46ada60fd3e0")
@@ -20242,7 +20297,7 @@
 			(xy 152.39 91.06) (xy 152.39 110.06)
 		)
 		(height -12.76)
-		(gr_text "19,0000 mm"
+		(gr_text "19.0000 mm"
 			(at 164 100.56 90)
 			(layer "User.1")
 			(uuid "f9ab21a3-03c7-43f5-a717-a224642d5f29")
