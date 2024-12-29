@@ -61,7 +61,7 @@
 
 /* USER CODE BEGIN PV */
 STATE_TYPE state=STATE_SPEED;
-SPEED spdstate=STATE_SUMMARY;
+SPEED spdstate=STATE_GROS;
 POS posstate=STATE_SUMMARY1;
 CHRONO chronostate=STATE_RESET;
 KEYBOARD keyboardstate=STATE_MARCHE;
@@ -207,6 +207,11 @@ int BTN_A_LONG=0;
 int bluetoothsend=0;
 uint8_t blereceivebuf[256];
 uint8_t bletransmitbuf[256];
+uint8_t receivedtrame[64];
+
+
+
+ECRANBALISESTATE ecranstate=ECRANBALISESTATE1;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -362,6 +367,10 @@ int main(void)
   	getindex();
 
   	ssd1306_Fill(Black);
+
+  	state=STATE_SPEED;
+  	BTN_A=0;
+  	BTN_A_LONG=0;
 
   	HAL_Delay(700);
 

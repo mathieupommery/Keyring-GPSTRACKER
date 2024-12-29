@@ -25,6 +25,7 @@ extern uint16_t oldPos;
 extern uint16_t newPos;
 extern uint8_t RxBuffer[RxBuffer_SIZE];
 extern uint8_t DataBuffer[DataBuffer_SIZE];
+extern uint8_t receivedtrame[64];
 
 /* USER CODE END 0 */
 
@@ -282,6 +283,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
 			}
 			HAL_UART_Receive_DMA(&hlpuart1, (uint8_t *)RxBuffer, RxBuffer_SIZE);//on recoit par dma à nouveau 64 caractères
 			__HAL_DMA_DISABLE_IT(&hdma_lpuart1_rx, DMA_IT_HT);//on desactive l'interruption afin de ne pas être interrompu tout le temps
+			memcpy((uint8_t *) receivedtrame,(uint8_t *)RxBuffer,64);
 
 	HAL_UART_Receive_DMA(&hlpuart1, (uint8_t *)RxBuffer, RxBuffer_SIZE);//l'appel de cette fonction réactive l'intérruption.
 }

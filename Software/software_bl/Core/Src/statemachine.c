@@ -53,6 +53,7 @@ extern USBSTATE usbstate;
 extern BALISESTATE balisestate;
 extern TARVOSSTATE tarvosstate;
 extern BAROSTATE barostate;
+extern ECRANBALISESTATE ecranstate;
 
 
 extern int BTN_A;
@@ -154,73 +155,110 @@ void statemachine(void){
 									 sec=(pace-floor(pace))*60;
 								 }
 								 else {
-									 pace=9999;
+									 pace=99;
 								 }
 
 
 				  switch(spdstate){
 
 
-				 case STATE_SUMMARY:
 
-						snprintf((char *)bufferscreen,15, "MaxV=%.1f",vitmax*3.6);
-						ssd1306_SetCursor(32, 12);
-						ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
-						snprintf((char *)bufferscreen,15, "V=%0.1f",(myData.speed)*3.6);
-						ssd1306_SetCursor(32, 20);
-						ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
-						snprintf((char *)bufferscreen,15, "p=%0.0fmin%0.0f s",floor(pace),floor(sec));
-						ssd1306_SetCursor(32, 28);
-						ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
-
-
-
-					 if(BTN_B>=1){
-								spdstate++;
-								BTN_B=0;
-					 					 				  	}
-					 if(BTN_B_LONG>=1){
-							  vitmax=0;
-							BTN_B_LONG=0;
-						}
-
-
-
-					 break;
 				 case STATE_GROS:
 
 
 						ssd1306_SetCursor(32, 12);
 						snprintf((char *)bufferscreen,15, "%0.1f",(myData.speed)*3.6);
 						ssd1306_WriteString((char *)bufferscreen, Font_11x18, White);
-						batterygauge(vbat,35, 34,1);
+						ssd1306_SetCursor(32, 30);
+						ssd1306_WriteString("vit(kmh)", Font_6x8, White);
+						ssd1306_SetCursor(32, 38);
+						snprintf((char *)bufferscreen,15, "max=%0.1fkmh",(vitmax)*3.6);
+						ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
+						batterygauge(vbat,83, 30,1);
 
 					 if(BTN_B>=1){
-							spdstate--;
+							spdstate++;
 							BTN_B=0;
 
 
 					 					 				  	}
-					 break;
 
 
-				 }
-				 	if(BTN_A>=1){
-				 					state++;
-				 					BTN_A=0;
-				 					BTN_B=0;
-				  	}
-				 	 if(BTN_A_LONG>=1){
-				 						 				 									state++;
-				 						 				 									state++;
-				 						 				 									state++;
-				 						 				 									state++;
-				 						 				 									state++;
 
-				 						 				 									  			 	BTN_A_LONG=0;
-				 						 				 									  			 	BTN_B=0;
-				 						 				 									  	}
+
 				  break;
+				 case STATE_GROS1:
+
+					 ssd1306_SetCursor(32, 12);
+					 snprintf((char *)bufferscreen,15, "%0.1fkmh",vitmax*3.6);
+					 ssd1306_WriteString((char *)bufferscreen, Font_11x18, White);
+					 ssd1306_SetCursor(32, 30);
+					 ssd1306_WriteString("maxspeed", Font_6x8, White);
+					 ssd1306_SetCursor(32, 38);
+					 snprintf((char *)bufferscreen,15, "V=%0.1fkmh",(myData.speed)*3.6);
+					 ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
+					 batterygauge(vbat,83, 30,1);
+
+
+
+
+
+					 if(BTN_B>=1){
+					 							spdstate++;
+					 							BTN_B=0;
+
+
+					 					 					 				  	}
+
+
+
+					 break;
+				  case STATE_SUMMARY:
+				  						ssd1306_SetCursor(32, 12);
+				  						snprintf((char *)bufferscreen,15, "%0.0fmin%0.0fs",floor(pace),floor(sec));
+				  						ssd1306_WriteString((char *)bufferscreen, Font_11x18, White);
+				  						ssd1306_SetCursor(32, 30);
+				  						ssd1306_WriteString("pace", Font_6x8, White);
+				  						ssd1306_SetCursor(32, 38);
+				  						snprintf((char *)bufferscreen,15, "V=%0.1fkmh",vitmax*3.6);
+				  						ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
+				  						batterygauge(vbat,83, 30,1);
+
+
+
+				  					 if(BTN_B>=1){
+				  								spdstate--;
+				  								spdstate--;
+				  								BTN_B=0;
+				  					 					 				  	}
+
+
+
+
+				  					 break;
+				  }
+				  					if(BTN_A>=1){
+				  									 					state++;
+				  									 					BTN_A=0;
+				  									 					BTN_B=0;
+				  									  	}
+				  									 	 if(BTN_A_LONG>=1){
+				  									 						 				 									state++;
+				  									 						 				 									state++;
+				  									 						 				 									state++;
+				  									 						 				 									state++;
+				  									 						 				 									state++;
+
+				  									 						 				 									  			 	BTN_A_LONG=0;
+				  									 						 				 									  			 	BTN_B=0;
+				  									 						 				 									  	}
+				  									 	 if(BTN_B_LONG>=1){
+				  									 					  							  vitmax=0;
+				  									 					  							BTN_B_LONG=0;
+				  									 					  						}
+
+				  									 	 break;
+
 
 				  case STATE_BALISE:
 					  ssd1306_Fill(Black);
@@ -253,9 +291,9 @@ void statemachine(void){
 						  ssd1306_SetCursor(32,32);
 						  ssd1306_WriteString((char *)bufferscreen,Font_7x10,White);
 
-						  if(BTN_B>=1){
+						  if(BTN_B_LONG>=1){
 							balisestate++;
-							BTN_B=0;
+							BTN_B_LONG=0;
 							BTN_A=0;
 							HAL_TIM_Base_Start_IT(&htim17);
 						  }
@@ -277,7 +315,10 @@ void statemachine(void){
 						  break;
 					  case BALISESTATE2:
 
-						  erasetime=HAL_GetTick();
+						  //erasetime=HAL_GetTick();
+						  if(myData.speed>=vitmax){
+						  									 vitmax=myData.speed;
+						  								 }
 
 
 
@@ -308,35 +349,111 @@ void statemachine(void){
 							  enablewrite=0;
 
 						  }
+						  ssd1306_SetCursor(32,12);
 
-						  if(doubledonnee==0){
-						 	ssd1306_SetCursor(32,12);
-						 	snprintf((char *)bufferscreen,50,"p=%d",pagenumber);
-						 	ssd1306_WriteString((char *)bufferscreen,Font_7x10,White);
-						 	}
-						  else{
-						 	ssd1306_SetCursor(32,12);
-						 	snprintf((char  *)bufferscreen,50,"d=%0.1lfm",distanceparcouru);
-						 	ssd1306_WriteString((char *)bufferscreen,Font_7x10,White);
-						 	}
-						 	ssd1306_SetCursor(32,22);
+						  switch(ecranstate){
+
+
+						  case ECRANBALISESTATE1:
+							  snprintf((char *)bufferscreen,50,"p=%d",pagenumber);
+							  						 	ssd1306_WriteString((char *)bufferscreen,Font_11x18,White);
+
+
+							  if(BTN_B>=1){
+														  ecranstate++;
+													  	BTN_B=0;
+													  	BTN_A=0;
+													  	}
+
+
+
+
+							  break;
+						  case ECRANBALISESTATE2:
+
+							  snprintf((char  *)bufferscreen,50,"d=%0.1lfm",distanceparcouru);
+							  ssd1306_WriteString((char *)bufferscreen,Font_11x18,White);
+
+
+							  if(BTN_B>=1){
+							  														  ecranstate++;
+							  													  	BTN_B=0;
+							  													  	BTN_A=0;
+							  													  	}
+							  break;
+						  case ECRANBALISESTATE3:
+							  snprintf((char  *)bufferscreen,50,"v=%0.1fKmh",myData.speed);
+							  							  ssd1306_WriteString((char *)bufferscreen,Font_11x18,White);
+
+
+							  if(BTN_B>=1){
+							  														  ecranstate++;
+							  													  	BTN_B=0;
+							  													  	BTN_A=0;
+							  													  	}
+							  break;
+						  case ECRANBALISESTATE4:
+							  snprintf((char  *)bufferscreen,50,"h=%0.1fm",myData.altitude);
+							  							  ssd1306_WriteString((char *)bufferscreen,Font_11x18,White);
+
+
+							  if(BTN_B>=1){
+
+
+							  														  ecranstate++;
+							  													  	BTN_B=0;
+							  													  	BTN_A=0;
+							  													  	}
+							  break;
+						  case ECRANBALISESTATE5:
+							  snprintf((char  *)bufferscreen,50,"v=%0.1fV",vbat);
+							  							  ssd1306_WriteString((char *)bufferscreen,Font_11x18,White);
+
+
+							  if(BTN_B>=1){
+
+
+							  														  ecranstate++;
+							  													  	BTN_B=0;
+							  													  	BTN_A=0;
+							  													  	}
+							  break;
+						  case ECRANBALISESTATE6:
+							  snprintf((char  *)bufferscreen,50,"Max=%0.1fkmh",vitmax);
+							  							  ssd1306_WriteString((char *)bufferscreen,Font_11x18,White);
+
+
+							  if(BTN_B>=1){
+							  														ecranstate--;
+							  														ecranstate--;
+							  														ecranstate--;
+							  														ecranstate--;
+							  														ecranstate--;
+							  													  	BTN_B=0;
+							  													  	BTN_A=0;
+							  													  	}
+							  break;
+
+
+
+
+
+
+
+						  }
+
+						 	ssd1306_SetCursor(32,30);
 						 	snprintf((char  *)bufferscreen,50, "sat=%d",myData.satelliteCount);
 						 	ssd1306_WriteString((char *)bufferscreen,Font_6x8,White);
-						 	batterygauge(vbat,34, 32,1);
-						 	ssd1306_SetCursor(55,32);
+						 	batterygauge(vbat,83, 30,1);
+						 	ssd1306_SetCursor(32,38);
 						 	snprintf((char  *)bufferscreen,50, "%0.2fV",vbat);
-						 	//ssd1306_WriteString((uint8_t*)bufferscreen,Font_6x8,White);
-
-						 	if(cptdoubledonnee==3){
-						 	  		doubledonnee=1-doubledonnee;
-						 	  		cptdoubledonnee=0;
-						 	  	 }
-						 	erasetime=HAL_GetTick()-erasetime;
+						 	ssd1306_WriteString((char *)bufferscreen,Font_6x8,White);
+						 	//erasetime=HAL_GetTick()-erasetime;
 	//					 	if(maxtesttime<=erasetime){
 	//					 		maxtesttime=erasetime;
 	//					 	}
 	//					 	snprintf((char  *)bufferscreen,50,"%d",maxtesttime);
-	//					 	ssd1306_WriteString((char *)bufferscreen,Font_6x8,White);
 
 
 
@@ -344,16 +461,14 @@ void statemachine(void){
 
 
 
-						  if(BTN_B>=1){
+
+						  if(BTN_B_LONG>=1){
 						  						  balisestate--;
-						  						  BTN_B=0;
+						  						  BTN_B_LONG=0;
 						  						  BTN_A=0;
 						  						  HAL_TIM_Base_Stop_IT(&htim17);
 						  					  }
-						  if(BTN_B_LONG>=1){
-							distanceparcouru=0;
-						  	BTN_B_LONG=0;
-						  				}
+
 
 						  break;
 
