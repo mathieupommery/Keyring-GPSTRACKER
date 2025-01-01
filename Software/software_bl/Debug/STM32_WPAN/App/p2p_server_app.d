@@ -1,9 +1,8 @@
-STM32_WPAN/App/custom_stm.o: ../STM32_WPAN/App/custom_stm.c \
- ../Middlewares/ST/STM32_WPAN/ble/svc/Src/common_blesvc.h \
- ../Middlewares/ST/STM32_WPAN/ble/ble_common.h \
- ../STM32_WPAN/App/ble_conf.h ../Core/Inc/app_conf.h \
- ../Middlewares/ST/STM32_WPAN/interface/patterns/ble_thread/hw.h \
- ../Core/Inc/hw_conf.h ../Core/Inc/hw_if.h \
+STM32_WPAN/App/p2p_server_app.o: ../STM32_WPAN/App/p2p_server_app.c \
+ ../Core/Inc/main.h ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_hal.h \
+ ../Core/Inc/stm32wbxx_hal_conf.h \
+ ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_hal_dma.h \
+ ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_hal_def.h \
  ../Drivers/CMSIS/Device/ST/STM32WBxx/Include/stm32wbxx.h \
  ../Drivers/CMSIS/Device/ST/STM32WBxx/Include/stm32wb55xx.h \
  ../Drivers/CMSIS/Include/core_cm4.h \
@@ -12,10 +11,6 @@ STM32_WPAN/App/custom_stm.o: ../STM32_WPAN/App/custom_stm.c \
  ../Drivers/CMSIS/Include/cmsis_gcc.h \
  ../Drivers/CMSIS/Include/mpu_armv7.h \
  ../Drivers/CMSIS/Device/ST/STM32WBxx/Include/system_stm32wbxx.h \
- ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_hal.h \
- ../Core/Inc/stm32wbxx_hal_conf.h \
- ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_hal_dma.h \
- ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_hal_def.h \
  ../Drivers/STM32WBxx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h \
  ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_dma.h \
  ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_dmamux.h \
@@ -54,6 +49,9 @@ STM32_WPAN/App/custom_stm.o: ../STM32_WPAN/App/custom_stm.c \
  ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_hal_uart.h \
  ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_hal_uart_ex.h \
  ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_system.h \
+ ../Core/Inc/app_conf.h \
+ ../Middlewares/ST/STM32_WPAN/interface/patterns/ble_thread/hw.h \
+ ../Core/Inc/hw_conf.h ../Core/Inc/hw_if.h \
  ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_exti.h \
  ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_system.h \
  ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_rcc.h \
@@ -66,11 +64,11 @@ STM32_WPAN/App/custom_stm.o: ../STM32_WPAN/App/custom_stm.c \
  ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_gpio.h \
  ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_rtc.h \
  ../Middlewares/ST/STM32_WPAN/ble/core/ble_bufsize.h \
- ../STM32_WPAN/App/ble_dbg_conf.h \
- ../Middlewares/ST/STM32_WPAN/interface/patterns/ble_thread/tl/tl.h \
- ../Middlewares/ST/STM32_WPAN/stm32_wpan_common.h \
- ../Drivers/CMSIS/Include/cmsis_compiler.h \
- ../Middlewares/ST/STM32_WPAN/ble/ble.h \
+ ../Core/Inc/app_entry.h ../Core/Inc/app_common.h \
+ ../Core/Inc/app_common.h \
+ ../Middlewares/ST/STM32_WPAN/utilities/dbg_trace.h \
+ ../Middlewares/ST/STM32_WPAN/ble/ble.h ../STM32_WPAN/App/ble_conf.h \
+ ../Core/Inc/app_conf.h ../STM32_WPAN/App/ble_dbg_conf.h \
  ../Middlewares/ST/STM32_WPAN/ble/core/ble_core.h \
  ../Middlewares/ST/STM32_WPAN/ble/core/ble_std.h \
  ../Middlewares/ST/STM32_WPAN/ble/core/ble_defs.h \
@@ -109,19 +107,18 @@ STM32_WPAN/App/custom_stm.o: ../STM32_WPAN/App/custom_stm.c \
  ../Middlewares/ST/STM32_WPAN/ble/svc/Inc/p2p_stm.h \
  ../Middlewares/ST/STM32_WPAN/ble/svc/Inc/zdd_stm.h \
  ../Middlewares/ST/STM32_WPAN/ble/svc/Inc/otas_stm.h \
+ ../Middlewares/ST/STM32_WPAN/stm32_wpan_common.h \
+ ../Drivers/CMSIS/Include/cmsis_compiler.h \
  ../Middlewares/ST/STM32_WPAN/ble/svc/Inc/mesh.h \
  ../Middlewares/ST/STM32_WPAN/ble/svc/Inc/template_stm.h \
  ../Middlewares/ST/STM32_WPAN/ble/svc/Inc/svc_ctl.h \
  ../Middlewares/ST/STM32_WPAN/ble/svc/Inc/uuid.h \
- ../Middlewares/ST/STM32_WPAN/utilities/dbg_trace.h \
- ../STM32_WPAN/App/custom_stm.h
-../Middlewares/ST/STM32_WPAN/ble/svc/Src/common_blesvc.h:
-../Middlewares/ST/STM32_WPAN/ble/ble_common.h:
-../STM32_WPAN/App/ble_conf.h:
-../Core/Inc/app_conf.h:
-../Middlewares/ST/STM32_WPAN/interface/patterns/ble_thread/hw.h:
-../Core/Inc/hw_conf.h:
-../Core/Inc/hw_if.h:
+ ../STM32_WPAN/App/p2p_server_app.h ../Utilities/sequencer/stm32_seq.h
+../Core/Inc/main.h:
+../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_hal.h:
+../Core/Inc/stm32wbxx_hal_conf.h:
+../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_hal_dma.h:
+../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_hal_def.h:
 ../Drivers/CMSIS/Device/ST/STM32WBxx/Include/stm32wbxx.h:
 ../Drivers/CMSIS/Device/ST/STM32WBxx/Include/stm32wb55xx.h:
 ../Drivers/CMSIS/Include/core_cm4.h:
@@ -130,10 +127,6 @@ STM32_WPAN/App/custom_stm.o: ../STM32_WPAN/App/custom_stm.c \
 ../Drivers/CMSIS/Include/cmsis_gcc.h:
 ../Drivers/CMSIS/Include/mpu_armv7.h:
 ../Drivers/CMSIS/Device/ST/STM32WBxx/Include/system_stm32wbxx.h:
-../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_hal.h:
-../Core/Inc/stm32wbxx_hal_conf.h:
-../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_hal_dma.h:
-../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_hal_def.h:
 ../Drivers/STM32WBxx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h:
 ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_dma.h:
 ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_dmamux.h:
@@ -172,6 +165,10 @@ STM32_WPAN/App/custom_stm.o: ../STM32_WPAN/App/custom_stm.c \
 ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_hal_uart.h:
 ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_hal_uart_ex.h:
 ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_system.h:
+../Core/Inc/app_conf.h:
+../Middlewares/ST/STM32_WPAN/interface/patterns/ble_thread/hw.h:
+../Core/Inc/hw_conf.h:
+../Core/Inc/hw_if.h:
 ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_exti.h:
 ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_system.h:
 ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_rcc.h:
@@ -184,11 +181,14 @@ STM32_WPAN/App/custom_stm.o: ../STM32_WPAN/App/custom_stm.c \
 ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_gpio.h:
 ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_rtc.h:
 ../Middlewares/ST/STM32_WPAN/ble/core/ble_bufsize.h:
-../STM32_WPAN/App/ble_dbg_conf.h:
-../Middlewares/ST/STM32_WPAN/interface/patterns/ble_thread/tl/tl.h:
-../Middlewares/ST/STM32_WPAN/stm32_wpan_common.h:
-../Drivers/CMSIS/Include/cmsis_compiler.h:
+../Core/Inc/app_entry.h:
+../Core/Inc/app_common.h:
+../Core/Inc/app_common.h:
+../Middlewares/ST/STM32_WPAN/utilities/dbg_trace.h:
 ../Middlewares/ST/STM32_WPAN/ble/ble.h:
+../STM32_WPAN/App/ble_conf.h:
+../Core/Inc/app_conf.h:
+../STM32_WPAN/App/ble_dbg_conf.h:
 ../Middlewares/ST/STM32_WPAN/ble/core/ble_core.h:
 ../Middlewares/ST/STM32_WPAN/ble/core/ble_std.h:
 ../Middlewares/ST/STM32_WPAN/ble/core/ble_defs.h:
@@ -227,9 +227,11 @@ STM32_WPAN/App/custom_stm.o: ../STM32_WPAN/App/custom_stm.c \
 ../Middlewares/ST/STM32_WPAN/ble/svc/Inc/p2p_stm.h:
 ../Middlewares/ST/STM32_WPAN/ble/svc/Inc/zdd_stm.h:
 ../Middlewares/ST/STM32_WPAN/ble/svc/Inc/otas_stm.h:
+../Middlewares/ST/STM32_WPAN/stm32_wpan_common.h:
+../Drivers/CMSIS/Include/cmsis_compiler.h:
 ../Middlewares/ST/STM32_WPAN/ble/svc/Inc/mesh.h:
 ../Middlewares/ST/STM32_WPAN/ble/svc/Inc/template_stm.h:
 ../Middlewares/ST/STM32_WPAN/ble/svc/Inc/svc_ctl.h:
 ../Middlewares/ST/STM32_WPAN/ble/svc/Inc/uuid.h:
-../Middlewares/ST/STM32_WPAN/utilities/dbg_trace.h:
-../STM32_WPAN/App/custom_stm.h:
+../STM32_WPAN/App/p2p_server_app.h:
+../Utilities/sequencer/stm32_seq.h:

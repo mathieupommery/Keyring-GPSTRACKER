@@ -14,7 +14,7 @@
 ../Core/Src/stm32wbxx_it.c:295:6:DMA1_Channel4_IRQHandler	1
 ../Core/Src/stm32wbxx_it.c:309:6:USB_LP_IRQHandler	1
 ../Core/Src/stm32wbxx_it.c:323:6:TIM1_UP_TIM16_IRQHandler	1
-../Core/Src/stm32wbxx_it.c:339:6:TIM1_TRG_COM_TIM17_IRQHandler	1
+../Core/Src/stm32wbxx_it.c:340:6:TIM1_TRG_COM_TIM17_IRQHandler	1
 ../Core/Src/stm32wbxx_it.c:356:6:SPI1_IRQHandler	1
 ../Core/Src/stm32wbxx_it.c:370:6:LPUART1_IRQHandler	1
 ../Core/Src/stm32wbxx_it.c:384:6:EXTI15_10_IRQHandler	1

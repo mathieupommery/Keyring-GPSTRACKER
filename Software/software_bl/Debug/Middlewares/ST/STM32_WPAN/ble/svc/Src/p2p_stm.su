@@ -1,0 +1,3 @@
+../Middlewares/ST/STM32_WPAN/ble/svc/Src/p2p_stm.c:105:30:PeerToPeer_Event_Handler	48	static
+../Middlewares/ST/STM32_WPAN/ble/svc/Src/p2p_stm.c:189:6:P2PS_STM_Init	48	static
+../Middlewares/ST/STM32_WPAN/ble/svc/Src/p2p_stm.c:273:12:P2PS_STM_App_Update_Char	32	static

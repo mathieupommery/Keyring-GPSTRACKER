@@ -355,8 +355,10 @@ void statemachine(void){
 
 
 						  case ECRANBALISESTATE1:
-							  snprintf((char *)bufferscreen,50,"p=%d",pagenumber);
-							  						 	ssd1306_WriteString((char *)bufferscreen,Font_11x18,White);
+							  snprintf((char *)bufferscreen,50,"%d",pagenumber);
+							  ssd1306_WriteString((char *)bufferscreen,Font_11x18,White);
+							  ssd1306_SetCursor(32,30);
+							  ssd1306_WriteString("pagenum",Font_6x8,White);
 
 
 							  if(BTN_B>=1){
@@ -371,8 +373,10 @@ void statemachine(void){
 							  break;
 						  case ECRANBALISESTATE2:
 
-							  snprintf((char  *)bufferscreen,50,"d=%0.1lfm",distanceparcouru);
+							  snprintf((char  *)bufferscreen,50,"%0.3lf",distanceparcouru/1000);
 							  ssd1306_WriteString((char *)bufferscreen,Font_11x18,White);
+							  ssd1306_SetCursor(32,30);
+							  ssd1306_WriteString("Dist(km)",Font_6x8,White);
 
 
 							  if(BTN_B>=1){
@@ -382,8 +386,10 @@ void statemachine(void){
 							  													  	}
 							  break;
 						  case ECRANBALISESTATE3:
-							  snprintf((char  *)bufferscreen,50,"v=%0.1fKmh",myData.speed);
-							  							  ssd1306_WriteString((char *)bufferscreen,Font_11x18,White);
+							  snprintf((char  *)bufferscreen,50,"%0.1f",myData.speed*3.6);
+							  ssd1306_WriteString((char *)bufferscreen,Font_11x18,White);
+							  ssd1306_SetCursor(32,30);
+							  ssd1306_WriteString("Vit(kmh)",Font_6x8,White);
 
 
 							  if(BTN_B>=1){
@@ -393,8 +399,10 @@ void statemachine(void){
 							  													  	}
 							  break;
 						  case ECRANBALISESTATE4:
-							  snprintf((char  *)bufferscreen,50,"h=%0.1fm",myData.altitude);
+							  snprintf((char  *)bufferscreen,50,"%0.1f",myData.altitude);
 							  							  ssd1306_WriteString((char *)bufferscreen,Font_11x18,White);
+							  							ssd1306_SetCursor(32,30);
+							  							ssd1306_WriteString("alt(m)",Font_6x8,White);
 
 
 							  if(BTN_B>=1){
@@ -406,8 +414,10 @@ void statemachine(void){
 							  													  	}
 							  break;
 						  case ECRANBALISESTATE5:
-							  snprintf((char  *)bufferscreen,50,"v=%0.1fV",vbat);
-							  							  ssd1306_WriteString((char *)bufferscreen,Font_11x18,White);
+							  snprintf((char  *)bufferscreen,50,"%0.1f",vbat);
+							  ssd1306_WriteString((char *)bufferscreen,Font_11x18,White);
+							  ssd1306_SetCursor(32,30);
+							  ssd1306_WriteString("Vbat(V)",Font_6x8,White);
 
 
 							  if(BTN_B>=1){
@@ -419,8 +429,10 @@ void statemachine(void){
 							  													  	}
 							  break;
 						  case ECRANBALISESTATE6:
-							  snprintf((char  *)bufferscreen,50,"Max=%0.1fkmh",vitmax);
+							  snprintf((char  *)bufferscreen,50,"%0.1f",vitmax*3.6);
 							  							  ssd1306_WriteString((char *)bufferscreen,Font_11x18,White);
+							  							ssd1306_SetCursor(32,30);
+							  							ssd1306_WriteString("MaxV(kmh)",Font_6x8,White);
 
 
 							  if(BTN_B>=1){
@@ -442,12 +454,13 @@ void statemachine(void){
 
 						  }
 
-						 	ssd1306_SetCursor(32,30);
-						 	snprintf((char  *)bufferscreen,50, "sat=%d",myData.satelliteCount);
-						 	ssd1306_WriteString((char *)bufferscreen,Font_6x8,White);
-						 	batterygauge(vbat,83, 30,1);
+
+						 	batterygauge(vbat,85, 30,1);
 						 	ssd1306_SetCursor(32,38);
 						 	snprintf((char  *)bufferscreen,50, "%0.2fV",vbat);
+						 	ssd1306_WriteString((char *)bufferscreen,Font_6x8,White);
+						 	ssd1306_SetCursor(65,38);
+						 	snprintf((char  *)bufferscreen,50, "sat=%d",myData.satelliteCount);
 						 	ssd1306_WriteString((char *)bufferscreen,Font_6x8,White);
 						 	//erasetime=HAL_GetTick()-erasetime;
 	//					 	if(maxtesttime<=erasetime){
@@ -467,6 +480,7 @@ void statemachine(void){
 						  						  BTN_B_LONG=0;
 						  						  BTN_A=0;
 						  						  HAL_TIM_Base_Stop_IT(&htim17);
+						  						HAL_GPIO_WritePin(GPIOB,GPIO_PIN_1,GPIO_PIN_RESET);
 						  					  }
 
 
@@ -683,7 +697,7 @@ void statemachine(void){
 			  ssd1306_Fill(Black);
 			  ssd1306_SetCursor(32, 12);
 			  ssd1306_WriteString("chrono", Font_6x8, White);
-			  ssd1306_SetCursor(32, 32);
+			  ssd1306_SetCursor(32,20);
 
 			  switch(chronostate){
 			  case STATE_RESET:
@@ -733,8 +747,8 @@ void statemachine(void){
 			  min=floor((float) calctime/60000);
 			  seconde=(float) ((calctime-(min*60000))/1000);
 			  snprintf((char *)bufferscreen,15, "%0.0fmin",min);
-			  ssd1306_WriteString((char *)bufferscreen, Font_7x10, White);
-			  ssd1306_SetCursor(32, 44);
+			  ssd1306_WriteString((char *)bufferscreen, Font_11x18, White);
+			  ssd1306_SetCursor(32, 36);
 			  snprintf((char *)bufferscreen,15, "%0.3fs",seconde);
 			  ssd1306_WriteString((char *)bufferscreen, Font_7x10, White);
 

@@ -329,6 +329,7 @@ void TIM1_UP_TIM16_IRQHandler(void)
   /* USER CODE BEGIN TIM1_UP_TIM16_IRQn 1 */
   updatedate();
   HAL_GPIO_TogglePin(GPIOB,GPIO_PIN_0);
+  bluetoothsend=1;
 
   /* USER CODE END TIM1_UP_TIM16_IRQn 1 */
 }
@@ -344,7 +345,6 @@ void TIM1_TRG_COM_TIM17_IRQHandler(void)
   HAL_TIM_IRQHandler(&htim17);
   /* USER CODE BEGIN TIM1_TRG_COM_TIM17_IRQn 1 */
   HAL_GPIO_TogglePin(GPIOB,GPIO_PIN_1);
-  cptdoubledonnee+=1;
   enablewrite=1;
 
   /* USER CODE END TIM1_TRG_COM_TIM17_IRQn 1 */

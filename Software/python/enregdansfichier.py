@@ -5,7 +5,7 @@ import numpy as np
 from matplotlib.animation import FuncAnimation
 import xml.etree.ElementTree as ET
 from xml.dom import minidom
-ser = Serial('COM12')
+ser = Serial('COM10')
 print("connected to: " + ser.portstr)
 count=1
 array=[]
@@ -19,7 +19,7 @@ handler=0.0
 
 try:
     # Ouvre le fichier en mode ajout
-    with open("test1.txt", "a") as fichier:
+    with open("ski1.txt", "a") as fichier:
         while True:
             if ser.in_waiting > 0:  # Vérifie s'il y a des données à lire
                 ligne = ser.readline().decode('utf-8').strip()  # Lit une ligne et la décode
@@ -104,7 +104,7 @@ line, = ax.plot([], [], lw=2)
 
 
 
-def create_gpx(data, output_filename="test1.gpx"):
+def create_gpx(data, output_filename="ski1.gpx"):
     # Créer l'élément racine GPX
     gpx = ET.Element("gpx", version="1.1", creator="PythonGPX")
     trk = ET.SubElement(gpx, "trk")
