@@ -2,9 +2,9 @@
 ../Middlewares/Third_Party/NimaLTD_Driver/SPIF/spif.c:137:6:SPIF_Lock	2
 ../Middlewares/Third_Party/NimaLTD_Driver/SPIF/spif.c:148:6:SPIF_UnLock	1
 ../Middlewares/Third_Party/NimaLTD_Driver/SPIF/spif.c:155:6:SPIF_CsPin	2
-../Middlewares/Third_Party/NimaLTD_Driver/SPIF/spif.c:163:6:SPIF_TransmitReceive	4
-../Middlewares/Third_Party/NimaLTD_Driver/SPIF/spif.c:205:6:SPIF_Transmit	4
-../Middlewares/Third_Party/NimaLTD_Driver/SPIF/spif.c:247:6:SPIF_Receive	4
+../Middlewares/Third_Party/NimaLTD_Driver/SPIF/spif.c:163:6:SPIF_TransmitReceive	2
+../Middlewares/Third_Party/NimaLTD_Driver/SPIF/spif.c:205:6:SPIF_Transmit	2
+../Middlewares/Third_Party/NimaLTD_Driver/SPIF/spif.c:247:6:SPIF_Receive	2
 ../Middlewares/Third_Party/NimaLTD_Driver/SPIF/spif.c:289:6:SPIF_WriteEnable	2
 ../Middlewares/Third_Party/NimaLTD_Driver/SPIF/spif.c:305:6:SPIF_WriteDisable	2
 ../Middlewares/Third_Party/NimaLTD_Driver/SPIF/spif.c:321:9:SPIF_ReadReg1	2

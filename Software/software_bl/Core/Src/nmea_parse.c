@@ -94,28 +94,28 @@ int nmea_GPGGA(GPS *gps_data, char*inputString){
 }
 
 
-int nmea_GPGSA(GPS *gps_data, char*inputString){
-    char *values[25];
-    int counter = 0;
-    memset(values, 0, sizeof(values));
-    char *marker = strtok(inputString, ",");
-    while (marker != NULL) {
-        values[counter++] = malloc(strlen(marker) + 1); //free later!!!!!!
-        strcpy(values[counter - 1], marker);
-        marker = strtok(NULL, ",");
-    }
-    int fix = strtol(values[2], NULL, 10);
-    gps_data->fix = fix > 1 ? 1 : 0;
-    int satelliteCount = 0;
-    for(int i=3; i<15; i++){
-        if(values[i][0] != '\0'){
-            satelliteCount++;
-        }
-    }
-    gps_data->satelliteCount = satelliteCount;
-    for(int i=0; i<counter; i++) free(values[i]);
-    return 1;
-}
+//int nmea_GPGSA(GPS *gps_data, char*inputString){
+//    char *values[25];
+//    int counter = 0;
+//    memset(values, 0, sizeof(values));
+//    char *marker = strtok(inputString, ",");
+//    while (marker != NULL) {
+//        values[counter++] = malloc(strlen(marker) + 1); //free later!!!!!!
+//        strcpy(values[counter - 1], marker);
+//        marker = strtok(NULL, ",");
+//    }
+//    int fix = strtol(values[2], NULL, 10);
+//    gps_data->fix = fix > 1 ? 1 : 0;
+//    int satelliteCount = 0;
+//    for(int i=3; i<15; i++){
+//        if(values[i][0] != '\0'){
+//            satelliteCount++;
+//        }
+//    }
+//    gps_data->satelliteCount = satelliteCount;
+//    for(int i=0; i<counter; i++) free(values[i]);
+//    return 1;
+//}
 
 
 
@@ -143,6 +143,7 @@ void nmea_parse(GPS *gps_data, uint8_t *buffer){
     memset(data, 0, sizeof(data));
     char * token = strtok(buffer, "$");
     int cnt = 0;
+    int cnt12=0;
     while(token !=NULL){
         data[cnt++] = malloc(strlen(token)+1); //free later!!!!!
         strcpy(data[cnt-1], token);
@@ -151,13 +152,19 @@ void nmea_parse(GPS *gps_data, uint8_t *buffer){
     for(int i = 0; i<cnt; i++){
        if(strstr(data[i], "\r\n")!=NULL && gps_checksum(data[i])){
            if(strstr(data[i], "GNRMC")!=NULL){
-               nmea_GNRMC(gps_data, data[i]);
-           }
-           else if(strstr(data[i], "GNGSA")!=NULL){
-               nmea_GPGSA(gps_data, data[i]);
+        	   nmea_GNRMC(gps_data, data[i]);
+        	   if(cnt12>=1){
+        		  break;
+        	   }
+               cnt12=1;
+
            }
            else if(strstr(data[i], "GNGGA")!=NULL){
                nmea_GPGGA(gps_data, data[i]);
+               if(cnt12>=1){
+              	   break;
+               }
+               cnt12=1;
            }
        }
 
@@ -166,32 +173,6 @@ void nmea_parse(GPS *gps_data, uint8_t *buffer){
 
 
 }
-
-void nmea_speed(GPS *gps_data, uint8_t *buffer){
-	 memset(data, 0, sizeof(data));
-	    char * token = strtok(buffer, "$");
-	    int cnt = 0;
-	    while(token !=NULL){
-	        data[cnt++] = malloc(strlen(token)+1); //free later!!!!!
-	        strcpy(data[cnt-1], token);
-	        token = strtok(NULL, "$");
-	    }
-	    for(int i = 0; i<cnt; i++){
-	       if(strstr(data[i], "\r\n")!=NULL && gps_checksum(data[i])){
-	           if(strstr(data[i], "GNRMC")!=NULL){
-	               nmea_GNRMC(gps_data, data[i]);
-	           }
-	           else if(strstr(data[i], "GNGSA")!=NULL){
-	                          nmea_GPGSA(gps_data, data[i]);
-	                      }
-	       }
-
-	    }
-	    for(int i = 0; i<cnt; i++) free(data[i]);
-
-}
-
-
 
 double distancecalc(double lat1, double lat2, double long1, double long2){
 	double distance=0;

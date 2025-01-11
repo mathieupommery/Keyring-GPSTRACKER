@@ -6,7 +6,7 @@
   ******************************************************************************
   * @attention
   *
-  * Copyright (c) 2024 STMicroelectronics.
+  * Copyright (c) 2025 STMicroelectronics.
   * All rights reserved.
   *
   * This software is licensed under terms that can be found in the LICENSE file
@@ -37,13 +37,13 @@
 
 /**
 	MiddleWare name : NimaLTD.I-CUBE-SPIF.2.3.2
-	MiddleWare fileName : ./NimaLTD.I-CUBE-SPIF_conf.h
+	MiddleWare fileName : NimaLTD.I-CUBE-SPIF_conf.h
 */
 /*---------- SPIF_DEBUG  -----------*/
 #define SPIF_DEBUG      SPIF_DEBUG_DISABLE
 
 /*---------- SPIF_PLATFORM  -----------*/
-#define SPIF_PLATFORM      SPIF_PLATFORM_HAL_DMA
+#define SPIF_PLATFORM      SPIF_PLATFORM_HAL
 
 /*---------- SPIF_RTOS  -----------*/
 #define SPIF_RTOS      SPIF_RTOS_DISABLE

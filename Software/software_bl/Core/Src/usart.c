@@ -21,11 +21,17 @@
 #include "usart.h"
 
 /* USER CODE BEGIN 0 */
+
+#include "nmea_parse.h"
+
 extern uint16_t oldPos;
 extern uint16_t newPos;
 extern uint8_t RxBuffer[RxBuffer_SIZE];
 extern uint8_t DataBuffer[DataBuffer_SIZE];
 extern uint8_t receivedtrame[64];
+extern GPS myData;
+
+int parsecpt=0;
 
 /* USER CODE END 0 */
 
@@ -266,6 +272,7 @@ void HAL_UART_MspDeInit(UART_HandleTypeDef* uartHandle)
 
 /* USER CODE BEGIN 1 */
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
+
 	oldPos = newPos; //keep track of the last position in the buffer
 			if(oldPos + 64 > DataBuffer_SIZE){ //if the buffer is full, parse it, then reset the buffer
 
@@ -275,16 +282,43 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
 				oldPos = 0;  // point to the start of the buffer
 				memcpy ((uint8_t *)DataBuffer, (uint8_t *)RxBuffer+datatocopy, (64-datatocopy));  // copy the remaining data
 				newPos = (64-datatocopy);  // update the position
+				parsecpt=0;
 			}
 			else{
 				memcpy((uint8_t *)DataBuffer+oldPos, RxBuffer, 64); //copy received data to the buffer
 				newPos = 64+oldPos; //update buffer position
 
 			}
+			if(newPos>=150 && parsecpt==0){
+				nmea_parse(&myData, DataBuffer);
+				parsecpt=1;
+			}
+
+
 			HAL_UART_Receive_DMA(&hlpuart1, (uint8_t *)RxBuffer, RxBuffer_SIZE);//on recoit par dma à nouveau 64 caractères
 			__HAL_DMA_DISABLE_IT(&hdma_lpuart1_rx, DMA_IT_HT);//on desactive l'interruption afin de ne pas être interrompu tout le temps
 			memcpy((uint8_t *) receivedtrame,(uint8_t *)RxBuffer,64);
 
+
 	HAL_UART_Receive_DMA(&hlpuart1, (uint8_t *)RxBuffer, RxBuffer_SIZE);//l'appel de cette fonction réactive l'intérruption.
 }
+
+
+
+//void HAL_UART_RxHalfCpltCallback(UART_HandleTypeDef *huart){
+//
+//	timer1=HAL_GetTick();
+//
+//	nmea_parse(&myData, DataBuffer);
+//	tpstot=HAL_GetTick()-timer1;
+//
+//
+//}
+
+
+
+
+
+
+
 /* USER CODE END 1 */

@@ -5,15 +5,12 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
-../Middlewares/ST/STM32_WPAN/ble/svc/Src/p2p_stm.c \
 ../Middlewares/ST/STM32_WPAN/ble/svc/Src/svc_ctl.c 
 
 OBJS += \
-./Middlewares/ST/STM32_WPAN/ble/svc/Src/p2p_stm.o \
 ./Middlewares/ST/STM32_WPAN/ble/svc/Src/svc_ctl.o 
 
 C_DEPS += \
-./Middlewares/ST/STM32_WPAN/ble/svc/Src/p2p_stm.d \
 ./Middlewares/ST/STM32_WPAN/ble/svc/Src/svc_ctl.d 
 
 
@@ -24,7 +21,7 @@ Middlewares/ST/STM32_WPAN/ble/svc/Src/%.o Middlewares/ST/STM32_WPAN/ble/svc/Src/
 clean: clean-Middlewares-2f-ST-2f-STM32_WPAN-2f-ble-2f-svc-2f-Src
 
 clean-Middlewares-2f-ST-2f-STM32_WPAN-2f-ble-2f-svc-2f-Src:
-	-$(RM) ./Middlewares/ST/STM32_WPAN/ble/svc/Src/p2p_stm.cyclo ./Middlewares/ST/STM32_WPAN/ble/svc/Src/p2p_stm.d ./Middlewares/ST/STM32_WPAN/ble/svc/Src/p2p_stm.o ./Middlewares/ST/STM32_WPAN/ble/svc/Src/p2p_stm.su ./Middlewares/ST/STM32_WPAN/ble/svc/Src/svc_ctl.cyclo ./Middlewares/ST/STM32_WPAN/ble/svc/Src/svc_ctl.d ./Middlewares/ST/STM32_WPAN/ble/svc/Src/svc_ctl.o ./Middlewares/ST/STM32_WPAN/ble/svc/Src/svc_ctl.su
+	-$(RM) ./Middlewares/ST/STM32_WPAN/ble/svc/Src/svc_ctl.cyclo ./Middlewares/ST/STM32_WPAN/ble/svc/Src/svc_ctl.d ./Middlewares/ST/STM32_WPAN/ble/svc/Src/svc_ctl.o ./Middlewares/ST/STM32_WPAN/ble/svc/Src/svc_ctl.su
 
 .PHONY: clean-Middlewares-2f-ST-2f-STM32_WPAN-2f-ble-2f-svc-2f-Src
 

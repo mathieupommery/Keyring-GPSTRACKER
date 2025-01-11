@@ -135,7 +135,8 @@ extern uint8_t bletransmitbuf[256];
 extern int   bluetoothsend;
 
 
-
+int timer1=0;
+int tpstot=0;
 
 
 
@@ -143,8 +144,7 @@ void statemachine(void){
 	switch(state){
 	 case STATE_SPEED:
 				 ssd1306_Fill(Black);
-				 ssd1306_SetCursor(32, 32);
-				 nmea_parse(&myData, DataBuffer);
+
 				 if(myData.speed>=vitmax){
 									 vitmax=myData.speed;
 								 }
@@ -166,15 +166,12 @@ void statemachine(void){
 				 case STATE_GROS:
 
 
-						ssd1306_SetCursor(32, 12);
+						ssd1306_SetCursor(32, 32);
 						snprintf((char *)bufferscreen,15, "%0.1f",(myData.speed)*3.6);
-						ssd1306_WriteString((char *)bufferscreen, Font_11x18, White);
-						ssd1306_SetCursor(32, 30);
-						ssd1306_WriteString("vit(kmh)", Font_6x8, White);
-						ssd1306_SetCursor(32, 38);
-						snprintf((char *)bufferscreen,15, "max=%0.1fkmh",(vitmax)*3.6);
-						ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
-						batterygauge(vbat,83, 30,1);
+						ssd1306_WriteString((char *)bufferscreen, Font_16x24, White);
+						ssd1306_SetCursor(32, 56);
+						ssd1306_WriteString("Vit(kmh)", Font_6x8, White);
+						batterygauge(vbat,79, 57,1);
 
 					 if(BTN_B>=1){
 							spdstate++;
@@ -189,15 +186,12 @@ void statemachine(void){
 				  break;
 				 case STATE_GROS1:
 
-					 ssd1306_SetCursor(32, 12);
-					 snprintf((char *)bufferscreen,15, "%0.1fkmh",vitmax*3.6);
-					 ssd1306_WriteString((char *)bufferscreen, Font_11x18, White);
-					 ssd1306_SetCursor(32, 30);
-					 ssd1306_WriteString("maxspeed", Font_6x8, White);
-					 ssd1306_SetCursor(32, 38);
-					 snprintf((char *)bufferscreen,15, "V=%0.1fkmh",(myData.speed)*3.6);
-					 ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
-					 batterygauge(vbat,83, 30,1);
+					 ssd1306_SetCursor(32, 32);
+					 snprintf((char *)bufferscreen,15, "%0.1f",vitmax*3.6);
+					 ssd1306_WriteString((char *)bufferscreen, Font_16x24, White);
+					 ssd1306_SetCursor(32, 56);
+					 ssd1306_WriteString("maxV", Font_6x8, White);
+					 batterygauge(vbat,79, 57,1);
 
 
 
@@ -214,15 +208,15 @@ void statemachine(void){
 
 					 break;
 				  case STATE_SUMMARY:
-				  						ssd1306_SetCursor(32, 12);
+				  						ssd1306_SetCursor(32, 32);
 				  						snprintf((char *)bufferscreen,15, "%0.0fmin%0.0fs",floor(pace),floor(sec));
-				  						ssd1306_WriteString((char *)bufferscreen, Font_11x18, White);
-				  						ssd1306_SetCursor(32, 30);
+				  						ssd1306_WriteString((char *)bufferscreen, Font_7x10, White);
+				  						ssd1306_SetCursor(32, 42);
 				  						ssd1306_WriteString("pace", Font_6x8, White);
-				  						ssd1306_SetCursor(32, 38);
+				  						ssd1306_SetCursor(32, 56);
 				  						snprintf((char *)bufferscreen,15, "V=%0.1fkmh",vitmax*3.6);
 				  						ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
-				  						batterygauge(vbat,83, 30,1);
+				  						batterygauge(vbat,79, 43,1);
 
 
 
@@ -256,7 +250,6 @@ void statemachine(void){
 				  									 					  							  vitmax=0;
 				  									 					  							BTN_B_LONG=0;
 				  									 					  						}
-
 				  									 	 break;
 
 
@@ -282,13 +275,13 @@ void statemachine(void){
 
 					  switch(balisestate){
 					  case BALISESTATE1:
-						  ssd1306_SetCursor(32,12);
+						  ssd1306_SetCursor(32,32);
 						  ssd1306_WriteString("Tracker",Font_6x8,White);
 						  snprintf((char *)bufferscreen,50, "offset=%d",pageoffset);
-						  ssd1306_SetCursor(32,22);
+						  ssd1306_SetCursor(32,42);
 						  ssd1306_WriteString((char *)bufferscreen,Font_7x10,White);
 						  snprintf((char *)bufferscreen,50, "page=%d",pagenumber);
-						  ssd1306_SetCursor(32,32);
+						  ssd1306_SetCursor(32,52);
 						  ssd1306_WriteString((char *)bufferscreen,Font_7x10,White);
 
 						  if(BTN_B_LONG>=1){
@@ -332,7 +325,7 @@ void statemachine(void){
 
 							  oldlat=myData.latitude;
 							  oldlong=myData.longitude;
-							  nmea_parse(&myData, DataBuffer);
+							  //nmea_parse(&myData, DataBuffer);
 							  if(distancecalc(oldlat, myData.latitude,oldlong, myData.longitude) > 139.0){//correspond à 500kmh pendant 1sec
 								  myData.latitude=oldlat;
 								  myData.longitude=oldlong;
@@ -349,16 +342,16 @@ void statemachine(void){
 							  enablewrite=0;
 
 						  }
-						  ssd1306_SetCursor(32,12);
+						  ssd1306_SetCursor(32,32);
 
 						  switch(ecranstate){
 
 
 						  case ECRANBALISESTATE1:
 							  snprintf((char *)bufferscreen,50,"%d",pagenumber);
-							  ssd1306_WriteString((char *)bufferscreen,Font_11x18,White);
-							  ssd1306_SetCursor(32,30);
-							  ssd1306_WriteString("pagenum",Font_6x8,White);
+							  ssd1306_WriteString((char *)bufferscreen,Font_7x10,White);
+							  ssd1306_SetCursor(32,42);
+							  ssd1306_WriteString("PageNb",Font_6x8,White);
 
 
 							  if(BTN_B>=1){
@@ -374,8 +367,8 @@ void statemachine(void){
 						  case ECRANBALISESTATE2:
 
 							  snprintf((char  *)bufferscreen,50,"%0.3lf",distanceparcouru/1000);
-							  ssd1306_WriteString((char *)bufferscreen,Font_11x18,White);
-							  ssd1306_SetCursor(32,30);
+							  ssd1306_WriteString((char *)bufferscreen,Font_7x10,White);
+							  ssd1306_SetCursor(32,42);
 							  ssd1306_WriteString("Dist(km)",Font_6x8,White);
 
 
@@ -387,8 +380,8 @@ void statemachine(void){
 							  break;
 						  case ECRANBALISESTATE3:
 							  snprintf((char  *)bufferscreen,50,"%0.1f",myData.speed*3.6);
-							  ssd1306_WriteString((char *)bufferscreen,Font_11x18,White);
-							  ssd1306_SetCursor(32,30);
+							  ssd1306_WriteString((char *)bufferscreen,Font_7x10,White);
+							  ssd1306_SetCursor(32,42);
 							  ssd1306_WriteString("Vit(kmh)",Font_6x8,White);
 
 
@@ -400,8 +393,8 @@ void statemachine(void){
 							  break;
 						  case ECRANBALISESTATE4:
 							  snprintf((char  *)bufferscreen,50,"%0.1f",myData.altitude);
-							  							  ssd1306_WriteString((char *)bufferscreen,Font_11x18,White);
-							  							ssd1306_SetCursor(32,30);
+							  							  ssd1306_WriteString((char *)bufferscreen,Font_7x10,White);
+							  							ssd1306_SetCursor(32,42);
 							  							ssd1306_WriteString("alt(m)",Font_6x8,White);
 
 
@@ -415,8 +408,8 @@ void statemachine(void){
 							  break;
 						  case ECRANBALISESTATE5:
 							  snprintf((char  *)bufferscreen,50,"%0.1f",vbat);
-							  ssd1306_WriteString((char *)bufferscreen,Font_11x18,White);
-							  ssd1306_SetCursor(32,30);
+							  ssd1306_WriteString((char *)bufferscreen,Font_7x10,White);
+							  ssd1306_SetCursor(32,42);
 							  ssd1306_WriteString("Vbat(V)",Font_6x8,White);
 
 
@@ -430,9 +423,9 @@ void statemachine(void){
 							  break;
 						  case ECRANBALISESTATE6:
 							  snprintf((char  *)bufferscreen,50,"%0.1f",vitmax*3.6);
-							  							  ssd1306_WriteString((char *)bufferscreen,Font_11x18,White);
-							  							ssd1306_SetCursor(32,30);
-							  							ssd1306_WriteString("MaxV(kmh)",Font_6x8,White);
+							  							  ssd1306_WriteString((char *)bufferscreen,Font_7x10,White);
+							  							ssd1306_SetCursor(32,42);
+							  							ssd1306_WriteString("MaxV",Font_6x8,White);
 
 
 							  if(BTN_B>=1){
@@ -455,11 +448,11 @@ void statemachine(void){
 						  }
 
 
-						 	batterygauge(vbat,85, 30,1);
-						 	ssd1306_SetCursor(32,38);
+						 	batterygauge(vbat,79, 42,1);
+						 	ssd1306_SetCursor(32,52);
 						 	snprintf((char  *)bufferscreen,50, "%0.2fV",vbat);
 						 	ssd1306_WriteString((char *)bufferscreen,Font_6x8,White);
-						 	ssd1306_SetCursor(65,38);
+						 	ssd1306_SetCursor(65,52);
 						 	snprintf((char  *)bufferscreen,50, "sat=%d",myData.satelliteCount);
 						 	ssd1306_WriteString((char *)bufferscreen,Font_6x8,White);
 						 	//erasetime=HAL_GetTick()-erasetime;
@@ -487,11 +480,11 @@ void statemachine(void){
 						  break;
 
 					  case BALISESTATE3:
-						  ssd1306_SetCursor(32,12);
+						  ssd1306_SetCursor(32,32);
 						  ssd1306_WriteString("fin de",Font_6x8,White);
-						  ssd1306_SetCursor(32,20);
+						  ssd1306_SetCursor(32,42);
 						  ssd1306_WriteString("memoire",Font_6x8,White);
-						  ssd1306_SetCursor(32,28);
+						  ssd1306_SetCursor(32,52);
 						  snprintf((char *)bufferscreen,50,"%d,%d",pageoffset,pagenumber);
 						  ssd1306_WriteString((char *)bufferscreen,Font_6x8,White);
 						  if(BTN_A>=1){
@@ -516,22 +509,22 @@ void statemachine(void){
 
 	case STATE_POS:
 			  ssd1306_Fill(Black);
-			  nmea_parse(&myData, DataBuffer);
+			  //nmea_parse(&myData, DataBuffer);
 			  switch(posstate){
 
 			  case STATE_SUMMARY1:
 
-						ssd1306_SetCursor(32, 12);
+						ssd1306_SetCursor(32, 32);
 						snprintf((char *)bufferscreen,15, "Latitude:");
 						ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
 						snprintf((char *)bufferscreen,15, "%0.7f",myData.latitude);//pas forcement utile d'afficher 7 decimales apres la virgule, 6 donne une precision au metre ce qui est le max du gps
-						ssd1306_SetCursor(32, 20);
+						ssd1306_SetCursor(32, 40);
 						ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
 						snprintf((char *)bufferscreen,15, "Longitude:");
-						ssd1306_SetCursor(32, 28);
+						ssd1306_SetCursor(32, 48);
 						ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
 						snprintf((char *)bufferscreen,15, "%0.7f",myData.longitude);
-						ssd1306_SetCursor(32, 36);
+						ssd1306_SetCursor(32, 56);
 						ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
 				  if(BTN_B>=1){
 					  posstate++;
@@ -545,14 +538,14 @@ void statemachine(void){
 				  ssd1306_Fill(Black);
 				  nmea_parse(&myData, DataBuffer);
 				snprintf((char *)bufferscreen,15, "hdop=%.1f",myData.hdop);//sert a	connaitre la qualitée du fix si proche de 1 voir inférieur alors le fix est tres bon
-				ssd1306_SetCursor(32, 12);
-				ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
+				ssd1306_SetCursor(32, 32);
+				ssd1306_WriteString((char *)bufferscreen, Font_7x10, White);
 				snprintf((char *)bufferscreen,20, "v=%0.2fV",vbat);
-				ssd1306_SetCursor(32, 20);
-				ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
-				ssd1306_SetCursor(32, 28);
+				ssd1306_SetCursor(32, 42);
+				ssd1306_WriteString((char *)bufferscreen, Font_7x10, White);
+				ssd1306_SetCursor(32, 52);
 				snprintf((char *)bufferscreen,15,  "T=%0.2fC",temp);
-				ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
+				ssd1306_WriteString((char *)bufferscreen, Font_7x10, White);
 				 if(BTN_B>=1){
 								  					  posstate++;
 								  					  BTN_B=0;
@@ -564,17 +557,17 @@ void statemachine(void){
 
 				  break;
 			  case STATE_LAT:
-						ssd1306_SetCursor(32, 12);
+						ssd1306_SetCursor(32, 32);
 						snprintf((char *)bufferscreen,15, "LatSide:");
 						ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
 						snprintf((char *)bufferscreen,15, "%c",myData.latSide);//pas forcement utile d'afficher 7 decimales apres la virgule, 6 donne une precision au metre ce qui est le max du gps
-						ssd1306_SetCursor(32, 20);
+						ssd1306_SetCursor(32, 40);
 						ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
 						snprintf((char *)bufferscreen,15, "Latitude:");
-						ssd1306_SetCursor(32, 28);
+						ssd1306_SetCursor(32, 48);
 						ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
 						snprintf((char *)bufferscreen,15, "%0.7f",myData.latitude);
-						ssd1306_SetCursor(32, 36);
+						ssd1306_SetCursor(32, 56);
 						ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
 
 
@@ -592,17 +585,17 @@ void statemachine(void){
 				  break;
 			  case STATE_LONG:
 
-					ssd1306_SetCursor(32, 12);
+					ssd1306_SetCursor(32, 32);
 					snprintf((char *)bufferscreen,15, "LonSide:");
 					ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
 					snprintf((char *)bufferscreen,15, "%c",myData.lonSide);//pas forcement utile d'afficher 7 decimales apres la virgule, 6 donne une precision au metre ce qui est le max du gps
-					ssd1306_SetCursor(32, 20);
+					ssd1306_SetCursor(32, 40);
 					ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
 					snprintf((char *)bufferscreen,15, "Longitude:");
-					ssd1306_SetCursor(32, 28);
+					ssd1306_SetCursor(32, 48);
 					ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
 					snprintf((char *)bufferscreen,15, "%0.7f",myData.longitude);
-					ssd1306_SetCursor(32, 36);
+					ssd1306_SetCursor(32, 56);
 					ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
 
 				  if(BTN_B>=1){
@@ -618,17 +611,17 @@ void statemachine(void){
 			  case STATE_ALT:
 
 
-				  						ssd1306_SetCursor(32, 12);
+				  						ssd1306_SetCursor(32, 32);
 				  						snprintf((char *)bufferscreen,15, "altitude:");
 				  						ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
 				  						snprintf((char *)bufferscreen,15, "%0.1f m",myData.altitude);//pas forcement utile d'afficher 7 decimales apres la virgule, 6 donne une precision au metre ce qui est le max du gps
-				  						ssd1306_SetCursor(32, 20);
+				  						ssd1306_SetCursor(32, 40);
 				  						ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
 				  						snprintf((char *)bufferscreen,15, "Pressure:");
-				  						ssd1306_SetCursor(32, 28);
+				  						ssd1306_SetCursor(32, 48);
 				  						ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
 				  						snprintf((char *)bufferscreen,15, "%0.1fhpa",1000*expf((-0.0001148)*(myData.altitude)));
-				  						ssd1306_SetCursor(32, 36);
+				  						ssd1306_SetCursor(32, 56);
 				  						ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
 
 				  if(BTN_B>=1){
@@ -655,14 +648,14 @@ void statemachine(void){
 			  					  }
 
 
-			  				  ssd1306_SetCursor(32, 12);
+			  				  ssd1306_SetCursor(32, 32);
 			  				  ssd1306_WriteString("hr GMT:", Font_6x8, White);
-			  				ssd1306_SetCursor(32, 22);
+			  				ssd1306_SetCursor(32, 42);
 			  				snprintf((char *)bufferscreen,15, "%02d:%02d",HR,MINUTE);
 			  				ssd1306_WriteString((char *)bufferscreen, Font_7x10, White);
-			  				ssd1306_SetCursor(32, 32);
+			  				ssd1306_SetCursor(32, 52);
 			  				snprintf((char *)bufferscreen,15, "%02d sec",SEC);
-			  				ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
+			  				ssd1306_WriteString((char *)bufferscreen, Font_7x10, White);
 			  				if(BTN_B>=1){
 			  					posstate--;
 			  					posstate--;
@@ -695,9 +688,9 @@ void statemachine(void){
 		  case STATE_CHRONOMETER:
 
 			  ssd1306_Fill(Black);
-			  ssd1306_SetCursor(32, 12);
+			  ssd1306_SetCursor(32, 32);
 			  ssd1306_WriteString("chrono", Font_6x8, White);
-			  ssd1306_SetCursor(32,20);
+			  ssd1306_SetCursor(32,40);
 
 			  switch(chronostate){
 			  case STATE_RESET:
@@ -747,8 +740,8 @@ void statemachine(void){
 			  min=floor((float) calctime/60000);
 			  seconde=(float) ((calctime-(min*60000))/1000);
 			  snprintf((char *)bufferscreen,15, "%0.0fmin",min);
-			  ssd1306_WriteString((char *)bufferscreen, Font_11x18, White);
-			  ssd1306_SetCursor(32, 36);
+			  ssd1306_WriteString((char *)bufferscreen, Font_7x10, White);
+			  ssd1306_SetCursor(32, 50);
 			  snprintf((char *)bufferscreen,15, "%0.3fs",seconde);
 			  ssd1306_WriteString((char *)bufferscreen, Font_7x10, White);
 
@@ -773,11 +766,11 @@ void statemachine(void){
 
 			  case STATE_USB:
 				  ssd1306_Fill(Black);
-				  ssd1306_SetCursor(32,12);
+				  ssd1306_SetCursor(32,32);
 				  ssd1306_WriteString("usb",Font_6x8,White);
 				  switch(usbstate){
 				 				  case USBSTATE1:
-				 					  ssd1306_SetCursor(32,20);
+				 					  ssd1306_SetCursor(32,40);
 				 					  ssd1306_WriteString("do nothing",Font_6x8,White);
 				 					  usbtransmiten=0;
 
@@ -806,18 +799,18 @@ void statemachine(void){
 				 					  break;
 				 				  case USBSTATE2:
 
-				 					 ssd1306_SetCursor(32,20);
+				 					 ssd1306_SetCursor(32,40);
 				 					ssd1306_WriteString("Push A",Font_6x8,White);
-				 					ssd1306_SetCursor(32,28);
+				 					ssd1306_SetCursor(32,48);
 				 					ssd1306_WriteString("to erase",Font_6x8,White);
 
 				 					if(erasedisplay==1){
 					 					 ssd1306_Fill(Black);
-					 					 ssd1306_SetCursor(32,12);
+					 					 ssd1306_SetCursor(32,32);
 					 					ssd1306_WriteString("usb",Font_6x8,White);
-					 					ssd1306_SetCursor(32,20);
+					 					ssd1306_SetCursor(32,42);
 					 					ssd1306_WriteString("FIN",Font_7x10,White);
-					 					ssd1306_SetCursor(32,30);
+					 					ssd1306_SetCursor(32,56);
 				 						snprintf((char  *)bufferscreen,50,"t=%0.2f",(float)erasetime/1000);
 				 						ssd1306_WriteString((char *)bufferscreen,Font_6x8,White);
 				 					}
@@ -864,7 +857,7 @@ void statemachine(void){
 				 				 case USBSTATE3:
 
 				 					ssd1306_Fill(Black);
-				 					ssd1306_SetCursor(32,20);
+				 					ssd1306_SetCursor(32,40);
 				 					ssd1306_WriteString("write",Font_6x8,White);
 
 
@@ -875,7 +868,7 @@ void statemachine(void){
 				 					if(usbtransmiten==0){
 				 						while(i<pagenumber){
 				 							ssd1306_Fill(Black);
-				 							ssd1306_SetCursor(32,12);
+				 							ssd1306_SetCursor(32,32);
 				 							ssd1306_WriteString("write",Font_6x8,White);
 				 							SPIF_ReadPage(&hspif1,i, (uint8_t  *)flashread, 256, 0);
 				 							CDC_Transmit_FS((char  * )flashread,256);
@@ -898,15 +891,15 @@ void statemachine(void){
 
 				 					}
 				 					ssd1306_Fill(Black);
-				 					ssd1306_SetCursor(32,35);
+				 					ssd1306_SetCursor(32,48);
 				 					ssd1306_WriteString("finish",Font_7x10,White);
 				 					}
 				 					else{
 				 							ssd1306_Fill(Black);
-				 							ssd1306_SetCursor(32,20);
-				 							ssd1306_WriteString("write",Font_6x8,White);
-				 							ssd1306_SetCursor(32,28);
-				 							ssd1306_WriteString("nothing",Font_6x8,White);
+				 							ssd1306_SetCursor(32,40);
+				 							ssd1306_WriteString("write",Font_7x10,White);
+				 							ssd1306_SetCursor(32,50);
+				 							ssd1306_WriteString("nothing",Font_7x10,White);
 
 				 						}
 
@@ -936,11 +929,14 @@ void statemachine(void){
 
 				  case STATE_BLUETOOTH:
 					  ssd1306_Fill(Black);
-					  ssd1306_SetCursor(32,12);
+					  ssd1306_SetCursor(32,32);
 					  ssd1306_WriteString("bluetooth",Font_6x8,White);
-					  ssd1306_SetCursor(32,20);
+					  ssd1306_SetCursor(32,42);
 
 					  ssd1306_WriteString((char *) blereceivebuf, Font_7x10, White);
+					  ssd1306_SetCursor(32,52);
+					  snprintf((char  *)bufferscreen,50,"t=%d",tpstot);
+					  ssd1306_WriteString((char  *)bufferscreen, Font_6x8, White);
 
 
 

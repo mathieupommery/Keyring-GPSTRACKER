@@ -5,6 +5,7 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
+../Middlewares/ST/STM32_WPAN/ble/core/auto/ble_events.c \
 ../Middlewares/ST/STM32_WPAN/ble/core/auto/ble_gap_aci.c \
 ../Middlewares/ST/STM32_WPAN/ble/core/auto/ble_gatt_aci.c \
 ../Middlewares/ST/STM32_WPAN/ble/core/auto/ble_hal_aci.c \
@@ -12,6 +13,7 @@ C_SRCS += \
 ../Middlewares/ST/STM32_WPAN/ble/core/auto/ble_l2cap_aci.c 
 
 OBJS += \
+./Middlewares/ST/STM32_WPAN/ble/core/auto/ble_events.o \
 ./Middlewares/ST/STM32_WPAN/ble/core/auto/ble_gap_aci.o \
 ./Middlewares/ST/STM32_WPAN/ble/core/auto/ble_gatt_aci.o \
 ./Middlewares/ST/STM32_WPAN/ble/core/auto/ble_hal_aci.o \
@@ -19,6 +21,7 @@ OBJS += \
 ./Middlewares/ST/STM32_WPAN/ble/core/auto/ble_l2cap_aci.o 
 
 C_DEPS += \
+./Middlewares/ST/STM32_WPAN/ble/core/auto/ble_events.d \
 ./Middlewares/ST/STM32_WPAN/ble/core/auto/ble_gap_aci.d \
 ./Middlewares/ST/STM32_WPAN/ble/core/auto/ble_gatt_aci.d \
 ./Middlewares/ST/STM32_WPAN/ble/core/auto/ble_hal_aci.d \
@@ -33,7 +36,7 @@ Middlewares/ST/STM32_WPAN/ble/core/auto/%.o Middlewares/ST/STM32_WPAN/ble/core/a
 clean: clean-Middlewares-2f-ST-2f-STM32_WPAN-2f-ble-2f-core-2f-auto
 
 clean-Middlewares-2f-ST-2f-STM32_WPAN-2f-ble-2f-core-2f-auto:
-	-$(RM) ./Middlewares/ST/STM32_WPAN/ble/core/auto/ble_gap_aci.cyclo ./Middlewares/ST/STM32_WPAN/ble/core/auto/ble_gap_aci.d ./Middlewares/ST/STM32_WPAN/ble/core/auto/ble_gap_aci.o ./Middlewares/ST/STM32_WPAN/ble/core/auto/ble_gap_aci.su ./Middlewares/ST/STM32_WPAN/ble/core/auto/ble_gatt_aci.cyclo ./Middlewares/ST/STM32_WPAN/ble/core/auto/ble_gatt_aci.d ./Middlewares/ST/STM32_WPAN/ble/core/auto/ble_gatt_aci.o ./Middlewares/ST/STM32_WPAN/ble/core/auto/ble_gatt_aci.su ./Middlewares/ST/STM32_WPAN/ble/core/auto/ble_hal_aci.cyclo ./Middlewares/ST/STM32_WPAN/ble/core/auto/ble_hal_aci.d ./Middlewares/ST/STM32_WPAN/ble/core/auto/ble_hal_aci.o ./Middlewares/ST/STM32_WPAN/ble/core/auto/ble_hal_aci.su ./Middlewares/ST/STM32_WPAN/ble/core/auto/ble_hci_le.cyclo ./Middlewares/ST/STM32_WPAN/ble/core/auto/ble_hci_le.d ./Middlewares/ST/STM32_WPAN/ble/core/auto/ble_hci_le.o ./Middlewares/ST/STM32_WPAN/ble/core/auto/ble_hci_le.su ./Middlewares/ST/STM32_WPAN/ble/core/auto/ble_l2cap_aci.cyclo ./Middlewares/ST/STM32_WPAN/ble/core/auto/ble_l2cap_aci.d ./Middlewares/ST/STM32_WPAN/ble/core/auto/ble_l2cap_aci.o ./Middlewares/ST/STM32_WPAN/ble/core/auto/ble_l2cap_aci.su
+	-$(RM) ./Middlewares/ST/STM32_WPAN/ble/core/auto/ble_events.cyclo ./Middlewares/ST/STM32_WPAN/ble/core/auto/ble_events.d ./Middlewares/ST/STM32_WPAN/ble/core/auto/ble_events.o ./Middlewares/ST/STM32_WPAN/ble/core/auto/ble_events.su ./Middlewares/ST/STM32_WPAN/ble/core/auto/ble_gap_aci.cyclo ./Middlewares/ST/STM32_WPAN/ble/core/auto/ble_gap_aci.d ./Middlewares/ST/STM32_WPAN/ble/core/auto/ble_gap_aci.o ./Middlewares/ST/STM32_WPAN/ble/core/auto/ble_gap_aci.su ./Middlewares/ST/STM32_WPAN/ble/core/auto/ble_gatt_aci.cyclo ./Middlewares/ST/STM32_WPAN/ble/core/auto/ble_gatt_aci.d ./Middlewares/ST/STM32_WPAN/ble/core/auto/ble_gatt_aci.o ./Middlewares/ST/STM32_WPAN/ble/core/auto/ble_gatt_aci.su ./Middlewares/ST/STM32_WPAN/ble/core/auto/ble_hal_aci.cyclo ./Middlewares/ST/STM32_WPAN/ble/core/auto/ble_hal_aci.d ./Middlewares/ST/STM32_WPAN/ble/core/auto/ble_hal_aci.o ./Middlewares/ST/STM32_WPAN/ble/core/auto/ble_hal_aci.su ./Middlewares/ST/STM32_WPAN/ble/core/auto/ble_hci_le.cyclo ./Middlewares/ST/STM32_WPAN/ble/core/auto/ble_hci_le.d ./Middlewares/ST/STM32_WPAN/ble/core/auto/ble_hci_le.o ./Middlewares/ST/STM32_WPAN/ble/core/auto/ble_hci_le.su ./Middlewares/ST/STM32_WPAN/ble/core/auto/ble_l2cap_aci.cyclo ./Middlewares/ST/STM32_WPAN/ble/core/auto/ble_l2cap_aci.d ./Middlewares/ST/STM32_WPAN/ble/core/auto/ble_l2cap_aci.o ./Middlewares/ST/STM32_WPAN/ble/core/auto/ble_l2cap_aci.su
 
 .PHONY: clean-Middlewares-2f-ST-2f-STM32_WPAN-2f-ble-2f-core-2f-auto
 
