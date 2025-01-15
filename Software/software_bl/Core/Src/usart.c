@@ -29,9 +29,6 @@ extern uint16_t newPos;
 extern uint8_t RxBuffer[RxBuffer_SIZE];
 extern uint8_t DataBuffer[DataBuffer_SIZE];
 extern uint8_t receivedtrame[64];
-extern GPS myData;
-
-int parsecpt=0;
 
 /* USER CODE END 0 */
 
@@ -282,16 +279,11 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
 				oldPos = 0;  // point to the start of the buffer
 				memcpy ((uint8_t *)DataBuffer, (uint8_t *)RxBuffer+datatocopy, (64-datatocopy));  // copy the remaining data
 				newPos = (64-datatocopy);  // update the position
-				parsecpt=0;
 			}
 			else{
 				memcpy((uint8_t *)DataBuffer+oldPos, RxBuffer, 64); //copy received data to the buffer
 				newPos = 64+oldPos; //update buffer position
 
-			}
-			if(newPos>=150 && parsecpt==0){
-				nmea_parse(&myData, DataBuffer);
-				parsecpt=1;
 			}
 
 

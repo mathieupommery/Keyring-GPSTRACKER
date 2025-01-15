@@ -325,7 +325,7 @@ void statemachine(void){
 
 							  oldlat=myData.latitude;
 							  oldlong=myData.longitude;
-							  //nmea_parse(&myData, DataBuffer);
+							  nmea_parse(&myData, DataBuffer);
 							  if(distancecalc(oldlat, myData.latitude,oldlong, myData.longitude) > 139.0){//correspond à 500kmh pendant 1sec
 								  myData.latitude=oldlat;
 								  myData.longitude=oldlong;
@@ -509,7 +509,7 @@ void statemachine(void){
 
 	case STATE_POS:
 			  ssd1306_Fill(Black);
-			  //nmea_parse(&myData, DataBuffer);
+			  nmea_parse(&myData, DataBuffer);
 			  switch(posstate){
 
 			  case STATE_SUMMARY1:
@@ -535,8 +535,8 @@ void statemachine(void){
 
 				  break;
 			  case STATE_INFO:
-				  ssd1306_Fill(Black);
-				  nmea_parse(&myData, DataBuffer);
+				ssd1306_Fill(Black);
+				nmea_parse(&myData, DataBuffer);
 				snprintf((char *)bufferscreen,15, "hdop=%.1f",myData.hdop);//sert a	connaitre la qualitée du fix si proche de 1 voir inférieur alors le fix est tres bon
 				ssd1306_SetCursor(32, 32);
 				ssd1306_WriteString((char *)bufferscreen, Font_7x10, White);

@@ -3,8 +3,8 @@
 ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_bus.h:1053:22:LL_APB1_GRP2_DisableClock	16	static
 ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_bus.h:1274:22:LL_APB2_GRP1_EnableClock	24	static
 ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_bus.h:1328:22:LL_APB2_GRP1_DisableClock	16	static
-../Core/Src/usart.c:44:6:MX_LPUART1_UART_Init	8	static
-../Core/Src/usart.c:88:6:MX_USART1_UART_Init	8	static
-../Core/Src/usart.c:131:6:HAL_UART_MspInit	120	static
-../Core/Src/usart.c:227:6:HAL_UART_MspDeInit	16	static
-../Core/Src/usart.c:274:6:HAL_UART_RxCpltCallback	40	static
+../Core/Src/usart.c:41:6:MX_LPUART1_UART_Init	8	static
+../Core/Src/usart.c:85:6:MX_USART1_UART_Init	8	static
+../Core/Src/usart.c:128:6:HAL_UART_MspInit	120	static
+../Core/Src/usart.c:224:6:HAL_UART_MspDeInit	16	static
+../Core/Src/usart.c:271:6:HAL_UART_RxCpltCallback	40	static
