@@ -2787,7 +2787,7 @@
 		)
 		(model "C:/Users/mathi/Documents/GitHub/Keyring-GPSTRACKER/Hardware/3d schématic/composant/0.49 OLEd Assembly - No Glass.stp"
 			(offset
-				(xyz 7.8 -3.8 -5.5)
+				(xyz 7.8 -3.8 -4.5)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -4321,7 +4321,7 @@
 			(zone_connect 2)
 			(uuid "ff69770f-26d5-4238-bf85-c46d7d270724")
 		)
-		(model "${KICAD8_3DMODEL_DIR}/Package_DFN_QFN.3dshapes/QFN-48-1EP_7x7mm_P0.5mm_EP5.6x5.6mm.wrl"
+		(model "C:/Users/mathi/Documents/librairie kikad/STM32WB55CGU6/STM32WB55CGU6.stp"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -6950,7 +6950,7 @@
 		)
 		(model "PTS845VM20PSMTR4_LFS.stp"
 			(offset
-				(xyz -1.99999997 1.419999936 -1.070000036)
+				(xyz -2 1.42 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -13500,7 +13500,7 @@
 		)
 		(model "PTS845VM20PSMTR4_LFS.stp"
 			(offset
-				(xyz -1.99999997 1.419999936 -1.070000036)
+				(xyz -2 1.42 0)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -20231,7 +20231,7 @@
 			(xy 146.71 108.22) (xy 145.11 108.22)
 		)
 		(height -3.34)
-		(gr_text "1.6000 mm"
+		(gr_text "1,6000 mm"
 			(at 151.72 110.41 0)
 			(layer "User.1")
 			(uuid "5d1ec935-9d8e-4b16-8edb-26e89ba9e560")
@@ -20264,7 +20264,7 @@
 			(xy 152.39 91.06) (xy 119.28 91.06)
 		)
 		(height 3.94)
-		(gr_text "33.1100 mm"
+		(gr_text "33,1100 mm"
 			(at 135.835 85.97 0)
 			(layer "User.1")
 			(uuid "7dab17b2-e181-4f44-ae73-46ada60fd3e0")
@@ -20297,7 +20297,7 @@
 			(xy 152.39 91.06) (xy 152.39 110.06)
 		)
 		(height -12.76)
-		(gr_text "19.0000 mm"
+		(gr_text "19,0000 mm"
 			(at 164 100.56 90)
 			(layer "User.1")
 			(uuid "f9ab21a3-03c7-43f5-a717-a224642d5f29")

@@ -528,7 +528,7 @@
       "plot": "../gerber/",
       "pos_files": "",
       "specctra_dsn": "",
-      "step": "",
+      "step": "hardware v5.step",
       "svg": "",
       "vrml": ""
     },
