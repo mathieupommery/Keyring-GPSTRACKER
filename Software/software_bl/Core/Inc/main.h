@@ -74,6 +74,10 @@ void Error_Handler(void);
 #define FLASH_CS_GPIO_Port GPIOB
 #define RxBuffer_SIZE 64
 #define DataBuffer_SIZE 512
+#define TarvosRxBufferSize 256
+#define TarvosTxBufferSize 256
+#define TarvosRxTamponSize 8
+#define TarvosTxTamponSize 8
 
 
 //#if defined(STM32WB5Mxx)
