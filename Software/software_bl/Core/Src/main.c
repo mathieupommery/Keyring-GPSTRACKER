@@ -365,10 +365,6 @@ int main(void)
   MX_USB_Device_Init();
   MX_RTC_Init();
   /* USER CODE BEGIN 2 */
-  HAL_UART_Abort(&huart1);
-    HAL_UART_DeInit(&huart1);
-
-    HAL_I2C_DeInit(&hi2c1);
 
 
 
@@ -396,7 +392,11 @@ int main(void)
   	memset(flashwrite,'\0',256);
   	memset((uint8_t *)bufferscreen ,'\0',50);
 
+
+
   	SPIF_Init(&hspif1, &hspi1, GPIOB, GPIO_PIN_7);
+
+
 
 
 

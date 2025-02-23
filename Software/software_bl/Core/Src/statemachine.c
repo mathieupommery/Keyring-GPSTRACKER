@@ -138,6 +138,8 @@ extern int   bluetoothsend;
 int timer1=0;
 int tpstot=0;
 
+int flagpads=0;
+
 
 
 void statemachine(void){
@@ -933,10 +935,31 @@ void statemachine(void){
 					  ssd1306_WriteString("bluetooth",Font_6x8,White);
 					  ssd1306_SetCursor(32,42);
 
+
 					  ssd1306_WriteString((char *) blereceivebuf, Font_7x10, White);
-					  ssd1306_SetCursor(32,52);
-					  snprintf((char  *)bufferscreen,50,"t=%d",tpstot);
-					  ssd1306_WriteString((char  *)bufferscreen, Font_6x8, White);
+
+
+
+
+
+
+						if(BTN_B_LONG>=1){
+												BTN_A=0;
+												BTN_B=0;
+												BTN_A_LONG=0;
+												BTN_B_LONG=0;
+												PADS_continuous_init(&hi2c1);
+												flagpads=1;
+												}
+
+						if(flagpads==1){
+
+							 ssd1306_SetCursor(32,52);
+												  PADS_continuous_read(&hi2c1);
+												  snprintf((char  *)bufferscreen,50,"t=%d",inttemp);
+												  ssd1306_WriteString((char  *)bufferscreen, Font_6x8, White);
+						}
+
 
 
 
@@ -957,12 +980,14 @@ void statemachine(void){
 						state--;
 						BTN_A=0;
 						BTN_B=0;
+						flagpads=0;
 							}
 					if(BTN_A_LONG>=1){
 							state--;
 							BTN_A=0;
 							BTN_B=0;
 							BTN_A_LONG=0;
+							flagpads=0;
 							}
 
 

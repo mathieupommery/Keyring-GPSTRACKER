@@ -103,17 +103,17 @@ uint8_t PADS_continuous_init(I2C_HandleTypeDef *i2c){
 	uint8_t ctrl_1=0;
 	int check=0;
 
-	if(HAL_I2C_Mem_Read(i2c, 0xBB, 0x11, 1, &ctrl_2, 1, 100)!=HAL_OK){
+	if(HAL_I2C_Mem_Read(i2c, 0xB9, 0x11, 1, &ctrl_2, 1, 100)!=HAL_OK){
 			check=1;
 		}
 
 	ctrl_2|=0b00000010;
 
-	if(HAL_I2C_Mem_Write(i2c, 0xBA, 0x11, 1, &ctrl_2, 1, 100)!=HAL_OK){
+	if(HAL_I2C_Mem_Write(i2c, 0xB8, 0x11, 1, &ctrl_2, 1, 100)!=HAL_OK){
 			check=1;
 		}
 
-	if(HAL_I2C_Mem_Read(i2c, 0xBB, 0x10, 1, &ctrl_1, 1, 100)!=HAL_OK){
+	if(HAL_I2C_Mem_Read(i2c, 0xB9, 0x10, 1, &ctrl_1, 1, 100)!=HAL_OK){
 				check=1;
 			}
 
@@ -122,7 +122,7 @@ uint8_t PADS_continuous_init(I2C_HandleTypeDef *i2c){
 
 	ctrl_1&=0b11001111;
 
-	if(HAL_I2C_Mem_Write(i2c, 0xBA, 0x10, 1, &ctrl_1, 1, 100)!=HAL_OK){
+	if(HAL_I2C_Mem_Write(i2c, 0xB8, 0x10, 1, &ctrl_1, 1, 100)!=HAL_OK){
 				check=1;
 			}
 
@@ -138,19 +138,19 @@ uint8_t PADS_continuous_read(I2C_HandleTypeDef *i2c){
 		int16_t intbuffertemp=0;
 		int32_t intbufferpres=0;
 		double tmoy=0;
-		if(HAL_I2C_Mem_Read(i2c, 0xBB, 0x28, 1, &recarray[0], 1, 100)!=HAL_OK){
+		if(HAL_I2C_Mem_Read(i2c, 0xB9, 0x28, 1, &recarray[0], 1, 100)!=HAL_OK){
 			check=1;
 		}
-		if(HAL_I2C_Mem_Read(i2c, 0xBB, 0x29, 1, &recarray[1], 1, 100)!=HAL_OK){
+		if(HAL_I2C_Mem_Read(i2c, 0xB9, 0x29, 1, &recarray[1], 1, 100)!=HAL_OK){
 			check=1;
 		}
-		if(HAL_I2C_Mem_Read(i2c, 0xBB, 0x2A, 1, &recarray[2], 1, 100)!=HAL_OK){
+		if(HAL_I2C_Mem_Read(i2c, 0xB9, 0x2A, 1, &recarray[2], 1, 100)!=HAL_OK){
 			check=1;
 		}
-		if(HAL_I2C_Mem_Read(i2c, 0xBB, 0x2B, 1, &recarray[3], 1, 100)!=HAL_OK){
+		if(HAL_I2C_Mem_Read(i2c, 0xB9, 0x2B, 1, &recarray[3], 1, 100)!=HAL_OK){
 			check=1;
 		}
-		if(HAL_I2C_Mem_Read(i2c, 0xBB, 0x2C, 1, &recarray[4], 1, 100)!=HAL_OK){
+		if(HAL_I2C_Mem_Read(i2c, 0xB9, 0x2C, 1, &recarray[4], 1, 100)!=HAL_OK){
 			check=1;
 		}
 
@@ -158,6 +158,8 @@ uint8_t PADS_continuous_read(I2C_HandleTypeDef *i2c){
 
 		intbufferpres=(recarray[2]<<16)|(recarray[1]<<8)|(recarray[0]);
 		intbuffertemp=(recarray[4]<<8)|(recarray[3]);
+		inttemp=intbuffertemp;
+		intpress=intbufferpres;
 		finaltemp=(float)intbuffertemp*0.01;
 		finalpress=(float) intbufferpres*(0.00002441406);
 

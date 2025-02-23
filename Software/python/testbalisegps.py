@@ -6,7 +6,7 @@ import gpxpy
 import gpxpy.gpx
 from matplotlib.animation import FuncAnimation
 
-ser = Serial('COM12')
+ser = Serial('COM17')
 print("connected to: " + ser.portstr)
 count=1
 array=[]
@@ -25,7 +25,8 @@ while True:
     if(len(data_array)==9):
         string=data_array[8]
         data_array = [float(data_array[i]) for i in range (len(data_array)-1)]
-        data_array.append(string)        
+        data_array.append(string)
+        print(data_array)
         array.append(data_array)
             
     else:
@@ -45,7 +46,7 @@ print("Port série fermé.")
 for i in range (len(array)):
     speedarray.append(array[i][2])
     vbat.append(array[i][1])
-    altitude.append(array[i][5])
+    altitude.append(array[i][7])
     timearray.append(i)
     if(i>0):
         speedarray[i]=(speedarray[i-1]+array[i][2])/2

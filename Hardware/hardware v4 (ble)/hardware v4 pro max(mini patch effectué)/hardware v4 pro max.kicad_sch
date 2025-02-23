@@ -10437,7 +10437,7 @@
 				)
 			)
 		)
-		(property "Footprint" "USBWURTH:USBC-WURTH"
+		(property "Footprint" "USBCWURTH:USB4110_USBC_SMT"
 			(at 47.244 193.04 0)
 			(effects
 				(font
@@ -12195,7 +12195,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "74889302450(antenne):74889302450"
+		(property "Footprint" "antennesmd:74889302450"
 			(at 97.358 151.384 0)
 			(effects
 				(font

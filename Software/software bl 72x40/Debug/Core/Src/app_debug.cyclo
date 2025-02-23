@@ -1,0 +1,7 @@
+../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_exti.h:391:22:LL_EXTI_EnableIT_32_63	1
+../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_bus.h:539:22:LL_AHB2_GRP1_EnableClock	1
+../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_bus.h:1636:22:LL_C2_AHB2_GRP1_EnableClock	1
+../Core/Src/app_debug.c:176:6:APPD_Init	1
+../Core/Src/app_debug.c:222:6:APPD_EnableCPU2	1
+../Core/Src/app_debug.c:251:13:APPD_SetCPU2GpioConfig	10
+../Core/Src/app_debug.c:319:13:APPD_BleDtbCfg	1

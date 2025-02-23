@@ -5825,7 +5825,7 @@
 				)
 			)
 		)
-		(property "Footprint" "SM06B-SRSS:SM06BSRSSTB"
+		(property "Footprint" "Connector_JST:JST_SH_SM06B-SRSS-TB_1x06-1MP_P1.00mm_Horizontal"
 			(at 92.278 46.736 0)
 			(effects
 				(font
