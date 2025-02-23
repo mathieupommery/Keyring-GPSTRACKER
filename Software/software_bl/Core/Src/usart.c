@@ -29,12 +29,16 @@ extern uint16_t newPos;
 extern uint8_t RxBuffer[RxBuffer_SIZE];
 extern uint8_t DataBuffer[DataBuffer_SIZE];
 extern uint8_t receivedtrame[64];
-
+extern uint8_t tarvos_RX_Buffer[TarvosRxBufferSize];
+extern uint8_t tarvos_RX_Tampon[TarvosRxTamponSize];
+extern uint16_t TarvosRXbufferoldpos;
+extern uint16_t TarvosRXbuffernewpos;
 /* USER CODE END 0 */
 
 UART_HandleTypeDef hlpuart1;
 UART_HandleTypeDef huart1;
 DMA_HandleTypeDef hdma_lpuart1_rx;
+DMA_HandleTypeDef hdma_usart1_rx;
 
 /* LPUART1 init function */
 
@@ -49,7 +53,7 @@ void MX_LPUART1_UART_Init(void)
 
   /* USER CODE END LPUART1_Init 1 */
   hlpuart1.Instance = LPUART1;
-  hlpuart1.Init.BaudRate = 9600;
+  hlpuart1.Init.BaudRate = 115200;
   hlpuart1.Init.WordLength = UART_WORDLENGTH_8B;
   hlpuart1.Init.StopBits = UART_STOPBITS_1;
   hlpuart1.Init.Parity = UART_PARITY_NONE;
@@ -215,6 +219,27 @@ void HAL_UART_MspInit(UART_HandleTypeDef* uartHandle)
     GPIO_InitStruct.Alternate = GPIO_AF7_USART1;
     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
+    /* USART1 DMA Init */
+    /* USART1_RX Init */
+    hdma_usart1_rx.Instance = DMA1_Channel3;
+    hdma_usart1_rx.Init.Request = DMA_REQUEST_USART1_RX;
+    hdma_usart1_rx.Init.Direction = DMA_PERIPH_TO_MEMORY;
+    hdma_usart1_rx.Init.PeriphInc = DMA_PINC_DISABLE;
+    hdma_usart1_rx.Init.MemInc = DMA_MINC_ENABLE;
+    hdma_usart1_rx.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
+    hdma_usart1_rx.Init.MemDataAlignment = DMA_MDATAALIGN_BYTE;
+    hdma_usart1_rx.Init.Mode = DMA_CIRCULAR;
+    hdma_usart1_rx.Init.Priority = DMA_PRIORITY_LOW;
+    if (HAL_DMA_Init(&hdma_usart1_rx) != HAL_OK)
+    {
+      Error_Handler();
+    }
+
+    __HAL_LINKDMA(uartHandle,hdmarx,hdma_usart1_rx);
+
+    /* USART1 interrupt Init */
+    HAL_NVIC_SetPriority(USART1_IRQn, 0, 0);
+    HAL_NVIC_EnableIRQ(USART1_IRQn);
   /* USER CODE BEGIN USART1_MspInit 1 */
 
   /* USER CODE END USART1_MspInit 1 */
@@ -261,6 +286,11 @@ void HAL_UART_MspDeInit(UART_HandleTypeDef* uartHandle)
     */
     HAL_GPIO_DeInit(GPIOA, GPIO_PIN_9|GPIO_PIN_10);
 
+    /* USART1 DMA DeInit */
+    HAL_DMA_DeInit(uartHandle->hdmarx);
+
+    /* USART1 interrupt Deinit */
+    HAL_NVIC_DisableIRQ(USART1_IRQn);
   /* USER CODE BEGIN USART1_MspDeInit 1 */
 
   /* USER CODE END USART1_MspDeInit 1 */
@@ -269,7 +299,7 @@ void HAL_UART_MspDeInit(UART_HandleTypeDef* uartHandle)
 
 /* USER CODE BEGIN 1 */
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
-
+	if(huart->Instance==LPUART1){
 	oldPos = newPos; //keep track of the last position in the buffer
 			if(oldPos + 64 > DataBuffer_SIZE){ //if the buffer is full, parse it, then reset the buffer
 
@@ -292,7 +322,17 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
 			memcpy((uint8_t *) receivedtrame,(uint8_t *)RxBuffer,64);
 
 
-	HAL_UART_Receive_DMA(&hlpuart1, (uint8_t *)RxBuffer, RxBuffer_SIZE);//l'appel de cette fonction réactive l'intérruption.
+	HAL_UART_Receive_DMA(&hlpuart1, (uint8_t *)RxBuffer, RxBuffer_SIZE);
+
+	}
+	if(huart->Instance==USART1){
+				for(int i=0;i<TarvosRxTamponSize;i++){
+					if (tarvos_RX_Tampon[i] == 0x02){
+						memcpy((uint8_t *)tarvos_RX_Buffer,(uint8_t *) tarvos_RX_Tampon + i, (int)tarvos_RX_Tampon[i+2]+4); //copy received data to the buffer
+					}
+				}
+				HAL_UART_Receive_DMA(&hlpuart1, (uint8_t *)tarvos_RX_Tampon, TarvosRxTamponSize);//on recoit par dma à nouveau 64 caractères
+		}//l'appel de cette fonction réactive l'intérruption.
 }
 
 

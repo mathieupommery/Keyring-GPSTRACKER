@@ -1,5 +1,5 @@
-Core/Src/statemachine.o: ../Core/Src/statemachine.c ../Core/Inc/main.h \
- ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_hal.h \
+Core/Src/tarvos.o: ../Core/Src/tarvos.c ../Core/Inc/tarvos.h \
+ ../Core/Inc/main.h ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_hal.h \
  ../Core/Inc/stm32wbxx_hal_conf.h \
  ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_hal_dma.h \
  ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_hal_def.h \
@@ -64,24 +64,13 @@ Core/Src/statemachine.o: ../Core/Src/statemachine.c ../Core/Inc/main.h \
  ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_gpio.h \
  ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_rtc.h \
  ../Middlewares/ST/STM32_WPAN/ble/core/ble_bufsize.h \
- ../Core/Inc/app_entry.h ../Core/Inc/app_common.h ../Core/Inc/ssd1306.h \
- ../Core/Inc/ssd1306_conf.h ../Core/Inc/ssd1306_fonts.h \
- ../Core/Inc/main.h ../Core/Inc/statemachine.h ../Core/Inc/ssd1306.h \
- ../Core/Inc/nmea_parse.h \
- ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h \
- ../USB_Device/Target/usbd_conf.h \
- ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h \
- ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h \
- ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h \
- ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h \
- ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h \
- ../USB_Device/App/usbd_cdc_if.h \
- ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc/usbd_cdc.h \
- ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h \
+ ../Core/Inc/app_entry.h ../Core/Inc/app_common.h ../Core/Inc/usart.h \
+ ../Core/Inc/main.h ../Core/Inc/adc.h ../Core/Inc/dma.h ../Core/Inc/i2c.h \
+ ../Core/Inc/spi.h ../Core/Inc/nmea_parse.h \
  ../Middlewares/Third_Party/NimaLTD_Driver/SPIF/spif.h \
- ../I-CUBE-SPIF/NimaLTD.I-CUBE-SPIF_conf.h ../Core/Inc/spi.h \
- ../Core/Inc/nmea_parse.h ../Core/Inc/tim.h ../Core/Inc/PADS.h \
- ../Core/Inc/usb.h ../Core/Inc/tarvos.h
+ ../I-CUBE-SPIF/NimaLTD.I-CUBE-SPIF_conf.h ../Core/Inc/tim.h \
+ ../Core/Inc/usb.h ../Core/Inc/gpio.h ../Core/Inc/nmea_parse.h
+../Core/Inc/tarvos.h:
 ../Core/Inc/main.h:
 ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_hal.h:
 ../Core/Inc/stm32wbxx_hal_conf.h:
@@ -151,28 +140,16 @@ Core/Src/statemachine.o: ../Core/Src/statemachine.c ../Core/Inc/main.h \
 ../Middlewares/ST/STM32_WPAN/ble/core/ble_bufsize.h:
 ../Core/Inc/app_entry.h:
 ../Core/Inc/app_common.h:
-../Core/Inc/ssd1306.h:
-../Core/Inc/ssd1306_conf.h:
-../Core/Inc/ssd1306_fonts.h:
+../Core/Inc/usart.h:
 ../Core/Inc/main.h:
-../Core/Inc/statemachine.h:
-../Core/Inc/ssd1306.h:
-../Core/Inc/nmea_parse.h:
-../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h:
-../USB_Device/Target/usbd_conf.h:
-../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h:
-../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h:
-../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h:
-../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h:
-../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h:
-../USB_Device/App/usbd_cdc_if.h:
-../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc/usbd_cdc.h:
-../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h:
-../Middlewares/Third_Party/NimaLTD_Driver/SPIF/spif.h:
-../I-CUBE-SPIF/NimaLTD.I-CUBE-SPIF_conf.h:
+../Core/Inc/adc.h:
+../Core/Inc/dma.h:
+../Core/Inc/i2c.h:
 ../Core/Inc/spi.h:
 ../Core/Inc/nmea_parse.h:
+../Middlewares/Third_Party/NimaLTD_Driver/SPIF/spif.h:
+../I-CUBE-SPIF/NimaLTD.I-CUBE-SPIF_conf.h:
 ../Core/Inc/tim.h:
-../Core/Inc/PADS.h:
 ../Core/Inc/usb.h:
-../Core/Inc/tarvos.h:
+../Core/Inc/gpio.h:
+../Core/Inc/nmea_parse.h:
