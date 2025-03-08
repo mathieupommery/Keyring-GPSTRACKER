@@ -138,6 +138,7 @@ void statemachine(void){
 	switch(state){
 	 case STATE_SPEED:
 				 ssd1306_Fill(Black);
+				 nmea_parse(&myData, DataBuffer);
 
 				 if(myData.speed>=vitmax){
 									 vitmax=myData.speed;
@@ -554,7 +555,7 @@ void statemachine(void){
 			  case STATE_INFO:
 				ssd1306_Fill(Black);
 				nmea_parse(&myData, DataBuffer);
-				snprintf((char *)bufferscreen,15, "hdop=%.1f",myData.hdop);//sert a	connaitre la qualitée du fix si proche de 1 voir inférieur alors le fix est tres bon
+				snprintf((char *)bufferscreen,15, "sat=%d",myData.satelliteCount);//sert a	connaitre la qualitée du fix si proche de 1 voir inférieur alors le fix est tres bon
 				ssd1306_SetCursor(32, 12);
 				ssd1306_WriteString((char *)bufferscreen, Font_7x10, White);
 				snprintf((char *)bufferscreen,20, "v=%0.2fV",vbat);
@@ -975,14 +976,21 @@ void statemachine(void){
 					  ssd1306_SetCursor(32,12);
 					  PADS_continuous_read(&hi2c1);
 					  HAL_Delay(10);
-					  ssd1306_WriteString("bluetooth",Font_6x8,White);
-					  ssd1306_SetCursor(32,22);
-					  snprintf((char  *)bufferscreen,50,"p=%0.2f",alt);
-					  ssd1306_WriteString((char  *)bufferscreen, Font_6x8, White);
+					  ssd1306_WriteString("altitude",Font_6x8,White);
+					  ssd1306_SetCursor(32,20);
+					  if(alt<100.0){
+					  snprintf((char  *)bufferscreen,50,"%0.2f",alt);
 
-					  ssd1306_SetCursor(32,32);
-					snprintf((char  *)bufferscreen,50,"p=%0.2f",finalpress);
-					ssd1306_WriteString((char  *)bufferscreen, Font_6x8, White);
+					  }
+					  else{
+
+						snprintf((char  *)bufferscreen,50,"%0.1f",alt);
+
+					  }
+					  ssd1306_WriteString((char  *)bufferscreen, Font_11x18, White);
+
+					  ssd1306_SetCursor(32,44);
+					ssd1306_WriteString("altitude(m)", Font_6x8, White);
 
 
 
