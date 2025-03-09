@@ -4,7 +4,7 @@
 ../Core/Src/spi.c:51:6:MX_SPI1_Init	8	static
 ../Core/Src/spi.c:85:6:HAL_SPI_MspInit	40	static
 ../Core/Src/spi.c:127:6:HAL_SPI_MspDeInit	16	static
-../Core/Src/spi.c:156:5:csvframe	200	static
+../Core/Src/spi.c:156:5:csvframe	216	static
 ../Core/Src/spi.c:163:6:storeindex	120	static
 ../Core/Src/spi.c:173:6:getindex	32	static
 ../Core/Src/spi.c:203:6:writebuffertoflash	24	static

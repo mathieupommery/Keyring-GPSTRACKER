@@ -325,14 +325,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
 	HAL_UART_Receive_DMA(&hlpuart1, (uint8_t *)RxBuffer, RxBuffer_SIZE);
 
 	}
-	if(huart->Instance==USART1){
-				for(int i=0;i<TarvosRxTamponSize;i++){
-					if (tarvos_RX_Tampon[i] == 0x02){
-						memcpy((uint8_t *)tarvos_RX_Buffer,(uint8_t *) tarvos_RX_Tampon + i, (int)tarvos_RX_Tampon[i+2]+4); //copy received data to the buffer
-					}
-				}
-				HAL_UART_Receive_DMA(&hlpuart1, (uint8_t *)tarvos_RX_Tampon, TarvosRxTamponSize);//on recoit par dma à nouveau 64 caractères
-		}//l'appel de cette fonction réactive l'intérruption.
+
 }
 
 

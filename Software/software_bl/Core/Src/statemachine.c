@@ -19,7 +19,7 @@
 #include "spif.h"
 #include "spi.h"
 #include "tim.h"
-#include "PADS.h"
+#include "bmp581.h"
 #include "usb.h"
 
 
@@ -99,10 +99,6 @@ extern double distanceparcouru;
 extern double oldlat;
 extern double oldlong;
 extern int cptdoubledonnee;
-extern int16_t barotemp;
-extern int32_t baropress;
-extern int baroenableinit;
-extern float altibaro;
 
 extern int enablewrite;
 
@@ -116,20 +112,6 @@ extern uint8_t MOIS;
 extern uint16_t ANNEE;
 extern int settimeen;
 
-extern int inttemp;
-extern int intpress;
-
-
-
-int gputemp=0;
-int gpupower=0;
-
-uint8_t tarvosbuf[50];
-int correctentarvos=0;
-int i2cerrcheck=0;
-
-
-
 extern uint8_t blereceivebuf[256];
 extern uint8_t bletransmitbuf[256];
 extern int   bluetoothsend;
@@ -138,14 +120,19 @@ extern int   bluetoothsend;
 int timer1=0;
 int tpstot=0;
 
-int flagpads=0;
+extern BMP_t * bmp581;
+
+extern double bmptemp;
+extern double bmppress;
+extern double bmpalt;
 
 
 
 void statemachine(void){
 	switch(state){
 	 case STATE_SPEED:
-				 ssd1306_Fill(Black);
+		 nmea_parse(&myData, DataBuffer);
+		ssd1306_Fill(Black);
 
 				 if(myData.speed>=vitmax){
 									 vitmax=myData.speed;
@@ -328,19 +315,21 @@ void statemachine(void){
 							  oldlat=myData.latitude;
 							  oldlong=myData.longitude;
 							  nmea_parse(&myData, DataBuffer);
+							  bmp581_read_precise_normal(&bmp581);
+
 							  if(distancecalc(oldlat, myData.latitude,oldlong, myData.longitude) > 139.0){//correspond à 500kmh pendant 1sec
 								  myData.latitude=oldlat;
 								  myData.longitude=oldlong;
-								  flashbufferlen=csvframe((uint8_t *)flashwrite,temp,vbat,&myData,myData.satelliteCount,myData.hdop);
-								  writebuffertoflash((uint8_t*)flashwrite,flashbufferlen);
+								  flashbufferlen=csvframe((uint8_t *)flashwrite,temp,vbat,&myData,myData.satelliteCount,myData.hdop,bmpalt);
 
 							  }
 
 							  else{
 								  distanceparcouru=distanceparcouru + distancecalc(oldlat, myData.latitude,oldlong, myData.longitude);
-								  flashbufferlen=csvframe((uint8_t *)flashwrite,temp,vbat,&myData,myData.satelliteCount,myData.hdop);
-								  writebuffertoflash((uint8_t*)flashwrite,flashbufferlen);
+								  flashbufferlen=csvframe((uint8_t *)flashwrite,temp,vbat,&myData,myData.satelliteCount,myData.hdop,bmpalt);
+
 							  }
+							  writebuffertoflash((uint8_t*)flashwrite,flashbufferlen);
 							  enablewrite=0;
 
 						  }
@@ -394,7 +383,7 @@ void statemachine(void){
 							  													  	}
 							  break;
 						  case ECRANBALISESTATE4:
-							  snprintf((char  *)bufferscreen,50,"%0.1f",myData.altitude);
+							  snprintf((char  *)bufferscreen,50,"%0.1lf",bmpalt);
 							  							  ssd1306_WriteString((char *)bufferscreen,Font_7x10,White);
 							  							ssd1306_SetCursor(32,42);
 							  							ssd1306_WriteString("alt(m)",Font_6x8,White);
@@ -932,11 +921,25 @@ void statemachine(void){
 				  case STATE_BLUETOOTH:
 					  ssd1306_Fill(Black);
 					  ssd1306_SetCursor(32,32);
-					  ssd1306_WriteString("bluetooth",Font_6x8,White);
-					  ssd1306_SetCursor(32,42);
+					  ssd1306_WriteString("bmp581",Font_6x8,White);
+					  ssd1306_SetCursor(32,40);
+					  HAL_Delay(100);
+					  bmp581_read_precise_normal(bmp581);
 
 
-					  ssd1306_WriteString((char *) blereceivebuf, Font_7x10, White);
+
+
+
+
+
+					  snprintf((char  *)blereceivebuf,64,"%0.1lf",(double)bmppress);
+					  ssd1306_WriteString((char *) blereceivebuf, Font_6x8, White);
+					  ssd1306_SetCursor(32,48);
+					  snprintf((char  *)blereceivebuf,64,"%0.1lf",(double)bmptemp);
+					  ssd1306_WriteString((char *) blereceivebuf, Font_6x8, White);
+					  ssd1306_SetCursor(32,56);
+					  snprintf((char  *)blereceivebuf,64,"%0.1lf",(double)bmpalt);
+					  ssd1306_WriteString((char *) blereceivebuf, Font_6x8, White);
 
 
 
@@ -948,17 +951,8 @@ void statemachine(void){
 												BTN_B=0;
 												BTN_A_LONG=0;
 												BTN_B_LONG=0;
-												PADS_continuous_init(&hi2c1);
-												flagpads=1;
+
 												}
-
-						if(flagpads==1){
-
-							 ssd1306_SetCursor(32,52);
-												  PADS_continuous_read(&hi2c1);
-												  snprintf((char  *)bufferscreen,50,"t=%d",inttemp);
-												  ssd1306_WriteString((char  *)bufferscreen, Font_6x8, White);
-						}
 
 
 
@@ -980,14 +974,12 @@ void statemachine(void){
 						state--;
 						BTN_A=0;
 						BTN_B=0;
-						flagpads=0;
 							}
 					if(BTN_A_LONG>=1){
 							state--;
 							BTN_A=0;
 							BTN_B=0;
 							BTN_A_LONG=0;
-							flagpads=0;
 							}
 
 

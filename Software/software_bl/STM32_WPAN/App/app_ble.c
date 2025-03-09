@@ -206,7 +206,7 @@ uint8_t index_con_int, mutex;
  */
 uint8_t a_AdvData[14] =
 {
-  2, AD_TYPE_TX_POWER_LEVEL, 0 /* -0.15dBm */, /* Transmission Power */
+  2, AD_TYPE_TX_POWER_LEVEL, -11 /* -10.9dBm */, /* Transmission Power */
   10, AD_TYPE_COMPLETE_LOCAL_NAME, 'B', 'A', 'L', 'I', 'S', 'E', 'G', 'P', 'S',  /* Complete name */
 
 };

@@ -153,9 +153,9 @@ void HAL_SPI_MspDeInit(SPI_HandleTypeDef* spiHandle)
 }
 
 /* USER CODE BEGIN 1 */
-int csvframe(uint8_t* buffer,float temp,float vbat,GPS * gpsdata,int otherval1,float otherval2){
+int csvframe(uint8_t* buffer,float temp,float vbat,GPS * gpsdata,int otherval1,float otherval2,double baroalt){
 	int framesize=0;
-	framesize=snprintf((char *)buffer,256, "%0.2f,%0.3f,%0.2f,%0.7f,%0.7f,%0.2f,%d,%0.2f,%d-%02d-%02dT%02d:%02d:%02d.00+02:00\n\r",temp,vbat,(gpsdata->speed)*3.6,gpsdata->latitude,gpsdata->longitude,gpsdata->altitude,otherval1,otherval2,ANNEE,MOIS,JOURS,HR,MINUTE,SEC);
+	framesize=snprintf((char *)buffer,256, "%0.2f,%0.3f,%0.2f,%0.7f,%0.7f,%0.2f,%d,%0.2f,%0.2lf,%d-%02d-%02dT%02d:%02d:%02d.00+02:00\n\r",temp,vbat,(gpsdata->speed)*3.6,gpsdata->latitude,gpsdata->longitude,gpsdata->altitude,otherval1,otherval2,baroalt,ANNEE,MOIS,JOURS,HR,MINUTE,SEC);
 	return framesize;
 }
 

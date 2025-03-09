@@ -1,7 +1,7 @@
-"./Core/Src/PADS.o"
 "./Core/Src/adc.o"
 "./Core/Src/app_debug.o"
 "./Core/Src/app_entry.o"
+"./Core/Src/bmp581.o"
 "./Core/Src/dma.o"
 "./Core/Src/gpio.o"
 "./Core/Src/hw_timerserver.o"

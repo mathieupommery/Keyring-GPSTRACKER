@@ -45,7 +45,7 @@ extern SPI_HandleTypeDef hspi1;
 void MX_SPI1_Init(void);
 
 /* USER CODE BEGIN Prototypes */
-int csvframe(uint8_t* buffer,float temp,float vbat,GPS * gpsdata,int otherval1,float otherval2);
+int csvframe(uint8_t* buffer,float temp,float vbat,GPS * gpsdata,int otherval1,float otherval2,double baroalt);
 void writebuffertoflash(uint8_t * buffer,int bufferlenght);
 void getindex(void);
 void storeindex(void);

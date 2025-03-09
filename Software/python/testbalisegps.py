@@ -6,7 +6,7 @@ import gpxpy
 import gpxpy.gpx
 from matplotlib.animation import FuncAnimation
 
-ser = Serial('COM17')
+ser = Serial('COM4')
 print("connected to: " + ser.portstr)
 count=1
 array=[]
@@ -22,8 +22,8 @@ while True:
     ligne = ser.readline().decode('utf-8').strip()
     data_array = ligne.split(',')
     
-    if(len(data_array)==9):
-        string=data_array[8]
+    if(len(data_array)==10):
+        string=data_array[9]
         data_array = [float(data_array[i]) for i in range (len(data_array)-1)]
         data_array.append(string)
         print(data_array)
@@ -46,7 +46,7 @@ print("Port série fermé.")
 for i in range (len(array)):
     speedarray.append(array[i][2])
     vbat.append(array[i][1])
-    altitude.append(array[i][7])
+    altitude.append(array[i][8])
     timearray.append(i)
     if(i>0):
         speedarray[i]=(speedarray[i-1]+array[i][2])/2
@@ -101,7 +101,7 @@ for lat, lon, ele in coordonnees:
     segment.points.append(point)
 
 # Écrire le fichier GPX
-with open("train.gpx", "w") as f:
+with open("test.gpx", "w") as f:
     f.write(gpx.to_xml())
 
 print("Fichier GPX créé avec succès.")
