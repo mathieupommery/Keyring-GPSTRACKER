@@ -9,19 +9,9 @@ RM := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
--include Utilities/sequencer/subdir.mk
--include Utilities/lpm/tiny_lpm/subdir.mk
 -include USB_Device/Target/subdir.mk
 -include USB_Device/App/subdir.mk
--include STM32_WPAN/Target/subdir.mk
--include STM32_WPAN/App/subdir.mk
 -include Middlewares/Third_Party/NimaLTD_Driver/SPIF/subdir.mk
--include Middlewares/ST/STM32_WPAN/utilities/subdir.mk
--include Middlewares/ST/STM32_WPAN/interface/patterns/ble_thread/tl/subdir.mk
--include Middlewares/ST/STM32_WPAN/interface/patterns/ble_thread/shci/subdir.mk
--include Middlewares/ST/STM32_WPAN/ble/svc/Src/subdir.mk
--include Middlewares/ST/STM32_WPAN/ble/core/template/subdir.mk
--include Middlewares/ST/STM32_WPAN/ble/core/auto/subdir.mk
 -include Middlewares/ST/STM32_USB_Device_Library/Core/Src/subdir.mk
 -include Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/subdir.mk
 -include Drivers/STM32WBxx_HAL_Driver/Src/subdir.mk

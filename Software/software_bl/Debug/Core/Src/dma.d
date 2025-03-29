@@ -48,23 +48,7 @@ Core/Src/dma.o: ../Core/Src/dma.c ../Core/Inc/dma.h ../Core/Inc/main.h \
  ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_hal_tim_ex.h \
  ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_hal_uart.h \
  ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_hal_uart_ex.h \
- ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_system.h \
- ../Core/Inc/app_conf.h \
- ../Middlewares/ST/STM32_WPAN/interface/patterns/ble_thread/hw.h \
- ../Core/Inc/hw_conf.h ../Core/Inc/hw_if.h \
- ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_exti.h \
- ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_system.h \
- ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_rcc.h \
- ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_ipcc.h \
- ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_bus.h \
- ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_pwr.h \
- ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_cortex.h \
- ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_utils.h \
- ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_hsem.h \
- ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_gpio.h \
- ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_rtc.h \
- ../Middlewares/ST/STM32_WPAN/ble/core/ble_bufsize.h \
- ../Core/Inc/app_entry.h ../Core/Inc/app_common.h
+ ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_system.h
 ../Core/Inc/dma.h:
 ../Core/Inc/main.h:
 ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_hal.h:
@@ -117,21 +101,3 @@ Core/Src/dma.o: ../Core/Src/dma.c ../Core/Inc/dma.h ../Core/Inc/main.h \
 ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_hal_uart.h:
 ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_hal_uart_ex.h:
 ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_system.h:
-../Core/Inc/app_conf.h:
-../Middlewares/ST/STM32_WPAN/interface/patterns/ble_thread/hw.h:
-../Core/Inc/hw_conf.h:
-../Core/Inc/hw_if.h:
-../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_exti.h:
-../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_system.h:
-../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_rcc.h:
-../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_ipcc.h:
-../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_bus.h:
-../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_pwr.h:
-../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_cortex.h:
-../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_utils.h:
-../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_hsem.h:
-../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_gpio.h:
-../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_rtc.h:
-../Middlewares/ST/STM32_WPAN/ble/core/ble_bufsize.h:
-../Core/Inc/app_entry.h:
-../Core/Inc/app_common.h:

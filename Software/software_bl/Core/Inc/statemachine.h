@@ -55,6 +55,7 @@ typedef enum{
 	STATE_LAT,
 	STATE_LONG,
 	STATE_ALT,
+	STATE_ALTBARO,
 	STATE_HEURE
 
 }POS;

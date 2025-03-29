@@ -127,6 +127,10 @@ extern double bmppress;
 extern double bmpalt;
 
 
+extern uint8_t odrcheck;
+
+extern uint8_t receivedtrame[64];
+
 
 void statemachine(void){
 	switch(state){
@@ -624,6 +628,32 @@ void statemachine(void){
 					BTN_B_LONG=0;
 				}
 				  break;
+			  case STATE_ALTBARO:
+
+				  	  	  	  	  	  	bmp581_read_precise_normal(bmp581);
+				  						ssd1306_SetCursor(32, 32);
+				  						snprintf((char *)bufferscreen,15, "baroalt:");
+				  						ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
+				  						snprintf((char *)bufferscreen,15, "%0.2lf m",bmpalt);//pas forcement utile d'afficher 7 decimales apres la virgule, 6 donne une precision au metre ce qui est le max du gps
+				  						ssd1306_SetCursor(32, 40);
+				  						ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
+				  						snprintf((char *)bufferscreen,15, "baropress:");
+				  						ssd1306_SetCursor(32, 48);
+				  						ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
+				  						snprintf((char *)bufferscreen,15, "%0.3lfkPa",bmppress/1000.0);
+				  						ssd1306_SetCursor(32, 56);
+				  						ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
+				  						HAL_Delay(200);
+
+				  if(BTN_B>=1){
+				  					posstate++;
+				  					BTN_B=0;
+				  				  }
+				  if(BTN_B_LONG>=1){
+					  posstate--;
+					BTN_B_LONG=0;
+				}
+				  break;
 			  case STATE_HEURE:
 			  			  ssd1306_Fill(Black);
 			  			  nmea_parse(&myData, DataBuffer);
@@ -648,6 +678,7 @@ void statemachine(void){
 			  				snprintf((char *)bufferscreen,15, "%02d sec",SEC);
 			  				ssd1306_WriteString((char *)bufferscreen, Font_7x10, White);
 			  				if(BTN_B>=1){
+			  					posstate--;
 			  					posstate--;
 			  					posstate--;
 			  					posstate--;
@@ -921,9 +952,10 @@ void statemachine(void){
 				  case STATE_BLUETOOTH:
 					  ssd1306_Fill(Black);
 					  ssd1306_SetCursor(32,32);
+					  nmea_parse(&myData, DataBuffer);
 					  ssd1306_WriteString("bmp581",Font_6x8,White);
 					  ssd1306_SetCursor(32,40);
-					  HAL_Delay(100);
+					  HAL_Delay(200);
 					  bmp581_read_precise_normal(bmp581);
 
 
@@ -938,8 +970,7 @@ void statemachine(void){
 					  snprintf((char  *)blereceivebuf,64,"%0.1lf",(double)bmptemp);
 					  ssd1306_WriteString((char *) blereceivebuf, Font_6x8, White);
 					  ssd1306_SetCursor(32,56);
-					  snprintf((char  *)blereceivebuf,64,"%0.1lf",(double)bmpalt);
-					  ssd1306_WriteString((char *) blereceivebuf, Font_6x8, White);
+					  ssd1306_WriteString((char *) receivedtrame, Font_6x8, White);
 
 
 

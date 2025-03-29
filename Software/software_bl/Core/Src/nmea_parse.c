@@ -10,6 +10,7 @@
 //on a une fonction de decodage par typme de trame interressante, puis une fonction nmea_parse servant à mettre à jour la structure de donnée avec lesdonnées presentes dans le databuffer, qui lui se met à jour tout seul.
 
 char *data[15];
+extern uint8_t receivedtrame[64];
 
 int gps_checksum(char *nmea_data)
 {
@@ -143,7 +144,6 @@ void nmea_parse(GPS *gps_data, uint8_t *buffer){
     memset(data, 0, sizeof(data));
     char * token = strtok(buffer, "$");
     int cnt = 0;
-    int cnt12=0;
     while(token !=NULL){
         data[cnt++] = malloc(strlen(token)+1); //free later!!!!!
         strcpy(data[cnt-1], token);
@@ -153,19 +153,13 @@ void nmea_parse(GPS *gps_data, uint8_t *buffer){
        if(strstr(data[i], "\r\n")!=NULL && gps_checksum(data[i])){
            if(strstr(data[i], "GNRMC")!=NULL){
         	   nmea_GNRMC(gps_data, data[i]);
-        	   if(cnt12>=1){
-        		  break;
-        	   }
-               cnt12=1;
-
+        	   memcpy((uint8_t *) receivedtrame,(uint8_t *)data[i],64);
            }
            else if(strstr(data[i], "GNGGA")!=NULL){
                nmea_GPGGA(gps_data, data[i]);
-               if(cnt12>=1){
-              	   break;
-               }
-               cnt12=1;
+               memcpy((uint8_t *) receivedtrame,(uint8_t *)data[i],64);
            }
+
        }
 
     }

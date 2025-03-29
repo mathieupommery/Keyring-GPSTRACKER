@@ -1,10 +1,7 @@
 ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_bus.h:539:22:LL_AHB2_GRP1_EnableClock	1
 ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_bus.h:958:22:LL_APB1_GRP2_EnableClock	1
 ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_bus.h:1053:22:LL_APB1_GRP2_DisableClock	1
-../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_bus.h:1274:22:LL_APB2_GRP1_EnableClock	1
-../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_bus.h:1328:22:LL_APB2_GRP1_DisableClock	1
-../Core/Src/usart.c:45:6:MX_LPUART1_UART_Init	5
-../Core/Src/usart.c:89:6:MX_USART1_UART_Init	5
-../Core/Src/usart.c:132:6:HAL_UART_MspInit	7
-../Core/Src/usart.c:249:6:HAL_UART_MspDeInit	3
-../Core/Src/usart.c:301:6:HAL_UART_RxCpltCallback	5
+../Core/Src/usart.c:43:6:MX_LPUART1_UART_Init	5
+../Core/Src/usart.c:86:6:HAL_UART_MspInit	4
+../Core/Src/usart.c:148:6:HAL_UART_MspDeInit	2
+../Core/Src/usart.c:177:6:HAL_UART_RxCpltCallback	4

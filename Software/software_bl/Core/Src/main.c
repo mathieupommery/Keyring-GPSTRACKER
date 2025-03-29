@@ -24,7 +24,6 @@
 #include "ipcc.h"
 #include "usart.h"
 #include "memorymap.h"
-#include "rf.h"
 #include "rtc.h"
 #include "spi.h"
 #include "tim.h"
@@ -339,10 +338,30 @@ int main(void)
 
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
   HAL_Init();
-  /* Config code for STM32_WPAN (HSE Tuning must be done before system clock configuration) */
-  MX_APPE_Config();
 
   /* USER CODE BEGIN Init */
+
+  GPIO_InitTypeDef GPIO_InitStruct = {0};
+  void (*boot_jump)(void);
+
+  __HAL_RCC_GPIOC_CLK_ENABLE();
+   GPIO_InitStruct.Pin = GPIO_PIN_15|GPIO_PIN_14;
+   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+   GPIO_InitStruct.Pull = GPIO_NOPULL;
+   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+   /* If both Select and Reset button held down at boot time, then immediately
+    * jump to DFU bootloader, rather than start the Snickerdoodle application.
+    */
+   if ((HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_14) == GPIO_PIN_RESET) &&
+ 	  (HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_15) == GPIO_PIN_RESET))
+   {
+ 	  HAL_DeInit();
+ 	  boot_jump = (void (*)(void))(*((uint32_t *)(SYS_MEM_START_ADDR + 4)));
+ 	  __set_MSP(*(__IO uint32_t*)SYS_MEM_START_ADDR);
+
+ 	  /* NOTE WELL: This call never returns: */
+ 	  boot_jump();
+   }
 
   /* USER CODE END Init */
 
@@ -360,7 +379,6 @@ int main(void)
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
-  MX_RF_Init();
   MX_GPIO_Init();
   MX_DMA_Init();
   MX_ADC1_Init();
@@ -371,7 +389,6 @@ int main(void)
   MX_TIM16_Init();
   MX_TIM17_Init();
   MX_SPI1_Init();
-  MX_USART1_UART_Init();
   MX_USB_Device_Init();
   MX_RTC_Init();
   /* USER CODE BEGIN 2 */
@@ -397,10 +414,6 @@ int main(void)
   	HAL_Delay(100);
   	HAL_UART_Abort(&hlpuart1);
   	HAL_UART_Receive_DMA(&hlpuart1, (uint8_t *)RxBuffer, RxBuffer_SIZE);
-
-
-  	HAL_UART_Abort(&huart1);
-  	HAL_UART_Receive_DMA(&huart1, (uint8_t *)tarvos_RX_Tampon, TarvosRxTamponSize);
 
 
   	memset(flashread,'1',256);
@@ -436,15 +449,11 @@ int main(void)
   	//LL_HSEM_1StepLock( HSEM, 5 );
   /* USER CODE END 2 */
 
-  /* Init code for STM32_WPAN */
-  MX_APPE_Init();
-
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
     /* USER CODE END WHILE */
-    MX_APPE_Process();
 
     /* USER CODE BEGIN 3 */
 	  statemachine();
@@ -513,8 +522,8 @@ void PeriphCommonClock_Config(void)
 
   /** Initializes the peripherals clock
   */
-  PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_SMPS|RCC_PERIPHCLK_RFWAKEUP
-                              |RCC_PERIPHCLK_USB|RCC_PERIPHCLK_ADC;
+  PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_SMPS|RCC_PERIPHCLK_USB
+                              |RCC_PERIPHCLK_ADC;
   PeriphClkInitStruct.PLLSAI1.PLLN = 6;
   PeriphClkInitStruct.PLLSAI1.PLLP = RCC_PLLP_DIV2;
   PeriphClkInitStruct.PLLSAI1.PLLQ = RCC_PLLQ_DIV2;
@@ -522,7 +531,6 @@ void PeriphCommonClock_Config(void)
   PeriphClkInitStruct.PLLSAI1.PLLSAI1ClockOut = RCC_PLLSAI1_USBCLK|RCC_PLLSAI1_ADCCLK;
   PeriphClkInitStruct.UsbClockSelection = RCC_USBCLKSOURCE_PLLSAI1;
   PeriphClkInitStruct.AdcClockSelection = RCC_ADCCLKSOURCE_PLLSAI1;
-  PeriphClkInitStruct.RFWakeUpClockSelection = RCC_RFWKPCLKSOURCE_HSE_DIV1024;
   PeriphClkInitStruct.SmpsClockSelection = RCC_SMPSCLKSOURCE_HSI;
   PeriphClkInitStruct.SmpsDivSelection = RCC_SMPSCLKDIV_RANGE1;
 
@@ -531,7 +539,7 @@ void PeriphCommonClock_Config(void)
     Error_Handler();
   }
   /* USER CODE BEGIN Smps */
-  LL_HSEM_1StepLock( HSEM, 5 );
+  //LL_HSEM_1StepLock( HSEM, 5 );
 
   /* USER CODE END Smps */
 }

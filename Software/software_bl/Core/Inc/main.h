@@ -29,10 +29,6 @@ extern "C" {
 /* Includes ------------------------------------------------------------------*/
 #include "stm32wbxx_hal.h"
 
-#include "app_conf.h"
-#include "app_entry.h"
-#include "app_common.h"
-
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
@@ -78,6 +74,9 @@ void Error_Handler(void);
 #define TarvosTxBufferSize 256
 #define TarvosRxTamponSize 8
 #define TarvosTxTamponSize 8
+
+
+#define SYS_MEM_START_ADDR 0x1FFF0000
 
 
 //#if defined(STM32WB5Mxx)
