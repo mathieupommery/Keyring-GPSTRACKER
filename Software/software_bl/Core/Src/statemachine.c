@@ -21,6 +21,7 @@
 #include "tim.h"
 #include "bmp581.h"
 #include "usb.h"
+#include "pulse_oximeter.h"
 
 
 
@@ -48,12 +49,10 @@ extern STATE_TYPE state;
 extern SPEED spdstate;
 extern POS posstate;
 extern CHRONO chronostate;
-extern GIF gifstate;
 extern USBSTATE usbstate;
 extern BALISESTATE balisestate;
-extern TARVOSSTATE tarvosstate;
-extern BAROSTATE barostate;
 extern ECRANBALISESTATE ecranstate;
+extern SETTINGSTATE settingstate;
 
 
 extern int BTN_A;
@@ -126,10 +125,14 @@ extern double bmptemp;
 extern double bmppress;
 extern double bmpalt;
 
+extern int flash_CNT_VALUE;
+extern int BlueLED_CNT_VALUE;
 
-extern uint8_t odrcheck;
 
-extern uint8_t receivedtrame[64];
+FIFO_LED_DATA fifoLedData;
+long currentMillis = 0;
+long lastMillis = 0;
+
 
 
 void statemachine(void){
@@ -229,16 +232,6 @@ void statemachine(void){
 				  									 					BTN_A=0;
 				  									 					BTN_B=0;
 				  									  	}
-				  									 	 if(BTN_A_LONG>=1){
-				  									 						 				 									state++;
-				  									 						 				 									state++;
-				  									 						 				 									state++;
-				  									 						 				 									state++;
-				  									 						 				 									state++;
-
-				  									 						 				 									  			 	BTN_A_LONG=0;
-				  									 						 				 									  			 	BTN_B=0;
-				  									 						 				 									  	}
 				  									 	 if(BTN_B_LONG>=1){
 				  									 					  							  vitmax=0;
 				  									 					  							BTN_B_LONG=0;
@@ -938,6 +931,23 @@ void statemachine(void){
 				 									  			 	state++;
 				 									  			 	BTN_A=0;
 				 									  			 	BTN_B=0;
+
+
+
+				 									  			  pulseOximeter_resetRegisters();
+
+				 									  			  pulseOximeter_initFifo();
+
+				 									  			  pulseOximeter_setSampleRate(_100SPS);
+
+				 									  			  pulseOximeter_setLedCurrent(RED_LED, 50);
+				 									  			  pulseOximeter_setLedCurrent(IR_LED, 5);
+
+				 									  			  pulseOximeter_resetFifo();
+
+				 									  			  pulseOximeter_setMeasurementMode(SPO2);
+
+				 									  			  currentMillis = HAL_GetTick();
 				 									  	}
 				 					if(BTN_A_LONG>=1){
 				 									 									  			 	state--;
@@ -949,72 +959,41 @@ void statemachine(void){
 				 				  }
 				  break;
 
-				  case STATE_BLUETOOTH:
+				  case STATE_SETTING:
 					  ssd1306_Fill(Black);
 					  ssd1306_SetCursor(32,32);
-					  nmea_parse(&myData, DataBuffer);
-					  ssd1306_WriteString("bmp581",Font_6x8,White);
-					  ssd1306_SetCursor(32,40);
-					  HAL_Delay(200);
-					  bmp581_read_precise_normal(bmp581);
+					  ssd1306_WriteString("max30102",Font_7x10,White);
+					  ssd1306_SetCursor(32,42);
+					  currentMillis = HAL_GetTick();
 
+					  fifoLedData = pulseOximeter_readFifo();
 
+					  pulseOximeter = pulseOximeter_update(fifoLedData);
 
+					  pulseOximeter_resetFifo();
 
+					  HAL_Delay(10);
+					  snprintf((char  *)bufferscreen,50,"spo2=%f",pulseOximeter.SpO2);
+					  ssd1306_WriteString((char  *)bufferscreen,Font_7x10,White);
+					  ssd1306_SetCursor(32,52);
+					  snprintf((char  *)bufferscreen,50,"bpm=%f",pulseOximeter.heartBPM);
+					  ssd1306_WriteString((char  *)bufferscreen,Font_7x10,White);
 
-
-
-					  snprintf((char  *)blereceivebuf,64,"%0.1lf",(double)bmppress);
-					  ssd1306_WriteString((char *) blereceivebuf, Font_6x8, White);
-					  ssd1306_SetCursor(32,48);
-					  snprintf((char  *)blereceivebuf,64,"%0.1lf",(double)bmptemp);
-					  ssd1306_WriteString((char *) blereceivebuf, Font_6x8, White);
-					  ssd1306_SetCursor(32,56);
-					  ssd1306_WriteString((char *) receivedtrame, Font_6x8, White);
-
-
-
-
-
-
-						if(BTN_B_LONG>=1){
-												BTN_A=0;
-												BTN_B=0;
-												BTN_A_LONG=0;
-												BTN_B_LONG=0;
-
-												}
-
-
-
-
-					  if(BTN_B>=1){
-
-
-						  bluetoothsend=1;
-						  BTN_B=0;
-						  BTN_B_LONG=0;
-					  }
-
-
-				  if(BTN_A>=1){
-						state--;
-						state--;
-						state--;
-						state--;
-						state--;
-						BTN_A=0;
-						BTN_B=0;
-							}
-					if(BTN_A_LONG>=1){
-							state--;
-							BTN_A=0;
-							BTN_B=0;
-							BTN_A_LONG=0;
-							}
-
-
-
+					  				 					 if(BTN_A>=1){
+					  				 									  			 	state--;
+					  				 									  			state--;
+					  				 									  		state--;
+					  				 									  	state--;
+					  				 									 state--;
+					  				 									  			 	BTN_A=0;
+					  				 									  			 	BTN_B=0;
+					  				 									  	}
+					  				 					if(BTN_A_LONG>=1){
+					  				 									 									  			 	state--;
+					  				 									 									  			 	BTN_A=0;
+					  				 									 									  			 	BTN_B=0;
+					  				 									 									  			 	BTN_A_LONG=0;
+					  				 									 									  	}
 					  break;
 
 
@@ -1411,7 +1390,157 @@ return ;
 //
 //
 //					  break;
-
+//
+// ssd1306_WriteString("setting",Font_6x8,White);
+//					  ssd1306_SetCursor(32,40);
+//					  FREQ flashfreq=FREQ_10HZ;
+//					  FREQ bluefreq=FREQ_10HZ;
+//					  GPSEN gpsen1=GPS_DISABLE;
+//
+//					  switch(settingstate){
+//
+//					  case CURRENTSETTING:
+//
+//						  getsetting();
+//
+//						  ssd1306_WriteString("current",Font_6x8,White);
+//						  ssd1306_SetCursor(32,48);
+//						  snprintf((char *)bufferscreen,50,"FLASH_f:%d",flash_CNT_VALUE);
+//						  ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
+//						  ssd1306_SetCursor(32,56);
+//						  snprintf((char *)bufferscreen,50,"LED_f:%d",BlueLED_CNT_VALUE);
+//						  ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
+//
+//
+//						  if(BTN_B>=1){
+//							settingstate++;
+//							BTN_B=0;
+//							BTN_B_LONG=0;
+//										  }
+//
+//						  if(BTN_A>=1){
+//								state--;
+//								state--;
+//								state--;
+//								state--;
+//								state--;
+//								BTN_A=0;
+//								BTN_B=0;
+//									}
+//							if(BTN_A_LONG>=1){
+//									state--;
+//									BTN_A=0;
+//									BTN_B=0;
+//									BTN_A_LONG=0;
+//									}
+//
+//
+//					  break;
+//
+//					  case FREQUENCY:
+//						  ssd1306_WriteString("flsh freq",Font_6x8,White);
+//
+//
+//						  switch(flashfreq){
+//						  case FREQ_10HZ:
+//							  break;
+//						  case FREQ_1HZ:
+//							  break;
+//						  case FREQ_020HZ:
+//							  break;
+//						  }
+//
+//						  if(BTN_B>=1){
+//												settingstate++;
+//												BTN_B=0;
+//												BTN_B_LONG=0;
+//															  }
+//
+//						  break;
+//
+//
+//					  case DISABLEGPS:
+//						  ssd1306_WriteString("GPS EN",Font_6x8,White);
+//
+//						  switch(gpsen1){
+//						 						  case GPS_EN:
+//
+//						 							  break;
+//						 						  case GPS_DISABLE:
+//						 							  break;
+//						  }
+//
+//						  if(BTN_B>=1){
+//												settingstate++;
+//												BTN_B=0;
+//												BTN_B_LONG=0;
+//															  }
+//
+//						  break;
+//
+//					  case BLUELEDFREQ:
+//
+//						  ssd1306_WriteString("BlueLEDFreq",Font_6x8,White);
+//
+//						  switch(bluefreq){
+//						  						  case FREQ_10HZ:
+//						  							  break;
+//						  						  case FREQ_1HZ:
+//						  							  break;
+//						  						  case FREQ_020HZ:
+//						  							  break;
+//						  						  }
+//
+//						  if(BTN_B>=1){
+//												settingstate--;
+//												settingstate--;
+//												settingstate--;
+//												BTN_B=0;
+//												BTN_B_LONG=0;
+//															  }
+//
+//						  break;
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//					  }
+//
+//
+//
+//
+//
+//
+//
+//
+//						if(BTN_B_LONG>=1){
+//												BTN_A=0;
+//												BTN_B=0;
+//												BTN_A_LONG=0;
+//												BTN_B_LONG=0;
+//
+//												}
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 

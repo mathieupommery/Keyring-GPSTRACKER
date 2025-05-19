@@ -49,6 +49,8 @@ int csvframe(uint8_t* buffer,float temp,float vbat,GPS * gpsdata,int otherval1,f
 void writebuffertoflash(uint8_t * buffer,int bufferlenght);
 void getindex(void);
 void storeindex(void);
+void getsetting(void);
+void storesetting(void);
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus

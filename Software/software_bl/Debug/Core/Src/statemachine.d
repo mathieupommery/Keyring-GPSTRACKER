@@ -66,7 +66,7 @@ Core/Src/statemachine.o: ../Core/Src/statemachine.c ../Core/Inc/main.h \
  ../Middlewares/Third_Party/NimaLTD_Driver/SPIF/spif.h \
  ../I-CUBE-SPIF/NimaLTD.I-CUBE-SPIF_conf.h ../Core/Inc/spi.h \
  ../Core/Inc/nmea_parse.h ../Core/Inc/tim.h ../Core/Inc/bmp581.h \
- ../Core/Inc/usb.h
+ ../Core/Inc/usb.h ../Core/Inc/pulse_oximeter.h
 ../Core/Inc/main.h:
 ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_hal.h:
 ../Core/Inc/stm32wbxx_hal_conf.h:
@@ -142,3 +142,4 @@ Core/Src/statemachine.o: ../Core/Src/statemachine.c ../Core/Inc/main.h \
 ../Core/Inc/tim.h:
 ../Core/Inc/bmp581.h:
 ../Core/Inc/usb.h:
+../Core/Inc/pulse_oximeter.h:

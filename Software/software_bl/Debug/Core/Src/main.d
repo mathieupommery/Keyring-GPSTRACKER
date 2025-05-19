@@ -60,7 +60,7 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Core/Inc/ssd1306.h ../Core/Inc/ssd1306_conf.h \
  ../Core/Inc/ssd1306_fonts.h ../Core/Inc/statemachine.h \
  ../Core/Inc/ssd1306.h ../Core/Inc/nmea_parse.h ../Core/Inc/tarvos.h \
- ../Core/Inc/bmp581.h
+ ../Core/Inc/bmp581.h ../Core/Inc/pulse_oximeter.h
 ../Core/Inc/main.h:
 ../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_hal.h:
 ../Core/Inc/stm32wbxx_hal_conf.h:
@@ -137,3 +137,4 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Core/Inc/nmea_parse.h:
 ../Core/Inc/tarvos.h:
 ../Core/Inc/bmp581.h:
+../Core/Inc/pulse_oximeter.h:

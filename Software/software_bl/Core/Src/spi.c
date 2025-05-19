@@ -43,6 +43,14 @@ extern uint8_t MINUTE;
 extern uint8_t JOURS;
 extern uint8_t MOIS;
 extern uint16_t ANNEE;
+
+extern int flash_CNT_VALUE;
+extern int BlueLED_CNT_VALUE;
+
+
+
+
+
 /* USER CODE END 0 */
 
 SPI_HandleTypeDef hspi1;
@@ -221,6 +229,47 @@ void writebuffertoflash(uint8_t * buffer,int bufferlenght){
 		pageoffset=(bufferlenght-(256-pageoffset));
 	}
 	storeindex();
+
+}
+
+void storesetting(void){
+	int writepage=MAX_WRITE_PAGE+2;
+	uint8_t writebuffer[100];
+	uint8_t backupindex[50];
+	SPIF_ReadPage(&hspif1, writepage-1, (uint8_t *)backupindex, 50, 0);
+	memset((uint8_t*)writebuffer,'\0',100);
+	snprintf((char *)writebuffer,100, "%d$%d$%d",flash_CNT_VALUE,BlueLED_CNT_VALUE,GPS_EN);
+	SPIF_EraseSector(&hspif1, (int)floor((writepage)/16));
+	SPIF_WritePage(&hspif1,writepage-1, (uint8_t *)backupindex, 100,0);
+	SPIF_WritePage(&hspif1,writepage, (uint8_t *)writebuffer, 100,0);
+}
+
+void getsetting(void){
+	int readpage=MAX_WRITE_PAGE+2;
+	SPIF_ReadPage(&hspif1, readpage, (uint8_t *)indexbuffer, 50, 0);
+	memset(numbuf1,'$',10);
+	memset(numbuf2,'$',10);
+	int cnt=0;
+	if((indexbuffer[0]&0x0F)<10 ){
+	while(indexbuffer[cnt]!='$'){
+
+			  numbuf1[cnt]=indexbuffer[cnt];
+			  cnt++;
+		  }
+		  cnt++;
+		  int cnt1=0;
+		  while(indexbuffer[cnt]!='$'){
+
+		  		  numbuf2[cnt1]=indexbuffer[cnt];
+		  		  cnt1++;
+		  		  cnt++;
+		  	  }
+		  		  flash_CNT_VALUE=atoi((char *)numbuf1);
+		  		  BlueLED_CNT_VALUE=atoi((char *)numbuf2);
+	}
+	else{
+		storeindex();
+	}
 
 }
 

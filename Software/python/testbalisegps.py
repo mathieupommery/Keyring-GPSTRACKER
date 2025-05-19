@@ -6,7 +6,7 @@ import gpxpy
 import gpxpy.gpx
 from matplotlib.animation import FuncAnimation
 
-ser = Serial('COM4')
+ser = Serial('COM7')
 print("connected to: " + ser.portstr)
 count=1
 array=[]
@@ -101,7 +101,7 @@ for lat, lon, ele in coordonnees:
     segment.points.append(point)
 
 # Écrire le fichier GPX
-with open("test.gpx", "w") as f:
+with open("course.gpx", "w") as f:
     f.write(gpx.to_xml())
 
 print("Fichier GPX créé avec succès.")

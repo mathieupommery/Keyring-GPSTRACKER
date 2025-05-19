@@ -24,10 +24,7 @@ typedef enum{
 	STATE_POS,
 	STATE_CHRONOMETER,
 	STATE_USB,
-	STATE_BLUETOOTH
-//	STATE_TARVOS,
-//	STATE_BARO,
-//	STATE_TEST
+	STATE_SETTING
 
 
 }STATE_TYPE;
@@ -95,12 +92,6 @@ typedef enum{
 
 }BALISESTATE;
 
-typedef enum{
-	TARVOS1,
-	TARVOS2,
-	TARVOS3
-
-}TARVOSSTATE;
 
 typedef enum{
 	ECRANBALISESTATE1,
@@ -112,11 +103,6 @@ typedef enum{
 
 }ECRANBALISESTATE;
 
-typedef enum{
-	BARO1,
-	BARO2
-
-}BAROSTATE;
 
 
 typedef struct
@@ -131,3 +117,24 @@ typedef struct
 	uint8_t KEYCODE6;
 } keyboardHID;
 
+
+
+typedef enum {
+	FREQ_10HZ,
+	FREQ_1HZ,
+	FREQ_020HZ
+}FREQ;
+
+
+typedef enum {
+	GPS_EN,
+	GPS_DISABLE,
+}GPSEN;
+
+typedef enum{
+	CURRENTSETTING,
+	FREQUENCY,
+	DISABLEGPS,
+	BLUELEDFREQ
+
+}SETTINGSTATE;
