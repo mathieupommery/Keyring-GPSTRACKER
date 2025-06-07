@@ -1,0 +1,3 @@
+../Core/Src/world_map.c:15:7:lat_to_mercator_y	1
+../Core/Src/world_map.c:20:6:mercator_to_pixel	1
+../Core/Src/world_map.c:28:6:extract_view	6

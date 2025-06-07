@@ -1,0 +1,2 @@
+../Core/Src/usb.c:59:6:getgpu	8	static
+../Core/Src/usb.c:86:6:usbtransmit	32	static

@@ -1,7 +1,0 @@
-../Core/Src/spi.c:54:6:MX_SPI1_Init	2
-../Core/Src/spi.c:88:6:HAL_SPI_MspInit	4
-../Core/Src/spi.c:165:6:HAL_SPI_MspDeInit	2
-../Core/Src/spi.c:198:5:csvframe	1
-../Core/Src/spi.c:205:6:storeindex	2
-../Core/Src/spi.c:215:6:getindex	4
-../Core/Src/spi.c:245:6:writebuffertoflash	5

@@ -1,8 +1,0 @@
-../Core/Src/nmea_parse.c:14:5:gps_checksum	32	static
-../Core/Src/nmea_parse.c:37:5:nmea_GPGGA	232	static
-../Core/Src/nmea_parse.c:97:5:nmea_GPGSA	152	static
-../Core/Src/nmea_parse.c:122:5:nmea_GNRMC	144	static
-../Core/Src/nmea_parse.c:142:6:nmea_parse	40	static
-../Core/Src/nmea_parse.c:170:6:nmea_speed	40	static
-../Core/Src/nmea_parse.c:196:8:distancecalc	64	static
-../Core/Src/nmea_parse.c:203:10:checksumcalculate	24	static
