@@ -105,6 +105,14 @@ int timecounter=0;
 
 extern TRANSMITUSBSTATE usbtransmitstate;
 
+int counterforstart=0;
+int indexcounterforstart=0;
+
+int flag_50kmh=0;
+int flag_100kmh=0;
+float time50kmh=0.0;
+float time100kmh=0.0;
+
 void statemachine(void){
 	switch(state){
 	 case STATE_SPEED:
@@ -471,36 +479,36 @@ void statemachine(void){
 												}
 
 				  break;
-			  case STATE_MAP:
-				  ssd1306_Fill(Black);
-				  extract_view((uint8_t*) world_map,(float)45,(float) 2);
-				  ssd1306_SetCursor(32, 52);
-				  snprintf((char *)bufferscreen,20, "%d,%d",xposition12,yposition12);
-				  ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-				  if(BTN_B>=1){
-				  		posstate++;
-				  		BTN_B=0;
-				  	}
-				  if(BTN_B_LONG>=1){
-				  			posstate--;
-				  			BTN_B_LONG=0;
-				  		}
-
-				  break;
+//			  case STATE_MAP:
+//				  ssd1306_Fill(Black);
+//				  extract_view((uint8_t*) world_map,(float)45,(float) 2);
+//				  ssd1306_SetCursor(32, 52);
+//				  snprintf((char *)bufferscreen,20, "%d,%d",xposition12,yposition12);
+//				  ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//				  if(BTN_B>=1){
+//				  		posstate++;
+//				  		BTN_B=0;
+//				  	}
+//				  if(BTN_B_LONG>=1){
+//				  			posstate--;
+//				  			BTN_B_LONG=0;
+//				  		}
+//
+//				  break;
 			  case STATE_INFO2:
 			  				ssd1306_Fill(Black);
 
@@ -606,7 +614,7 @@ void statemachine(void){
 			  				ssd1306_WriteString((char *)bufferscreen, Font_7x10, White);
 			  				if(BTN_B>=1){
 			  					posstate--;
-			  					posstate--;
+			  				//	posstate--;
 			  					posstate--;
 			  					posstate--;
 			  					posstate--;
@@ -868,6 +876,7 @@ if(usbtransmiten==0){
 					  ssd1306_SetCursor(32,32);
 					  ssd1306_WriteString("0-100",Font_6x8,White);
 
+
 					  switch(accelstate){
 					  case WAITFORGPS:
 						  ssd1306_SetCursor(32,40);
@@ -875,6 +884,22 @@ if(usbtransmiten==0){
 						  if(GNSSData.fixType>=2){
 							  accelstate++;
 						  }
+						  if(BTN_A>=1){
+						  	state--;
+						  	state--;
+						  	state--;
+						  	state--;
+						  	state--;
+						  	BTN_A=0;
+						  	BTN_B=0;
+						  }
+
+		 					if(BTN_A_LONG>=1){
+			 								state--;
+			 								BTN_A=0;
+			 								BTN_B=0;
+			 								BTN_A_LONG=0;
+			 					}
 						  break;
 					  case WAITFORPUSH:
 
@@ -889,22 +914,131 @@ if(usbtransmiten==0){
 						  if(BTN_B_LONG>=1){
 							  accelstate++;
 						  				 						BTN_B_LONG=0;
+
 						  				 						}
+						  else{
+						  timecounter++;
+
+						  if(BTN_A>=1){
+						  	state--;
+						  	state--;
+						  	state--;
+						  	state--;
+						  	state--;
+						  	BTN_A=0;
+						  	BTN_B=0;
+						  }
+
+		 					if(BTN_A_LONG>=1){
+			 								state--;
+			 								BTN_A=0;
+			 								BTN_B=0;
+			 								BTN_A_LONG=0;
+			 					}
+						  }
 
 						  break;
 					  case WAITFORSTOP:
-						  ssd1306_SetCursor(32,40);
-						  ssd1306_WriteString("Please stop",Font_6x8,White);
 						  if(GNSSData.fgSpeed<=1.0){
-							  accelstate++;
+							  ssd1306_SetCursor(56,40);
+
+							  snprintf((char *)bufferscreen,15, "%d",3-counterforstart);
+							  ssd1306_WriteString((char *)bufferscreen, Font_16x24, White);
+							  if(counterforstart==3){
+							  				accelstate++;
+							  				counterforstart=0;
+							  				indexcounterforstart=0;
+							  				HAL_TIM_Base_Start(&htim16);
+							  				htim16.Instance->CNT=0;
+							  }
+
+							  indexcounterforstart++;
+							  if(indexcounterforstart%10==0){
+								  counterforstart++;
+							  }
+
+
+						  }
+						  else{
+							  ssd1306_SetCursor(32,40);
+							  ssd1306_WriteString("Please stop",Font_6x8,White);
+							  counterforstart=0;
+							  indexcounterforstart=0;
+
 						  }
 						  break;
 					  case INRUN:
+						  if(((GNSSData.fgSpeed*3.6)>=50.0)&&(flag_50kmh==0)){
+							  time50kmh=(float)(htim16.Instance->CNT/1000.0);
+							  flag_50kmh=1;
+						  }
+
+						  if(((GNSSData.fgSpeed*3.6)>=100.0)&&(flag_100kmh==0)){
+							  time100kmh=(float)(htim16.Instance->CNT/1000.0);
+							  flag_100kmh=1;
+							  accelstate++;
+							  HAL_TIM_Base_Stop(&htim16);
+							  htim16.Instance->CNT=0;
+
+						 						  }
+						  ssd1306_SetCursor(32,40);
+						  snprintf((char *)bufferscreen,15, "%0.1f",GNSSData.fgSpeed*3.6);
+						  ssd1306_WriteString((char *)bufferscreen,Font_16x24,White);
+
+
+						  if(BTN_B_LONG>=1){
+							  accelstate++;
+							  BTN_B_LONG=0;
+							  HAL_TIM_Base_Stop(&htim16);
+							  htim16.Instance->CNT=0;
+						  }
+
 
 						  break;
 					  case RESULT:
+						  ssd1306_Fill(Black);
+						 ssd1306_SetCursor(32,32);
+						 ssd1306_WriteString("0-50kmh",Font_6x8,White);
+						 ssd1306_SetCursor(32,40);
+						 snprintf((char *)bufferscreen,15, "%0.1fs",time50kmh);
+						 ssd1306_WriteString((char *)bufferscreen,Font_6x8,White);
+						 ssd1306_SetCursor(32,48);
+						 ssd1306_WriteString("0-100kmh",Font_6x8,White);
+						 ssd1306_SetCursor(32,56);
+						 snprintf((char *)bufferscreen,15, "%0.1fs",time100kmh);
+						 ssd1306_WriteString((char *)bufferscreen,Font_6x8,White);
+						 if((BTN_A>=1)||(BTN_B>=1)||(BTN_A_LONG>=1)){
+
+							 time50kmh=0.0;
+							 time100kmh=0.0;
+							 flag_50kmh=0;
+							 flag_100kmh=0;
+							 accelstate=WAITFORGPS;
+
+						 }
 
 
+						  if(BTN_A>=1){
+						  	state--;
+						  	state--;
+						  	state--;
+						  	state--;
+						  	state--;
+						  	BTN_A=0;
+						  	BTN_B=0;
+
+						  }
+
+		 					if(BTN_A_LONG>=1){
+			 								state--;
+			 								BTN_A=0;
+			 								BTN_B=0;
+			 								BTN_A_LONG=0;
+			 					}
+		 					if(BTN_B>=1){
+
+		 						BTN_B=0;
+		 					}
 						  break;
 
 
@@ -921,22 +1055,6 @@ if(usbtransmiten==0){
 					  }
 
 
-					  if(BTN_A>=1){
-					  	state--;
-					  	state--;
-					  	state--;
-					  	state--;
-					  	state--;
-					  	BTN_A=0;
-					  	BTN_B=0;
-					  }
-
-	 					if(BTN_A_LONG>=1){
-		 								state--;
-		 								BTN_A=0;
-		 								BTN_B=0;
-		 								BTN_A_LONG=0;
-		 					}
 
 					  break;
 

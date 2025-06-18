@@ -48,7 +48,7 @@ typedef enum{
 typedef enum{
 	STATE_SUMMARY1,
 	STATE_INFO,
-	STATE_MAP,
+//	STATE_MAP,
 	STATE_INFO2,
 	STATE_ALT,
 	STATE_ALTBARO,

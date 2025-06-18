@@ -37,7 +37,7 @@
 
 /**
 	MiddleWare name : NimaLTD.I-CUBE-SPIF.2.3.2
-	MiddleWare fileName : ./NimaLTD.I-CUBE-SPIF_conf.h
+	MiddleWare fileName : NimaLTD.I-CUBE-SPIF_conf.h
 */
 /*---------- SPIF_DEBUG  -----------*/
 #define SPIF_DEBUG      SPIF_DEBUG_DISABLE

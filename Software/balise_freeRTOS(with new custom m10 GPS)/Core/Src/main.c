@@ -333,6 +333,7 @@ int main(void)
   MX_TIM17_Init();
   MX_SPI1_Init();
   MX_RTC_Init();
+  MX_TIM16_Init();
   MX_RF_Init();
   /* USER CODE BEGIN 2 */
 

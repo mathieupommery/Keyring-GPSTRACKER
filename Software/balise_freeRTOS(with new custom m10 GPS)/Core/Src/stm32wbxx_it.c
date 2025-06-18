@@ -73,6 +73,7 @@ extern DMA_HandleTypeDef hdma_lpuart1_tx;
 extern UART_HandleTypeDef hlpuart1;
 extern RTC_HandleTypeDef hrtc;
 extern SPI_HandleTypeDef hspi1;
+extern TIM_HandleTypeDef htim16;
 extern TIM_HandleTypeDef htim17;
 extern TIM_HandleTypeDef htim1;
 
@@ -271,7 +272,14 @@ void TIM1_UP_TIM16_IRQHandler(void)
   /* USER CODE BEGIN TIM1_UP_TIM16_IRQn 0 */
 
   /* USER CODE END TIM1_UP_TIM16_IRQn 0 */
-  HAL_TIM_IRQHandler(&htim1);
+  if (htim1.Instance != NULL)
+  {
+    HAL_TIM_IRQHandler(&htim1);
+  }
+  if (htim16.Instance != NULL)
+  {
+    HAL_TIM_IRQHandler(&htim16);
+  }
   /* USER CODE BEGIN TIM1_UP_TIM16_IRQn 1 */
 
   /* USER CODE END TIM1_UP_TIM16_IRQn 1 */
