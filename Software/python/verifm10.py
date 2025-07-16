@@ -17,7 +17,7 @@ def send_hex_via_serial(port='COM9', baudrate=38400, data_hex=None, expected_res
         print(f"Données envoyées : {data_hex}")
 
         # Lire la réponse
-        response = ser.read(100)  # lit jusqu'à 100 octets ou jusqu'au timeout
+        response = ser.read(54)  # lit jusqu'à 100 octets ou jusqu'au timeout
         print(f"Réponse : {response.hex()}")
 
         if expected_response is not None:
@@ -27,7 +27,7 @@ def send_hex_via_serial(port='COM9', baudrate=38400, data_hex=None, expected_res
                 print(f"La réponse est INATTENDUE : {response.hex()}")
 
 if __name__ == "__main__":
-    port = "COM9"  # Changez si votre port est différent
+    port = "COM16"  # Changez si votre port est différent
     baudrate = 115200
     data_hex = ("B5 62 06 8B 14 00 00 04 00 00 01 00 A4 40 03 00 A4 40 05 00 A4 40 0A 00 A4 40 4C 15".replace(" ", ""))
     expected_response = [

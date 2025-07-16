@@ -214,45 +214,39 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)//lors d'un appuie sur un bouton, 
 	if(GPIO_Pin==GPIO_PIN_14){
 
 		if(HAL_GPIO_ReadPin(GPIOC,GPIO_PIN_14)== GPIO_PIN_RESET){
-
 					boutonAtime=0;
 					tbtn1=HAL_GetTick();
-
-
 				}
 				else{
-					BTN_A++;
-
 					boutonAtime=HAL_GetTick()-tbtn1;
 					tbtn1=0;
-
-
 				}
 
-				if(boutonAtime>=400){
-					BTN_A_LONG++;
-					BTN_A=0;
-				}
+
+		if(boutonAtime>=50 && boutonAtime<=400){
+			BTN_A++;
+			BTN_A_LONG=0;
+		}
+		if(boutonAtime>=400){
+			BTN_A_LONG++;
+			BTN_A=0;
+		}
 
 	}
 	if(GPIO_Pin==GPIO_PIN_15){
 
 		if(HAL_GPIO_ReadPin(GPIOC,GPIO_PIN_15)== GPIO_PIN_RESET){
-
 			boutonBtime=0;
 			tbtn2=HAL_GetTick();
-
-
 		}
 		else{
-			BTN_B++;
-
 			boutonBtime=HAL_GetTick()-tbtn2;
 			tbtn2=0;
-
-
+	}
+		if(boutonBtime>=50 && boutonBtime<=400){
+			BTN_B++;
+			BTN_B_LONG=0;
 		}
-
 		if(boutonBtime>=400){
 			BTN_B_LONG++;
 			BTN_B=0;
