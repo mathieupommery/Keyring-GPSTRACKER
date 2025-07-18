@@ -551,7 +551,7 @@
       "plot": "../gerber/",
       "pos_files": "",
       "specctra_dsn": "",
-      "step": "../../3d schématic/pcb/boardv6.step",
+      "step": "../../3d schématic/pcb/boardv7.step",
       "svg": "",
       "vrml": ""
     },
