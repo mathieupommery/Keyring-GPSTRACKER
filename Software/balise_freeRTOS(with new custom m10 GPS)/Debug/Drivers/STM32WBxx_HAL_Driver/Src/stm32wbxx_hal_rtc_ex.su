@@ -4,7 +4,7 @@
 ../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_rtc_ex.c:349:19:HAL_RTCEx_SetInternalTimeStamp	0	static
 ../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_rtc_ex.c:383:19:HAL_RTCEx_DeactivateInternalTimeStamp	0	static
 ../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_rtc_ex.c:419:19:HAL_RTCEx_GetTimeStamp	24	static
-../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_rtc_ex.c:476:19:HAL_RTCEx_SetTamper	20	static
+../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_rtc_ex.c:476:19:HAL_RTCEx_SetTamper	16	static
 ../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_rtc_ex.c:651:19:HAL_RTCEx_SetTamper_IT	16	static
 ../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_rtc_ex.c:818:19:HAL_RTCEx_DeactivateTamper	0	static
 ../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_rtc_ex.c:956:13:HAL_RTCEx_TimeStampEventCallback	0	static

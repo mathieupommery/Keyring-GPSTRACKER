@@ -1,6 +1,5 @@
 #include <Arduino.h>
 #include <Adafruit_GFX.h>
-#include <Adafruit_SSD1306.h>
 #include <HardwareSerial.h>
 #include "ESP32_WS2812_Lib.h"
 #include <Wire.h>
@@ -39,17 +38,23 @@
 #define LEDS_COUNT 1
 #define CHANNEL    0
 ESP32_WS2812 strip = ESP32_WS2812(LEDS_COUNT, LED_PIN, CHANNEL, TYPE_GRB);
-SSD1306 display;
+#define SSD1306_ADDRESS 0x3C
+
+SSD1306 display(SSD1306_ADDRESS);
 // --- Setup ---
 void setup() {
   Serial.begin(115200);
     strip.begin();
   strip.setBrightness(20);
   Wire.begin(MY_SDA, MY_SCL);
+
+  // Initialisation de l'écran
   display.Init();
+
+  // Exemple d'affichage
   display.Fill(Black);
-  display.UpdateScreen();
-  display.DrawRectangle(40, 40, 50, 50, White);
+  display.SetCursor(0, 0);
+  display.WriteString("Hello I2C!", Font_6x8, White);
   display.UpdateScreen();
 }
 

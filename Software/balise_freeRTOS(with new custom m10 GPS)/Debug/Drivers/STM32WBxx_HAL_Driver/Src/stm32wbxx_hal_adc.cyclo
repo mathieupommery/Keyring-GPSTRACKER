@@ -1,8 +1,8 @@
 ../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_adc.c:1186:13:HAL_ADC_MspInit	1
 ../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_adc.c:398:19:HAL_ADC_Init	17
 ../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_adc.c:1203:13:HAL_ADC_MspDeInit	1
-../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_adc.c:1642:19:HAL_ADC_PollForConversion	15
-../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_adc.c:1775:19:HAL_ADC_PollForEvent	14
+../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_adc.c:1642:19:HAL_ADC_PollForConversion	16
+../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_adc.c:1775:19:HAL_ADC_PollForEvent	15
 ../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_adc.c:2303:10:HAL_ADC_GetValue	1
 ../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_adc.c:2645:13:HAL_ADC_ConvCpltCallback	1
 ../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_adc.c:2660:13:HAL_ADC_ConvHalfCpltCallback	1

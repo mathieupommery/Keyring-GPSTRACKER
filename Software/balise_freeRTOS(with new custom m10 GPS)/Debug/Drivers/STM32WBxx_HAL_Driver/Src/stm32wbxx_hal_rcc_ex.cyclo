@@ -1,7 +1,7 @@
 ../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_rcc_ex.c:2105:17:RCC_PLL_GetFreqDomain_P	4
 ../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_rcc_ex.c:2148:17:RCC_PLL_GetFreqDomain_Q	4
 ../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_rcc_ex.c:2277:17:RCC_PLLSAI1_GetFreqDomain_Q	4
-../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_rcc_ex.c:147:19:HAL_RCCEx_PeriphCLKConfig	42
+../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_rcc_ex.c:147:19:HAL_RCCEx_PeriphCLKConfig	43
 ../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_rcc_ex.c:439:6:HAL_RCCEx_GetPeriphCLKConfig	2
 ../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_rcc_ex.c:550:10:HAL_RCCEx_GetPeriphCLKFreq	79
 ../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_rcc_ex.c:1138:10:HAL_RCCEx_GetRngCLKSource	2

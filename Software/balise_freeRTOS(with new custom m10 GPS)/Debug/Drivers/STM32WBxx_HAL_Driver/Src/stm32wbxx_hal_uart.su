@@ -40,8 +40,8 @@
 ../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_uart.c:4342:13:UART_RxISR_8BIT.part.0	8	static,ignoring_inline_asm
 ../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_uart.c:4442:13:UART_RxISR_16BIT	4	static
 ../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_uart.c:4342:13:UART_RxISR_8BIT	0	static
-../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_uart.c:4544:13:UART_RxISR_8BIT_FIFOEN	32	static,ignoring_inline_asm
-../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_uart.c:4716:13:UART_RxISR_16BIT_FIFOEN	32	static,ignoring_inline_asm
+../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_uart.c:4544:13:UART_RxISR_8BIT_FIFOEN	40	static,ignoring_inline_asm
+../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_uart.c:4716:13:UART_RxISR_16BIT_FIFOEN	40	static,ignoring_inline_asm
 ../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_uart.c:3892:13:UART_DMARxHalfCplt	8	static
 ../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_uart.c:3819:13:UART_DMAReceiveCplt	8	static,ignoring_inline_asm
 ../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_uart.c:2811:6:HAL_UART_ReceiverTimeout_Config	0	static
@@ -62,7 +62,7 @@
 ../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_uart.c:562:19:HAL_MultiProcessor_Init	32	static
 ../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_uart.c:2955:19:HAL_MultiProcessor_EnableMuteMode	0	static,ignoring_inline_asm
 ../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_uart.c:2975:19:HAL_MultiProcessor_DisableMuteMode	0	static,ignoring_inline_asm
-../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_uart.c:3528:19:UART_WaitOnFlagUntilTimeout	40	static,ignoring_inline_asm
+../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_uart.c:3528:19:UART_WaitOnFlagUntilTimeout	24	static,ignoring_inline_asm
 ../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_uart.c:3596:19:UART_Start_Receive_IT	8	static,ignoring_inline_asm
 ../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_uart.c:3668:19:UART_Start_Receive_DMA	16	static,ignoring_inline_asm
 ../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_uart.c:1541:19:HAL_UART_Receive_DMA	8	static,ignoring_inline_asm

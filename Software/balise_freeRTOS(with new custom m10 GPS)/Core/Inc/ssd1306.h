@@ -107,12 +107,8 @@ void ssd1306_Polyline(const SSD1306_VERTEX *par_vertex, uint16_t par_size, SSD13
 void ssd1306_DrawRectangle(uint8_t x1, uint8_t y1, uint8_t x2, uint8_t y2, SSD1306_COLOR color);
 void ssd1306_FillRectangle(uint8_t x1, uint8_t y1, uint8_t x2, uint8_t y2, SSD1306_COLOR color);
 void ssd1306_DrawBitmap(uint8_t x, uint8_t y, const unsigned char* bitmap, uint8_t w, uint8_t h, SSD1306_COLOR color);
-void ssd1306_Drawarrow(uint8_t x,uint8_t y, uint8_t type,SSD1306_COLOR color);
-void ssd1306_Drawarrow2(uint8_t x,uint8_t y, uint8_t r,float angle);
 void batterygauge(float vbat,int x, int y,int currentsquare);
 void percentage(float percent);
-uint16_t scrollText(uint8_t *text,FontDef Font,uint8_t x,uint8_t y,uint8_t widthonscreen,uint16_t offset);
-
 /**
  * @brief Sets the contrast of the display.
  * @param[in] value contrast to set.

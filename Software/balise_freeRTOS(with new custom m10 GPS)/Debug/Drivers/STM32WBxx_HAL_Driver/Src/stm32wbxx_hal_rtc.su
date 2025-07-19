@@ -4,7 +4,7 @@
 ../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_rtc.c:378:19:HAL_RTC_DeInit	16	static
 ../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_rtc.c:731:19:HAL_RTC_SetTime	24	static
 ../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_rtc.c:845:19:HAL_RTC_GetTime	12	static
-../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_rtc.c:890:19:HAL_RTC_SetDate	16	static
+../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_rtc.c:890:19:HAL_RTC_SetDate	24	static
 ../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_rtc.c:979:19:HAL_RTC_GetDate	8	static
 ../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_rtc.c:1037:19:HAL_RTC_SetAlarm	24	static
 ../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_rtc.c:1235:19:HAL_RTC_SetAlarm_IT	32	static

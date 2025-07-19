@@ -13,7 +13,7 @@
 ../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_adc.c:3809:6:ADC_DMAConvCplt	8	static
 ../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_adc.c:3941:6:ADC_DMAError	8	static
 ../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_adc.c:2743:19:HAL_ADC_ConfigChannel	32	static,ignoring_inline_asm
-../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_adc.c:3141:19:HAL_ADC_AnalogWDGConfig	16	static,ignoring_inline_asm
+../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_adc.c:3141:19:HAL_ADC_AnalogWDGConfig	20	static,ignoring_inline_asm
 ../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_adc.c:3429:10:HAL_ADC_GetState	0	static
 ../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_adc.c:3443:10:HAL_ADC_GetError	0	static
 ../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_adc.c:3475:19:ADC_ConversionStop	16	static

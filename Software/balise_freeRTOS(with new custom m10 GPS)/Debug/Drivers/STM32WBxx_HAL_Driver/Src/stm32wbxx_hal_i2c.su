@@ -1,6 +1,6 @@
-../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_i2c.c:6974:26:I2C_WaitOnFlagUntilTimeout.constprop	24	static
+../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_i2c.c:6974:26:I2C_WaitOnFlagUntilTimeout.constprop	32	static
 ../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_i2c.c:7014:26:I2C_WaitOnTXISFlagUntilTimeout	32	static
-../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_i2c.c:6974:26:I2C_WaitOnFlagUntilTimeout	32	static
+../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_i2c.c:6974:26:I2C_WaitOnFlagUntilTimeout	40	static
 ../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_i2c.c:7055:26:I2C_WaitOnSTOPFlagUntilTimeout	32	static
 ../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_i2c.c:7093:26:I2C_WaitOnRXNEFlagUntilTimeout	32	static
 ../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_i2c.c:702:13:HAL_I2C_MspInit	0	static
@@ -62,7 +62,7 @@
 ../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_i2c.c:6844:13:I2C_DMAMasterReceiveCplt	8	static
 ../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_i2c.c:5112:26:I2C_Mem_ISR_IT	16	static
 ../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_i2c.c:4679:6:HAL_I2C_ER_IRQHandler	4	static
-../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_i2c.c:6300:13:I2C_ITSlaveCplt.constprop	16	static
+../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_i2c.c:6300:13:I2C_ITSlaveCplt.constprop	24	static
 ../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_i2c.c:5684:26:I2C_Slave_ISR_DMA	16	static
 ../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_i2c.c:5255:26:I2C_Slave_ISR_IT	16	static
 ../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_i2c.c:6924:13:I2C_DMAError	16	static

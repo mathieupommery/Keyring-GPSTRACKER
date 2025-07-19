@@ -1,4 +1,4 @@
-../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_dma.c:151:19:HAL_DMA_Init	16	static
+../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_dma.c:151:19:HAL_DMA_Init	12	static
 ../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_dma.c:268:19:HAL_DMA_DeInit	8	static
 ../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_dma.c:389:19:HAL_DMA_Start	16	static
 ../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_dma.c:432:19:HAL_DMA_Start_IT	16	static

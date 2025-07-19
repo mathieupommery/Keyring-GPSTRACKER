@@ -5,8 +5,8 @@
 ../Middlewares/Third_Party/NimaLTD_Driver/SPIF/spif.c:163:6:SPIF_TransmitReceive	16	static
 ../Middlewares/Third_Party/NimaLTD_Driver/SPIF/spif.c:205:6:SPIF_Transmit	8	static
 ../Middlewares/Third_Party/NimaLTD_Driver/SPIF/spif.c:247:6:SPIF_Receive	8	static
-../Middlewares/Third_Party/NimaLTD_Driver/SPIF/spif.c:289:6:SPIF_WriteEnable	16	static
-../Middlewares/Third_Party/NimaLTD_Driver/SPIF/spif.c:305:6:SPIF_WriteDisable	16	static
+../Middlewares/Third_Party/NimaLTD_Driver/SPIF/spif.c:289:6:SPIF_WriteEnable	24	static
+../Middlewares/Third_Party/NimaLTD_Driver/SPIF/spif.c:305:6:SPIF_WriteDisable	24	static
 ../Middlewares/Third_Party/NimaLTD_Driver/SPIF/spif.c:321:9:SPIF_ReadReg1	32	static
 ../Middlewares/Third_Party/NimaLTD_Driver/SPIF/spif.c:337:9:SPIF_ReadReg2	32	static
 ../Middlewares/Third_Party/NimaLTD_Driver/SPIF/spif.c:353:9:SPIF_ReadReg3	32	static
@@ -21,7 +21,7 @@
 ../Middlewares/Third_Party/NimaLTD_Driver/SPIF/spif.c:836:6:SPIF_EraseChip	24	static
 ../Middlewares/Third_Party/NimaLTD_Driver/SPIF/spif.c:882:6:SPIF_EraseSector	40	static
 ../Middlewares/Third_Party/NimaLTD_Driver/SPIF/spif.c:954:6:SPIF_EraseBlock	40	static
-../Middlewares/Third_Party/NimaLTD_Driver/SPIF/spif.c:1029:6:SPIF_WriteAddress	72	static
+../Middlewares/Third_Party/NimaLTD_Driver/SPIF/spif.c:1029:6:SPIF_WriteAddress	64	static
 ../Middlewares/Third_Party/NimaLTD_Driver/SPIF/spif.c:1083:6:SPIF_WritePage	32	static
 ../Middlewares/Third_Party/NimaLTD_Driver/SPIF/spif.c:1107:6:SPIF_WriteSector	72	static
 ../Middlewares/Third_Party/NimaLTD_Driver/SPIF/spif.c:1160:6:SPIF_WriteBlock	72	static

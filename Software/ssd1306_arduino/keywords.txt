@@ -1,0 +1,15 @@
+SSD1306 KEYWORD1
+Init KEYWORD2
+Fill KEYWORD2
+UpdateScreen KEYWORD2
+DrawPixel KEYWORD2
+DrawLine KEYWORD2
+DrawRectangle KEYWORD2
+FillRectangle KEYWORD2
+SetContrast KEYWORD2
+DisplayOn KEYWORD2
+IsDisplayOn KEYWORD2
+SetCursor KEYWORD2
+BatteryGauge KEYWORD2
+Black LITERAL1
+White LITERAL1

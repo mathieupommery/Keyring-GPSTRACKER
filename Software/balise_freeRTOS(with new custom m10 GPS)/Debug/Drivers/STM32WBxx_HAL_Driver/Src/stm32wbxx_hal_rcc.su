@@ -1,6 +1,6 @@
 ../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_rcc.c:1715:26:RCC_SetFlashLatencyFromMSIRange	32	static
 ../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_rcc.c:1405:10:HAL_RCC_GetSysClockFreq.part.0	4	static
-../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_rcc.c:266:19:HAL_RCC_DeInit	16	static
+../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_rcc.c:266:19:HAL_RCC_DeInit	24	static
 ../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_rcc.c:384:19:HAL_RCC_OscConfig	24	static
 ../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_rcc.c:1056:19:HAL_RCC_ClockConfig	24	static
 ../Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_rcc.c:1317:6:HAL_RCC_MCOConfig	48	static
