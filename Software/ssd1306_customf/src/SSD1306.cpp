@@ -1,4 +1,8 @@
 #include "SSD1306.h"
+#include <Wire.h>
+#include <string.h>
+#include <stdio.h>
+#include <math.h>
 
 SSD1306::SSD1306(uint8_t i2c_address) : _i2c_address(i2c_address) {
     _screen.CurrentX = 0;
@@ -14,22 +18,21 @@ void SSD1306::Reset() {
 
 void SSD1306::WriteCommand(uint8_t cmd) {
     Wire.beginTransmission(_i2c_address);
-    Wire.write(0x00);
+    Wire.write(0x00); // Command control byte
     Wire.write(cmd);
     Wire.endTransmission();
 }
 
 void SSD1306::WriteData(const uint8_t* buffer, size_t buff_size) {
-    Wire.beginTransmission(_i2c_address);
-    Wire.write(0x40);
     size_t pos = 0;
     while (pos < buff_size) {
-        size_t chunkSize = buff_size - pos;
-        if (chunkSize > 16) chunkSize = 16;
+        Wire.beginTransmission(_i2c_address);
+        Wire.write(0x40); // Data control byte
+        size_t chunkSize = (buff_size - pos) > 16 ? 16 : (buff_size - pos);
         Wire.write(buffer + pos, chunkSize);
+        Wire.endTransmission();
         pos += chunkSize;
     }
-    Wire.endTransmission();
 }
 
 void SSD1306::Init() {
@@ -38,45 +41,45 @@ void SSD1306::Init() {
 
     DisplayOn(false);
 
-    WriteCommand(0x20);
-    WriteCommand(0x00);
+    WriteCommand(0x20); // Set Memory Addressing Mode
+    WriteCommand(0x00); // Horizontal Addressing Mode
 
-    WriteCommand(0xB0);
+    WriteCommand(0xB0); // Page Start Address
 
-    WriteCommand(0xC8);
+    WriteCommand(0xC8); // COM Output Scan Direction (remapped mode)
 
-    WriteCommand(0x00);
-    WriteCommand(0x10);
+    WriteCommand(0x00); // Low column address
+    WriteCommand(0x10); // High column address
 
-    WriteCommand(0x40);
+    WriteCommand(0x40); // Start line address
 
-    SetContrast(0xFF);
+    SetContrast(0xFF); // Contrast
 
-    WriteCommand(0xA1);
+    WriteCommand(0xA1); // Segment re-map
 
-    WriteCommand(0xA6);
+    WriteCommand(0xA6); // Normal display
 
-    WriteCommand(0xA8);
-    WriteCommand(0x3F);
+    WriteCommand(0xA8); // Multiplex ratio
+    WriteCommand(0x3F); // 1/64
 
-    WriteCommand(0xA4);
+    WriteCommand(0xA4); // Output follows RAM content
 
-    WriteCommand(0xD3);
-    WriteCommand(0x00);
+    WriteCommand(0xD3); // Display offset
+    WriteCommand(0x00); // No offset
 
-    WriteCommand(0xD5);
-    WriteCommand(0xF0);
+    WriteCommand(0xD5); // Display clock divide
+    WriteCommand(0xF0); // 100Hz
 
-    WriteCommand(0xD9);
+    WriteCommand(0xD9); // Pre-charge
     WriteCommand(0x22);
 
-    WriteCommand(0xDA);
+    WriteCommand(0xDA); // COM pins
     WriteCommand(0x12);
 
-    WriteCommand(0xDB);
+    WriteCommand(0xDB); // Vcomh deselect
     WriteCommand(0x20);
 
-    WriteCommand(0x8D);
+    WriteCommand(0x8D); // Charge pump
     WriteCommand(0x14);
 
     DisplayOn(true);
@@ -200,3 +203,73 @@ void SSD1306::BatteryGauge(float vbat, uint8_t x, uint8_t y, uint8_t currentsqua
         }
     }
 }
+
+char SSD1306::WriteChar(char ch, const FontDef& Font, SSD1306_COLOR color) {
+    if (ch < 32 || ch > 126) return 0;
+
+    if ((SSD1306_WIDTH < (_screen.CurrentX + Font.FontWidth)) ||
+        (SSD1306_HEIGHT < (_screen.CurrentY + Font.FontHeight))) {
+        return 0;
+    }
+
+    for (uint32_t i = 0; i < Font.FontHeight; i++) {
+        uint16_t b = Font.data[(ch - 32) * Font.FontHeight + i];
+        for (uint32_t j = 0; j < Font.FontWidth; j++) {
+            if ((b << j) & 0x8000) {
+                DrawPixel(_screen.CurrentX + j, _screen.CurrentY + i, color);
+            } else {
+                DrawPixel(_screen.CurrentX + j, _screen.CurrentY + i, (SSD1306_COLOR)!color);
+            }
+        }
+    }
+
+    _screen.CurrentX += Font.FontWidth;
+    return ch;
+}
+
+char SSD1306::WriteString(const char* str, const FontDef& Font, SSD1306_COLOR color) {
+    while (*str) {
+        if (WriteChar(*str, Font, color) != *str) {
+            return *str;
+        }
+        str++;
+    }
+    return *str;
+}
+
+void SSD1306::DrawBitmap(uint8_t x, uint8_t y, const uint8_t* bitmap, uint8_t w, uint8_t h, SSD1306_COLOR color) {
+    int16_t byteWidth = (w + 7) / 8;
+    uint8_t byte = 0;
+
+    if (x >= SSD1306_WIDTH || y >= SSD1306_HEIGHT) return;
+
+    for (uint8_t j = 0; j < h; j++, y++) {
+        for (uint8_t i = 0; i < w; i++) {
+            if (i & 7) {
+                byte <<= 1;
+            } else {
+                byte = bitmap[j * byteWidth + i / 8];
+            }
+
+            if (byte & 0x80) {
+                DrawPixel(x + i, y, color);
+            }
+        }
+    }
+}
+
+
+void SSD1306::Percentage(float percent) {
+    FillRectangle(32, 40, (uint8_t)(0.63 * percent + 32), 56, White);
+    DrawRectangle(32, 40, 95, 56, White);
+
+    char buffer[20];
+    snprintf(buffer, sizeof(buffer), "%0.2f %%", percent);
+
+    SetCursor(45, 44);
+    WriteString(buffer, Font_6x8, White);
+}
+
+
+
+
