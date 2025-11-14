@@ -82,12 +82,17 @@ DSTATUS USER_initialize (
 )
 {
   /* USER CODE BEGIN INIT */
-	if (SPIF_FindChip(&hspif1)) {  // Fonction à créer ou utiliser ton test de présence
-	        Stat = 0; // Pas d'erreur
-	    } else {
-	        Stat = STA_NOINIT;
-	    }
-	    return Stat;
+		if(hspif1.Inited==1){
+			return 0;
+		}
+		else {
+			if (SPIF_Init(&hspif1, &hspi1, GPIOB, GPIO_PIN_7) != true) {
+			        return STA_NOINIT;
+			    }
+
+
+		}
+		return 0;
   /* USER CODE END INIT */
 }
 

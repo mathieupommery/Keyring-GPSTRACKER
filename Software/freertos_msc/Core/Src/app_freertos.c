@@ -74,8 +74,6 @@ extern double bmppress;
 osThreadId defaultTaskHandle;
 osThreadId GNSSPARSEHandle;
 osThreadId BALISEHandle;
-osThreadId USBTRANSMITHandle;
-osThreadId BAROCALIBHandle;
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
@@ -85,8 +83,6 @@ osThreadId BAROCALIBHandle;
 void StartDefaultTask(void const * argument);
 void StartTask02(void const * argument);
 void StartTask03(void const * argument);
-void StartTask04(void const * argument);
-void StartTask05(void const * argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
@@ -120,7 +116,7 @@ void MX_FREERTOS_Init(void) {
 
   /* Create the thread(s) */
   /* definition and creation of defaultTask */
-  osThreadDef(defaultTask, StartDefaultTask, osPriorityNormal, 0, 256);
+  osThreadDef(defaultTask, StartDefaultTask, osPriorityNormal, 0, 4096);
   defaultTaskHandle = osThreadCreate(osThread(defaultTask), NULL);
 
   /* definition and creation of GNSSPARSE */
@@ -131,18 +127,8 @@ void MX_FREERTOS_Init(void) {
   osThreadDef(BALISE, StartTask03, osPriorityRealtime, 0, 256);
   BALISEHandle = osThreadCreate(osThread(BALISE), NULL);
 
-  /* definition and creation of USBTRANSMIT */
-  osThreadDef(USBTRANSMIT, StartTask04, osPriorityHigh, 0, 256);
-  USBTRANSMITHandle = osThreadCreate(osThread(USBTRANSMIT), NULL);
-
-  /* definition and creation of BAROCALIB */
-  osThreadDef(BAROCALIB, StartTask05, osPriorityBelowNormal, 0, 256);
-  BAROCALIBHandle = osThreadCreate(osThread(BAROCALIB), NULL);
-
   /* USER CODE BEGIN RTOS_THREADS */
   osThreadSuspend(BALISEHandle);
-  osThreadSuspend(USBTRANSMITHandle);
-  osThreadSetPriority(USBTRANSMITHandle, osPriorityRealtime);
   /* add threads, ... */
   /* USER CODE END RTOS_THREADS */
 
@@ -233,48 +219,6 @@ void StartTask03(void const * argument)
 
   }
   /* USER CODE END StartTask03 */
-}
-
-/* USER CODE BEGIN Header_StartTask04 */
-/**
-* @brief Function implementing the USBTRANSMIT thread.
-* @param argument: Not used
-* @retval None
-*/
-/* USER CODE END Header_StartTask04 */
-void StartTask04(void const * argument)
-{
-  /* USER CODE BEGIN StartTask04 */
-  /* Infinite loop */
-  for(;;)
-  {
-	  HAL_GPIO_TogglePin(GPIOB,GPIO_PIN_1);
-	  osDelay(100);
-  }
-  /* USER CODE END StartTask04 */
-}
-
-/* USER CODE BEGIN Header_StartTask05 */
-/**
-* @brief Function implementing the BAROCALIB thread.
-* @param argument: Not used
-* @retval None
-*/
-/* USER CODE END Header_StartTask05 */
-void StartTask05(void const * argument)
-{
-  /* USER CODE BEGIN StartTask05 */
-  /* Infinite loop */
-  for(;;)
-  {
-
-	  if(GNSSData.fixType>=3){
-		  P0 =(double) bmppress / powf((1 - (GNSSData.fhMSL / 44330.0f)), 5.255f);
-
-	  }
-    osDelay(20000);
-  }
-  /* USER CODE END StartTask05 */
 }
 
 /* Private application code --------------------------------------------------*/

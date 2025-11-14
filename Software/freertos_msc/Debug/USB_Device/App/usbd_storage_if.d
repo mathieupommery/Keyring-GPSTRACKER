@@ -60,7 +60,10 @@ USB_Device/App/usbd_storage_if.o: ../USB_Device/App/usbd_storage_if.c \
  ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h \
  ../Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Inc/usbd_msc_scsi.h \
  ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h \
- ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h
+ ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h \
+ ../Middlewares/Third_Party/NimaLTD_Driver/SPIF/spif.h \
+ ../I-CUBE-SPIF/NimaLTD.I-CUBE-SPIF_conf.h ../Core/Inc/spi.h \
+ ../Core/Inc/main.h ../Core/Inc/GNSS.h
 ../USB_Device/App/usbd_storage_if.h:
 ../Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Inc/usbd_msc.h:
 ../Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Inc/usbd_msc_bot.h:
@@ -123,3 +126,8 @@ USB_Device/App/usbd_storage_if.o: ../USB_Device/App/usbd_storage_if.c \
 ../Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Inc/usbd_msc_scsi.h:
 ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h:
 ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h:
+../Middlewares/Third_Party/NimaLTD_Driver/SPIF/spif.h:
+../I-CUBE-SPIF/NimaLTD.I-CUBE-SPIF_conf.h:
+../Core/Inc/spi.h:
+../Core/Inc/main.h:
+../Core/Inc/GNSS.h:

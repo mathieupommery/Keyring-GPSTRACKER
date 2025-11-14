@@ -186,7 +186,7 @@ int8_t STORAGE_Init_FS(uint8_t lun)
 		return (USBD_OK);
 	}
 	else {
-		if (SPIF_Init(&hspif1) != true) {
+		if (SPIF_Init(&hspif1, &hspi1, GPIOB, GPIO_PIN_7) != true) {
 		        return USBD_FAIL;
 		    }
 
@@ -269,7 +269,35 @@ int8_t STORAGE_Read_FS(uint8_t lun, uint8_t *buf, uint32_t blk_addr, uint16_t bl
 int8_t STORAGE_Write_FS(uint8_t lun, uint8_t *buf, uint32_t blk_addr, uint16_t blk_len)
 {
   /* USER CODE BEGIN 7 */
-  return (USBD_OK);
+	static uint8_t  sector_buffer[4096];
+
+	uint32_t block_addr = blk_addr;
+
+	for (uint16_t i = 0; i < blk_len; i++) {
+	        uint32_t current_block = block_addr + i;
+	        uint32_t current_sector = current_block / 8;           // 8 blocs 512 → 1 secteur 4 Ko
+	        uint16_t block_in_sector = current_block % 8;          // 0 à 7
+	        uint16_t byte_offset = block_in_sector * 512;
+
+	        SPIF_ReadSector(&hspif1, current_sector, (uint8_t * ) sector_buffer, 4096, 0);// 0, 512, 1024, ..., 3584
+
+	        memcpy((uint8_t *)sector_buffer + byte_offset,(uint8_t *) buf + 512*i,512);
+
+	        uint16_t start_page = current_sector * 16;
+	        if(SPIF_EraseSector(&hspif1, current_sector)!=true){
+	        	return USBD_FAIL;
+	        }
+            if(SPIF_WaitForWriting(&hspif1, HAL_MAX_DELAY)!=true){
+            	return USBD_FAIL;
+            }
+            if(SPIF_WriteSector(&hspif1, current_sector, (uint8_t *)sector_buffer, 4096, 0)!=true){
+	                		return USBD_FAIL;
+            }
+            if(SPIF_WaitForWriting(&hspif1, HAL_MAX_DELAY)!=true){
+		                	return USBD_FAIL;
+		                }
+	                }
+	    return USBD_OK;
   /* USER CODE END 7 */
 }
 
