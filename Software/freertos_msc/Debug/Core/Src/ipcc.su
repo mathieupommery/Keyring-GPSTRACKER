@@ -1,0 +1,3 @@
+../Core/Src/ipcc.c:30:6:MX_IPCC_Init	8	static
+../Core/Src/ipcc.c:51:6:HAL_IPCC_MspInit	16	static
+../Core/Src/ipcc.c:73:6:HAL_IPCC_MspDeInit	8	static

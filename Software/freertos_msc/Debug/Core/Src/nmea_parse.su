@@ -1,0 +1,6 @@
+../Core/Src/nmea_parse.c:15:5:gps_checksum	16	static
+../Core/Src/nmea_parse.c:38:5:nmea_GPGGA	184	static
+../Core/Src/nmea_parse.c:123:5:nmea_GNRMC	144	static
+../Core/Src/nmea_parse.c:143:6:nmea_parse	40	static
+../Core/Src/nmea_parse.c:171:8:distancecalc	64	static
+../Core/Src/nmea_parse.c:178:10:checksumcalculate	4	static

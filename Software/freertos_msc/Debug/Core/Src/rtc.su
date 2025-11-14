@@ -1,0 +1,6 @@
+../Core/Src/rtc.c:35:6:MX_RTC_Init	32	static
+../Core/Src/rtc.c:102:6:HAL_RTC_MspInit	96	static
+../Core/Src/rtc.c:141:6:HAL_RTC_MspDeInit	0	static
+../Core/Src/rtc.c:163:6:set_time	32	static
+../Core/Src/rtc.c:177:6:set_date	16	static
+../Core/Src/rtc.c:193:6:get_time_date	32	static

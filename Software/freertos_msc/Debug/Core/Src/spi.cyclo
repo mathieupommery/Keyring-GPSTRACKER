@@ -1,0 +1,4 @@
+../Core/Src/spi.c:48:6:MX_SPI1_Init	2
+../Core/Src/spi.c:82:6:HAL_SPI_MspInit	2
+../Core/Src/spi.c:124:6:HAL_SPI_MspDeInit	2
+../Core/Src/spi.c:153:5:csvframe	1

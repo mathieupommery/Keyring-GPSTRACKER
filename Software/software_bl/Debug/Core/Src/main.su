@@ -1,6 +1,0 @@
-../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_bus.h:539:22:LL_AHB2_GRP1_EnableClock	24	static
-../Core/Src/main.c:232:6:HAL_GPIO_EXTI_Callback	16	static
-../Core/Src/main.c:291:5:main	48	static,ignoring_inline_asm
-../Core/Src/main.c:430:6:SystemClock_Config	112	static
-../Core/Src/main.c:480:6:PeriphCommonClock_Config	88	static
-../Core/Src/main.c:516:6:Error_Handler	4	static,ignoring_inline_asm

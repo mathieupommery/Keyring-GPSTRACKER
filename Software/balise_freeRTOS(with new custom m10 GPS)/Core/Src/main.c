@@ -24,7 +24,6 @@
 #include "i2c.h"
 #include "ipcc.h"
 #include "usart.h"
-#include "memorymap.h"
 #include "rf.h"
 #include "rtc.h"
 #include "spi.h"
@@ -366,6 +365,10 @@ int main(void)
   		getindex();
 
   	}
+  	else{
+
+  		SPIF_EraseChip(&hspif1);
+  	}
   	ssd1306_Fill(Black);
 
   	bmp581->i2c=&hi2c1;
@@ -531,8 +534,7 @@ void Error_Handler(void)
   }
   /* USER CODE END Error_Handler_Debug */
 }
-
-#ifdef  USE_FULL_ASSERT
+#ifdef USE_FULL_ASSERT
 /**
   * @brief  Reports the name of the source file and the source line number
   *         where the assert_param error has occurred.

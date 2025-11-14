@@ -1,0 +1,2 @@
+../Core/Src/usb.c:59:6:getgpu	3
+../Core/Src/usb.c:86:6:usbtransmit	12
