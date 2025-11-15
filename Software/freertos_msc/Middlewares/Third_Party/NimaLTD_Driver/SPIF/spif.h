@@ -143,7 +143,7 @@ typedef struct
 ************************************************************************************************************/
 
 bool SPIF_Init(SPIF_HandleTypeDef *Handle, SPI_HandleTypeDef *HSpi, GPIO_TypeDef *Gpio, uint16_t Pin);
-
+bool     SPIF_WaitForWriting(SPIF_HandleTypeDef *Handle, uint32_t Timeout);
 bool SPIF_EraseChip(SPIF_HandleTypeDef *Handle);
 bool SPIF_EraseSector(SPIF_HandleTypeDef *Handle, uint32_t Sector);
 bool SPIF_EraseBlock(SPIF_HandleTypeDef *Handle, uint32_t Block);

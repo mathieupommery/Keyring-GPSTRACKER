@@ -225,7 +225,7 @@ void statemachine(void){
 							BTN_A=0;
 							oldlat=GNSSData.fLat;
 							oldlong=GNSSData.fLon;
-							osThreadResume(BALISEHandle);
+							//osThreadResume(BALISEHandle);
 
 						  }
 						  if(BTN_A>=1){
@@ -363,7 +363,7 @@ void statemachine(void){
 						  						  balisestate--;
 						  						  BTN_B_LONG=0;
 						  						  BTN_A=0;
-						  						osThreadSuspend(BALISEHandle);
+						  						//osThreadSuspend(BALISEHandle);
 						  						HAL_GPIO_WritePin(GPIOB,GPIO_PIN_1,GPIO_PIN_RESET);
 						  					  }
 

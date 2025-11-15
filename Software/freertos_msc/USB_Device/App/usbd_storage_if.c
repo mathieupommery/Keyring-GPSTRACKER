@@ -67,7 +67,7 @@ extern SPIF_HandleTypeDef hspif1;
   */
 
 #define STORAGE_LUN_NBR                  1
-#define STORAGE_BLK_NBR                  0x10000
+#define STORAGE_BLK_NBR                  0x8000
 #define STORAGE_BLK_SIZ                  0x200
 
 /* USER CODE BEGIN PRIVATE_DEFINES */
@@ -153,7 +153,7 @@ static int8_t STORAGE_Write_FS(uint8_t lun, uint8_t *buf, uint32_t blk_addr, uin
 static int8_t STORAGE_GetMaxLun_FS(void);
 
 /* USER CODE BEGIN PRIVATE_FUNCTIONS_DECLARATION */
-
+uint8_t  sector_buffer[4096];
 /* USER CODE END PRIVATE_FUNCTIONS_DECLARATION */
 
 /**
@@ -181,17 +181,6 @@ USBD_StorageTypeDef USBD_Storage_Interface_fops_FS =
 int8_t STORAGE_Init_FS(uint8_t lun)
 {
   /* USER CODE BEGIN 2 */
-
-	if(hspif1.Inited==1){
-		return (USBD_OK);
-	}
-	else {
-		if (SPIF_Init(&hspif1, &hspi1, GPIOB, GPIO_PIN_7) != true) {
-		        return USBD_FAIL;
-		    }
-
-
-	}
   return (USBD_OK);
   /* USER CODE END 2 */
 }
@@ -206,7 +195,7 @@ int8_t STORAGE_Init_FS(uint8_t lun)
 int8_t STORAGE_GetCapacity_FS(uint8_t lun, uint32_t *block_num, uint16_t *block_size)
 {
   /* USER CODE BEGIN 3 */
-  *block_num  = hspif1.SectorCnt * 8 ;
+  *block_num  = STORAGE_BLK_NBR ;
   *block_size = STORAGE_BLK_SIZ;
   return (USBD_OK);
   /* USER CODE END 3 */
@@ -220,13 +209,7 @@ int8_t STORAGE_GetCapacity_FS(uint8_t lun, uint32_t *block_num, uint16_t *block_
 int8_t STORAGE_IsReady_FS(uint8_t lun)
 {
   /* USER CODE BEGIN 4 */
-
-    if(SPIF_WaitForWriting(&hspif1, HAL_MAX_DELAY)!=true){
-    	return USBD_FAIL;
-    }
-    else{
-  return (USBD_OK);
-    }
+	return (USBD_OK);
   /* USER CODE END 4 */
 }
 
@@ -250,13 +233,13 @@ int8_t STORAGE_IsWriteProtected_FS(uint8_t lun)
 int8_t STORAGE_Read_FS(uint8_t lun, uint8_t *buf, uint32_t blk_addr, uint16_t blk_len)
 {
   /* USER CODE BEGIN 6 */
-	uint32_t flash_addr = blk_addr * 512;  // Adresse dans la W25Q128
 
-	    for (uint16_t i = 0; i < blk_len; i++) {
-	        if (SPIF_ReadAddress(&hspif1, flash_addr + i * 512, (buf + i * 512), 512)!=true){
+	        if (SPIF_ReadPage(&hspif1, blk_addr*2, (uint8_t *) buf,256, 0)!=true){
 	            return USBD_FAIL;
 	        }
-	    }
+	        if (SPIF_ReadPage(&hspif1, (blk_addr*2)+1 , (uint8_t *) buf + 256,256, 0)!=true){
+	            return USBD_FAIL;
+	        }
 	    return USBD_OK;
   /* USER CODE END 6 */
 }
@@ -269,35 +252,31 @@ int8_t STORAGE_Read_FS(uint8_t lun, uint8_t *buf, uint32_t blk_addr, uint16_t bl
 int8_t STORAGE_Write_FS(uint8_t lun, uint8_t *buf, uint32_t blk_addr, uint16_t blk_len)
 {
   /* USER CODE BEGIN 7 */
-	static uint8_t  sector_buffer[4096];
+
 
 	uint32_t block_addr = blk_addr;
+    uint32_t current_sector_addr = block_addr / 8;
+    uint32_t offset = 512 * (block_addr % 8 );
 
-	for (uint16_t i = 0; i < blk_len; i++) {
-	        uint32_t current_block = block_addr + i;
-	        uint32_t current_sector = current_block / 8;           // 8 blocs 512 → 1 secteur 4 Ko
-	        uint16_t block_in_sector = current_block % 8;          // 0 à 7
-	        uint16_t byte_offset = block_in_sector * 512;
+    if (SPIF_ReadSector(&hspif1, current_sector_addr, (uint8_t * ) sector_buffer, 4096, 0)!= true){
+    	return USBD_FAIL;
+    }
 
-	        SPIF_ReadSector(&hspif1, current_sector, (uint8_t * ) sector_buffer, 4096, 0);// 0, 512, 1024, ..., 3584
+    memcpy((uint8_t *)sector_buffer + offset,(uint8_t *) buf,512);
 
-	        memcpy((uint8_t *)sector_buffer + byte_offset,(uint8_t *) buf + 512*i,512);
-
-	        uint16_t start_page = current_sector * 16;
-	        if(SPIF_EraseSector(&hspif1, current_sector)!=true){
+    if(SPIF_EraseSector(&hspif1, current_sector_addr)!=true){
 	        	return USBD_FAIL;
 	        }
-            if(SPIF_WaitForWriting(&hspif1, HAL_MAX_DELAY)!=true){
+    if(SPIF_WaitForWriting(&hspif1, 2000)!=true){
             	return USBD_FAIL;
             }
-            if(SPIF_WriteSector(&hspif1, current_sector, (uint8_t *)sector_buffer, 4096, 0)!=true){
+    if(SPIF_WriteSector(&hspif1, current_sector_addr, (uint8_t *)sector_buffer, 4096, 0)!=true){
 	                		return USBD_FAIL;
             }
-            if(SPIF_WaitForWriting(&hspif1, HAL_MAX_DELAY)!=true){
+    if(SPIF_WaitForWriting(&hspif1, 2000)!=true){
 		                	return USBD_FAIL;
 		                }
-	                }
-	    return USBD_OK;
+    return USBD_OK;
   /* USER CODE END 7 */
 }
 

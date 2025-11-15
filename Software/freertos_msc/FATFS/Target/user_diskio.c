@@ -82,16 +82,16 @@ DSTATUS USER_initialize (
 )
 {
   /* USER CODE BEGIN INIT */
-		if(hspif1.Inited==1){
-			return 0;
-		}
-		else {
-			if (SPIF_Init(&hspif1, &hspi1, GPIOB, GPIO_PIN_7) != true) {
-			        return STA_NOINIT;
-			    }
-
-
-		}
+//		if(hspif1.Inited==1){
+//			return 0;
+//		}
+//		else {
+//			if (SPIF_Init(&hspif1, &hspi1, GPIOB, GPIO_PIN_7) != true) {
+//			        return STA_NOINIT;
+//			    }
+//
+//
+//		}
 		return 0;
   /* USER CODE END INIT */
 }
@@ -127,12 +127,15 @@ DRESULT USER_read (
 )
 {
   /* USER CODE BEGIN READ */
-	uint32_t addr = sector * 4096;  // Adresse physique dans la flash
+//	uint32_t addr = sector * 4096;  // Adresse physique dans la flash
+//
+//	if (SPIF_ReadAddress(&hspif1, addr, buff, count * 4096) == true) {
+//	        return RES_OK;
+//	    }
+//	    return RES_ERROR;
 
-	if (SPIF_ReadAddress(&hspif1, addr, buff, count * 4096) == true) {
-	        return RES_OK;
-	    }
-	    return RES_ERROR;
+
+	return RES_OK;
   /* USER CODE END READ */
 }
 
@@ -154,30 +157,30 @@ DRESULT USER_write (
 {
   /* USER CODE BEGIN WRITE */
   /* USER CODE HERE */
-	uint32_t start_sector = sector;
-
-	    // Étape 1 : Effacer les secteurs concernés
-	    for (UINT i = 0; i < count; i++) {
-	        uint32_t sector_nb = (start_sector + i);
-
-	        if (SPIF_EraseSector(&hspif1, sector_nb) != true) {
-	            return RES_ERROR;
-	        }
-	        if(SPIF_WaitForWriting(&hspif1, HAL_MAX_DELAY)!=true){
-	        	return RES_ERROR;
-	        }
-	    }
-
-	    const uint8_t* p = buff;
-	    for (UINT i = 0; i < count; i++) {
-	        if (SPIF_WriteSector(&hspif1, (start_sector+i), (uint8_t*)(p + 4096 * i), 4096, 0) != true) {
-
-	            return RES_ERROR;
-	        }
-	        if(SPIF_WaitForWriting(&hspif1, HAL_MAX_DELAY)!=true){
-	        	return RES_ERROR;
-	        }
-	    }
+//	uint32_t start_sector = sector;
+//
+//	    // Étape 1 : Effacer les secteurs concernés
+//	    for (UINT i = 0; i < count; i++) {
+//	        uint32_t sector_nb = (start_sector + i);
+//
+//	        if (SPIF_EraseSector(&hspif1, sector_nb) != true) {
+//	            return RES_ERROR;
+//	        }
+//	        if(SPIF_WaitForWriting(&hspif1, HAL_MAX_DELAY)!=true){
+//	        	return RES_ERROR;
+//	        }
+//	    }
+//
+//	    const uint8_t* p = buff;
+//	    for (UINT i = 0; i < count; i++) {
+//	        if (SPIF_WriteSector(&hspif1, (start_sector+i), (uint8_t*)(p + 4096 * i), 4096, 0) != true) {
+//
+//	            return RES_ERROR;
+//	        }
+//	        if(SPIF_WaitForWriting(&hspif1, HAL_MAX_DELAY)!=true){
+//	        	return RES_ERROR;
+//	        }
+//	    }
 
 	    return RES_OK;
   /* USER CODE END WRITE */
@@ -199,23 +202,23 @@ DRESULT USER_ioctl (
 )
 {
   /* USER CODE BEGIN IOCTL */
-	if (Stat & STA_NOINIT) return RES_NOTRDY;
-
-	    switch (cmd) {
-	        case GET_SECTOR_SIZE:
-	            *(WORD*)buff = 4096;
-	            break;
-	        case GET_SECTOR_COUNT:
-	            *(DWORD*)buff = hspif1.SectorCnt;
-	            break;
-	        case GET_BLOCK_SIZE:
-	            *(DWORD*)buff = 1;  // 1 secteur = 1 bloc effaçable
-	            break;
-	        case CTRL_SYNC:
-	            return RES_OK;
-	        default:
-	            return RES_PARERR;
-	    }
+//	if (Stat & STA_NOINIT) return RES_NOTRDY;
+//
+//	    switch (cmd) {
+//	        case GET_SECTOR_SIZE:
+//	            *(WORD*)buff = 4096;
+//	            break;
+//	        case GET_SECTOR_COUNT:
+//	            *(DWORD*)buff = hspif1.SectorCnt;
+//	            break;
+//	        case GET_BLOCK_SIZE:
+//	            *(DWORD*)buff = 1;  // 1 secteur = 1 bloc effaçable
+//	            break;
+//	        case CTRL_SYNC:
+//	            return RES_OK;
+//	        default:
+//	            return RES_PARERR;
+//	    }
 	    return RES_OK;
   /* USER CODE END IOCTL */
 }
