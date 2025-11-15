@@ -500,18 +500,16 @@ void statemachine(void){
 				}
 				  break;
 			  case STATE_ALTBARO:
-
-				  	  	  	  	  	  	bmp581_read_precise_normal(bmp581);
 				  						ssd1306_SetCursor(32, 32);
 				  						snprintf((char *)bufferscreen,15, "baroalt:");
 				  						ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
-				  						snprintf((char *)bufferscreen,15, "%0.2lf m",bmpalt);//pas forcement utile d'afficher 7 decimales apres la virgule, 6 donne une precision au metre ce qui est le max du gps
+				  						snprintf((char *)bufferscreen,15, "%0.2l m",bmp581->altitude);//pas forcement utile d'afficher 7 decimales apres la virgule, 6 donne une precision au metre ce qui est le max du gps
 				  						ssd1306_SetCursor(32, 40);
 				  						ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
 				  						snprintf((char *)bufferscreen,15, "baropress:");
 				  						ssd1306_SetCursor(32, 48);
 				  						ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
-				  						snprintf((char *)bufferscreen,15, "%0.3lfkPa",bmppress/1000.0);
+				  						snprintf((char *)bufferscreen,15, "%0.3l kPa",bmp581->press/1000.0);
 				  						ssd1306_SetCursor(32, 56);
 				  						ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
 				  						HAL_Delay(200);
