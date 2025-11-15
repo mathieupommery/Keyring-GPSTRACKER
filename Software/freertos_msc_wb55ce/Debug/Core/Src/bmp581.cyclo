@@ -1,0 +1,2 @@
+../Core/Src/bmp581.c:23:9:bmp581_init_precise_normal	6
+../Core/Src/bmp581.c:58:9:bmp581_read_precise_normal	3

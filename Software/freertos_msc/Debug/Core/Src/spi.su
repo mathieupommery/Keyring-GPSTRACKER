@@ -1,4 +1,0 @@
-../Core/Src/spi.c:48:6:MX_SPI1_Init	8	static
-../Core/Src/spi.c:82:6:HAL_SPI_MspInit	56	static
-../Core/Src/spi.c:124:6:HAL_SPI_MspDeInit	8	static
-../Core/Src/spi.c:153:5:csvframe	24	static
