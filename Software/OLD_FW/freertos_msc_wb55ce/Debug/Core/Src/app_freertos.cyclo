@@ -1,0 +1,4 @@
+../Core/Src/app_freertos.c:90:6:MX_FREERTOS_Init	1
+../Core/Src/app_freertos.c:138:6:StartstatemachineTask	1
+../Core/Src/app_freertos.c:160:6:StartTaskparse	2
+../Core/Src/app_freertos.c:187:6:StartTaskstore	2

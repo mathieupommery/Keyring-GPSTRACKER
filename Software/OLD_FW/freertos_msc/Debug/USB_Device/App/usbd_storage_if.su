@@ -1,7 +1,0 @@
-../USB_Device/App/usbd_storage_if.c:181:8:STORAGE_Init_FS	0	static
-../USB_Device/App/usbd_storage_if.c:195:8:STORAGE_GetCapacity_FS	0	static
-../USB_Device/App/usbd_storage_if.c:296:8:STORAGE_GetMaxLun_FS	0	static
-../USB_Device/App/usbd_storage_if.c:258:8:STORAGE_Write_FS	48	static
-../USB_Device/App/usbd_storage_if.c:233:8:STORAGE_Read_FS	40	static
-../USB_Device/App/usbd_storage_if.c:209:8:STORAGE_IsReady_FS	0	static
-../USB_Device/App/usbd_storage_if.c:221:8:STORAGE_IsWriteProtected_FS	0	static
