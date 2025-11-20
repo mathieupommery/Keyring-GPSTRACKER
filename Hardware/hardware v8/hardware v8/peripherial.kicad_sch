@@ -270,131 +270,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "power:+3.3V"
-			(power)
-			(pin_numbers
-				(hide yes)
-			)
-			(pin_names
-				(offset 0)
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "#PWR"
-				(at 0 -3.81 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Value" "+3.3V"
-				(at 0 3.556 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Power symbol creates a global label with name \"+3.3V\""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "global power"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "+3.3V_0_1"
-				(polyline
-					(pts
-						(xy -0.762 1.27) (xy 0 2.54)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 2.54) (xy 0.762 1.27)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 0) (xy 0 2.54)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "+3.3V_1_1"
-				(pin power_in line
-					(at 0 0 90)
-					(length 0)
-					(name "~"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "power:GND"
 			(power)
 			(pin_numbers
@@ -479,6 +354,304 @@
 					(at 0 0 270)
 					(length 0)
 					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "samacsys2:W25Q128JVPIQ"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "IC"
+				(at 46.99 7.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+				)
+			)
+			(property "Value" "W25Q128JVPIQ"
+				(at 46.99 5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+				)
+			)
+			(property "Footprint" "SON127P600X500X80-9N-D"
+				(at 46.99 -94.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://www.winbond.com/hq/search-resource-file.jsp?partNo=W25Q128JVPIQ&type=datasheet"
+				(at 46.99 -194.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Description" "128M-bit Serial Flash Memory with uniform 4KB sectors and Dual/Quad SPI"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Height" "0.8"
+				(at 46.99 -394.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Manufacturer_Name" "Winbond"
+				(at 46.99 -494.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Manufacturer_Part_Number" "W25Q128JVPIQ"
+				(at 46.99 -594.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Mouser Part Number" "454-W25Q128JVPIQ"
+				(at 46.99 -694.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Winbond/W25Q128JVPIQ?qs=qSfuJ%252Bfl%2Fd676hAD%252B1JSfw%3D%3D"
+				(at 46.99 -794.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Arrow Part Number" "W25Q128JVPIQ"
+				(at 46.99 -894.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Arrow Price/Stock" "https://www.arrow.com/en/products/w25q128jvpiq/winbond-electronics?region=nac"
+				(at 46.99 -994.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(symbol "W25Q128JVPIQ_1_1"
+				(rectangle
+					(start 5.08 2.54)
+					(end 45.72 -15.24)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin passive line
+					(at 0 0 0)
+					(length 5.08)
+					(name "VCC"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "8"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -10.16 0)
+					(length 5.08)
+					(name "GND_1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -12.7 0)
+					(length 5.08)
+					(name "GND_2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "9"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 50.8 0 180)
+					(length 5.08)
+					(name "CLK"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 50.8 -2.54 180)
+					(length 5.08)
+					(name "DI_(IO0)"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 50.8 -5.08 180)
+					(length 5.08)
+					(name "DO_(IO1)"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 50.8 -7.62 180)
+					(length 5.08)
+					(name "~{WP_(IO2)}"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 50.8 -10.16 180)
+					(length 5.08)
+					(name "~{HOLD_OR_}/RESET_(IO3)"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 50.8 -12.7 180)
+					(length 5.08)
+					(name "~{CS}"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -956,304 +1129,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "winbond:W25Q128JVPIQ_TR"
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "IC"
-				(at 52.07 7.62 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-				)
-			)
-			(property "Value" "W25Q128JVPIQ_TR"
-				(at 52.07 5.08 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-				)
-			)
-			(property "Footprint" "SON127P600X500X80-9N-D"
-				(at 52.07 -94.92 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "https://www.winbond.com/resource-files/w25q128jv%20revf%2003272018%20plus.pdf"
-				(at 52.07 -194.92 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-					(hide yes)
-				)
-			)
-			(property "Description" "NOR Flash spiFlash, 3V, 128M-bit, 4Kb Uniform Sector"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Height" "0.8"
-				(at 52.07 -394.92 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-					(hide yes)
-				)
-			)
-			(property "Manufacturer_Name" "Winbond"
-				(at 52.07 -494.92 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-					(hide yes)
-				)
-			)
-			(property "Manufacturer_Part_Number" "W25Q128JVPIQ TR"
-				(at 52.07 -594.92 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-					(hide yes)
-				)
-			)
-			(property "Mouser Part Number" "454-W25Q128JVPIQTR"
-				(at 52.07 -694.92 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-					(hide yes)
-				)
-			)
-			(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Winbond/W25Q128JVPIQ-TR?qs=qSfuJ%252Bfl%2Fd6H7vbXyrDu3w%3D%3D"
-				(at 52.07 -794.92 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-					(hide yes)
-				)
-			)
-			(property "Arrow Part Number" "W25Q128JVPIQ TR"
-				(at 52.07 -894.92 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-					(hide yes)
-				)
-			)
-			(property "Arrow Price/Stock" "https://www.arrow.com/en/products/w25q128jvpiqtr/winbond-electronics?utm_currency=USD&region=nac"
-				(at 52.07 -994.92 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-					(hide yes)
-				)
-			)
-			(symbol "W25Q128JVPIQ_TR_1_1"
-				(rectangle
-					(start 5.08 2.54)
-					(end 50.8 -15.24)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type background)
-					)
-				)
-				(pin passive line
-					(at 0 0 0)
-					(length 5.08)
-					(name "~{CS}"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 -2.54 0)
-					(length 5.08)
-					(name "DO_(IO1)"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 -5.08 0)
-					(length 5.08)
-					(name "~{WP_(IO2)}"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 -7.62 0)
-					(length 5.08)
-					(name "GND"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 27.94 -20.32 90)
-					(length 5.08)
-					(name "EP"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "9"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 55.88 0 180)
-					(length 5.08)
-					(name "VCC"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "8"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 55.88 -2.54 180)
-					(length 5.08)
-					(name "~{HOLD_OR_RESET_(IO3)}"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "7"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 55.88 -5.08 180)
-					(length 5.08)
-					(name "CLK"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "6"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 55.88 -7.62 180)
-					(length 5.08)
-					(name "DI_(IO0)"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "5"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 	)
 	(rectangle
 		(start 69.85 172.72)
@@ -1300,16 +1175,22 @@
 		(uuid "de6c65f7-ca8a-485f-b6e2-bc152102b8d3")
 	)
 	(junction
+		(at 96.52 191.77)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "464b0778-9686-4d56-91a5-6a01003100e3")
+	)
+	(junction
 		(at 152.4 73.66)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "7aa1c20d-8e4e-42ce-9903-145196e3ed9b")
 	)
 	(junction
-		(at 154.94 198.12)
+		(at 107.95 204.47)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "98d61359-b7a2-45a1-8658-e2bf871f49ec")
+		(uuid "943fc289-05d5-4952-973c-7f317f8a646b")
 	)
 	(junction
 		(at 176.53 73.66)
@@ -1318,16 +1199,16 @@
 		(uuid "9ba60ddc-0544-4913-847b-a32171e25b09")
 	)
 	(junction
-		(at 127 218.44)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "b86d0297-cc14-4d6a-9dc4-5b2e0633f38d")
-	)
-	(junction
 		(at 167.64 48.26)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "bbe8a00a-5c2c-4b12-b277-a7f4dbf6a61c")
+	)
+	(junction
+		(at 96.52 208.28)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "bec5b9d4-3ce1-4db1-8bdf-d23e2c20dcc6")
 	)
 	(junction
 		(at 180.34 48.26)
@@ -1379,6 +1260,26 @@
 	)
 	(wire
 		(pts
+			(xy 87.63 191.77) (xy 96.52 191.77)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "13e11c05-46c8-49e1-869c-1ab8001755d8")
+	)
+	(wire
+		(pts
+			(xy 158.75 204.47) (xy 161.29 204.47)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "155e2b9d-82dc-4893-b200-89f809fce7a8")
+	)
+	(wire
+		(pts
 			(xy 158.75 88.9) (xy 152.4 88.9)
 		)
 		(stroke
@@ -1389,13 +1290,23 @@
 	)
 	(wire
 		(pts
-			(xy 87.63 203.2) (xy 99.06 203.2)
+			(xy 107.95 201.93) (xy 107.95 204.47)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "2196af17-94a9-4b17-99d1-bec7c23f60cd")
+		(uuid "15f8d379-c71b-49d9-8662-1ef37fe1056b")
+	)
+	(wire
+		(pts
+			(xy 107.95 208.28) (xy 107.95 204.47)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2dc260aa-3108-47c4-aa98-685facc4732c")
 	)
 	(wire
 		(pts
@@ -1409,13 +1320,23 @@
 	)
 	(wire
 		(pts
-			(xy 99.06 198.12) (xy 96.52 198.12)
+			(xy 161.29 204.47) (xy 161.29 209.55)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "49785d9e-10a7-4c6e-91ad-83999e4b848b")
+		(uuid "4eaa41c9-889c-435b-9ac1-17dae69fc57e")
+	)
+	(wire
+		(pts
+			(xy 96.52 191.77) (xy 96.52 201.93)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4f5b351b-0589-42e7-b812-4a0f73ce9951")
 	)
 	(wire
 		(pts
@@ -1429,6 +1350,16 @@
 	)
 	(wire
 		(pts
+			(xy 96.52 208.28) (xy 96.52 207.01)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "67dd6bfc-d776-46ce-82d8-124ddf27727d")
+	)
+	(wire
+		(pts
 			(xy 152.4 73.66) (xy 152.4 76.2)
 		)
 		(stroke
@@ -1436,16 +1367,6 @@
 			(type default)
 		)
 		(uuid "6fbc6859-3213-48f3-9b4f-8aa971f3feaf")
-	)
-	(wire
-		(pts
-			(xy 96.52 198.12) (xy 96.52 193.04)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "75918b9f-7a79-4801-88a6-16091bb0f529")
 	)
 	(wire
 		(pts
@@ -1479,13 +1400,23 @@
 	)
 	(wire
 		(pts
-			(xy 127 218.44) (xy 127 219.71)
+			(xy 96.52 208.28) (xy 107.95 208.28)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "8f6d354a-4776-4c18-9c26-18724f68c900")
+		(uuid "8e236206-0073-48bc-ab2e-173e5d840f61")
+	)
+	(wire
+		(pts
+			(xy 96.52 209.55) (xy 96.52 208.28)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a0933ad8-ea7c-4cc7-9756-3574d5a8cc36")
 	)
 	(wire
 		(pts
@@ -1496,16 +1427,6 @@
 			(type default)
 		)
 		(uuid "a1656242-afd1-44f4-8361-91ce599c0120")
-	)
-	(wire
-		(pts
-			(xy 154.94 198.12) (xy 165.1 198.12)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a5c95004-b808-4131-808c-ad1aab0bf7a0")
 	)
 	(wire
 		(pts
@@ -1529,13 +1450,13 @@
 	)
 	(wire
 		(pts
-			(xy 127 218.44) (xy 99.06 218.44)
+			(xy 96.52 191.77) (xy 107.95 191.77)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "b8a35c24-3f88-4bb8-80e7-fe315b1d8e21")
+		(uuid "b2182649-e393-4995-b74a-b81ba1081262")
 	)
 	(wire
 		(pts
@@ -1549,16 +1470,6 @@
 	)
 	(wire
 		(pts
-			(xy 99.06 218.44) (xy 99.06 205.74)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d117d74e-691e-4a5d-9f0b-6ac3df14f92d")
-	)
-	(wire
-		(pts
 			(xy 167.64 48.26) (xy 180.34 48.26)
 		)
 		(stroke
@@ -1566,16 +1477,6 @@
 			(type default)
 		)
 		(uuid "d20545ba-8932-43be-b502-d79f9594ebf3")
-	)
-	(wire
-		(pts
-			(xy 154.94 198.12) (xy 154.94 200.66)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d3989617-c10f-4f34-ba3c-a105b9a81f24")
 	)
 	(wire
 		(pts
@@ -1629,16 +1530,93 @@
 			)
 		)
 	)
-	(hierarchical_label "SPI_MISO"
+	(global_label "3.3V_AUX"
 		(shape input)
-		(at 99.06 200.66 180)
+		(at 158.75 201.93 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "9cb88594-d239-4b9b-8057-a9b858cb0d07")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 170.4438 201.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "3.3V_AUX"
+		(shape input)
+		(at 87.63 191.77 180)
+		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
 			(justify right)
 		)
-		(uuid "188c4fc8-0f43-486d-916a-ea33c5e3836d")
+		(uuid "b264c8f1-ce52-418b-acad-f071cc5d8185")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 75.9362 191.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "3.3V_AUX"
+		(shape input)
+		(at 158.75 199.39 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "f7d18e00-1423-49ec-8b94-a6442105f71d")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 170.4438 199.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "3.3V_AUX"
+		(shape input)
+		(at 161.29 214.63 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "f8d073a2-70ef-4142-9a09-f699132271aa")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 161.29 226.3238 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
 	)
 	(hierarchical_label "GPS_EXT"
 		(shape input)
@@ -1664,36 +1642,14 @@
 	)
 	(hierarchical_label "SPI_CS"
 		(shape input)
-		(at 96.52 198.12 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "47b9ccc0-5454-452e-bbd1-b47c84740fb0")
-	)
-	(hierarchical_label "SPI_MOSI"
-		(shape input)
-		(at 154.94 205.74 0)
+		(at 161.29 204.47 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
 			(justify left)
 		)
-		(uuid "a27d4012-e934-442c-b60a-249b5628b049")
-	)
-	(hierarchical_label "SPI_CLK"
-		(shape input)
-		(at 154.94 203.2 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "a9ac1d67-b941-44cf-9831-8817b9c34156")
+		(uuid "4dca0b08-e94d-4ef4-bdcf-191768d2393c")
 	)
 	(hierarchical_label "GPS_TX"
 		(shape input)
@@ -1705,6 +1661,39 @@
 			(justify left)
 		)
 		(uuid "addf2959-d2cb-44b4-93e5-ad0367f313d2")
+	)
+	(hierarchical_label "SPI_CLK"
+		(shape input)
+		(at 158.75 191.77 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "bfac50f2-9d06-4072-a879-15dc6243aa31")
+	)
+	(hierarchical_label "SPI_MOSI"
+		(shape input)
+		(at 158.75 194.31 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "df375007-15d0-4b95-b45b-7b78cd347499")
+	)
+	(hierarchical_label "SPI_MISO"
+		(shape input)
+		(at 158.75 196.85 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "ed466293-1d9a-4e0f-9be7-cc2af718c224")
 	)
 	(hierarchical_label "GPS_TP"
 		(shape input)
@@ -1786,7 +1775,8 @@
 	)
 	(symbol
 		(lib_id "Device:C_Small")
-		(at 167.64 198.12 90)
+		(at 96.52 204.47 0)
+		(mirror y)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -1795,7 +1785,7 @@
 		(fields_autoplaced yes)
 		(uuid "035b1803-89a5-45be-9071-a50d2da093ea")
 		(property "Reference" "C11"
-			(at 167.6463 191.77 90)
+			(at 90.17 204.4763 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1803,7 +1793,7 @@
 			)
 		)
 		(property "Value" "100n"
-			(at 167.6463 194.31 90)
+			(at 92.71 204.4763 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1811,7 +1801,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
-			(at 167.64 198.12 0)
+			(at 96.52 204.47 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1820,7 +1810,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 167.64 198.12 0)
+			(at 96.52 204.47 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1829,7 +1819,7 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor, small symbol"
-			(at 167.64 198.12 0)
+			(at 96.52 204.47 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1923,8 +1913,170 @@
 		)
 	)
 	(symbol
+		(lib_id "samacsys2:W25Q128JVPIQ")
+		(at 107.95 191.77 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "34c43f06-aa9c-438d-bf46-4564862a0557")
+		(property "Reference" "IC6"
+			(at 133.35 184.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "W25Q128JVPIQ"
+			(at 133.35 186.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "samacsys2:SON127P600X500X80-9N-D"
+			(at 154.94 286.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.winbond.com/hq/search-resource-file.jsp?partNo=W25Q128JVPIQ&type=datasheet"
+			(at 154.94 386.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Description" "128M-bit Serial Flash Memory with uniform 4KB sectors and Dual/Quad SPI"
+			(at 107.95 191.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Height" "0.8"
+			(at 154.94 586.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Name" "Winbond"
+			(at 154.94 686.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Part_Number" "W25Q128JVPIQ"
+			(at 154.94 786.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Mouser Part Number" "454-W25Q128JVPIQ"
+			(at 154.94 886.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Winbond/W25Q128JVPIQ?qs=qSfuJ%252Bfl%2Fd676hAD%252B1JSfw%3D%3D"
+			(at 154.94 986.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Arrow Part Number" "W25Q128JVPIQ"
+			(at 154.94 1086.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Arrow Price/Stock" "https://www.arrow.com/en/products/w25q128jvpiq/winbond-electronics?region=nac"
+			(at 154.94 1186.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(pin "4"
+			(uuid "8b8361d1-b2b8-4335-ac18-34bf4df02129")
+		)
+		(pin "3"
+			(uuid "059a09a7-eb09-4414-83a5-cc9014421ef4")
+		)
+		(pin "8"
+			(uuid "32601856-78cc-43a7-bfcd-bd7a5461f298")
+		)
+		(pin "9"
+			(uuid "cbf076f9-6247-48fc-98dd-e5a05a1e0827")
+		)
+		(pin "7"
+			(uuid "5234fbc4-e26d-4165-98f5-957895015c95")
+		)
+		(pin "6"
+			(uuid "66cef4bb-45cf-429b-b2c0-e12707e4e573")
+		)
+		(pin "5"
+			(uuid "33d9d379-eec4-40c2-900e-1eacff9192de")
+		)
+		(pin "2"
+			(uuid "caaab9af-1464-4eea-82c9-32eb4fad49d8")
+		)
+		(pin "1"
+			(uuid "c399de6f-588a-479e-8ec9-c727a643f0fc")
+		)
+		(instances
+			(project ""
+				(path "/e491fdb3-646d-47e4-8ebb-9632fba4f524/84aae796-102b-48fc-8d1d-620f5c7b8bfd"
+					(reference "IC6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
-		(at 170.18 198.12 90)
+		(at 96.52 209.55 0)
+		(mirror y)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -1933,7 +2085,7 @@
 		(fields_autoplaced yes)
 		(uuid "45965753-a787-4509-9923-a830659a28e3")
 		(property "Reference" "#PWR023"
-			(at 176.53 198.12 0)
+			(at 96.52 215.9 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1942,7 +2094,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 173.99 198.1199 90)
+			(at 96.5199 213.36 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1951,7 +2103,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 170.18 198.12 0)
+			(at 96.52 209.55 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1960,7 +2112,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 170.18 198.12 0)
+			(at 96.52 209.55 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1969,7 +2121,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 170.18 198.12 0)
+			(at 96.52 209.55 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1981,7 +2133,7 @@
 			(uuid "33c45055-e789-4a60-8c8b-59b4256287f8")
 		)
 		(instances
-			(project "hardware v4 pro max"
+			(project "hardware_V8"
 				(path "/e491fdb3-646d-47e4-8ebb-9632fba4f524/84aae796-102b-48fc-8d1d-620f5c7b8bfd"
 					(reference "#PWR023")
 					(unit 1)
@@ -2256,301 +2408,6 @@
 			(project "hardware_V8"
 				(path "/e491fdb3-646d-47e4-8ebb-9632fba4f524/84aae796-102b-48fc-8d1d-620f5c7b8bfd"
 					(reference "R12")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "winbond:W25Q128JVPIQ_TR")
-		(at 99.06 198.12 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "8bdc2e8d-ff06-44ec-a57c-3a184fee9a2d")
-		(property "Reference" "IC2"
-			(at 127 190.5 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "W25Q128JVPIQ_TR"
-			(at 127 193.04 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "w25q128:SON127P600X500X80-9N-D"
-			(at 151.13 293.04 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.winbond.com/resource-files/w25q128jv%20revf%2003272018%20plus.pdf"
-			(at 151.13 393.04 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Description" "NOR Flash spiFlash, 3V, 128M-bit, 4Kb Uniform Sector"
-			(at 99.06 198.12 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Height" "0.8"
-			(at 151.13 593.04 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer_Name" "Winbond"
-			(at 151.13 693.04 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer_Part_Number" "W25Q128JVPIQ TR"
-			(at 151.13 793.04 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Mouser Part Number" "454-W25Q128JVPIQTR"
-			(at 151.13 893.04 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Winbond/W25Q128JVPIQ-TR?qs=qSfuJ%252Bfl%2Fd6H7vbXyrDu3w%3D%3D"
-			(at 151.13 993.04 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Arrow Part Number" "W25Q128JVPIQ TR"
-			(at 151.13 1093.04 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Arrow Price/Stock" "https://www.arrow.com/en/products/w25q128jvpiqtr/winbond-electronics?utm_currency=USD&region=nac"
-			(at 151.13 1193.04 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(pin "4"
-			(uuid "f04c1586-c87e-456a-89a3-0959bf4f208e")
-		)
-		(pin "3"
-			(uuid "25e6f782-72c9-4651-ad4a-962f8af38530")
-		)
-		(pin "2"
-			(uuid "e4e925ce-761b-4056-bd2b-c8434062a521")
-		)
-		(pin "1"
-			(uuid "f512e3f3-4e32-485b-b916-3e751cf83c8e")
-		)
-		(pin "5"
-			(uuid "9d919da7-6af9-44ce-9eaf-4980444f63c6")
-		)
-		(pin "7"
-			(uuid "67c2245b-8665-409d-a4e5-78c23be2c2d7")
-		)
-		(pin "9"
-			(uuid "c6c183cb-7255-4a1a-9e82-f2a37373fca8")
-		)
-		(pin "6"
-			(uuid "5633daef-0424-4f7c-8137-3f09bba99ed2")
-		)
-		(pin "8"
-			(uuid "710575bd-3d3f-46a4-9271-7037ada6f5e0")
-		)
-		(instances
-			(project "hardware v4 pro max"
-				(path "/e491fdb3-646d-47e4-8ebb-9632fba4f524/84aae796-102b-48fc-8d1d-620f5c7b8bfd"
-					(reference "IC2")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:+3.3V")
-		(at 96.52 187.96 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "9086ca5d-bd2f-4cae-b1d9-e1e161ed7baf")
-		(property "Reference" "#PWR020"
-			(at 96.52 191.77 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+3.3V"
-			(at 99.06 186.6899 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 96.52 187.96 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 96.52 187.96 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"+3.3V\""
-			(at 96.52 187.96 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "b31e0c42-db39-4222-828e-9aa749c1a0ba")
-		)
-		(instances
-			(project "hardware v4 pro max"
-				(path "/e491fdb3-646d-47e4-8ebb-9632fba4f524/84aae796-102b-48fc-8d1d-620f5c7b8bfd"
-					(reference "#PWR020")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:+3.3V")
-		(at 154.94 198.12 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "94e7c993-1aa4-4de0-8fd2-9053f2cdbe41")
-		(property "Reference" "#PWR022"
-			(at 154.94 201.93 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+3.3V"
-			(at 157.48 196.8499 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 154.94 198.12 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 154.94 198.12 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"+3.3V\""
-			(at 154.94 198.12 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "22a2f9ca-0773-4b27-9cfa-6e3d13ebfcb3")
-		)
-		(instances
-			(project "hardware v4 pro max"
-				(path "/e491fdb3-646d-47e4-8ebb-9632fba4f524/84aae796-102b-48fc-8d1d-620f5c7b8bfd"
-					(reference "#PWR022")
 					(unit 1)
 				)
 			)
@@ -2950,143 +2807,9 @@
 		)
 	)
 	(symbol
-		(lib_id "power:+3.3V")
-		(at 87.63 203.2 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "ba1d92f3-93d1-4f39-a151-d1294c967f46")
-		(property "Reference" "#PWR019"
-			(at 91.44 203.2 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+3.3V"
-			(at 83.82 203.1999 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 87.63 203.2 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 87.63 203.2 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"+3.3V\""
-			(at 87.63 203.2 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "350679bf-c3ee-4e35-95b9-31a0a298bec7")
-		)
-		(instances
-			(project "hardware v4 pro max"
-				(path "/e491fdb3-646d-47e4-8ebb-9632fba4f524/84aae796-102b-48fc-8d1d-620f5c7b8bfd"
-					(reference "#PWR019")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 127 219.71 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "beaee9b9-5ea9-4aae-9f32-2bad0949fdc3")
-		(property "Reference" "#PWR021"
-			(at 127 226.06 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 129.54 220.9799 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 127 219.71 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 127 219.71 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 127 219.71 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "ceef58bc-23f7-460c-9a70-67077d91e21c")
-		)
-		(instances
-			(project "hardware v4 pro max"
-				(path "/e491fdb3-646d-47e4-8ebb-9632fba4f524/84aae796-102b-48fc-8d1d-620f5c7b8bfd"
-					(reference "#PWR021")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_name "R_Small_1")
 		(lib_id "Device:R_Small")
-		(at 96.52 190.5 180)
+		(at 161.29 212.09 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -3095,7 +2818,7 @@
 		(fields_autoplaced yes)
 		(uuid "e3f319c3-f8d8-47cc-a1cc-6816f49459aa")
 		(property "Reference" "R13"
-			(at 99.06 189.2299 0)
+			(at 158.75 213.3601 0)
 			(effects
 				(font
 					(size 1.016 1.016)
@@ -3104,7 +2827,7 @@
 			)
 		)
 		(property "Value" "10k"
-			(at 99.06 191.7699 0)
+			(at 158.75 210.8201 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3113,7 +2836,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
-			(at 96.52 190.5 0)
+			(at 161.29 212.09 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3122,7 +2845,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 96.52 190.5 0)
+			(at 161.29 212.09 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3131,7 +2854,7 @@
 			)
 		)
 		(property "Description" "Resistor, small symbol"
-			(at 96.52 190.5 0)
+			(at 161.29 212.09 0)
 			(effects
 				(font
 					(size 1.27 1.27)
