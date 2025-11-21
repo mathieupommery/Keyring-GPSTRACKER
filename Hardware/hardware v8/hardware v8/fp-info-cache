@@ -1,4 +1,4 @@
-26931220988120489
+26934748418062162
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -107072,12 +107072,26 @@ pad_0.7mm
 1
 1
 samacsys2
+146235-0001
+146235-0001
+Undefined or Miscellaneous
+0
+4
+4
+samacsys2
 20682040E02
 20682-040E-02-3
 Connector
 0
 62
 62
+samacsys2
+5035480622
+503548-0622-2
+Connector
+0
+10
+10
 samacsys2
 74438335150
 3.0x3.0x1.5mm
