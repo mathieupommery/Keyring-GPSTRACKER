@@ -1636,6 +1636,16 @@
 		)
 		(uuid 9eb05cca-e6f9-465c-8f35-16024f5b6d95)
 	)
+	(text "VIH MIN 1.2V\nVIL MAX 0.4V"
+		(exclude_from_sim no)
+		(at 66.294 71.374 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "193ffd5c-8aaa-40fe-807e-285d4b00e412")
+	)
 	(text "ALIM et intérrupteur on off"
 		(exclude_from_sim no)
 		(at 27.94 16.51 0)
@@ -1655,6 +1665,16 @@
 			)
 		)
 		(uuid "430a4f46-4d12-4689-af80-428ac6934175")
+	)
+	(text "a tester (cutoff a 2.8V) si probleme R18 prend 0R"
+		(exclude_from_sim no)
+		(at 60.452 77.724 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "5acd8598-8e87-40f8-b2ff-063159aed3c4")
 	)
 	(text "RPROG*ICHARGE=1000V"
 		(exclude_from_sim no)
@@ -2821,7 +2841,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "10k"
+		(property "Value" "20k"
 			(at 68.58 58.4199 0)
 			(effects
 				(font
@@ -4357,7 +4377,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "10k"
+		(property "Value" "120k"
 			(at 68.58 50.7999 0)
 			(effects
 				(font

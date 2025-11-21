@@ -3673,7 +3673,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "10k"
+		(property "Value" "20k"
 			(at 236.22 109.2199 0)
 			(effects
 				(font
@@ -3814,7 +3814,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "10k"
+		(property "Value" "20k"
 			(at 236.22 137.1599 0)
 			(effects
 				(font
@@ -4546,7 +4546,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "10k"
+		(property "Value" "20k"
 			(at 237.49 82.5499 0)
 			(effects
 				(font
@@ -6863,7 +6863,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "d31ae4c2-2e26-498b-bc02-c9d56db5d463")
 		(property "Reference" "J3"

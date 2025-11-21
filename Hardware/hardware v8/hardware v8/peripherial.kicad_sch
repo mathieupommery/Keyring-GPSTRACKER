@@ -2834,7 +2834,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "4df6204d-4a58-4233-b290-53f2ffe326c6")
 		(property "Reference" "C3"
@@ -2915,7 +2915,7 @@
 				)
 			)
 		)
-		(property "Value" "TBD"
+		(property "Value" "5.1nH"
 			(at 86.36 73.66 90)
 			(effects
 				(font
@@ -3540,7 +3540,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "TBD"
+		(property "Value" "1.8nH"
 			(at 93.98 80.0162 0)
 			(effects
 				(font
@@ -3857,21 +3857,21 @@
 		(fields_autoplaced yes)
 		(uuid "e3f319c3-f8d8-47cc-a1cc-6816f49459aa")
 		(property "Reference" "R13"
-			(at 158.75 213.3601 0)
+			(at 163.83 210.8199 0)
 			(effects
 				(font
 					(size 1.016 1.016)
 				)
-				(justify right)
+				(justify left)
 			)
 		)
-		(property "Value" "10k"
-			(at 158.75 210.8201 0)
+		(property "Value" "20k"
+			(at 163.83 213.3599 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify right)
+				(justify left)
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
