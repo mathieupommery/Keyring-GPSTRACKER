@@ -1,4 +1,4 @@
-26927693573958323
+26931220988120489
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -107134,6 +107134,20 @@ Integrated Circuit
 0
 8
 8
+samacsys2
+PESD5V0S1ULQYL
+PESD5V0S1UL-QYL-3
+Diode ESD (Uni-directional)
+0
+2
+2
+samacsys2
+PTS845VM20PSMTR4LFS
+PTS845
+Switch
+0
+5
+5
 samacsys2
 QFN50P900X900X100-65N-D
 VFQFPN 9X9X1.0 64
