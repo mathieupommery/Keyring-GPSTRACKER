@@ -3155,6 +3155,24 @@
 				(hide yes)
 			)
 		)
+		(property "Mouser Part Number" "603-RC0201JR-07510RL"
+			(at 161.29 86.36 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser Price/Stock" "https://www.mouser.fr/ProductDetail/YAGEO/RC0201JR-07510RL?qs=Q4gDqC5t5%2FDAdrMT21SmCw%3D%3D"
+			(at 161.29 86.36 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "e6cd4da2-892d-482f-beab-680aa6e08bf3")
 		)
@@ -3283,6 +3301,24 @@
 		)
 		(property "Description" "Resistor, small symbol"
 			(at 166.37 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser Part Number" "603-RC0201JR-07510RL"
+			(at 166.37 90.17 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser Price/Stock" "https://www.mouser.fr/ProductDetail/YAGEO/RC0201JR-07510RL?qs=Q4gDqC5t5%2FDAdrMT21SmCw%3D%3D"
+			(at 166.37 90.17 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3893,6 +3929,24 @@
 			)
 		)
 		(property "Description" "Resistor, small symbol"
+			(at 161.29 212.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser Part Number" "603-AC0201FR-0720KL"
+			(at 161.29 212.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser Price/Stock" "https://www.mouser.fr/ProductDetail/YAGEO/AC0201FR-0720KL?qs=NgbZBzc1CyEbaKDOC3%252BFfg%3D%3D"
 			(at 161.29 212.09 0)
 			(effects
 				(font

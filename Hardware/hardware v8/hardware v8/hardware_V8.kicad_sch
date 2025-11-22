@@ -3846,6 +3846,24 @@
 				(hide yes)
 			)
 		)
+		(property "Mouser Part Number" "511-STM32L432KCU6"
+			(at 138.43 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser Price/Stock" "https://www.mouser.fr/ProductDetail/STMicroelectronics/STM32L432KCU6?qs=dTJS0cRn7oiybcTRwI97Tw%3D%3D"
+			(at 138.43 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "9"
 			(uuid "df78f5c9-a432-4a71-a036-8ec3c491549f")
 		)
@@ -4010,6 +4028,24 @@
 				(hide yes)
 			)
 		)
+		(property "Mouser Part Number" "603-AC0201FR-07470KL"
+			(at 208.28 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser Price/Stock" "https://www.mouser.fr/ProductDetail/YAGEO/AC0201FR-07470KL?qs=NgbZBzc1CyH0J6cte9SzFw%3D%3D"
+			(at 208.28 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "5f859725-aebf-4157-ac8a-6482fd14758b")
 		)
@@ -4073,6 +4109,24 @@
 		)
 		(property "Description" "Resistor, small symbol"
 			(at 107.95 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser Part Number" "603-RC0201JR-07510RL"
+			(at 107.95 116.84 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser Price/Stock" "https://www.mouser.fr/ProductDetail/YAGEO/RC0201JR-07510RL?qs=Q4gDqC5t5%2FDAdrMT21SmCw%3D%3D"
+			(at 107.95 116.84 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4221,6 +4275,24 @@
 				(hide yes)
 			)
 		)
+		(property "Mouser Part Number" "603-AC0201FR-07470KL"
+			(at 199.39 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser Price/Stock" "https://www.mouser.fr/ProductDetail/YAGEO/AC0201FR-07470KL?qs=NgbZBzc1CyH0J6cte9SzFw%3D%3D"
+			(at 199.39 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "b13588fd-ef9c-4198-a415-5d61f8dcf3e5")
 		)
@@ -4284,6 +4356,24 @@
 		)
 		(property "Description" "Resistor, small symbol"
 			(at 107.95 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser Part Number" "603-RC0201JR-07510RL"
+			(at 107.95 107.95 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser Price/Stock" "https://www.mouser.fr/ProductDetail/YAGEO/RC0201JR-07510RL?qs=Q4gDqC5t5%2FDAdrMT21SmCw%3D%3D"
+			(at 107.95 107.95 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4968,6 +5058,24 @@
 				(hide yes)
 			)
 		)
+		(property "Mouser Part Number" "603-AC0201FR-0720KL"
+			(at 86.36 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser Price/Stock" "https://www.mouser.fr/ProductDetail/YAGEO/AC0201FR-0720KL?qs=NgbZBzc1CyEbaKDOC3%252BFfg%3D%3D"
+			(at 86.36 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "b7e8d90b-251d-4c1d-8961-a35297227257")
 		)
@@ -5144,6 +5252,15 @@
 				(hide yes)
 			)
 		)
+		(property "Mouser Price/Stock" "https://www.mouser.fr/ProductDetail/Wurth-Elektronik/150040GS73240?qs=fAHHVMwC%252Bbgmx0FZHKuCJg%3D%3D"
+			(at 93.98 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "20367066-d0ac-401d-a219-270d64d9c6d5")
 		)
@@ -5207,6 +5324,24 @@
 		)
 		(property "Description" "Push button switch, generic, two pins"
 			(at 86.36 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser Part Number" "611-KXT341LHS"
+			(at 86.36 76.2 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser Price/Stock" "https://www.mouser.fr/ProductDetail/CK/KXT-341-LHS?qs=W%2FMpXkg%252BdQ4NFpiYOsuiiw%3D%3D"
+			(at 86.36 76.2 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5448,6 +5583,15 @@
 			)
 		)
 		(property "Mouser Part Number" "710-150040BS73240"
+			(at 93.98 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser Price/Stock" "https://www.mouser.fr/ProductDetail/Wurth-Elektronik/150040BS73240?qs=fAHHVMwC%252BbhvR%252BdBIVVrgw%3D%3D"
 			(at 93.98 116.84 0)
 			(effects
 				(font
