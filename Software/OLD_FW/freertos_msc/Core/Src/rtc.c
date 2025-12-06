@@ -206,11 +206,5 @@ void get_time_date()
   JOURS=gDate.Date;
   MOIS=gDate.Month;
   ANNEE=gDate.Year+2000;
-
-  /* Display time Format: hh:mm:ss */
-  //sprintf((char*)time,"%02d:%02d:%02d",gTime.Hours, gTime.Minutes, gTime.Seconds);
-
-  /* Display date Format: dd-mm-yyyy */
-  //sprintf((char*)date,"%02d-%02d-%2d",gDate.Date, gDate.Month, 2000 + gDate.Year);
 }
 /* USER CODE END 1 */
