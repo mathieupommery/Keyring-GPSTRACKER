@@ -1,4 +1,0 @@
-../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_bus.h:1274:22:LL_APB2_GRP1_EnableClock	1
-../Core/Src/stm32wbxx_hal_timebase_tim.c:41:19:HAL_InitTick	4
-../Core/Src/stm32wbxx_hal_timebase_tim.c:114:6:HAL_SuspendTick	1
-../Core/Src/stm32wbxx_hal_timebase_tim.c:126:6:HAL_ResumeTick	1

@@ -1,7 +1,0 @@
-../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_ll_bus.h:539:22:LL_AHB2_GRP1_EnableClock	1
-../Core/Src/main.c:187:6:HAL_GPIO_EXTI_Callback	13
-../Core/Src/main.c:257:5:main	4
-../Core/Src/main.c:381:6:SystemClock_Config	3
-../Core/Src/main.c:433:6:PeriphCommonClock_Config	2
-../Core/Src/main.c:464:6:HAL_TIM_PeriodElapsedCallback	2
-../Core/Src/main.c:482:6:Error_Handler	1
