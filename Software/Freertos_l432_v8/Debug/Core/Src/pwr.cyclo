@@ -1,0 +1,2 @@
+../Core/Src/pwr.c:3:6:PWR_StartupCheckButton	4
+../Core/Src/pwr.c:53:6:PWR_ProcessPWButton	9

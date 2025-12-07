@@ -5,6 +5,7 @@
 "./Core/Src/gpio.o"
 "./Core/Src/i2c.o"
 "./Core/Src/main.o"
+"./Core/Src/pwr.o"
 "./Core/Src/rtc.o"
 "./Core/Src/spi.o"
 "./Core/Src/ssd1306.o"

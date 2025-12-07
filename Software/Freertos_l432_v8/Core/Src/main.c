@@ -207,34 +207,12 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
     {
         if (HAL_GPIO_ReadPin(PWR_BTN_GPIO_Port, PWR_BTN_Pin) == GPIO_PIN_RESET)
         {
-            gButtons.pressStart_PW_ms = HAL_GetTick();
+        	gButtons.PW_BTN_FALLING_FLAG=1;
+
         }
         else
         {
-            uint32_t now = HAL_GetTick();
-            uint32_t dur = 0;
-
-            if (gButtons.pressStart_PW_ms != 0)
-                dur = now - gButtons.pressStart_PW_ms;
-
-            gButtons.time_PW_ms       = dur;
-            gButtons.pressStart_PW_ms = 0;
-
-            if (dur >= 50 && dur <= 400)
-            {
-                gButtons.BTN_PW      = 1;
-                gButtons.BTN_PW_LONG = 0;
-            }
-            else if (dur >= 400)
-            {
-                gButtons.BTN_PW_LONG = 1;
-                gButtons.BTN_PW      = 0;
-            }
-            else
-            {
-                gButtons.BTN_PW      = 0;
-                gButtons.BTN_PW_LONG = 0;
-            }
+        	gButtons.PW_BTN_RISING_FLAG=1;
         }
     }
 }
@@ -283,6 +261,12 @@ int main(void)
   HAL_Init();
 
   /* USER CODE BEGIN Init */
+
+  PWR_StartupCheckButton();
+
+
+
+
   GPIO_InitTypeDef GPIO_InitStruct = {0};
   void (*boot_jump)(void);
 
@@ -327,6 +311,10 @@ int main(void)
   MX_FATFS_Init();
   MX_RTC_Init();
   /* USER CODE BEGIN 2 */
+
+  HAL_GPIO_WritePin(AUX_EN_GPIO_Port, AUX_EN_Pin,GPIO_PIN_SET);
+
+  HAL_Delay(10);
 	ssd1306_Init();
 	HAL_Delay(10);
 	ssd1306_Fill(Black);

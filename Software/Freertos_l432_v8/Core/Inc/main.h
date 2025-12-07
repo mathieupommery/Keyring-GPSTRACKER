@@ -98,6 +98,9 @@ typedef struct
     uint32_t pressStart_B_ms;
     uint32_t pressStart_PW_ms;
 
+    uint8_t PW_BTN_RISING_FLAG;
+    uint8_t PW_BTN_FALLING_FLAG;
+
 } Buttons_t;
 
 typedef struct
