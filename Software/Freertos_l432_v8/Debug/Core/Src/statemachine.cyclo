@@ -1,0 +1,4 @@
+../Core/Src/statemachine.c:15:6:StateMachine_Run	94
+../Core/Src/statemachine.c:698:6:set_time	2
+../Core/Src/statemachine.c:712:6:set_date	2
+../Core/Src/statemachine.c:728:6:get_time_date	1

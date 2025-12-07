@@ -33,7 +33,7 @@ typedef struct
 
 	uint8_t uniqueID[4];
 	uint8_t uartWorkingBuffer[101];
-
+	uint8_t received_flag;
 	unsigned short year;
 	uint8_t yearBytes[2];
 	uint8_t month;
@@ -70,6 +70,8 @@ typedef struct
 	float fgSpeed;
 
 	signed long headMot;
+
+	float distance_parcouru;
 
 }GNSS_StateHandle;
 

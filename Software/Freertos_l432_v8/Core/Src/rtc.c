@@ -21,12 +21,6 @@
 #include "rtc.h"
 
 /* USER CODE BEGIN 0 */
-extern uint8_t SEC;
-extern uint8_t HR;
-extern uint8_t MINUTE;
-extern uint8_t JOURS;
-extern uint8_t MOIS;
-extern uint16_t ANNEE;
 /* USER CODE END 0 */
 
 RTC_HandleTypeDef hrtc;
@@ -107,51 +101,5 @@ void HAL_RTC_MspDeInit(RTC_HandleTypeDef* rtcHandle)
 }
 
 /* USER CODE BEGIN 1 */
-void set_time (uint8_t hr, uint8_t min, uint8_t sec)
-{
-	RTC_TimeTypeDef sTime = {0};
-	sTime.Hours = hr;
-	sTime.Minutes = min;
-	sTime.Seconds = sec;
-	sTime.DayLightSaving = RTC_DAYLIGHTSAVING_NONE;
-	sTime.StoreOperation = RTC_STOREOPERATION_RESET;
-	if (HAL_RTC_SetTime(&hrtc, &sTime, RTC_FORMAT_BIN) != HAL_OK)
-	{
-		Error_Handler();
-	}
-}
 
-void set_date (uint8_t year, uint8_t month, uint8_t date, uint8_t day)  // monday = 1
-{
-	RTC_DateTypeDef sDate = {0};
-	sDate.WeekDay = day;
-	sDate.Month = month;
-	sDate.Date = date;
-	sDate.Year = year;
-	if (HAL_RTC_SetDate(&hrtc, &sDate, RTC_FORMAT_BIN) != HAL_OK)
-	{
-		Error_Handler();
-	}
-
-	HAL_RTCEx_BKUPWrite(&hrtc, RTC_BKP_DR1, 0x2345);  // backup register
-}
-
-
-void get_time_date()
-{
-  RTC_DateTypeDef gDate;
-  RTC_TimeTypeDef gTime;
-
-  /* Get the RTC current Time */
-  HAL_RTC_GetTime(&hrtc, &gTime, RTC_FORMAT_BIN);
-  /* Get the RTC current Date */
-  HAL_RTC_GetDate(&hrtc, &gDate, RTC_FORMAT_BIN);
-
-  SEC=gTime.Seconds;
-  HR=gTime.Hours;
-  MINUTE=gTime.Minutes;
-  JOURS=gDate.Date;
-  MOIS=gDate.Month;
-  ANNEE=gDate.Year+2000;
-}
 /* USER CODE END 1 */

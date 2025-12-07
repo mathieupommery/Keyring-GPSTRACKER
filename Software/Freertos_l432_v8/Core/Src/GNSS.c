@@ -31,6 +31,7 @@ void GNSS_Init(GNSS_StateHandle *GNSS, UART_HandleTypeDef *huart) {
 	GNSS->vAcc = 0;
 	GNSS->gSpeed = 0;
 	GNSS->headMot = 0;
+	GNSS->received_flag=0;
 
 	HAL_UART_Transmit_DMA(&huart,uart1outprotnmeadisable,sizeof(uart1outprotnmeadisable)/(sizeof(uint8_t)));
 	  HAL_Delay(30);

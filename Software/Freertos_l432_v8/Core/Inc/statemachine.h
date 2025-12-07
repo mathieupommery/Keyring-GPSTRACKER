@@ -8,13 +8,11 @@
 #ifndef INC_STATEMACHINE_H_
 #define INC_STATEMACHINE_H_
 
-
-
-#endif /* INC_STATEMACHINE_H_ */
-
 #include "main.h"
 #include "ssd1306.h"
-#include "math.h"
+#include "GNSS.h"
+#include "rtc.h"
+
 
 
 
@@ -26,8 +24,6 @@ typedef enum{
 	STATE_ACCEL
 
 }STATE_TYPE;
-
-void statemachine(void);
 
 typedef enum{
 	STATE_HEURES,
@@ -95,3 +91,57 @@ typedef enum{
 
 
 }ACCELSTATE;
+
+typedef struct
+{
+    /* Etats principaux et sous-états */
+    uint8_t state;
+    uint8_t spdstate;
+    uint8_t balisestate;
+    uint8_t ecranstate;
+    uint8_t posstate;
+    uint8_t chronostate;
+    uint8_t accelstate;
+
+    uint8_t  flag_usb_mounted;
+
+    float    vitmax;
+
+    /* Gestion heure/date */
+    uint8_t  settimeen;
+    uint8_t  SEC;
+    uint8_t  MINUTE;
+    uint8_t  HR;
+    uint8_t JOURS;
+    uint8_t MOIS;
+    uint16_t ANNEE;
+
+    /* Chronomètre */
+    uint32_t calctime;
+    uint32_t starttime;
+    uint32_t timehandler;
+
+    /* Accélération 0-50 / 0-100 */
+    uint16_t timecounter;
+    uint8_t  counterforstart;
+    uint16_t indexcounterforstart;
+
+    uint32_t accel_start_time;
+    float    time50kmh;
+    float    time100kmh;
+    uint8_t  flag_50kmh;
+    uint8_t  flag_100kmh;
+
+    /* Position de départ de balise */
+    float    oldlat;
+    float    oldlong;
+
+} AppStateMachineContext;
+
+
+void StateMachine_Run(AppStateMachineContext *ctx,GNSS_StateHandle *gps,Buttons_t *buttons,AdcContext_t *gAdc);
+void set_time (uint8_t hr, uint8_t min, uint8_t sec);
+void set_date (uint8_t year, uint8_t month, uint8_t date, uint8_t day);
+void get_time_date(AppStateMachineContext * context);
+
+#endif /* INC_STATEMACHINE_H_ */

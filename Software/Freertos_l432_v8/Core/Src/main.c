@@ -26,13 +26,11 @@
 #include "usart.h"
 #include "rtc.h"
 #include "spi.h"
-#include "tim.h"
 #include "usb_device.h"
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "math.h"
 #include "ssd1306.h"
 #include "statemachine.h"
 #include "GNSS.h"
@@ -58,84 +56,31 @@
 
 /* USER CODE BEGIN PV */
 
-STATE_TYPE state=STATE_SPEED;
-SPEED spdstate=STATE_GROS;
-POS posstate=STATE_SUMMARY1;
-CHRONO chronostate=STATE_RESET;
-BALISESTATE balisestate=BALISESTATE1;
-ACCELSTATE accelstate=WAITFORGPS;
-uint8_t workingbuffer[110];
-int BTN_A=0;
-int BTN_B=0;
+AppStateMachineContext state_struct = {
+    .state        = STATE_SPEED,
+    .spdstate     = STATE_GROS,
+    .balisestate  = BALISESTATE1,
+    .ecranstate   = ECRANBALISESTATE1,
+    .posstate     = STATE_SUMMARY1,
+    .chronostate  = STATE_RESET,
+    .accelstate   = WAITFORGPS,
+};
 
-uint16_t rawdata[3];
-float temp=0.0;
-float vrefint=0;
-float vbat=0;
-
-
-uint8_t bufferscreen[50];
-uint8_t longbufferscreen[256];
-uint8_t usbbuffer[64];
-uint16_t offsetforscroltext=0;
-uint16_t scrolltextmax=0;
-
-float vitmax=0.0;
-float seconde=0;
-float min=0;
-
-uint32_t starttime=0;
-uint32_t calctime=0;
-uint32_t timehandler=0;
-float t1=0;
-float t2=0;
-float t3=0;
-float moy=0;
-float framerate=0;
-
-
-int doubledonnee=0;
-int cptdoubledonnee=0;
-double distanceparcouru=0;
-double oldlat=0;
-double oldlong=0;
-
-
-
-
-float altibaro=0;
-
-
-uint8_t SEC=0;
-uint8_t HR=0;
-uint8_t MINUTE=0;
-uint8_t JOURS=10;
-uint8_t MOIS=11;
-uint16_t ANNEE=2024;
-int settimeen=0;
-
-
-int boutonAtime=0;
-int boutonBtime=0;
-int tbtn1=0;
-int tbtn2=0;
-int BTN_B_LONG=0;
-int BTN_A_LONG=0;
-
-
-ECRANBALISESTATE ecranstate=ECRANBALISESTATE1;
 GNSS_StateHandle GNSSData;
 SPIF_HandleTypeDef hspif1;
+Buttons_t gButtons = {0};
+AdcContext_t gAdc = {0};
+uint8_t bufferscreen[50];
 
-int received_flag=0;
 
-int modesansechec=0;
 
-int flag_usb_mounted=0;
+
+
+
+
 
 float tscal2=1365.0;
 float tscal1=1034.0;
-
 
 
 const unsigned char startimg[] = {
@@ -183,71 +128,134 @@ void MX_FREERTOS_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
-void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)//lors d'un appuie sur un bouton, le systeme s'interrompt afin d'arriver dans cette fonction redefinie avec en parametre d'entre , le bouton sur lequel l'on a appuiyé
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
-	if(GPIO_Pin==GPIO_PIN_14){
+    /* -------------------- BTN_A sur PA15 -------------------- */
+    if (GPIO_Pin == B1_Pin)
+    {
+        if (HAL_GPIO_ReadPin(B1_GPIO_Port, B1_Pin) == GPIO_PIN_RESET)
+        {
+            gButtons.pressStart_A_ms = HAL_GetTick();
+        }
+        else
+        {
+            uint32_t now = HAL_GetTick();
+            uint32_t dur = 0;
 
-		if(HAL_GPIO_ReadPin(GPIOC,GPIO_PIN_14)== GPIO_PIN_RESET){
-					boutonAtime=0;
-					tbtn1=HAL_GetTick();
-				}
-				else{
-					boutonAtime=HAL_GetTick()-tbtn1;
-					tbtn1=0;
-				}
+            if (gButtons.pressStart_A_ms != 0)
+                dur = now - gButtons.pressStart_A_ms;
 
+            gButtons.time_A_ms       = dur;
+            gButtons.pressStart_A_ms = 0;
 
-		if(boutonAtime>=50 && boutonAtime<=400){
-			BTN_A++;
-			BTN_A_LONG=0;
-		}
-		if(boutonAtime>=400){
-			BTN_A_LONG++;
-			BTN_A=0;
-		}
+            if (dur >= 50 && dur <= 400)
+            {
+                gButtons.BTN_A      = 1;
+                gButtons.BTN_A_LONG = 0;
+            }
+            else if (dur >= 400)
+            {
+                gButtons.BTN_A_LONG = 1;
+                gButtons.BTN_A      = 0;
+            }
+            else
+            {
+                gButtons.BTN_A      = 0;
+                gButtons.BTN_A_LONG = 0;
+            }
+        }
+    }
 
-	}
-	if(GPIO_Pin==GPIO_PIN_15){
+    /* -------------------- BTN_B sur PB3 -------------------- */
+    if (GPIO_Pin == B2_Pin)
+    {
+        if (HAL_GPIO_ReadPin(B2_GPIO_Port, B2_Pin) == GPIO_PIN_RESET)
+        {
+            gButtons.pressStart_B_ms = HAL_GetTick();
+        }
+        else
+        {
+            uint32_t now = HAL_GetTick();
+            uint32_t dur = 0;
 
-		if(HAL_GPIO_ReadPin(GPIOC,GPIO_PIN_15)== GPIO_PIN_RESET){
-			boutonBtime=0;
-			tbtn2=HAL_GetTick();
-		}
-		else{
-			boutonBtime=HAL_GetTick()-tbtn2;
-			tbtn2=0;
-	}
-		if(boutonBtime>=50 && boutonBtime<=400){
-			BTN_B++;
-			BTN_B_LONG=0;
-		}
-		if(boutonBtime>=400){
-			BTN_B_LONG++;
-			BTN_B=0;
-		}
+            if (gButtons.pressStart_B_ms != 0)
+                dur = now - gButtons.pressStart_B_ms;
 
+            gButtons.time_B_ms       = dur;
+            gButtons.pressStart_B_ms = 0;
 
+            if (dur >= 50 && dur <= 400)
+            {
+                gButtons.BTN_B      = 1;
+                gButtons.BTN_B_LONG = 0;
+            }
+            else if (dur >= 400)
+            {
+                gButtons.BTN_B_LONG = 1;
+                gButtons.BTN_B      = 0;
+            }
+            else
+            {
+                gButtons.BTN_B      = 0;
+                gButtons.BTN_B_LONG = 0;
+            }
+        }
+    }
 
-	}
+    /* -------------------- BTN_PW sur PA0 -------------------- */
+    if (GPIO_Pin == PWR_BTN_Pin)
+    {
+        if (HAL_GPIO_ReadPin(PWR_BTN_GPIO_Port, PWR_BTN_Pin) == GPIO_PIN_RESET)
+        {
+            gButtons.pressStart_PW_ms = HAL_GetTick();
+        }
+        else
+        {
+            uint32_t now = HAL_GetTick();
+            uint32_t dur = 0;
 
+            if (gButtons.pressStart_PW_ms != 0)
+                dur = now - gButtons.pressStart_PW_ms;
+
+            gButtons.time_PW_ms       = dur;
+            gButtons.pressStart_PW_ms = 0;
+
+            if (dur >= 50 && dur <= 400)
+            {
+                gButtons.BTN_PW      = 1;
+                gButtons.BTN_PW_LONG = 0;
+            }
+            else if (dur >= 400)
+            {
+                gButtons.BTN_PW_LONG = 1;
+                gButtons.BTN_PW      = 0;
+            }
+            else
+            {
+                gButtons.BTN_PW      = 0;
+                gButtons.BTN_PW_LONG = 0;
+            }
+        }
+    }
 }
 
-void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc){
-	if(hadc->Instance==ADC1){
-		vrefint=(float) ((4095.0*1.212)/rawdata[0]);
-		temp=(float) (((100.0)/(tscal2-tscal1))*(rawdata[1]*(vrefint/3.0)-tscal1))+30.0;
-		vbat=(float) 2*(rawdata[2]/4095.0)*vrefint;
-	}
-	HAL_ADC_Start_DMA(&hadc1,(uint32_t*)rawdata, 3);
+void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
+{
+    if (hadc->Instance == ADC1)
+    {
+        gAdc.vrefint = (float)((4095.0f * 1.212f) / (float)gAdc.raw[0]);
+        gAdc.temp = (float)(((100.0f) / (float)(tscal2 - tscal1)) *((float)gAdc.raw[1] * (gAdc.vrefint / 3.0f) - (float)tscal1))+ 30.0f;
+        gAdc.vbat = (float)(2.0f * ((float)gAdc.raw[2] / 4095.0f) * gAdc.vrefint);
+    }
+    HAL_ADC_Start_DMA(&hadc1, (uint32_t *)gAdc.raw, 3);
 }
+
 
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
 	if(huart->Instance==LPUART1){
-		received_flag=1;
-		memcpy((uint8_t*)GNSSData.uartWorkingBuffer,(uint8_t *) workingbuffer,100);
-		__HAL_DMA_DISABLE_IT(&hdma_lpuart1_rx, DMA_IT_HT);
-		HAL_UART_Receive_DMA(&hlpuart1, (uint8_t *)workingbuffer, 100);
+		GNSSData.received_flag=1;
+		__HAL_DMA_DISABLE_IT(huart->hdmarx, DMA_IT_HT);
+		HAL_UART_Receive_DMA(&hlpuart1, (uint8_t *)GNSSData.uartWorkingBuffer, 100);
 
 	}
 
@@ -278,16 +286,20 @@ int main(void)
   GPIO_InitTypeDef GPIO_InitStruct = {0};
   void (*boot_jump)(void);
 
-  __HAL_RCC_GPIOC_CLK_ENABLE();
-   GPIO_InitStruct.Pin = GPIO_PIN_15|GPIO_PIN_14;
+  __HAL_RCC_GPIOA_CLK_ENABLE();
+   GPIO_InitStruct.Pin = B1_Pin;
    GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
    GPIO_InitStruct.Pull = GPIO_NOPULL;
-   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
-   /* If both Select and Reset button held down at boot time, then immediately
-    * jump to DFU bootloader, rather than start the Snickerdoodle application.
-    */
-   if ((HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_14) == GPIO_PIN_RESET) &&
- 	  (HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_15) == GPIO_PIN_RESET))
+   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+   __HAL_RCC_GPIOB_CLK_ENABLE();
+    GPIO_InitStruct.Pin = B2_Pin;
+    GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+    GPIO_InitStruct.Pull = GPIO_NOPULL;
+    HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+   if ((HAL_GPIO_ReadPin(B1_GPIO_Port, B1_Pin) == GPIO_PIN_RESET) &&
+ 	  (HAL_GPIO_ReadPin(B2_GPIO_Port, B2_Pin) == GPIO_PIN_RESET))
    {
  	  HAL_DeInit();
  	  boot_jump = (void (*)(void))(*((uint32_t *)(SYS_MEM_START_ADDR + 4)));
@@ -295,9 +307,6 @@ int main(void)
 
  	  /* NOTE WELL: This call never returns: */
  	  boot_jump();
-   }
-   if(HAL_GPIO_ReadPin(GPIOC,GPIO_PIN_14)==GPIO_PIN_RESET){
-	   modesansechec=1;
    }
   /* USER CODE END Init */
 
@@ -315,11 +324,9 @@ int main(void)
   MX_LPUART1_UART_Init();
   MX_SPI1_Init();
   MX_ADC1_Init();
-  MX_TIM6_Init();
   MX_FATFS_Init();
   MX_RTC_Init();
   /* USER CODE BEGIN 2 */
-
 	ssd1306_Init();
 	HAL_Delay(10);
 	ssd1306_Fill(Black);
@@ -328,39 +335,33 @@ int main(void)
 	ssd1306_UpdateScreen();
 
 
-	HAL_ADC_Start_DMA(&hadc1,(uint32_t*)rawdata, 3);
-	HAL_TIM_Base_Start(&htim6);
+	HAL_ADC_Start_DMA(&hadc1,(uint32_t*)gAdc.raw, 3);
 
-	HAL_GPIO_WritePin(GPIOA,GPIO_PIN_0,GPIO_PIN_SET);
+	HAL_GPIO_WritePin(GPS_EN_GPIO_Port,GPS_EN_Pin,GPIO_PIN_SET);
 	HAL_Delay(100);
+
 	GNSS_Init(&GNSSData, &hlpuart1);
-
-
 	HAL_UART_Abort(&hlpuart1);
-	HAL_UART_Receive_DMA(&hlpuart1, (uint8_t *)workingbuffer, 100);
+	HAL_UART_Receive_DMA(&hlpuart1, (uint8_t *)GNSSData.uartWorkingBuffer, 100);
 
 
-	if(SPIF_Init(&hspif1,&hspi1,GPIOB,GPIO_PIN_7)==true){
+	if(SPIF_Init(&hspif1,&hspi1,FLASH_CS_GPIO_Port,FLASH_CS_Pin)==true){
 		ssd1306_SetCursor(32, 32);
 		ssd1306_Fill(Black);
 		ssd1306_WriteString("OK", Font_7x10, White);
 		ssd1306_UpdateScreen();
-		HAL_Delay(1000);
+		HAL_Delay(500);
 	}
 	else{
 		ssd1306_SetCursor(32, 32);
 		ssd1306_Fill(Black);
 		ssd1306_WriteString("PBM", Font_7x10, White);
 		ssd1306_UpdateScreen();
-		HAL_Delay(1000);
+		HAL_Delay(500);
 
 	}
 
 	ssd1306_Fill(Black);
-	state=STATE_SPEED;
-	BTN_A=0;
-	BTN_A_LONG=0;
-
 	HAL_Delay(200);
   /* USER CODE END 2 */
 

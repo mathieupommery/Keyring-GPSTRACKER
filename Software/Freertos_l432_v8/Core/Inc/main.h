@@ -31,6 +31,7 @@ extern "C" {
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include <stdio.h>
 
 /* USER CODE END Includes */
 
@@ -77,13 +78,39 @@ void Error_Handler(void);
 #define LED_BLUE_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
-#define FLASH_CS_Pin GPIO_PIN_7
-#define FLASH_CS_GPIO_Port GPIOB
-#define DataBuffer_SIZE 101
+#define SYS_MEM_START_ADDR 0x1FFF0000//OK
+
+typedef struct
+{
+    uint8_t BTN_A;
+    uint8_t BTN_B;
+    uint8_t BTN_PW;
+
+    uint8_t BTN_A_LONG;
+    uint8_t BTN_B_LONG;
+    uint8_t BTN_PW_LONG;
+
+    uint32_t time_A_ms;
+    uint32_t time_B_ms;
+    uint32_t time_PW_ms;
+
+    uint32_t pressStart_A_ms;
+    uint32_t pressStart_B_ms;
+    uint32_t pressStart_PW_ms;
+
+} Buttons_t;
+
+typedef struct
+{
+    float temp;          // °C
+    float vbat;          // V
+    float vrefint;       // Vref calculée
+
+    uint16_t raw[3];
+
+} AdcContext_t;
 
 
-
-#define SYS_MEM_START_ADDR 0x1FFF0000
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus

@@ -29,6 +29,7 @@
 #include "statemachine.h"
 #include "GNSS.h"
 #include "usb_device.h"
+#include "w25q.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -48,19 +49,12 @@
 
 /* Private variables ---------------------------------------------------------*/
 /* USER CODE BEGIN Variables */
+
+extern AppStateMachineContext state_struct;
 extern GNSS_StateHandle GNSSData;
-extern int received_flag;
-extern double oldlat;
-extern double oldlong;
-extern double distanceparcouru;
-extern int pageoffset;
-extern int pagenumber;
-extern float vitmax;
-extern BALISESTATE balisestate;
-extern float vbat;
-extern float temp;
-extern uint8_t flashwrite[256];
-extern int flashbufferlen;
+extern SPIF_HandleTypeDef hspif1;
+extern Buttons_t gButtons;
+extern AdcContext_t gAdc;
 /* USER CODE END Variables */
 osThreadId MainTaskHandle;
 osThreadId SensorTaskHandle;
@@ -157,9 +151,9 @@ void StartMainTask(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-		statemachine();
-		ssd1306_UpdateScreen();
-		vTaskDelayUntil(&xLastWakeTime, period);
+	  StateMachine_Run(&state_struct,&GNSSData,&gButtons,&gAdc);
+	  ssd1306_UpdateScreen();
+	  vTaskDelayUntil(&xLastWakeTime, period);
   }
   /* USER CODE END StartMainTask */
 }
@@ -180,10 +174,10 @@ void StartSensorTask(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-	  if(received_flag==1){
+	  if(GNSSData.received_flag==1){
 
 	  		GNSS_ParsePVTData(&GNSSData);
-	  		received_flag=0;
+	  		GNSSData.received_flag=0;
 	  }
 
 	  vTaskDelayUntil(&xLastWakeTime, period);
@@ -208,12 +202,7 @@ void StartTrackerTask(void const * argument)
   for(;;)
   {
 	  HAL_GPIO_TogglePin(GPIOB,GPIO_PIN_1);
-	  if(GNSSData.fgSpeed>=vitmax){
-		vitmax=GNSSData.fgSpeed;
- }
-	  distanceparcouru=distanceparcouru + distancecalc(oldlat,GNSSData.fLat,oldlong, GNSSData.fLon);
-	  oldlat=GNSSData.fLat;
-	  oldlong=GNSSData.fLon;
+
 	  vTaskDelayUntil(&xLastWakeTime, period);
   }
   /* USER CODE END StartTrackerTask */
