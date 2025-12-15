@@ -142,7 +142,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
             uint32_t now = HAL_GetTick();
             uint32_t dur = 0;
 
-            if (gButtons.pressStart_A_ms != 0)
+            if (gButtons.pressStart_A_ms != 0){
                 dur = now - gButtons.pressStart_A_ms;
 
             gButtons.time_A_ms       = dur;
@@ -164,6 +164,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
                 gButtons.BTN_A_LONG = 0;
             }
         }
+        }
     }
 
     /* -------------------- BTN_B sur PB3 -------------------- */
@@ -178,7 +179,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
             uint32_t now = HAL_GetTick();
             uint32_t dur = 0;
 
-            if (gButtons.pressStart_B_ms != 0)
+            if (gButtons.pressStart_B_ms != 0){
                 dur = now - gButtons.pressStart_B_ms;
 
             gButtons.time_B_ms       = dur;
@@ -199,6 +200,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
                 gButtons.BTN_B      = 0;
                 gButtons.BTN_B_LONG = 0;
             }
+        }
         }
     }
 
@@ -313,6 +315,7 @@ int main(void)
   /* USER CODE BEGIN 2 */
 
   HAL_GPIO_WritePin(AUX_EN_GPIO_Port, AUX_EN_Pin,GPIO_PIN_SET);
+  HAL_GPIO_WritePin(GPS_EN_GPIO_Port,GPS_EN_Pin,GPIO_PIN_SET);
 
   HAL_Delay(10);
 	ssd1306_Init();
@@ -324,9 +327,6 @@ int main(void)
 
 
 	HAL_ADC_Start_DMA(&hadc1,(uint32_t*)gAdc.raw, 3);
-
-	HAL_GPIO_WritePin(GPS_EN_GPIO_Port,GPS_EN_Pin,GPIO_PIN_SET);
-	HAL_Delay(100);
 
 	GNSS_Init(&GNSSData, &hlpuart1);
 	HAL_UART_Abort(&hlpuart1);

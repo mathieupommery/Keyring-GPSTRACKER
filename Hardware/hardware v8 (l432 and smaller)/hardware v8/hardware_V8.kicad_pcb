@@ -9800,17 +9800,6 @@
 			(uuid "a471c368-ef2b-469f-ab9e-1196fe9a3e1e")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Connector_JST.3dshapes/JST_SH_BM02B-SRSS-TB_1x02-1MP_P1.00mm_Vertical.step"
-			(offset
-				(xyz 0 0 0)
-			)
-			(scale
-				(xyz 1 1 1)
-			)
-			(rotate
-				(xyz 0 0 0)
-			)
-		)
 	)
 	(footprint "Capacitor_SMD:C_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
 		(layer "F.Cu")
@@ -12314,7 +12303,7 @@
 	(footprint "samacsys2:146235-0001"
 		(layer "B.Cu")
 		(uuid "5732c81f-e16c-4953-9c1b-9b94122353b9")
-		(at 131.4 104.315 90)
+		(at 131.38 104.315 90)
 		(descr "146235-0001")
 		(tags "Undefined or Miscellaneous")
 		(property "Reference" "U3"
@@ -14382,17 +14371,6 @@
 			(uuid "b440a088-4e26-4b41-b536-959427315901")
 		)
 		(embedded_fonts no)
-		(model "${KICAD9_3DMODEL_DIR}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x04_P2.54mm_Vertical.step"
-			(offset
-				(xyz 0 0 0)
-			)
-			(scale
-				(xyz 1 1 1)
-			)
-			(rotate
-				(xyz 0 0 0)
-			)
-		)
 	)
 	(footprint "samacsys:MAXM10S00B"
 		(layer "B.Cu")
@@ -20366,12 +20344,12 @@
 		(uuid "d4001658-e398-458a-b0a2-9a6676dad32c")
 	)
 	(segment
-		(start 130.425 106.26)
-		(end 130.43 106.265)
+		(start 130.405 106.26)
+		(end 130.41 106.265)
 		(width 0.1693)
 		(layer "B.Cu")
 		(net 59)
-		(uuid "198aae5b-f713-4453-bc2b-90fa73dea5fc")
+		(uuid "2a5bb77f-5ab4-431e-a1a5-42d884713eaa")
 	)
 	(segment
 		(start 126.75 106.285)
@@ -20395,15 +20373,7 @@
 		(width 0.1693)
 		(layer "B.Cu")
 		(net 59)
-		(uuid "861a5311-113c-4647-957b-af94f9ec483c")
-	)
-	(segment
-		(start 127.95 106.26)
-		(end 130.425 106.26)
-		(width 0.1693)
-		(layer "B.Cu")
-		(net 59)
-		(uuid "89f389d2-432c-41db-b7b4-1fab06a31649")
+		(uuid "70332c4b-78a8-49a4-abc5-2b9fd85ce7d9")
 	)
 	(segment
 		(start 126.74 106.285)
@@ -20412,6 +20382,14 @@
 		(layer "B.Cu")
 		(net 59)
 		(uuid "f1c54db3-317f-4bb4-8cb8-8364ff4c900b")
+	)
+	(segment
+		(start 127.95 106.26)
+		(end 130.405 106.26)
+		(width 0.1693)
+		(layer "B.Cu")
+		(net 59)
+		(uuid "f9c77d83-8afc-4c78-841d-ea1121729388")
 	)
 	(zone
 		(net 0)

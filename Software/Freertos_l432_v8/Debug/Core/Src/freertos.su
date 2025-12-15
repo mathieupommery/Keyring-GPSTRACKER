@@ -3,4 +3,4 @@
 ../Core/Src/freertos.c:150:6:StartMainTask	24	static
 ../Core/Src/freertos.c:176:6:StartSensorTask	24	static
 ../Core/Src/freertos.c:203:6:StartTrackerTask	24	static
-../Core/Src/freertos.c:226:6:StartPWRTask	16	static
+../Core/Src/freertos.c:226:6:StartPWRTask	24	static

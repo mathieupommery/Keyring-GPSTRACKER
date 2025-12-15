@@ -226,11 +226,14 @@ void StartTrackerTask(void const * argument)
 void StartPWRTask(void const * argument)
 {
   /* USER CODE BEGIN StartPWRTask */
+	  TickType_t xLastWakeTime;
+	  const TickType_t period = pdMS_TO_TICKS(5);
+	  xLastWakeTime = xTaskGetTickCount();
   /* Infinite loop */
   for(;;)
   {
 	  PWR_ProcessPWButton(&gButtons);
-    osDelay(5);
+	  vTaskDelayUntil(&xLastWakeTime, period);
   }
   /* USER CODE END StartPWRTask */
 }

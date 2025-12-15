@@ -60,6 +60,7 @@ void Error_Handler(void);
 /* Private defines -----------------------------------------------------------*/
 #define PWR_BTN_Pin GPIO_PIN_0
 #define PWR_BTN_GPIO_Port GPIOA
+#define PWR_BTN_EXTI_IRQn EXTI0_IRQn
 #define GPS_EN_Pin GPIO_PIN_1
 #define GPS_EN_GPIO_Port GPIOA
 #define AUX_EN_Pin GPIO_PIN_4
@@ -68,8 +69,10 @@ void Error_Handler(void);
 #define FLASH_CS_GPIO_Port GPIOB
 #define B1_Pin GPIO_PIN_15
 #define B1_GPIO_Port GPIOA
+#define B1_EXTI_IRQn EXTI15_10_IRQn
 #define B2_Pin GPIO_PIN_3
 #define B2_GPIO_Port GPIOB
+#define B2_EXTI_IRQn EXTI3_IRQn
 #define USB_DETECT_Pin GPIO_PIN_4
 #define USB_DETECT_GPIO_Port GPIOB
 #define LED_GREEN_Pin GPIO_PIN_5

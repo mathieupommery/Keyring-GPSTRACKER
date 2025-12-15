@@ -29,6 +29,7 @@ void PWR_StartupCheckButton(void)
         }
     }
     start = HAL_GetTick();
+    now = start;
     while ((now - start) <= PWR_STARTUP_LONG_PRESS_MS)
     {
         now = HAL_GetTick();
@@ -83,26 +84,29 @@ void PWR_ProcessPWButton(Buttons_t *btn)
             	btn->BTN_PW=0;
             	btn->BTN_PW_LONG=1;
             }
-            else if (btn->time_PW_ms >= PWR_RUNTIME_LONG_PRESS_MS)
-            {
-                HAL_SuspendTick();
-                HAL_PWR_DisableWakeUpPin(PWR_WAKEUP_PIN1);
-                __HAL_PWR_CLEAR_FLAG(PWR_FLAG_WU);
-                HAL_PWR_EnableWakeUpPin(PWR_WAKEUP_PIN1_LOW);
-                HAL_PWREx_EnableGPIOPullDown(PWR_GPIO_A, PWR_GPIO_BIT_1);
-                HAL_PWREx_EnableGPIOPullDown(PWR_GPIO_A, PWR_GPIO_BIT_4);
-                HAL_PWREx_EnablePullUpPullDownConfig();
-                __disable_irq();
-                HAL_PWREx_EnterSHUTDOWNMode();
-                while (1)
-                {
-                }
-            }
             else
             {
 
             }
         }
     }
+    if(btn->pressStart_PW_ms!=0){
+        if ((now-btn->pressStart_PW_ms)  >= PWR_RUNTIME_LONG_PRESS_MS)
+        {
+            HAL_SuspendTick();
+            HAL_PWR_DisableWakeUpPin(PWR_WAKEUP_PIN1);
+            __HAL_PWR_CLEAR_FLAG(PWR_FLAG_WU);
+            HAL_PWR_EnableWakeUpPin(PWR_WAKEUP_PIN1_LOW);
+            HAL_PWREx_EnableGPIOPullDown(PWR_GPIO_A, PWR_GPIO_BIT_1);
+            HAL_PWREx_EnableGPIOPullDown(PWR_GPIO_A, PWR_GPIO_BIT_4);
+            HAL_PWREx_EnablePullUpPullDownConfig();
+            __disable_irq();
+            HAL_PWREx_EnterSHUTDOWNMode();
+            while (1)
+            {
+            }
+        }
+    }
+
 }
 

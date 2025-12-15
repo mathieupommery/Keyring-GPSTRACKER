@@ -1,2 +1,2 @@
 ../Core/Src/pwr.c:3:6:PWR_StartupCheckButton	48	static,ignoring_inline_asm
-../Core/Src/pwr.c:53:6:PWR_ProcessPWButton	24	static,ignoring_inline_asm
+../Core/Src/pwr.c:57:6:PWR_ProcessPWButton	24	static,ignoring_inline_asm
