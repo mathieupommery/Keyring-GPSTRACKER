@@ -31,131 +31,11 @@ void GNSS_Init(GNSS_StateHandle *GNSS, UART_HandleTypeDef *huart) {
 	GNSS->vAcc = 0;
 	GNSS->gSpeed = 0;
 	GNSS->headMot = 0;
-	GNSS->received_flag=0;
-
-	HAL_UART_Transmit_DMA(&huart,uart1outprotnmeadisable,sizeof(uart1outprotnmeadisable)/(sizeof(uint8_t)));
-	  HAL_Delay(30);
-	  HAL_UART_Transmit_DMA(&huart,uart1outprotubxenable,sizeof(uart1outprotubxenable)/(sizeof(uint8_t)));
-	  HAL_Delay(30);
-	  HAL_UART_Transmit_DMA(&huart,setGPS_GAL_GLONASS,sizeof(setGPS_GAL_BEIDOU_GLONASS)/(sizeof(uint8_t)));
-	  HAL_Delay(30);
-	  HAL_UART_Transmit_DMA(&huart,meas_rate_5hz,sizeof(meas_rate_10hz)/(sizeof(uint8_t)));
-	  HAL_Delay(30);
-	  HAL_UART_Transmit_DMA(&huart,ubx_pvt_every_1meas,sizeof(ubx_pvt_every_1meas)/(sizeof(uint8_t)));
-
+	GNSS->write_index=0;
+	GNSS->read_index=0;
 	HAL_Delay(100);
 }
 
-/*!
- * Searching for a header in data buffer and matching class and message ID to buffer data.
- * @param GNSS Pointer to main GNSS structure.
- */
-void GNSS_ParseBuffer(GNSS_StateHandle *GNSS) {
-	uint8_t var=0;
-		if (GNSS->uartWorkingBuffer[var] == 0xB5
-			&& GNSS->uartWorkingBuffer[var + 1] == 0x62) {
-
-				if (GNSS->uartWorkingBuffer[var + 2] == 0x01
-						&& GNSS->uartWorkingBuffer[var + 3] == 0x07) { //Look at: 32.17.17.1 u-blox 8 Receiver description
-					GNSS_ParsePVTData(GNSS);
-
-				}
-		}
-}
-
-/*!
- * Make request for unique chip ID data.
- * @param GNSS Pointer to main GNSS structure.
- */
-void GNSS_GetUniqID(GNSS_StateHandle *GNSS) {
-	HAL_UART_Transmit_DMA(GNSS->huart, getDeviceID,
-			sizeof(getDeviceID) / sizeof(uint8_t));
-	HAL_UART_Receive_IT(GNSS->huart, GNSS->uartWorkingBuffer, 17);
-}
-
-/*!
- * Make request for UTC time solution data.
- * @param GNSS Pointer to main GNSS structure.
- */
-void GNSS_GetNavigatorData(GNSS_StateHandle *GNSS) {
-	HAL_UART_Transmit_DMA(GNSS->huart, getNavigatorData,
-			sizeof(getNavigatorData) / sizeof(uint8_t));
-	HAL_UART_Receive_IT(GNSS->huart, GNSS->uartWorkingBuffer, 28);
-}
-
-/*!
- * Make request for geodetic position solution data.
- * @param GNSS Pointer to main GNSS structure.
- */
-void GNSS_GetPOSLLHData(GNSS_StateHandle *GNSS) {
-	HAL_UART_Transmit_DMA(GNSS->huart, getPOSLLHData,
-			sizeof(getPOSLLHData) / sizeof(uint8_t));
-	HAL_UART_Receive_IT(GNSS->huart, GNSS->uartWorkingBuffer, 36);
-}
-
-/*!
- * Make request for navigation position velocity time solution data.
- * @param GNSS Pointer to main GNSS structure.
- */
-void GNSS_GetPVTData(GNSS_StateHandle *GNSS) {
-	HAL_UART_Transmit_DMA(GNSS->huart, getPVTData,
-			sizeof(getPVTData) / sizeof(uint8_t));
-	HAL_UART_Receive_IT(GNSS->huart, GNSS->uartWorkingBuffer, 100);
-}
-
-/*!
- * Make request for satellite information data.
- * @param GNSS Pointer to main GNSS structure.
- */
-void GNSS_GetNAVSATData(GNSS_StateHandle *GNSS) {
-	HAL_UART_Transmit_DMA(GNSS->huart, getNAVSATData,
-			sizeof(getNAVSATData) / sizeof(uint8_t));
-	HAL_UART_Receive_IT(GNSS->huart, GNSS->uartWorkingBuffer, 28);
-}
-
-/*!
- * Parse data to unique chip ID standard.
- * Look at: 32.19.1.1 u-blox 8 Receiver description
- * @param GNSS Pointer to main GNSS structure.
- */
-void GNSS_ParseUniqID(GNSS_StateHandle *GNSS) {
-	for (int var = 0; var < 5; ++var) {
-		GNSS->uniqueID[var] = GNSS->uartWorkingBuffer[10 + var];
-	}
-}
-
-/*!
- * Changing the GNSS mode.
- * Look at: 32.10.19 u-blox 8 Receiver description
- */
-void GNSS_SetMode(GNSS_StateHandle *GNSS, short gnssMode) {
-	if (gnssMode == 0) {
-		HAL_UART_Transmit_DMA(GNSS->huart, setPortableMode,sizeof(setPortableMode) / sizeof(uint8_t));
-	} else if (gnssMode == 1) {
-		HAL_UART_Transmit_DMA(GNSS->huart, setStationaryMode,sizeof(setStationaryMode) / sizeof(uint8_t));
-	} else if (gnssMode == 2) {
-		HAL_UART_Transmit_DMA(GNSS->huart, setPedestrianMode,sizeof(setPedestrianMode) / sizeof(uint8_t));
-	} else if (gnssMode == 3) {
-		HAL_UART_Transmit_DMA(GNSS->huart, setAutomotiveMode,sizeof(setAutomotiveMode) / sizeof(uint8_t));
-	} else if (gnssMode == 4) {
-		HAL_UART_Transmit_DMA(GNSS->huart, setAutomotiveMode,sizeof(setAutomotiveMode) / sizeof(uint8_t));
-	} else if (gnssMode == 5) {
-		HAL_UART_Transmit_DMA(GNSS->huart, setAirbone1GMode,sizeof(setAirbone1GMode) / sizeof(uint8_t));
-	} else if (gnssMode == 6) {
-		HAL_UART_Transmit_DMA(GNSS->huart, setAirbone2GMode,sizeof(setAirbone2GMode) / sizeof(uint8_t));
-	} else if (gnssMode == 7) {
-		HAL_UART_Transmit_DMA(GNSS->huart, setAirbone4GMode,sizeof(setAirbone4GMode) / sizeof(uint8_t));
-	} else if (gnssMode == 8) {
-		HAL_UART_Transmit_DMA(GNSS->huart, setWirstMode,sizeof(setWirstMode) / sizeof(uint8_t));
-	} else if (gnssMode == 9) {
-		HAL_UART_Transmit_DMA(GNSS->huart, setBikeMode,sizeof(setBikeMode) / sizeof(uint8_t));
-	}
-}
-/*!
- * Parse data to navigation position velocity time solution standard.
- * Look at: 32.17.15.1 u-blox 8 Receiver description.
- * @param GNSS Pointer to main GNSS structure.
- */
 void GNSS_ParsePVTData(GNSS_StateHandle *GNSS) {
 	uShort.bytes[0] = GNSS->uartWorkingBuffer[10];
 	GNSS->yearBytes[0]=GNSS->uartWorkingBuffer[10];
@@ -223,46 +103,61 @@ void GNSS_ParsePVTData(GNSS_StateHandle *GNSS) {
 	GNSS->headMot = iLong.iLong * 1e-5;
 }
 
-/*!
- * Parse data to UTC time solution standard.
- * Look at: 32.17.30.1 u-blox 8 Receiver description.
- * @param GNSS Pointer to main GNSS structure.
- */
+HAL_StatusTypeDef GNSS_Process(GNSS_StateHandle * GNSS){
+
+	HAL_StatusTypeDef result=HAL_BUSY;
+	uint16_t index=GNSS->read_index;
+	uint16_t available=0;
+	uint8_t state=0;
+
+	if (GNSS->write_index >= GNSS->read_index) {
+		available = GNSS->write_index - GNSS->read_index;
+	}
+	else {
+		available = (512 - GNSS->read_index) + GNSS->write_index;
+	}
 
 
-void GNSS_ParseNAVSATData(GNSS_StateHandle *GNSS) {
-	GNSS->satCount = GNSS->uartWorkingBuffer[11];
+
+	while(available>=2){
+
+		index=GNSS->read_index;
+
+		if (GNSS->write_index >= GNSS->read_index) {
+			available = GNSS->write_index - GNSS->read_index;
+		}
+		else {
+			available = (512 - GNSS->read_index) + GNSS->write_index;
+		}
+
+	    if (available < 2)
+	    	{
+	    	return HAL_BUSY;
+	    	}
+
+			if (GNSS->circular_buffer[index] == 0xB5 && GNSS->circular_buffer[(index+1)%512] == 0x62) {
+
+				if (GNSS->circular_buffer[(index+2)%512] == 0x01 && GNSS->circular_buffer[(index+3)%512] == 0x07) {
+					if(available >=100){
+					for(int i = 0; i<100;i++){
+						GNSS->uartWorkingBuffer[i]=GNSS->circular_buffer[(index+i)%512];
+					}
+					GNSS_ParsePVTData(GNSS);
+					HAL_GPIO_TogglePin(LED_BLUE_GPIO_Port,LED_BLUE_Pin);
+					GNSS->read_index= (GNSS->read_index + 90)%512;
+					return HAL_OK;
+					}
+					else{
+						return HAL_BUSY;
+					}
+
+					}
+			}
+			GNSS->read_index= (GNSS->read_index + 1)%512;
+
 }
-
-
-
-/*!
- *  Sends the basic configuration: Activation of the UBX standard, change Baudrate to 115200 and activate all satellite systems
- * @param GNSS Pointer to main GNSS structure.
- */
-void GNSS_LoadConfig(GNSS_StateHandle *GNSS) {
-
-
-
-
+	return result;
 }
-
-
-/*!
- *  Creates a checksum based on UBX standard.
- * @param class Class value from UBX doc.
- * @param messageID MessageID value from UBX doc.
- * @param dataLength Data length value from UBX doc.
- * @param payload Just payload.
- * @return  Returns checksum.
- */
-uint8_t GNSS_Checksum(uint8_t class, uint8_t messageID, uint8_t dataLength,uint8_t *payload) {
-//todo: If you want to build your own UBX message, then you have to
-//		implement UBX checksum algorith, as stated in integration
-//		manual.
-	return 0;
-}
-
 
 
 

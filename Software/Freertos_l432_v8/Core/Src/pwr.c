@@ -62,8 +62,8 @@ void PWR_ProcessPWButton(Buttons_t *btn)
     	btn->PW_BTN_FALLING_FLAG = 0;
         btn->pressStart_PW_ms = now;
         btn->time_PW_ms = 0;
-        btn->BTN_PW_LONG = 0;
-        btn->BTN_PW=0;
+        btn->BTN_B_LONG = 0;
+        btn->BTN_B=0;
     }
     if (btn->PW_BTN_RISING_FLAG)
     {
@@ -76,20 +76,24 @@ void PWR_ProcessPWButton(Buttons_t *btn)
 
             if ((btn->time_PW_ms >= 50) && (btn->time_PW_ms <  400))
             {
-            	btn->BTN_PW=1;
-            	btn->BTN_PW_LONG=0;
+            	btn->BTN_B     = 1;
+            	btn->BTN_B_LONG = 0;
             }
             else if ((btn->time_PW_ms >= 400) && (btn->time_PW_ms <  1500))
             {
-            	btn->BTN_PW=0;
-            	btn->BTN_PW_LONG=1;
+            	btn->BTN_B_LONG = 1;
+            	btn->BTN_B      = 0;
             }
             else
             {
+            	btn->BTN_B      = 0;
+            	btn->BTN_B_LONG = 0;
 
             }
         }
     }
+
+
     if(btn->pressStart_PW_ms!=0){
         if ((now-btn->pressStart_PW_ms)  >= PWR_RUNTIME_LONG_PRESS_MS)
         {
@@ -97,6 +101,8 @@ void PWR_ProcessPWButton(Buttons_t *btn)
             HAL_PWR_DisableWakeUpPin(PWR_WAKEUP_PIN1);
             __HAL_PWR_CLEAR_FLAG(PWR_FLAG_WU);
             HAL_PWR_EnableWakeUpPin(PWR_WAKEUP_PIN1_LOW);
+            HAL_GPIO_WritePin(AUX_EN_GPIO_Port, AUX_EN_Pin,GPIO_PIN_RESET);
+            HAL_GPIO_WritePin(GPS_EN_GPIO_Port,GPS_EN_Pin,GPIO_PIN_RESET);
             HAL_PWREx_EnableGPIOPullDown(PWR_GPIO_A, PWR_GPIO_BIT_1);
             HAL_PWREx_EnableGPIOPullDown(PWR_GPIO_A, PWR_GPIO_BIT_4);
             HAL_PWREx_EnablePullUpPullDownConfig();

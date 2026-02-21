@@ -1,7 +1,7 @@
 import serial
 import time
 
-PORT = "COM21"
+PORT = "COM20"
 BAUDRATE = 115200
 TIMEOUT = 1.0
 

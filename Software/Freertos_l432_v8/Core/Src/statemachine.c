@@ -14,7 +14,7 @@ extern AdcContext_t gAdc;
 
 void StateMachine_Run(AppStateMachineContext *ctx,GNSS_StateHandle*gps,Buttons_t *buttons,AdcContext_t *gAdc)
 {
-    ctx->flag_usb_mounted =(HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_9) == GPIO_PIN_RESET) ? 0 : 1;
+    ctx->flag_usb_mounted =(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_4) == GPIO_PIN_RESET) ? 0 : 1;
 
     if (ctx->settimeen == 0) {
         ctx->settimeen = 1;

@@ -72,17 +72,6 @@ Buttons_t gButtons = {0};
 AdcContext_t gAdc = {0};
 uint8_t bufferscreen[50];
 
-
-
-
-
-
-
-
-float tscal2=1365.0;
-float tscal1=1034.0;
-
-
 const unsigned char startimg[] = {
 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
 0x7f, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xfe,
@@ -167,43 +156,6 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
         }
     }
 
-    /* -------------------- BTN_B sur PB3 -------------------- */
-    if (GPIO_Pin == B2_Pin)
-    {
-        if (HAL_GPIO_ReadPin(B2_GPIO_Port, B2_Pin) == GPIO_PIN_RESET)
-        {
-            gButtons.pressStart_B_ms = HAL_GetTick();
-        }
-        else
-        {
-            uint32_t now = HAL_GetTick();
-            uint32_t dur = 0;
-
-            if (gButtons.pressStart_B_ms != 0){
-                dur = now - gButtons.pressStart_B_ms;
-
-            gButtons.time_B_ms       = dur;
-            gButtons.pressStart_B_ms = 0;
-
-            if (dur >= 50 && dur <= 400)
-            {
-                gButtons.BTN_B      = 1;
-                gButtons.BTN_B_LONG = 0;
-            }
-            else if (dur >= 400)
-            {
-                gButtons.BTN_B_LONG = 1;
-                gButtons.BTN_B      = 0;
-            }
-            else
-            {
-                gButtons.BTN_B      = 0;
-                gButtons.BTN_B_LONG = 0;
-            }
-        }
-        }
-    }
-
     /* -------------------- BTN_PW sur PA0 -------------------- */
     if (GPIO_Pin == PWR_BTN_Pin)
     {
@@ -219,26 +171,47 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
     }
 }
 
+
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
 {
     if (hadc->Instance == ADC1)
     {
-        gAdc.vrefint = (float)((4095.0f * 1.212f) / (float)gAdc.raw[0]);
-        gAdc.temp = (float)(((100.0f) / (float)(tscal2 - tscal1)) *((float)gAdc.raw[1] * (gAdc.vrefint / 3.0f) - (float)tscal1))+ 30.0f;
-        gAdc.vbat = (float)(2.0f * ((float)gAdc.raw[2] / 4095.0f) * gAdc.vrefint);
+        const float vref_cal = (float)STM32L432_VREFINT_CAL();
+        const float ts_cal1  = (float)STM32L432_TS_CAL1();
+        const float ts_cal2  = (float)STM32L432_TS_CAL2();
+
+        const float adc_vref = (float)gAdc.raw[0];
+        const float adc_ts   = (float)gAdc.raw[1];
+        const float adc_vbat = (float)gAdc.raw[2];
+
+        gAdc.vrefint = (STM32L432_VDDA_CAL_V * vref_cal) / adc_vref;
+
+        const float ts_data_3v = (adc_ts * vref_cal) / adc_vref;
+
+        gAdc.temp =((ts_data_3v - ts_cal1) *(STM32L432_TS_CAL2_TEMP_C - STM32L432_TS_CAL1_TEMP_C) /(ts_cal2 - ts_cal1)) +STM32L432_TS_CAL1_TEMP_C;
+
+        gAdc.vbat = 2.0f * (adc_vbat / 4095.0f) * gAdc.vrefint;
+        HAL_ADC_Start_DMA(hadc, (uint32_t*)gAdc.raw, 3);
     }
-    HAL_ADC_Start_DMA(&hadc1, (uint32_t *)gAdc.raw, 3);
+
+}
+
+void HAL_UART_RxHalfCpltCallback(UART_HandleTypeDef *huart)
+{
+    if (huart->Instance == LPUART1)
+    {
+    	GNSSData.write_index=256;
+
+    }
 }
 
 
-void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
-	if(huart->Instance==LPUART1){
-		GNSSData.received_flag=1;
-		__HAL_DMA_DISABLE_IT(huart->hdmarx, DMA_IT_HT);
-		HAL_UART_Receive_DMA(&hlpuart1, (uint8_t *)GNSSData.uartWorkingBuffer, 100);
-
-	}
-
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+{
+    if (huart->Instance == LPUART1)
+    {
+    	GNSSData.write_index=0;
+    }
 }
 
 
@@ -273,19 +246,13 @@ int main(void)
   void (*boot_jump)(void);
 
   __HAL_RCC_GPIOA_CLK_ENABLE();
-   GPIO_InitStruct.Pin = B1_Pin;
+   GPIO_InitStruct.Pin = B1_Pin | PWR_BTN_Pin;
    GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
    GPIO_InitStruct.Pull = GPIO_NOPULL;
    HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-   __HAL_RCC_GPIOB_CLK_ENABLE();
-    GPIO_InitStruct.Pin = B2_Pin;
-    GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-    GPIO_InitStruct.Pull = GPIO_NOPULL;
-    HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
-
    if ((HAL_GPIO_ReadPin(B1_GPIO_Port, B1_Pin) == GPIO_PIN_RESET) &&
- 	  (HAL_GPIO_ReadPin(B2_GPIO_Port, B2_Pin) == GPIO_PIN_RESET))
+ 	  (HAL_GPIO_ReadPin(PWR_BTN_GPIO_Port, PWR_BTN_Pin) == GPIO_PIN_RESET))
    {
  	  HAL_DeInit();
  	  boot_jump = (void (*)(void))(*((uint32_t *)(SYS_MEM_START_ADDR + 4)));
@@ -330,7 +297,8 @@ int main(void)
 
 	GNSS_Init(&GNSSData, &hlpuart1);
 	HAL_UART_Abort(&hlpuart1);
-	HAL_UART_Receive_DMA(&hlpuart1, (uint8_t *)GNSSData.uartWorkingBuffer, 100);
+	HAL_UART_Receive_DMA(&hlpuart1, (uint8_t *)GNSSData.circular_buffer, 512);
+	__HAL_DMA_ENABLE_IT(hlpuart1.hdmarx, DMA_IT_HT);
 
 
 	if(SPIF_Init(&hspif1,&hspi1,FLASH_CS_GPIO_Port,FLASH_CS_Pin)==true){

@@ -73,8 +73,6 @@ void Error_Handler(void);
 #define B2_Pin GPIO_PIN_3
 #define B2_GPIO_Port GPIOB
 #define B2_EXTI_IRQn EXTI3_IRQn
-#define USB_DETECT_Pin GPIO_PIN_4
-#define USB_DETECT_GPIO_Port GPIOB
 #define LED_GREEN_Pin GPIO_PIN_5
 #define LED_GREEN_GPIO_Port GPIOB
 #define LED_BLUE_Pin GPIO_PIN_6
@@ -83,15 +81,26 @@ void Error_Handler(void);
 /* USER CODE BEGIN Private defines */
 #define SYS_MEM_START_ADDR 0x1FFF0000//OK
 
+
+#define STM32L432_VREFINT_CAL_ADDR   ((volatile uint16_t*)0x1FFF75AAu)
+#define STM32L432_TS_CAL1_ADDR       ((volatile uint16_t*)0x1FFF75A8u)
+#define STM32L432_TS_CAL2_ADDR       ((volatile uint16_t*)0x1FFF75CAu)
+
+#define STM32L432_VREFINT_CAL()      (*STM32L432_VREFINT_CAL_ADDR)
+#define STM32L432_TS_CAL1()          (*STM32L432_TS_CAL1_ADDR)
+#define STM32L432_TS_CAL2()          (*STM32L432_TS_CAL2_ADDR)
+
+#define STM32L432_VDDA_CAL_V         (3.0f)
+#define STM32L432_TS_CAL1_TEMP_C     (30.0f)
+#define STM32L432_TS_CAL2_TEMP_C     (130.0f)
+
 typedef struct
 {
     uint8_t BTN_A;
     uint8_t BTN_B;
-    uint8_t BTN_PW;
 
     uint8_t BTN_A_LONG;
     uint8_t BTN_B_LONG;
-    uint8_t BTN_PW_LONG;
 
     uint32_t time_A_ms;
     uint32_t time_B_ms;

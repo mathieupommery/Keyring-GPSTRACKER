@@ -32,8 +32,10 @@ typedef struct
 	UART_HandleTypeDef *huart;
 
 	uint8_t uniqueID[4];
-	uint8_t uartWorkingBuffer[101];
-	uint8_t received_flag;
+	uint8_t circular_buffer[512];
+	uint8_t uartWorkingBuffer[128];
+	uint16_t write_index;
+	uint16_t read_index;
 	unsigned short year;
 	uint8_t yearBytes[2];
 	uint8_t month;
@@ -167,31 +169,9 @@ static const uint8_t getPVTData[] =       {0xB5,0x62,0x01,0x07,0x00,0x00,0x08,0x
 
 static const uint8_t getNAVSATData[] =   {0xB5,0x62,0x01,0x35,0x00,0x00,0x08,0x19};
 
-
-
-
-static const uint8_t setPortableType[]={};
 void GNSS_Init(GNSS_StateHandle *GNSS, UART_HandleTypeDef *huart);
-void GNSS_LoadConfig(GNSS_StateHandle *GNSS);
-void GNSS_ParseBuffer(GNSS_StateHandle *GNSS);
-
-void GNSS_GetUniqID(GNSS_StateHandle *GNSS);
-void GNSS_ParseUniqID(GNSS_StateHandle *GNSS);
-
-void GNSS_GetNavigatorData(GNSS_StateHandle *GNSS);
-void GNSS_ParseNavigatorData(GNSS_StateHandle *GNSS);
-
-void GNSS_GetPOSLLHData(GNSS_StateHandle *GNSS);
-void GNSS_ParsePOSLLHData(GNSS_StateHandle *GNSS);
-
-void GNSS_GetPVTData(GNSS_StateHandle *GNSS);
 void GNSS_ParsePVTData(GNSS_StateHandle *GNSS);
-
-void GNSS_GetNAVSATData(GNSS_StateHandle *GNSS);
-void GNSS_ParseNAVSATData(GNSS_StateHandle *GNSS);
-
-void GNSS_SetMode(GNSS_StateHandle *GNSS, short gnssMode);
-
+HAL_StatusTypeDef GNSS_Process(GNSS_StateHandle * GNSS);
 double distancecalc(double lat1, double lat2, double long1, double long2);
 #endif /* INC_GNSS_H_ */
 

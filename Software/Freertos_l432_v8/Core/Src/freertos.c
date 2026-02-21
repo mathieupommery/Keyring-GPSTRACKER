@@ -119,11 +119,11 @@ void MX_FREERTOS_Init(void) {
 
   /* Create the thread(s) */
   /* definition and creation of MainTask */
-  osThreadDef(MainTask, StartMainTask, osPriorityNormal, 0, 512);
+  osThreadDef(MainTask, StartMainTask, osPriorityNormal, 0, 768);
   MainTaskHandle = osThreadCreate(osThread(MainTask), NULL);
 
   /* definition and creation of SensorTask */
-  osThreadDef(SensorTask, StartSensorTask, osPriorityNormal, 0, 256);
+  osThreadDef(SensorTask, StartSensorTask, osPriorityNormal, 0, 512);
   SensorTaskHandle = osThreadCreate(osThread(SensorTask), NULL);
 
   /* definition and creation of TrackerTask */
@@ -131,7 +131,7 @@ void MX_FREERTOS_Init(void) {
   TrackerTaskHandle = osThreadCreate(osThread(TrackerTask), NULL);
 
   /* definition and creation of PWRTask */
-  osThreadDef(PWRTask, StartPWRTask, osPriorityHigh, 0, 256);
+  osThreadDef(PWRTask, StartPWRTask, osPriorityHigh, 0, 512);
   PWRTaskHandle = osThreadCreate(osThread(PWRTask), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
@@ -177,16 +177,12 @@ void StartSensorTask(void const * argument)
 {
   /* USER CODE BEGIN StartSensorTask */
 	  TickType_t xLastWakeTime;
-	  const TickType_t period = pdMS_TO_TICKS(50);
+	  const TickType_t period = pdMS_TO_TICKS(100);
 	  xLastWakeTime = xTaskGetTickCount();
   /* Infinite loop */
   for(;;)
   {
-	  if(GNSSData.received_flag==1){
-
-	  		GNSS_ParsePVTData(&GNSSData);
-	  		GNSSData.received_flag=0;
-	  }
+		GNSS_Process(&GNSSData);
 
 	  vTaskDelayUntil(&xLastWakeTime, period);
   }
@@ -209,7 +205,7 @@ void StartTrackerTask(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-	  HAL_GPIO_TogglePin(LED_BLUE_GPIO_Port,LED_BLUE_Pin);
+
 
 	  vTaskDelayUntil(&xLastWakeTime, period);
   }
