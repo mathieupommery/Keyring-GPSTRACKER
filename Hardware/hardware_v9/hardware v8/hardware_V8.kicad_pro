@@ -39,9 +39,9 @@
         "other_text_thickness": 0.15,
         "other_text_upright": false,
         "pads": {
-          "drill": 0.0,
-          "height": 1.8,
-          "width": 1.2
+          "drill": 1.0,
+          "height": 1.7,
+          "width": 1.7
         },
         "silk_line_width": 0.1,
         "silk_text_italic": false,
@@ -133,7 +133,7 @@
         "max_error": 0.005,
         "min_clearance": 0.1,
         "min_connection": 0.0,
-        "min_copper_edge_clearance": 0.1,
+        "min_copper_edge_clearance": 0.2,
         "min_groove_width": 0.0,
         "min_hole_clearance": 0.075,
         "min_hole_to_hole": 0.1,
@@ -785,7 +785,7 @@
         "uuid": "e491fdb3-646d-47e4-8ebb-9632fba4f524"
       }
     ],
-    "used_designators": "#FLG2,#FLG8,R13,R25-26,J1,#PWR23-26,#PWR30,C11,C21",
+    "used_designators": "U3,U5,C1-3,C5-6,#PWR21-22,#PWR31,#FLG3,#FLG5,R21,R27",
     "variants": []
   },
   "sheets": [
