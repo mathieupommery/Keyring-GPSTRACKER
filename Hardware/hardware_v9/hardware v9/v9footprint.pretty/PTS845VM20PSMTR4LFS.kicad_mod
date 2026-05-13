@@ -1,0 +1,274 @@
+(footprint "PTS845VM20PSMTR4LFS"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(descr "PTS845")
+	(tags "Switch")
+	(property "Reference" "REF**"
+		(at 0 0.2 0)
+		(layer "F.SilkS")
+		(hide yes)
+		(uuid "86ad89b0-6d75-421e-b39b-55fa0e9aee69")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+			)
+		)
+	)
+	(property "Value" "PTS845VM20PSMTR4_LFS"
+		(at 0 0.2 0)
+		(layer "F.SilkS")
+		(hide yes)
+		(uuid "50a8b598-4897-408d-81ec-54a692cf674d")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+			)
+		)
+	)
+	(property "Datasheet" "https://www.ckswitches.com/media/3009/pts845.pdf"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "71619ed4-f512-46b7-b9a0-80702ab2c6d4")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" "Tactile Switches 50mA 12VDC, 80gf, Grey Actuator"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "8e518500-dc59-4416-861a-15b93c2702a3")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Height" "3.3"
+		(at 0 0 180)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "8890d518-0446-4430-8373-3cbfeb766ef9")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Manufacturer_Name" "C & K COMPONENTS"
+		(at 0 0 180)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "06b14a0c-aab9-498a-872b-c57febe67900")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Manufacturer_Part_Number" "PTS845VM20PSMTR4 LFS"
+		(at 0 0 180)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "8a570ed5-cdfa-46f3-a718-4d0c08cef186")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Mouser Part Number" "611-PTS845VM20PSMTR4"
+		(at 0 0 180)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "269b8a1d-5df8-4638-969f-8735789a84db")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/CK/PTS845VM20PSMTR4-LFS?qs=81r%252BiQLm7BQxQDX8di0zbw%3D%3D"
+		(at 0 0 180)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "d2645088-ae8e-4309-bc7d-e67d1a898923")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Arrow Part Number" "PTS845VM20PSMTR4 LFS"
+		(at 0 0 180)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "6ae5c626-800a-4d2f-9d4d-d1650ab380ed")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Arrow Price/Stock" "https://www.arrow.com/en/products/pts845vm20psmtr4lfs/ck?region=nac"
+		(at 0 0 180)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "1b0c4fe0-bded-44d5-969d-b86a53363e7a")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(sheetname "/BTN_CONN/")
+	(sheetfile "BTN_CONN.kicad_sch")
+	(attr through_hole)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_line
+		(start 2.25 1.275)
+		(end 2.25 -1.275)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "7ab400a1-9038-46b3-897b-015e55c5fd07")
+	)
+	(fp_line
+		(start 2.25 -1.275)
+		(end -2.25 -1.275)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "65253546-b3a2-4cbf-94c2-7cfa767dc1f4")
+	)
+	(fp_line
+		(start -1 1.275)
+		(end 1 1.275)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "452f9e71-1b49-4657-9a9d-4ff998bf3556")
+	)
+	(fp_line
+		(start -2.25 1.275)
+		(end 2.25 1.275)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "37edd715-1bcd-488b-9d27-56609f94f33f")
+	)
+	(fp_line
+		(start -2.25 -1.275)
+		(end -2.25 1.275)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "73ad5820-acb4-43ad-b957-0220b23dd9b8")
+	)
+	(pad "" np_thru_hole circle
+		(at -2.125 0.075 180)
+		(size 0.9 0.9)
+		(drill 0.9)
+		(layers "*.Cu" "*.Mask")
+		(uuid "446abc2d-31b3-4a48-9441-846c7f81776c")
+	)
+	(pad "" np_thru_hole circle
+		(at 2.125 0.075 180)
+		(size 0.9 0.9)
+		(drill 0.9)
+		(layers "*.Cu" "*.Mask")
+		(uuid "5f0a4f4e-ea97-4766-9f93-5966734216aa")
+	)
+	(pad "1" smd rect
+		(at -1.225 -0.825 180)
+		(size 0.75 1.8)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(zone_connect 1)
+		(thermal_bridge_width 0.2)
+		(thermal_gap 0.15)
+		(uuid "7e563768-3e65-45eb-8b77-602bb2016b87")
+	)
+	(pad "2" smd rect
+		(at 0 -0.825 180)
+		(size 0.6 1.8)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(teardrops
+			(best_length_ratio 0.5)
+			(max_length 1)
+			(best_width_ratio 1)
+			(max_width 2)
+			(curved_edges no)
+			(filter_ratio 0.9)
+			(enabled yes)
+			(allow_two_segments yes)
+			(prefer_zone_connections yes)
+		)
+		(uuid "e047b5a0-00ef-42de-9071-23829638b28e")
+	)
+	(pad "3" smd rect
+		(at 1.225 -0.825 180)
+		(size 0.75 1.8)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(zone_connect 1)
+		(thermal_bridge_width 0.2)
+		(thermal_gap 0.15)
+		(uuid "51a69d21-04e9-4bea-b82a-cd59a0655d3d")
+	)
+	(pad "MP1" smd rect
+		(at -1.85 1.125 270)
+		(size 0.9 1.3)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "5a1d91c2-9bc3-4413-9404-b7e2fe070293")
+	)
+	(pad "MP2" smd rect
+		(at 1.85 1.125 270)
+		(size 0.9 1.3)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "d6db53bf-3f81-4572-92a4-ef25ebf713a4")
+	)
+	(embedded_fonts no)
+	(model "C:\\Users\\mathi\\Desktop\\libloader2\\SamacSys_Parts.3dshapes\\PTS845VK20PSMTR4_LFS.stp"
+		(offset
+			(xyz -1.99999997 1.419999936 0.05999999776)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz -90 0 0)
+		)
+	)
+)

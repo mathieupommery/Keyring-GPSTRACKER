@@ -1,0 +1,257 @@
+(footprint "USB4110GFA"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(descr "USB4110-GF-A-1")
+	(tags "Connector")
+	(property "Reference" "REF**"
+		(at 0 -0.536 0)
+		(layer "F.SilkS")
+		(hide yes)
+		(uuid "31928d51-dd38-4155-91b6-a0ca309d8ddd")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+			)
+		)
+	)
+	(property "Value" "USB4110-GF-A"
+		(at 0 -0.536 0)
+		(layer "F.SilkS")
+		(hide yes)
+		(uuid "5e391623-de96-4ca8-91ac-e38ea53fadb4")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+			)
+		)
+	)
+	(property "Datasheet" "https://gct.co/files/drawings/usb4110.pdf"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "6f90d58f-ed69-4ffb-9ec1-79ef295ace38")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" "CONN USB 2.0 TYPE-C R/A SMT"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "808f219b-e1e9-4665-b53b-84ef9a3c4a28")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Height" "3.26"
+		(at 0 0 180)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "d9bdd52b-74b1-452a-9a9b-3a2631632468")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Mouser Part Number" "640-USB4110-GF-A"
+		(at 0 0 180)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "632544ff-f5be-4ed6-8f7d-ec1922fe9be6")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/GCT/USB4110-GF-A?qs=KUoIvG%2F9IlYiZvIXQjyJeA%3D%3D"
+		(at 0 0 180)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "56be1726-73cc-4b7e-bf89-72219dd3775d")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Manufacturer_Name" "GCT (GLOBAL CONNECTOR TECHNOLOGY)"
+		(at 0 0 180)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "960759c2-d613-45e8-b7e8-1177790faf70")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Manufacturer_Part_Number" "USB4110-GF-A"
+		(at 0 0 180)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "87a0d026-8e61-46bd-9ccf-7883c130d91a")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(sheetname "/BTN_CONN/")
+	(sheetfile "BTN_CONN.kicad_sch")
+	(attr through_hole)
+	(duplicate_pad_numbers_are_jumpers no)
+	(pad "A1" smd rect
+		(at -3.35 -3.678 180)
+		(size 0.3 1.15)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "6b759d14-171b-45a8-8223-725ef392f1fc")
+	)
+	(pad "A4" smd rect
+		(at -2.55 -3.678 180)
+		(size 0.3 1.15)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "18c26af0-f593-4e0e-b0d2-e1095c4992a7")
+	)
+	(pad "A5" smd rect
+		(at -1.25 -3.678 180)
+		(size 0.3 1.15)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "9c034980-6e6f-404b-87e4-2943a514e509")
+	)
+	(pad "A6" smd rect
+		(at -0.25 -3.678 180)
+		(size 0.3 1.15)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "f092fe0a-f646-43e6-b248-e83739a9c96e")
+	)
+	(pad "A7" smd rect
+		(at 0.25 -3.678 180)
+		(size 0.3 1.15)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "50678988-ae5c-478a-a707-a04289bcde92")
+	)
+	(pad "A8" smd rect
+		(at 1.25 -3.678 180)
+		(size 0.3 1.15)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "35917a81-2453-4336-a166-850b38d7dec3")
+	)
+	(pad "A9" smd rect
+		(at 2.55 -3.678 180)
+		(size 0.3 1.15)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "0dc3f320-a68d-409e-a0e9-5d90951e5973")
+	)
+	(pad "A12" smd rect
+		(at 3.35 -3.678 180)
+		(size 0.3 1.15)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "280f09a4-1728-42ab-a91d-ac74fa496236")
+	)
+	(pad "B1" smd rect
+		(at 3.05 -3.678 180)
+		(size 0.3 1.15)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "4e8d2d02-da27-4cea-9536-50e01e563c02")
+	)
+	(pad "B4" smd rect
+		(at 2.25 -3.678 180)
+		(size 0.3 1.15)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "a0f60dcd-85c6-46b4-826b-fa03b9da988e")
+	)
+	(pad "B5" smd rect
+		(at 1.75 -3.678 180)
+		(size 0.3 1.15)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "55fd8d31-6fb8-4a38-8404-38538faad408")
+	)
+	(pad "B6" smd rect
+		(at 0.75 -3.678 180)
+		(size 0.3 1.15)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "ef5b8d53-7f0b-4b1d-85de-700caaf0337d")
+	)
+	(pad "B7" smd rect
+		(at -0.75 -3.678 180)
+		(size 0.3 1.15)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "803364aa-9d4c-4802-9ab4-6ae8b57d6a24")
+	)
+	(pad "B8" smd rect
+		(at -1.75 -3.678 180)
+		(size 0.3 1.15)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "5682ba54-cd30-4c57-9ec6-7f816571bf82")
+	)
+	(pad "B9" smd rect
+		(at -2.25 -3.678 180)
+		(size 0.3 1.15)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "9d306869-3cae-46f2-a2ca-76671e9a7abb")
+	)
+	(pad "B12" smd rect
+		(at -3.05 -3.678 180)
+		(size 0.3 1.15)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "e9b80725-91ad-4f94-a2cb-fea825a095e6")
+	)
+	(pad "MP1" smd rect
+		(at -4.82 0.827 270)
+		(size 2 1.6)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "a51a1f58-cdf2-4f17-8224-eb07a648a4ed")
+	)
+	(pad "MP2" smd rect
+		(at 4.82 0.827 270)
+		(size 2 1.6)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "3fecd69d-ad8e-41ab-9782-afc4f8542000")
+	)
+	(pad "MP3" smd rect
+		(at -4.82 -3.103 270)
+		(size 2 1.6)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "dbe37ac1-8131-4c45-8556-2990f70b0e12")
+	)
+	(pad "MP4" smd rect
+		(at 4.82 -3.103 270)
+		(size 2 1.6)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "bae9051c-1ff5-406b-976d-edacd9b18550")
+	)
+	(embedded_fonts no)
+	(model "C:\\Users\\mathi\\Desktop\\libloader\\SamacSys_Parts.3dshapes\\USB4110-GF-A.stp"
+		(offset
+			(xyz 0 2.599999866 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz -90 0 0)
+		)
+	)
+)

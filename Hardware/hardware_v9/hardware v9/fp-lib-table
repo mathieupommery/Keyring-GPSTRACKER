@@ -1,0 +1,5 @@
+(fp_lib_table
+	(version 7)
+	(lib (name "pa1010d") (type "KiCad") (uri "C:/Users/mathi/Documents/GitHub/Keyring-GPSTRACKER/Docs/Libraries/PA1010Dfootprint.pretty") (options "") (descr ""))
+	(lib (name "v9footprint") (type "KiCad") (uri "${KIPRJMOD}/v9footprint.pretty") (options "") (descr ""))
+)
