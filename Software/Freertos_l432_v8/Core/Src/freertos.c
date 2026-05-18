@@ -28,8 +28,6 @@
 #include "ssd1306.h"
 #include "statemachine.h"
 #include "GNSS.h"
-#include "usb_device.h"
-#include "w25q.h"
 #include "pwr.h"
 /* USER CODE END Includes */
 
@@ -53,7 +51,6 @@
 
 extern AppStateMachineContext state_struct;
 extern GNSS_StateHandle GNSSData;
-extern SPIF_HandleTypeDef hspif1;
 extern Buttons_t gButtons;
 extern AdcContext_t gAdc;
 /* USER CODE END Variables */
@@ -72,7 +69,6 @@ void StartSensorTask(void const * argument);
 void StartTrackerTask(void const * argument);
 void StartPWRTask(void const * argument);
 
-extern void MX_USB_DEVICE_Init(void);
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
 /* GetIdleTaskMemory prototype (linked to static allocation support) */
@@ -149,8 +145,6 @@ void MX_FREERTOS_Init(void) {
 /* USER CODE END Header_StartMainTask */
 void StartMainTask(void const * argument)
 {
-  /* init code for USB_DEVICE */
-  MX_USB_DEVICE_Init();
   /* USER CODE BEGIN StartMainTask */
   TickType_t xLastWakeTime;
   const TickType_t period = pdMS_TO_TICKS(50);

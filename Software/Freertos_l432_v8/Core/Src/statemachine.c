@@ -8,6 +8,7 @@
 #include "statemachine.h"
 
 
+
 extern uint8_t bufferscreen[50];
 extern AdcContext_t gAdc;
 

@@ -2167,7 +2167,7 @@
 		)
 		(uuid "d120c133-58a5-4917-b631-a6ded2812974")
 	)
-	(text "STM32WB55"
+	(text "STM32L432"
 		(exclude_from_sim no)
 		(at 22.86 20.32 0)
 		(effects

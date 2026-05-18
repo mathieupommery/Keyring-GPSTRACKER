@@ -26,7 +26,7 @@
 #include "usart.h"
 #include "rtc.h"
 #include "spi.h"
-#include "usb_device.h"
+#include "usb.h"
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
@@ -34,7 +34,7 @@
 #include "ssd1306.h"
 #include "statemachine.h"
 #include "GNSS.h"
-#include "w25q.h"
+#include "pwr.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -67,7 +67,6 @@ AppStateMachineContext state_struct = {
 };
 
 GNSS_StateHandle GNSSData;
-SPIF_HandleTypeDef hspif1;
 Buttons_t gButtons = {0};
 AdcContext_t gAdc = {0};
 uint8_t bufferscreen[50];
@@ -120,9 +119,9 @@ void MX_FREERTOS_Init(void);
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
     /* -------------------- BTN_A sur PA15 -------------------- */
-    if (GPIO_Pin == B1_Pin)
+    if (GPIO_Pin == B2_Pin)
     {
-        if (HAL_GPIO_ReadPin(B1_GPIO_Port, B1_Pin) == GPIO_PIN_RESET)
+        if (HAL_GPIO_ReadPin(B2_GPIO_Port, B2_Pin) == GPIO_PIN_RESET)
         {
             gButtons.pressStart_A_ms = HAL_GetTick();
         }
@@ -238,29 +237,6 @@ int main(void)
   /* USER CODE BEGIN Init */
 
   PWR_StartupCheckButton();
-
-
-
-
-  GPIO_InitTypeDef GPIO_InitStruct = {0};
-  void (*boot_jump)(void);
-
-  __HAL_RCC_GPIOA_CLK_ENABLE();
-   GPIO_InitStruct.Pin = B1_Pin | PWR_BTN_Pin;
-   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-   GPIO_InitStruct.Pull = GPIO_NOPULL;
-   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
-
-   if ((HAL_GPIO_ReadPin(B1_GPIO_Port, B1_Pin) == GPIO_PIN_RESET) &&
- 	  (HAL_GPIO_ReadPin(PWR_BTN_GPIO_Port, PWR_BTN_Pin) == GPIO_PIN_RESET))
-   {
- 	  HAL_DeInit();
- 	  boot_jump = (void (*)(void))(*((uint32_t *)(SYS_MEM_START_ADDR + 4)));
- 	  __set_MSP(*(__IO uint32_t*)SYS_MEM_START_ADDR);
-
- 	  /* NOTE WELL: This call never returns: */
- 	  boot_jump();
-   }
   /* USER CODE END Init */
 
   /* Configure the system clock */
@@ -279,13 +255,14 @@ int main(void)
   MX_ADC1_Init();
   MX_FATFS_Init();
   MX_RTC_Init();
+  MX_USB_PCD_Init();
   /* USER CODE BEGIN 2 */
 
   HAL_GPIO_WritePin(AUX_EN_GPIO_Port, AUX_EN_Pin,GPIO_PIN_SET);
   HAL_GPIO_WritePin(GPS_EN_GPIO_Port,GPS_EN_Pin,GPIO_PIN_SET);
 
   HAL_Delay(10);
-	ssd1306_Init();
+  ssd1306_Init();
 	HAL_Delay(10);
 	ssd1306_Fill(Black);
 
@@ -301,21 +278,6 @@ int main(void)
 	__HAL_DMA_ENABLE_IT(hlpuart1.hdmarx, DMA_IT_HT);
 
 
-	if(SPIF_Init(&hspif1,&hspi1,FLASH_CS_GPIO_Port,FLASH_CS_Pin)==true){
-		ssd1306_SetCursor(32, 32);
-		ssd1306_Fill(Black);
-		ssd1306_WriteString("OK", Font_7x10, White);
-		ssd1306_UpdateScreen();
-		HAL_Delay(500);
-	}
-	else{
-		ssd1306_SetCursor(32, 32);
-		ssd1306_Fill(Black);
-		ssd1306_WriteString("PBM", Font_7x10, White);
-		ssd1306_UpdateScreen();
-		HAL_Delay(500);
-
-	}
 
 	ssd1306_Fill(Black);
 	HAL_Delay(200);

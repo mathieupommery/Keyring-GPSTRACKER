@@ -12,6 +12,7 @@
 #include "ssd1306.h"
 #include "GNSS.h"
 #include "rtc.h"
+#include "math.h"
 
 
 
