@@ -179,7 +179,7 @@
 			(outputdirectory "../fab_file/gps_tracker_v9/")
 		)
 	)
-	(footprint "v9footprint:C_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
+	(footprint "v9footprintlocal:C_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
 		(layer "F.Cu")
 		(uuid "09addfd0-e7af-4722-a8a4-f15ac43562b5")
 		(at 100.8 95.1 -90)
@@ -234,7 +234,7 @@
 			)
 		)
 		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 270)
+			(at 0 0 90)
 			(layer "F.SilkS")
 			(hide yes)
 			(uuid "54c8af00-8e6f-41d5-9aa4-dc54135f166e")
@@ -249,12 +249,6 @@
 		(path "/0d8e4a64-7aae-4b4c-aa3e-0a1089e03cb8")
 		(sheetname "/")
 		(sheetfile "hardware_V9.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins "1" "2")
-			)
-		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_rect
@@ -280,7 +274,7 @@
 			(uuid "a72fe582-0e31-4b29-bd89-9824d6f10fdf")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 -0.68 270)
+			(at 0 -0.68 90)
 			(layer "F.Fab")
 			(uuid "1620ce52-ebda-4b8b-83b2-002dfe7ca1a6")
 			(effects
@@ -291,21 +285,21 @@
 			)
 		)
 		(pad "" smd roundrect
-			(at -0.4325 0 270)
+			(at -0.4325 0 90)
 			(size 0.458 0.36)
 			(layers "F.Paste")
 			(roundrect_rratio 0.25)
 			(uuid "be08b5e6-ee12-465a-9ddc-2d96d7eb0091")
 		)
 		(pad "" smd roundrect
-			(at 0.4325 0 270)
+			(at 0.4325 0 90)
 			(size 0.458 0.36)
 			(layers "F.Paste")
 			(roundrect_rratio 0.25)
 			(uuid "c1ef6d4a-4521-4fdb-b4ca-1dc93f2bb292")
 		)
 		(pad "1" smd roundrect
-			(at -0.4075 0 270)
+			(at -0.4075 0 90)
 			(size 0.635 0.4)
 			(layers "F.Cu" "F.Mask")
 			(roundrect_rratio 0.25)
@@ -314,7 +308,7 @@
 			(uuid "c0d348b4-fbd4-47ca-a369-9f3552222624")
 		)
 		(pad "2" smd roundrect
-			(at 0.4075 0 270)
+			(at 0.4075 0 90)
 			(size 0.635 0.4)
 			(layers "F.Cu" "F.Mask")
 			(roundrect_rratio 0.25)
@@ -335,7 +329,7 @@
 			)
 		)
 	)
-	(footprint "v9footprint:QFN-32-1EP_5x5mm_P0.5mm_EP3.45x3.45mm"
+	(footprint "v9footprintlocal:QFN-32-1EP_5x5mm_P0.5mm_EP3.45x3.45mm"
 		(layer "F.Cu")
 		(uuid "0a7889fc-310b-4876-8c01-77af832c9c57")
 		(at 98.3375 100.65 90)
@@ -419,15 +413,6 @@
 		(path "/51c5d1a6-32bc-4278-a1e8-d0eca7b1f5aa")
 		(sheetname "/")
 		(sheetfile "hardware_V9.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins "4" "31" "2" "3" "14" "15" "26" "27" "28" "29" "30" "1" "17" "16"
-					"32" "33" "5" "6" "7" "8" "9" "10" "11" "12" "13" "18" "19" "20" "21"
-					"22" "23" "24" "25"
-				)
-			)
-		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_poly
@@ -823,7 +808,7 @@
 			)
 		)
 	)
-	(footprint "v9footprint:C_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
+	(footprint "v9footprintlocal:C_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
 		(layer "F.Cu")
 		(uuid "1a9ce9db-2f28-4c3a-9bd6-578c795abfdf")
 		(at 101.65 108 180)
@@ -891,12 +876,6 @@
 		(path "/42e3e1b1-9911-4d5d-8c18-366c2d58b563/7762fe23-9ad3-48f3-a603-b241da61ee64")
 		(sheetname "/POWER/")
 		(sheetfile "untitled.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins "1" "2")
-			)
-		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_rect
@@ -933,21 +912,21 @@
 			)
 		)
 		(pad "" smd roundrect
-			(at -0.4325 0 180)
+			(at -0.4325 0)
 			(size 0.458 0.36)
 			(layers "F.Paste")
 			(roundrect_rratio 0.25)
 			(uuid "b7e54ae3-f796-4816-b64e-acde312db1da")
 		)
 		(pad "" smd roundrect
-			(at 0.4325 0 180)
+			(at 0.4325 0)
 			(size 0.458 0.36)
 			(layers "F.Paste")
 			(roundrect_rratio 0.25)
 			(uuid "7b66843b-41e2-426d-b709-704d1e7ad5b1")
 		)
 		(pad "1" smd roundrect
-			(at -0.4075 0 180)
+			(at -0.4075 0)
 			(size 0.635 0.4)
 			(layers "F.Cu" "F.Mask")
 			(roundrect_rratio 0.25)
@@ -956,7 +935,7 @@
 			(uuid "16d465c4-0351-4b22-b860-b99b3fb661dd")
 		)
 		(pad "2" smd roundrect
-			(at 0.4075 0 180)
+			(at 0.4075 0)
 			(size 0.635 0.4)
 			(layers "F.Cu" "F.Mask")
 			(roundrect_rratio 0.25)
@@ -977,7 +956,7 @@
 			)
 		)
 	)
-	(footprint "v9footprint:SON50P200X200X80-7N-D"
+	(footprint "v9footprintlocal:SON50P200X200X80-7N-D"
 		(layer "F.Cu")
 		(uuid "296ccb27-8f58-4470-83fb-6007694b9865")
 		(at 99.05 106.95 180)
@@ -1125,12 +1104,6 @@
 		(path "/42e3e1b1-9911-4d5d-8c18-366c2d58b563/efa680b9-8699-423f-902f-595c119098e8")
 		(sheetname "/POWER/")
 		(sheetfile "untitled.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins "1" "2" "3" "7" "6" "5" "4")
-			)
-		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -1310,7 +1283,7 @@
 			)
 		)
 	)
-	(footprint "v9footprint:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
+	(footprint "v9footprintlocal:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
 		(layer "F.Cu")
 		(uuid "2d68936e-bd49-4664-9277-783796d52ae5")
 		(at 115.1 107.6)
@@ -1404,12 +1377,6 @@
 		(path "/84aae796-102b-48fc-8d1d-620f5c7b8bfd/47adb743-ed36-42e9-b3bf-3486aa2a0ad9")
 		(sheetname "/Peripherial/")
 		(sheetfile "peripherial.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins "1" "2")
-			)
-		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_rect
@@ -1446,21 +1413,21 @@
 			)
 		)
 		(pad "" smd roundrect
-			(at -0.4325 0)
+			(at -0.4325 0 180)
 			(size 0.458 0.36)
 			(layers "F.Paste")
 			(roundrect_rratio 0.25)
 			(uuid "a26a5e38-d2b4-4e4c-aefe-04498af4ec7c")
 		)
 		(pad "" smd roundrect
-			(at 0.4325 0)
+			(at 0.4325 0 180)
 			(size 0.458 0.36)
 			(layers "F.Paste")
 			(roundrect_rratio 0.25)
 			(uuid "1766e656-e7e3-41f3-ae3e-33359d841d78")
 		)
 		(pad "1" smd roundrect
-			(at -0.4075 0)
+			(at -0.4075 0 180)
 			(size 0.635 0.4)
 			(layers "F.Cu" "F.Mask")
 			(roundrect_rratio 0.25)
@@ -1469,7 +1436,7 @@
 			(uuid "ff18e7e3-e3fd-46d1-82a3-642be74bf5e8")
 		)
 		(pad "2" smd roundrect
-			(at 0.4075 0)
+			(at 0.4075 0 180)
 			(size 0.635 0.4)
 			(layers "F.Cu" "F.Mask")
 			(roundrect_rratio 0.25)
@@ -1490,7 +1457,7 @@
 			)
 		)
 	)
-	(footprint "v9footprint:C_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
+	(footprint "v9footprintlocal:C_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
 		(layer "F.Cu")
 		(uuid "2f849de0-786b-4926-998a-751ac13fd065")
 		(at 97.2 104.7 90)
@@ -1644,7 +1611,7 @@
 			)
 		)
 	)
-	(footprint "v9footprint:C_0402_1005Metric"
+	(footprint "v9footprintlocal:C_0402_1005Metric"
 		(layer "F.Cu")
 		(uuid "30c1ff38-79f0-4473-a917-14d0d0a51d2f")
 		(at 101.7 95.1 -90)
@@ -1806,7 +1773,7 @@
 			)
 		)
 	)
-	(footprint "v9footprint:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
+	(footprint "v9footprintlocal:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
 		(layer "F.Cu")
 		(uuid "3215dc2f-6f2e-41e1-b208-7be83569cd9d")
 		(at 100.1 95.1 -90)
@@ -1989,7 +1956,7 @@
 			)
 		)
 	)
-	(footprint "v9footprint:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
+	(footprint "v9footprintlocal:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
 		(layer "F.Cu")
 		(uuid "415a25cc-b7bf-4ce1-82de-194f7f8cb607")
 		(at 113 92.6925 90)
@@ -2083,12 +2050,6 @@
 		(path "/25c4fb51-bd59-4678-ba4a-7c4659e70c53/349f9d93-f42c-4390-8e55-67b2e178ec6d")
 		(sheetname "/BTN_CONN/")
 		(sheetfile "BTN_CONN.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins "1" "2")
-			)
-		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_rect
@@ -2125,21 +2086,21 @@
 			)
 		)
 		(pad "" smd roundrect
-			(at -0.4325 0 90)
+			(at -0.4325 0 270)
 			(size 0.458 0.36)
 			(layers "F.Paste")
 			(roundrect_rratio 0.25)
 			(uuid "6db22905-2062-4ed5-a3ed-b437acf0a2ac")
 		)
 		(pad "" smd roundrect
-			(at 0.4325 0 90)
+			(at 0.4325 0 270)
 			(size 0.458 0.36)
 			(layers "F.Paste")
 			(roundrect_rratio 0.25)
 			(uuid "326dcfff-c2b1-44a0-9674-fe03d281b8f4")
 		)
 		(pad "1" smd roundrect
-			(at -0.4075 0 90)
+			(at -0.4075 0 270)
 			(size 0.635 0.4)
 			(layers "F.Cu" "F.Mask")
 			(roundrect_rratio 0.25)
@@ -2148,7 +2109,7 @@
 			(uuid "21f8097d-bbc4-4340-b43c-2dc68e5cc8c1")
 		)
 		(pad "2" smd roundrect
-			(at 0.4075 0 90)
+			(at 0.4075 0 270)
 			(size 0.635 0.4)
 			(layers "F.Cu" "F.Mask")
 			(roundrect_rratio 0.25)
@@ -2169,7 +2130,7 @@
 			)
 		)
 	)
-	(footprint "v9footprint:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
+	(footprint "v9footprintlocal:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
 		(layer "F.Cu")
 		(uuid "44fb3b83-d15e-4b8c-93a1-3f4cb1533da1")
 		(at 96.5 104.7 -90)
@@ -2266,12 +2227,6 @@
 		(path "/42e3e1b1-9911-4d5d-8c18-366c2d58b563/186690d2-e68a-4850-97fa-e716f5db58d8")
 		(sheetname "/POWER/")
 		(sheetfile "untitled.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins "1" "2")
-			)
-		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_rect
@@ -2297,7 +2252,7 @@
 			(uuid "b5a9d383-2778-48a1-92e3-13ac19f3c245")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 -0.68 270)
+			(at 0 -0.68 90)
 			(layer "F.Fab")
 			(uuid "1f7c9956-461a-44e4-bcbc-33655a14b200")
 			(effects
@@ -2308,21 +2263,21 @@
 			)
 		)
 		(pad "" smd roundrect
-			(at -0.4325 0 270)
+			(at -0.4325 0 90)
 			(size 0.458 0.36)
 			(layers "F.Paste")
 			(roundrect_rratio 0.25)
 			(uuid "2c75b2f2-2c6f-4d9f-84d5-2bad6576e55b")
 		)
 		(pad "" smd roundrect
-			(at 0.4325 0 270)
+			(at 0.4325 0 90)
 			(size 0.458 0.36)
 			(layers "F.Paste")
 			(roundrect_rratio 0.25)
 			(uuid "0ce171b5-4865-45e2-8726-946d393bee2f")
 		)
 		(pad "1" smd roundrect
-			(at -0.4075 0 270)
+			(at -0.4075 0 90)
 			(size 0.635 0.4)
 			(layers "F.Cu" "F.Mask")
 			(roundrect_rratio 0.25)
@@ -2331,7 +2286,7 @@
 			(uuid "99e784b6-21f8-4f99-95fd-578b5cbcd3a8")
 		)
 		(pad "2" smd roundrect
-			(at 0.4075 0 270)
+			(at 0.4075 0 90)
 			(size 0.635 0.4)
 			(layers "F.Cu" "F.Mask")
 			(roundrect_rratio 0.25)
@@ -2352,7 +2307,7 @@
 			)
 		)
 	)
-	(footprint "v9footprint:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
+	(footprint "v9footprintlocal:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
 		(layer "F.Cu")
 		(uuid "4ce0963c-c191-4ef5-8b73-2211f7471770")
 		(at 100.6 104.6 90)
@@ -2446,12 +2401,6 @@
 		(path "/54403ed7-cd51-489d-a3db-d75085942d20")
 		(sheetname "/")
 		(sheetfile "hardware_V9.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins "1" "2")
-			)
-		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_rect
@@ -2488,21 +2437,21 @@
 			)
 		)
 		(pad "" smd roundrect
-			(at -0.4325 0 90)
+			(at -0.4325 0 270)
 			(size 0.458 0.36)
 			(layers "F.Paste")
 			(roundrect_rratio 0.25)
 			(uuid "5965fd2c-6995-4e2d-b050-0bbcdfa4b627")
 		)
 		(pad "" smd roundrect
-			(at 0.4325 0 90)
+			(at 0.4325 0 270)
 			(size 0.458 0.36)
 			(layers "F.Paste")
 			(roundrect_rratio 0.25)
 			(uuid "d29b0c32-9c0b-4ff3-b50c-fc42d74fd7bb")
 		)
 		(pad "1" smd roundrect
-			(at -0.4075 0 90)
+			(at -0.4075 0 270)
 			(size 0.635 0.4)
 			(layers "F.Cu" "F.Mask")
 			(roundrect_rratio 0.25)
@@ -2511,7 +2460,7 @@
 			(uuid "c365243a-16ff-4dcc-aa88-3722246ffec9")
 		)
 		(pad "2" smd roundrect
-			(at 0.4075 0 90)
+			(at 0.4075 0 270)
 			(size 0.635 0.4)
 			(layers "F.Cu" "F.Mask")
 			(roundrect_rratio 0.25)
@@ -2532,7 +2481,7 @@
 			)
 		)
 	)
-	(footprint "v9footprint:BAT_PAD_1mm"
+	(footprint "v9footprintlocal:BAT_PAD_1mm"
 		(layer "F.Cu")
 		(uuid "50333dcf-3874-48b0-b958-99b8d179bfa4")
 		(at 112 107.55 -90)
@@ -2613,7 +2562,7 @@
 		)
 		(embedded_fonts no)
 	)
-	(footprint "v9footprint:pad_0.7mm"
+	(footprint "v9footprintlocal:pad_0.7mm"
 		(layer "F.Cu")
 		(uuid "524df308-e130-4e2f-bff5-11671e7407e8")
 		(at 95.8 97.84)
@@ -2673,12 +2622,6 @@
 		(path "/a0dee3eb-744e-4817-a2e5-69bf840ad38d")
 		(sheetname "/")
 		(sheetfile "hardware_V9.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins "1")
-			)
-		)
 		(attr through_hole dnp)
 		(duplicate_pad_numbers_are_jumpers no)
 		(pad "1" smd circle
@@ -2692,7 +2635,7 @@
 		)
 		(embedded_fonts no)
 	)
-	(footprint "v9footprint:C_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
+	(footprint "v9footprintlocal:C_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
 		(layer "F.Cu")
 		(uuid "553aa0f6-1469-4a1e-a7bf-7d4899566752")
 		(at 95.8 104.7 90)
@@ -2762,12 +2705,6 @@
 		(path "/88aae7e6-7af1-473b-b05b-c8149e049e28")
 		(sheetname "/")
 		(sheetfile "hardware_V9.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins "1" "2")
-			)
-		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_rect
@@ -2804,21 +2741,21 @@
 			)
 		)
 		(pad "" smd roundrect
-			(at -0.4325 0 90)
+			(at -0.4325 0 270)
 			(size 0.458 0.36)
 			(layers "F.Paste")
 			(roundrect_rratio 0.25)
 			(uuid "c249f569-b183-408a-9006-884f7d352281")
 		)
 		(pad "" smd roundrect
-			(at 0.4325 0 90)
+			(at 0.4325 0 270)
 			(size 0.458 0.36)
 			(layers "F.Paste")
 			(roundrect_rratio 0.25)
 			(uuid "cd0a9b12-0bd7-4151-90b4-31f3f74e19c0")
 		)
 		(pad "1" smd roundrect
-			(at -0.4075 0 90)
+			(at -0.4075 0 270)
 			(size 0.635 0.4)
 			(layers "F.Cu" "F.Mask")
 			(roundrect_rratio 0.25)
@@ -2827,7 +2764,7 @@
 			(uuid "82a68b74-c316-4034-bf84-1b0847a0566b")
 		)
 		(pad "2" smd roundrect
-			(at 0.4075 0 90)
+			(at 0.4075 0 270)
 			(size 0.635 0.4)
 			(layers "F.Cu" "F.Mask")
 			(roundrect_rratio 0.25)
@@ -2848,7 +2785,7 @@
 			)
 		)
 	)
-	(footprint "v9footprint:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
+	(footprint "v9footprintlocal:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
 		(layer "F.Cu")
 		(uuid "55bfb5cc-c718-46d6-a132-c9a11b39a64d")
 		(at 115.45 99.15 90)
@@ -3028,7 +2965,7 @@
 			)
 		)
 	)
-	(footprint "v9footprint:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
+	(footprint "v9footprintlocal:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
 		(layer "F.Cu")
 		(uuid "56645683-dc75-4037-97d6-f4777fb019df")
 		(at 94.55 102.35 -90)
@@ -3125,12 +3062,6 @@
 		(path "/55cf460b-4bd3-4ffb-9757-4e84a0c90291")
 		(sheetname "/")
 		(sheetfile "hardware_V9.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins "1" "2")
-			)
-		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_rect
@@ -3156,7 +3087,7 @@
 			(uuid "07618984-e2b6-4ae3-80b3-5d9f42871256")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 -0.68 270)
+			(at 0 -0.68 90)
 			(layer "F.Fab")
 			(uuid "9c8b772c-313d-4215-b493-49ae0bc90d1e")
 			(effects
@@ -3167,21 +3098,21 @@
 			)
 		)
 		(pad "" smd roundrect
-			(at -0.4325 0 270)
+			(at -0.4325 0 90)
 			(size 0.458 0.36)
 			(layers "F.Paste")
 			(roundrect_rratio 0.25)
 			(uuid "b14dec5b-18d1-4d43-bef7-cb1551f92a40")
 		)
 		(pad "" smd roundrect
-			(at 0.4325 0 270)
+			(at 0.4325 0 90)
 			(size 0.458 0.36)
 			(layers "F.Paste")
 			(roundrect_rratio 0.25)
 			(uuid "58783628-76a4-4b25-954a-4df1936ead64")
 		)
 		(pad "1" smd roundrect
-			(at -0.4075 0 270)
+			(at -0.4075 0 90)
 			(size 0.635 0.4)
 			(layers "F.Cu" "F.Mask")
 			(roundrect_rratio 0.25)
@@ -3190,7 +3121,7 @@
 			(uuid "1a7bec78-83fb-4696-ab8c-c80be681f069")
 		)
 		(pad "2" smd roundrect
-			(at 0.4075 0 270)
+			(at 0.4075 0 90)
 			(size 0.635 0.4)
 			(layers "F.Cu" "F.Mask")
 			(roundrect_rratio 0.25)
@@ -3211,7 +3142,7 @@
 			)
 		)
 	)
-	(footprint "v9footprint:C_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
+	(footprint "v9footprintlocal:C_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
 		(layer "F.Cu")
 		(uuid "5a7a7d1a-03ff-4928-9266-39633443d2bb")
 		(at 99.3 104.7 90)
@@ -3279,12 +3210,6 @@
 		(path "/67bedbbb-bcfa-4db5-b8f1-30959999872e")
 		(sheetname "/")
 		(sheetfile "hardware_V9.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins "1" "2")
-			)
-		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_rect
@@ -3321,21 +3246,21 @@
 			)
 		)
 		(pad "" smd roundrect
-			(at -0.4325 0 90)
+			(at -0.4325 0 270)
 			(size 0.458 0.36)
 			(layers "F.Paste")
 			(roundrect_rratio 0.25)
 			(uuid "b930161f-3cdb-4020-8366-a0f0d7e035c1")
 		)
 		(pad "" smd roundrect
-			(at 0.4325 0 90)
+			(at 0.4325 0 270)
 			(size 0.458 0.36)
 			(layers "F.Paste")
 			(roundrect_rratio 0.25)
 			(uuid "5d284114-a61c-410a-b9f9-0979997c67c3")
 		)
 		(pad "1" smd roundrect
-			(at -0.4075 0 90)
+			(at -0.4075 0 270)
 			(size 0.635 0.4)
 			(layers "F.Cu" "F.Mask")
 			(roundrect_rratio 0.25)
@@ -3344,7 +3269,7 @@
 			(uuid "3a1d081a-2001-4095-bf50-83d2531bdff3")
 		)
 		(pad "2" smd roundrect
-			(at 0.4075 0 90)
+			(at 0.4075 0 270)
 			(size 0.635 0.4)
 			(layers "F.Cu" "F.Mask")
 			(roundrect_rratio 0.25)
@@ -3365,7 +3290,7 @@
 			)
 		)
 	)
-	(footprint "v9footprint:C_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
+	(footprint "v9footprintlocal:C_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
 		(layer "F.Cu")
 		(uuid "671caea4-4489-40f6-bddc-7495c4ad94db")
 		(at 97.9 104.7 90)
@@ -3435,12 +3360,6 @@
 		(path "/4ec1f881-8cf0-4bc5-a312-8fdf6a864ac3")
 		(sheetname "/")
 		(sheetfile "hardware_V9.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins "1" "2")
-			)
-		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_rect
@@ -3477,21 +3396,21 @@
 			)
 		)
 		(pad "" smd roundrect
-			(at -0.4325 0 90)
+			(at -0.4325 0 270)
 			(size 0.458 0.36)
 			(layers "F.Paste")
 			(roundrect_rratio 0.25)
 			(uuid "f2048a92-8822-4dd2-88e8-5d5c9351d8fa")
 		)
 		(pad "" smd roundrect
-			(at 0.4325 0 90)
+			(at 0.4325 0 270)
 			(size 0.458 0.36)
 			(layers "F.Paste")
 			(roundrect_rratio 0.25)
 			(uuid "b5d6b03d-2f31-41b9-a659-21512cd23546")
 		)
 		(pad "1" smd roundrect
-			(at -0.4075 0 90)
+			(at -0.4075 0 270)
 			(size 0.635 0.4)
 			(layers "F.Cu" "F.Mask")
 			(roundrect_rratio 0.25)
@@ -3500,7 +3419,7 @@
 			(uuid "3c8bd931-4114-4cba-9bdf-d8ee6f46023a")
 		)
 		(pad "2" smd roundrect
-			(at 0.4075 0 90)
+			(at 0.4075 0 270)
 			(size 0.635 0.4)
 			(layers "F.Cu" "F.Mask")
 			(roundrect_rratio 0.25)
@@ -3521,7 +3440,7 @@
 			)
 		)
 	)
-	(footprint "v9footprint:C_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
+	(footprint "v9footprintlocal:C_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
 		(layer "F.Cu")
 		(uuid "6ac12ca9-f4f8-4285-8f65-5efd37f3a155")
 		(at 98.6 104.7 90)
@@ -3591,12 +3510,6 @@
 		(path "/ccb25dc0-2ca1-4c82-9614-964e4afce487")
 		(sheetname "/")
 		(sheetfile "hardware_V9.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins "1" "2")
-			)
-		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_rect
@@ -3633,21 +3546,21 @@
 			)
 		)
 		(pad "" smd roundrect
-			(at -0.4325 0 90)
+			(at -0.4325 0 270)
 			(size 0.458 0.36)
 			(layers "F.Paste")
 			(roundrect_rratio 0.25)
 			(uuid "c490e0f2-f989-4860-ba30-e6d62a547ef8")
 		)
 		(pad "" smd roundrect
-			(at 0.4325 0 90)
+			(at 0.4325 0 270)
 			(size 0.458 0.36)
 			(layers "F.Paste")
 			(roundrect_rratio 0.25)
 			(uuid "b63ac6a4-e703-4e13-8d05-079623b5dbbb")
 		)
 		(pad "1" smd roundrect
-			(at -0.4075 0 90)
+			(at -0.4075 0 270)
 			(size 0.635 0.4)
 			(layers "F.Cu" "F.Mask")
 			(roundrect_rratio 0.25)
@@ -3656,7 +3569,7 @@
 			(uuid "1d12030d-8776-4547-951b-9eb2438a266a")
 		)
 		(pad "2" smd roundrect
-			(at 0.4075 0 90)
+			(at 0.4075 0 270)
 			(size 0.635 0.4)
 			(layers "F.Cu" "F.Mask")
 			(roundrect_rratio 0.25)
@@ -3677,7 +3590,7 @@
 			)
 		)
 	)
-	(footprint "v9footprint:C_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
+	(footprint "v9footprintlocal:C_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
 		(layer "F.Cu")
 		(uuid "6d222fce-b190-4411-b872-6d994b801e0a")
 		(at 114.45 92.7 90)
@@ -3831,7 +3744,7 @@
 			)
 		)
 	)
-	(footprint "v9footprint:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
+	(footprint "v9footprintlocal:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
 		(layer "F.Cu")
 		(uuid "72cfac7a-55eb-482b-9de9-2761f30d57c3")
 		(at 107.3 92.6 90)
@@ -3928,12 +3841,6 @@
 		(path "/25c4fb51-bd59-4678-ba4a-7c4659e70c53/61ddc623-2190-48c8-a067-a42799b9cd73")
 		(sheetname "/BTN_CONN/")
 		(sheetfile "BTN_CONN.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins "1" "2")
-			)
-		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_rect
@@ -3970,21 +3877,21 @@
 			)
 		)
 		(pad "" smd roundrect
-			(at -0.4325 0 90)
+			(at -0.4325 0 270)
 			(size 0.458 0.36)
 			(layers "F.Paste")
 			(roundrect_rratio 0.25)
 			(uuid "a8d7dc64-af66-4fad-aea9-85b13d67d11c")
 		)
 		(pad "" smd roundrect
-			(at 0.4325 0 90)
+			(at 0.4325 0 270)
 			(size 0.458 0.36)
 			(layers "F.Paste")
 			(roundrect_rratio 0.25)
 			(uuid "427e570e-26e1-43f1-a941-719a56da542b")
 		)
 		(pad "1" smd roundrect
-			(at -0.4075 0 90)
+			(at -0.4075 0 270)
 			(size 0.635 0.4)
 			(layers "F.Cu" "F.Mask")
 			(roundrect_rratio 0.25)
@@ -3993,7 +3900,7 @@
 			(uuid "84fd92a2-6fe9-4079-bba8-01f504636ccf")
 		)
 		(pad "2" smd roundrect
-			(at 0.4075 0 90)
+			(at 0.4075 0 270)
 			(size 0.635 0.4)
 			(layers "F.Cu" "F.Mask")
 			(roundrect_rratio 0.25)
@@ -4014,7 +3921,7 @@
 			)
 		)
 	)
-	(footprint "v9footprint:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
+	(footprint "v9footprintlocal:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
 		(layer "F.Cu")
 		(uuid "7ac6fedb-91af-48a7-92ae-bb554ca1bc11")
 		(at 102.55 95.1 -90)
@@ -4108,12 +4015,6 @@
 		(path "/42e3e1b1-9911-4d5d-8c18-366c2d58b563/1f5e6ba6-0123-467e-8251-550f0d902dc7")
 		(sheetname "/POWER/")
 		(sheetfile "untitled.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins "1" "2")
-			)
-		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_rect
@@ -4150,21 +4051,21 @@
 			)
 		)
 		(pad "" smd roundrect
-			(at -0.4325 0 270)
+			(at -0.4325 0 90)
 			(size 0.458 0.36)
 			(layers "F.Paste")
 			(roundrect_rratio 0.25)
 			(uuid "bff78906-9614-4680-bacc-cb0151cfa4ee")
 		)
 		(pad "" smd roundrect
-			(at 0.4325 0 270)
+			(at 0.4325 0 90)
 			(size 0.458 0.36)
 			(layers "F.Paste")
 			(roundrect_rratio 0.25)
 			(uuid "9d561a51-bf05-4862-bd57-2c8eba56d474")
 		)
 		(pad "1" smd roundrect
-			(at -0.4075 0 270)
+			(at -0.4075 0 90)
 			(size 0.635 0.4)
 			(layers "F.Cu" "F.Mask")
 			(roundrect_rratio 0.25)
@@ -4173,7 +4074,7 @@
 			(uuid "fc2f0fd1-7d7c-48dc-ad24-7d77e334b09d")
 		)
 		(pad "2" smd roundrect
-			(at 0.4075 0 270)
+			(at 0.4075 0 90)
 			(size 0.635 0.4)
 			(layers "F.Cu" "F.Mask")
 			(roundrect_rratio 0.25)
@@ -4194,7 +4095,7 @@
 			)
 		)
 	)
-	(footprint "v9footprint:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
+	(footprint "v9footprintlocal:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
 		(layer "F.Cu")
 		(uuid "811db0b7-e6d8-4301-a92f-7b02ccb96337")
 		(at 98.6 95.1 -90)
@@ -4377,7 +4278,7 @@
 			)
 		)
 	)
-	(footprint "v9footprint:C_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
+	(footprint "v9footprintlocal:C_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
 		(layer "F.Cu")
 		(uuid "81df46f6-4a0e-4671-ac77-ea025c751cf0")
 		(at 101.3 104.6 -90)
@@ -4445,12 +4346,6 @@
 		(path "/81f33d84-bf67-4e8a-847a-7e56620e4f4d")
 		(sheetname "/")
 		(sheetfile "hardware_V9.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins "1" "2")
-			)
-		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_rect
@@ -4487,21 +4382,21 @@
 			)
 		)
 		(pad "" smd roundrect
-			(at -0.4325 0 270)
+			(at -0.4325 0 90)
 			(size 0.458 0.36)
 			(layers "F.Paste")
 			(roundrect_rratio 0.25)
 			(uuid "b6b01cdd-bd9a-4cd9-aac1-1e25f03ec111")
 		)
 		(pad "" smd roundrect
-			(at 0.4325 0 270)
+			(at 0.4325 0 90)
 			(size 0.458 0.36)
 			(layers "F.Paste")
 			(roundrect_rratio 0.25)
 			(uuid "b8995bd0-3555-48d7-8561-94b3dd597bd6")
 		)
 		(pad "1" smd roundrect
-			(at -0.4075 0 270)
+			(at -0.4075 0 90)
 			(size 0.635 0.4)
 			(layers "F.Cu" "F.Mask")
 			(roundrect_rratio 0.25)
@@ -4510,7 +4405,7 @@
 			(uuid "50edcf96-795a-4156-bd06-b1209bcbb27e")
 		)
 		(pad "2" smd roundrect
-			(at 0.4075 0 270)
+			(at 0.4075 0 90)
 			(size 0.635 0.4)
 			(layers "F.Cu" "F.Mask")
 			(roundrect_rratio 0.25)
@@ -4531,7 +4426,7 @@
 			)
 		)
 	)
-	(footprint "v9footprint:microSD_HC_Molex_104031-0811"
+	(footprint "v9footprintlocal:microSD_HC_Molex_104031-0811"
 		(layer "F.Cu")
 		(uuid "845ee417-301f-4bf7-812b-2464265d2fda")
 		(at 108.8 100.49 -90)
@@ -4961,7 +4856,7 @@
 			)
 		)
 	)
-	(footprint "v9footprint:C_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
+	(footprint "v9footprintlocal:C_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
 		(layer "F.Cu")
 		(uuid "8fe2cbe8-f1ff-48db-b30c-337266344670")
 		(at 115.45 101.15 -90)
@@ -5115,7 +5010,7 @@
 			)
 		)
 	)
-	(footprint "v9footprint:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
+	(footprint "v9footprintlocal:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
 		(layer "F.Cu")
 		(uuid "959f2033-cb35-4cd1-b318-b1da4359105d")
 		(at 102.25 102.6)
@@ -5269,7 +5164,7 @@
 			)
 		)
 	)
-	(footprint "v9footprint:C_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
+	(footprint "v9footprintlocal:C_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
 		(layer "F.Cu")
 		(uuid "a49b5c96-08a6-47e1-bf70-64f0404cd40d")
 		(at 101.7 106)
@@ -5336,12 +5231,6 @@
 		(path "/42e3e1b1-9911-4d5d-8c18-366c2d58b563/d6085d82-ab7f-4359-bb1e-aeaec454d71f")
 		(sheetname "/POWER/")
 		(sheetfile "untitled.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins "1" "2")
-			)
-		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_rect
@@ -5378,21 +5267,21 @@
 			)
 		)
 		(pad "" smd roundrect
-			(at -0.4325 0)
+			(at -0.4325 0 180)
 			(size 0.458 0.36)
 			(layers "F.Paste")
 			(roundrect_rratio 0.25)
 			(uuid "070cf0a2-f1c7-498a-8a08-9d2db0f7cb1e")
 		)
 		(pad "" smd roundrect
-			(at 0.4325 0)
+			(at 0.4325 0 180)
 			(size 0.458 0.36)
 			(layers "F.Paste")
 			(roundrect_rratio 0.25)
 			(uuid "da6fa84e-07c1-4918-94a8-d0cf99de770c")
 		)
 		(pad "1" smd roundrect
-			(at -0.4075 0)
+			(at -0.4075 0 180)
 			(size 0.635 0.4)
 			(layers "F.Cu" "F.Mask")
 			(roundrect_rratio 0.25)
@@ -5401,7 +5290,7 @@
 			(uuid "edc88e4f-572d-46c5-ac71-81cbb4be21ed")
 		)
 		(pad "2" smd roundrect
-			(at 0.4075 0)
+			(at 0.4075 0 180)
 			(size 0.635 0.4)
 			(layers "F.Cu" "F.Mask")
 			(roundrect_rratio 0.25)
@@ -5422,7 +5311,7 @@
 			)
 		)
 	)
-	(footprint "v9footprint:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
+	(footprint "v9footprintlocal:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
 		(layer "F.Cu")
 		(uuid "b433d091-078d-4972-af36-f6a8980ef235")
 		(at 96.95 106.95 90)
@@ -5519,12 +5408,6 @@
 		(path "/42e3e1b1-9911-4d5d-8c18-366c2d58b563/d4938333-5c92-4abc-aca3-205067a81a26")
 		(sheetname "/POWER/")
 		(sheetfile "untitled.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins "1" "2")
-			)
-		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_rect
@@ -5561,21 +5444,21 @@
 			)
 		)
 		(pad "" smd roundrect
-			(at -0.4325 0 90)
+			(at -0.4325 0 270)
 			(size 0.458 0.36)
 			(layers "F.Paste")
 			(roundrect_rratio 0.25)
 			(uuid "85b04563-e2cb-48ea-a100-01b729838248")
 		)
 		(pad "" smd roundrect
-			(at 0.4325 0 90)
+			(at 0.4325 0 270)
 			(size 0.458 0.36)
 			(layers "F.Paste")
 			(roundrect_rratio 0.25)
 			(uuid "5180097d-d775-4917-9d7d-ac411365e08d")
 		)
 		(pad "1" smd roundrect
-			(at -0.4075 0 90)
+			(at -0.4075 0 270)
 			(size 0.635 0.4)
 			(layers "F.Cu" "F.Mask")
 			(roundrect_rratio 0.25)
@@ -5584,7 +5467,7 @@
 			(uuid "ca897e74-0557-4bd9-a7d2-061be9c96033")
 		)
 		(pad "2" smd roundrect
-			(at 0.4075 0 90)
+			(at 0.4075 0 270)
 			(size 0.635 0.4)
 			(layers "F.Cu" "F.Mask")
 			(roundrect_rratio 0.25)
@@ -5605,7 +5488,7 @@
 			)
 		)
 	)
-	(footprint "v9footprint:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
+	(footprint "v9footprintlocal:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
 		(layer "F.Cu")
 		(uuid "bc4184ac-f128-4328-8b66-78defabbe660")
 		(at 94.55 100.55 -90)
@@ -5702,12 +5585,6 @@
 		(path "/714f94e4-5cc0-44be-9a1a-d1f44474a3ac")
 		(sheetname "/")
 		(sheetfile "hardware_V9.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins "1" "2")
-			)
-		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_rect
@@ -5733,7 +5610,7 @@
 			(uuid "2ba67618-efed-4260-bbf9-992be6fe72c5")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 -0.68 270)
+			(at 0 -0.68 90)
 			(layer "F.Fab")
 			(uuid "46c38ac1-70d4-4055-91ae-28453c167fc6")
 			(effects
@@ -5744,21 +5621,21 @@
 			)
 		)
 		(pad "" smd roundrect
-			(at -0.4325 0 270)
+			(at -0.4325 0 90)
 			(size 0.458 0.36)
 			(layers "F.Paste")
 			(roundrect_rratio 0.25)
 			(uuid "f750c043-80e3-4e89-982a-99c90fb9341d")
 		)
 		(pad "" smd roundrect
-			(at 0.4325 0 270)
+			(at 0.4325 0 90)
 			(size 0.458 0.36)
 			(layers "F.Paste")
 			(roundrect_rratio 0.25)
 			(uuid "824ab258-4c50-4c04-9777-a2eda7a1ee2a")
 		)
 		(pad "1" smd roundrect
-			(at -0.4075 0 270)
+			(at -0.4075 0 90)
 			(size 0.635 0.4)
 			(layers "F.Cu" "F.Mask")
 			(roundrect_rratio 0.25)
@@ -5767,7 +5644,7 @@
 			(uuid "7dbb14ef-a93d-4745-a3e7-3189c49a3ddf")
 		)
 		(pad "2" smd roundrect
-			(at 0.4075 0 270)
+			(at 0.4075 0 90)
 			(size 0.635 0.4)
 			(layers "F.Cu" "F.Mask")
 			(roundrect_rratio 0.25)
@@ -5788,7 +5665,7 @@
 			)
 		)
 	)
-	(footprint "v9footprint:C_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
+	(footprint "v9footprintlocal:C_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
 		(layer "F.Cu")
 		(uuid "bd8da13c-a2b4-4633-8004-1e0d2bf00631")
 		(at 99.3 95.1 90)
@@ -5944,7 +5821,7 @@
 			)
 		)
 	)
-	(footprint "v9footprint:BAT_PAD_1mm"
+	(footprint "v9footprintlocal:BAT_PAD_1mm"
 		(layer "F.Cu")
 		(uuid "c008b3d1-10e3-4cdc-82f2-e5b2df8add08")
 		(at 109.9 107.55 -90)
@@ -6025,7 +5902,7 @@
 		)
 		(embedded_fonts no)
 	)
-	(footprint "v9footprint:pad_0.7mm"
+	(footprint "v9footprintlocal:pad_0.7mm"
 		(layer "F.Cu")
 		(uuid "c6afaf41-f290-495a-a59e-f95c44ff10c5")
 		(at 94.98 98.47)
@@ -6085,12 +5962,6 @@
 		(path "/e4c7a64b-7297-438c-bdb7-24e466b915fc")
 		(sheetname "/")
 		(sheetfile "hardware_V9.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins "1")
-			)
-		)
 		(attr through_hole dnp)
 		(duplicate_pad_numbers_are_jumpers no)
 		(pad "1" smd circle
@@ -6104,7 +5975,7 @@
 		)
 		(embedded_fonts no)
 	)
-	(footprint "v9footprint:C_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
+	(footprint "v9footprintlocal:C_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
 		(layer "F.Cu")
 		(uuid "c927b94b-baa1-4b84-ade2-f4b193001e11")
 		(at 106.6 92.6 90)
@@ -6172,12 +6043,6 @@
 		(path "/25c4fb51-bd59-4678-ba4a-7c4659e70c53/2e322278-b950-4ea7-933a-4968687c7c47")
 		(sheetname "/BTN_CONN/")
 		(sheetfile "BTN_CONN.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins "1" "2")
-			)
-		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_rect
@@ -6214,21 +6079,21 @@
 			)
 		)
 		(pad "" smd roundrect
-			(at -0.4325 0 90)
+			(at -0.4325 0 270)
 			(size 0.458 0.36)
 			(layers "F.Paste")
 			(roundrect_rratio 0.25)
 			(uuid "ef926786-1136-46b9-b23a-988fad5811e5")
 		)
 		(pad "" smd roundrect
-			(at 0.4325 0 90)
+			(at 0.4325 0 270)
 			(size 0.458 0.36)
 			(layers "F.Paste")
 			(roundrect_rratio 0.25)
 			(uuid "9c8a3546-63a8-4bd9-87ad-34f43aedf081")
 		)
 		(pad "1" smd roundrect
-			(at -0.4075 0 90)
+			(at -0.4075 0 270)
 			(size 0.635 0.4)
 			(layers "F.Cu" "F.Mask")
 			(roundrect_rratio 0.25)
@@ -6237,7 +6102,7 @@
 			(uuid "e4116ac1-59fe-4dff-b225-25cb446946ca")
 		)
 		(pad "2" smd roundrect
-			(at 0.4075 0 90)
+			(at 0.4075 0 270)
 			(size 0.635 0.4)
 			(layers "F.Cu" "F.Mask")
 			(roundrect_rratio 0.25)
@@ -6258,7 +6123,7 @@
 			)
 		)
 	)
-	(footprint "v9footprint:C_0402_1005Metric"
+	(footprint "v9footprintlocal:C_0402_1005Metric"
 		(layer "F.Cu")
 		(uuid "ca6c47ca-f6c1-4cff-8c11-8632455176c0")
 		(at 116 94.85 90)
@@ -6418,7 +6283,7 @@
 			)
 		)
 	)
-	(footprint "v9footprint:C_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
+	(footprint "v9footprintlocal:C_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
 		(layer "F.Cu")
 		(uuid "ce11c8de-90c6-499a-beb2-cc51339eda80")
 		(at 112.3 92.6925 90)
@@ -6486,12 +6351,6 @@
 		(path "/25c4fb51-bd59-4678-ba4a-7c4659e70c53/81a74681-2a93-4c16-a625-a852b41b7637")
 		(sheetname "/BTN_CONN/")
 		(sheetfile "BTN_CONN.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins "1" "2")
-			)
-		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_rect
@@ -6528,21 +6387,21 @@
 			)
 		)
 		(pad "" smd roundrect
-			(at -0.4325 0 90)
+			(at -0.4325 0 270)
 			(size 0.458 0.36)
 			(layers "F.Paste")
 			(roundrect_rratio 0.25)
 			(uuid "b56b0cb3-1856-4d43-9476-40c98f331ec7")
 		)
 		(pad "" smd roundrect
-			(at 0.4325 0 90)
+			(at 0.4325 0 270)
 			(size 0.458 0.36)
 			(layers "F.Paste")
 			(roundrect_rratio 0.25)
 			(uuid "9eef6409-5c8e-4698-ad10-c5ee9787a1e8")
 		)
 		(pad "1" smd roundrect
-			(at -0.4075 0 90)
+			(at -0.4075 0 270)
 			(size 0.635 0.4)
 			(layers "F.Cu" "F.Mask")
 			(roundrect_rratio 0.25)
@@ -6551,7 +6410,7 @@
 			(uuid "66b0cfd5-ba6a-4408-94d4-73125a9beb3c")
 		)
 		(pad "2" smd roundrect
-			(at 0.4075 0 90)
+			(at 0.4075 0 270)
 			(size 0.635 0.4)
 			(layers "F.Cu" "F.Mask")
 			(roundrect_rratio 0.25)
@@ -6572,7 +6431,7 @@
 			)
 		)
 	)
-	(footprint "v9footprint:5035480622"
+	(footprint "v9footprintlocal:5035480622"
 		(layer "F.Cu")
 		(uuid "d423cc2f-223c-4270-9df9-e770d678b356")
 		(at 96.2 95.705 180)
@@ -6951,7 +6810,7 @@
 			)
 		)
 	)
-	(footprint "v9footprint:ldln025pu"
+	(footprint "v9footprintlocal:ldln025pu"
 		(layer "F.Cu")
 		(uuid "d45ba9a5-78bf-4893-84e8-d0a2f046398a")
 		(at 101.7 107)
@@ -7119,7 +6978,7 @@
 			)
 		)
 	)
-	(footprint "v9footprint:C_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
+	(footprint "v9footprintlocal:C_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
 		(layer "F.Cu")
 		(uuid "d756e952-50c7-4749-8ad3-200226c24b8e")
 		(at 108.7 92.6 90)
@@ -7187,12 +7046,6 @@
 		(path "/84aae796-102b-48fc-8d1d-620f5c7b8bfd/08a46fc5-d7ba-4edb-a9ab-0e47df7d2107")
 		(sheetname "/Peripherial/")
 		(sheetfile "peripherial.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins "1" "2")
-			)
-		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_rect
@@ -7229,21 +7082,21 @@
 			)
 		)
 		(pad "" smd roundrect
-			(at -0.4325 0 90)
+			(at -0.4325 0 270)
 			(size 0.458 0.36)
 			(layers "F.Paste")
 			(roundrect_rratio 0.25)
 			(uuid "73933bdf-852f-4178-846e-359915aff60e")
 		)
 		(pad "" smd roundrect
-			(at 0.4325 0 90)
+			(at 0.4325 0 270)
 			(size 0.458 0.36)
 			(layers "F.Paste")
 			(roundrect_rratio 0.25)
 			(uuid "0fb0f755-82b7-49a2-ba0b-ac5e8a70e58e")
 		)
 		(pad "1" smd roundrect
-			(at -0.4075 0 90)
+			(at -0.4075 0 270)
 			(size 0.635 0.4)
 			(layers "F.Cu" "F.Mask")
 			(roundrect_rratio 0.25)
@@ -7252,7 +7105,7 @@
 			(uuid "bb5f937d-6de8-41cc-a387-619a457bbe7d")
 		)
 		(pad "2" smd roundrect
-			(at 0.4075 0 90)
+			(at 0.4075 0 270)
 			(size 0.635 0.4)
 			(layers "F.Cu" "F.Mask")
 			(roundrect_rratio 0.25)
@@ -7273,7 +7126,7 @@
 			)
 		)
 	)
-	(footprint "v9footprint:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
+	(footprint "v9footprintlocal:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
 		(layer "F.Cu")
 		(uuid "da11a67b-4516-4647-a327-1822e59bb152")
 		(at 102 104.6 90)
@@ -7367,12 +7220,6 @@
 		(path "/6b1b1fee-42b7-4647-a8a5-23fb0f78bd1a")
 		(sheetname "/")
 		(sheetfile "hardware_V9.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins "1" "2")
-			)
-		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_rect
@@ -7409,21 +7256,21 @@
 			)
 		)
 		(pad "" smd roundrect
-			(at -0.4325 0 90)
+			(at -0.4325 0 270)
 			(size 0.458 0.36)
 			(layers "F.Paste")
 			(roundrect_rratio 0.25)
 			(uuid "6e46f62b-8d8d-4b9a-95ed-4d107e982ca8")
 		)
 		(pad "" smd roundrect
-			(at 0.4325 0 90)
+			(at 0.4325 0 270)
 			(size 0.458 0.36)
 			(layers "F.Paste")
 			(roundrect_rratio 0.25)
 			(uuid "a91d962a-ccb1-4be2-b0b6-68cb935ff9f6")
 		)
 		(pad "1" smd roundrect
-			(at -0.4075 0 90)
+			(at -0.4075 0 270)
 			(size 0.635 0.4)
 			(layers "F.Cu" "F.Mask")
 			(roundrect_rratio 0.25)
@@ -7432,7 +7279,7 @@
 			(uuid "2cb4b7b4-3222-489a-8b41-b42ca9460c69")
 		)
 		(pad "2" smd roundrect
-			(at 0.4075 0 90)
+			(at 0.4075 0 270)
 			(size 0.635 0.4)
 			(layers "F.Cu" "F.Mask")
 			(roundrect_rratio 0.25)
@@ -7453,7 +7300,7 @@
 			)
 		)
 	)
-	(footprint "v9footprint:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
+	(footprint "v9footprintlocal:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
 		(layer "F.Cu")
 		(uuid "de7c5556-88ce-40c4-ac17-e9bd14e30eea")
 		(at 101.65 97.5 90)
@@ -7633,7 +7480,7 @@
 			)
 		)
 	)
-	(footprint "v9footprint:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
+	(footprint "v9footprintlocal:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
 		(layer "F.Cu")
 		(uuid "def95349-3154-4425-9624-1cf5e67513bf")
 		(at 101.35 103.35 180)
@@ -7787,7 +7634,7 @@
 			)
 		)
 	)
-	(footprint "v9footprint:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
+	(footprint "v9footprintlocal:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
 		(layer "F.Cu")
 		(uuid "e5723e69-1655-4b2e-8212-e0548e75244c")
 		(at 113.7 92.7 90)
@@ -7881,12 +7728,6 @@
 		(path "/84aae796-102b-48fc-8d1d-620f5c7b8bfd/24add181-627f-4d76-ae0e-62565b17021c")
 		(sheetname "/Peripherial/")
 		(sheetfile "peripherial.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins "1" "2")
-			)
-		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_rect
@@ -7923,21 +7764,21 @@
 			)
 		)
 		(pad "" smd roundrect
-			(at -0.4325 0 90)
+			(at -0.4325 0 270)
 			(size 0.458 0.36)
 			(layers "F.Paste")
 			(roundrect_rratio 0.25)
 			(uuid "9ae1c7ce-a7c1-4179-9dc8-034a8810f6f4")
 		)
 		(pad "" smd roundrect
-			(at 0.4325 0 90)
+			(at 0.4325 0 270)
 			(size 0.458 0.36)
 			(layers "F.Paste")
 			(roundrect_rratio 0.25)
 			(uuid "c14c18c3-e3b4-4344-be4c-1fb2750f08e3")
 		)
 		(pad "1" smd roundrect
-			(at -0.4075 0 90)
+			(at -0.4075 0 270)
 			(size 0.635 0.4)
 			(layers "F.Cu" "F.Mask")
 			(roundrect_rratio 0.25)
@@ -7946,7 +7787,7 @@
 			(uuid "dd82c28c-011f-403f-8bf3-fe48f8783f59")
 		)
 		(pad "2" smd roundrect
-			(at 0.4075 0 90)
+			(at 0.4075 0 270)
 			(size 0.635 0.4)
 			(layers "F.Cu" "F.Mask")
 			(roundrect_rratio 0.25)
@@ -7967,7 +7808,7 @@
 			)
 		)
 	)
-	(footprint "v9footprint:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
+	(footprint "v9footprintlocal:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
 		(layer "F.Cu")
 		(uuid "ef0b0010-7d50-4b94-90c2-bb24f7ee3cc9")
 		(at 108 92.6 90)
@@ -8061,12 +7902,6 @@
 		(path "/84aae796-102b-48fc-8d1d-620f5c7b8bfd/71910d42-dbba-4ebc-a038-b8372e5aea7f")
 		(sheetname "/Peripherial/")
 		(sheetfile "peripherial.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins "1" "2")
-			)
-		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_rect
@@ -8103,21 +7938,21 @@
 			)
 		)
 		(pad "" smd roundrect
-			(at -0.4325 0 90)
+			(at -0.4325 0 270)
 			(size 0.458 0.36)
 			(layers "F.Paste")
 			(roundrect_rratio 0.25)
 			(uuid "6490340b-7e1d-427c-a835-9c4cf38f9935")
 		)
 		(pad "" smd roundrect
-			(at 0.4325 0 90)
+			(at 0.4325 0 270)
 			(size 0.458 0.36)
 			(layers "F.Paste")
 			(roundrect_rratio 0.25)
 			(uuid "c478e8f4-0025-448c-ae79-8103c639c38b")
 		)
 		(pad "1" smd roundrect
-			(at -0.4075 0 90)
+			(at -0.4075 0 270)
 			(size 0.635 0.4)
 			(layers "F.Cu" "F.Mask")
 			(roundrect_rratio 0.25)
@@ -8126,7 +7961,7 @@
 			(uuid "02fcf566-1d69-4153-974e-54d231d002dc")
 		)
 		(pad "2" smd roundrect
-			(at 0.4075 0 90)
+			(at 0.4075 0 270)
 			(size 0.635 0.4)
 			(layers "F.Cu" "F.Mask")
 			(roundrect_rratio 0.25)
@@ -8147,7 +7982,7 @@
 			)
 		)
 	)
-	(footprint "v9footprint:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
+	(footprint "v9footprintlocal:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
 		(layer "F.Cu")
 		(uuid "fdb8a809-ba1e-4c2a-a451-88a664418c28")
 		(at 115.45 103.55 90)
@@ -8327,7 +8162,7 @@
 			)
 		)
 	)
-	(footprint "v9footprint:C_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
+	(footprint "v9footprintlocal:C_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "235a395c-17f1-4a30-81d3-6c67fa6e9982")
 		(at 102.5 97.25 180)
@@ -8399,12 +8234,6 @@
 		(path "/42e3e1b1-9911-4d5d-8c18-366c2d58b563/67bd782d-4a33-4700-88b0-9c1b2a672d14")
 		(sheetname "/POWER/")
 		(sheetfile "untitled.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins "1" "2")
-			)
-		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_rect
@@ -8442,21 +8271,21 @@
 			)
 		)
 		(pad "" smd roundrect
-			(at -0.4325 0 180)
+			(at -0.4325 0)
 			(size 0.458 0.36)
 			(layers "B.Paste")
 			(roundrect_rratio 0.25)
 			(uuid "419bb35b-c7c2-45f5-bfe8-2779ca5a574e")
 		)
 		(pad "" smd roundrect
-			(at 0.4325 0 180)
+			(at 0.4325 0)
 			(size 0.458 0.36)
 			(layers "B.Paste")
 			(roundrect_rratio 0.25)
 			(uuid "81202969-3251-42f9-b6a7-27831aefea3a")
 		)
 		(pad "1" smd roundrect
-			(at -0.4075 0 180)
+			(at -0.4075 0)
 			(size 0.635 0.4)
 			(layers "B.Cu" "B.Mask")
 			(roundrect_rratio 0.25)
@@ -8465,7 +8294,7 @@
 			(uuid "471dcd5b-8d9b-4b2f-98d4-3f98d43819ac")
 		)
 		(pad "2" smd roundrect
-			(at 0.4075 0 180)
+			(at 0.4075 0)
 			(size 0.635 0.4)
 			(layers "B.Cu" "B.Mask")
 			(roundrect_rratio 0.25)
@@ -8486,7 +8315,7 @@
 			)
 		)
 	)
-	(footprint "v9footprint:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
+	(footprint "v9footprintlocal:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "36976af9-9e53-4034-b499-184425a0a48a")
 		(at 102.07 101.4)
@@ -8646,7 +8475,7 @@
 			)
 		)
 	)
-	(footprint "v9footprint:ldln025pu"
+	(footprint "v9footprintlocal:ldln025pu"
 		(layer "B.Cu")
 		(uuid "398169be-95e9-4b98-b894-99eaa77adf45")
 		(at 104.145 95.4575 -90)
@@ -8833,7 +8662,7 @@
 			)
 		)
 	)
-	(footprint "v9footprint:PA1010D"
+	(footprint "v9footprintlocal:PA1010D"
 		(layer "B.Cu")
 		(uuid "3dcdaa4b-b99a-49f7-bc69-2df0d4c7a964")
 		(at 106.6 106.2 90)
@@ -9068,7 +8897,7 @@
 			)
 		)
 	)
-	(footprint "v9footprint:C_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
+	(footprint "v9footprintlocal:C_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "498c4fd8-345e-439b-9d12-7d668e07f4a4")
 		(at 102.4675 95.1 180)
@@ -9141,12 +8970,6 @@
 		(path "/42e3e1b1-9911-4d5d-8c18-366c2d58b563/a9c5a335-e7e5-45f5-9ef2-cf4ca89b8d22")
 		(sheetname "/POWER/")
 		(sheetfile "untitled.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins "1" "2")
-			)
-		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_rect
@@ -9184,21 +9007,21 @@
 			)
 		)
 		(pad "" smd roundrect
-			(at -0.4325 0 180)
+			(at -0.4325 0)
 			(size 0.458 0.36)
 			(layers "B.Paste")
 			(roundrect_rratio 0.25)
 			(uuid "decd7a22-fddf-459e-ad94-401c11aeae11")
 		)
 		(pad "" smd roundrect
-			(at 0.4325 0 180)
+			(at 0.4325 0)
 			(size 0.458 0.36)
 			(layers "B.Paste")
 			(roundrect_rratio 0.25)
 			(uuid "4b95e0e0-0de2-4268-baf4-e1e9c619a0c9")
 		)
 		(pad "1" smd roundrect
-			(at -0.4075 0 180)
+			(at -0.4075 0)
 			(size 0.635 0.4)
 			(layers "B.Cu" "B.Mask")
 			(roundrect_rratio 0.25)
@@ -9207,7 +9030,7 @@
 			(uuid "dbb077d1-9a29-48b8-b210-e414a4a16b2d")
 		)
 		(pad "2" smd roundrect
-			(at 0.4075 0 180)
+			(at 0.4075 0)
 			(size 0.635 0.4)
 			(layers "B.Cu" "B.Mask")
 			(roundrect_rratio 0.25)
@@ -9228,7 +9051,7 @@
 			)
 		)
 	)
-	(footprint "v9footprint:ldln025pu"
+	(footprint "v9footprintlocal:ldln025pu"
 		(layer "B.Cu")
 		(uuid "5216698d-4a2b-482e-b564-22a97ad6a99c")
 		(at 104.8075 98.145 180)
@@ -9415,7 +9238,7 @@
 			)
 		)
 	)
-	(footprint "v9footprint:ssd1306_5point"
+	(footprint "v9footprintlocal:ssd1306_5point"
 		(layer "B.Cu")
 		(uuid "56412fdd-021b-498f-97e4-70da408b4dd1")
 		(at 100 100 180)
@@ -9609,7 +9432,7 @@
 			)
 		)
 	)
-	(footprint "v9footprint:C_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
+	(footprint "v9footprintlocal:C_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "595c1395-8003-49fb-856c-b01637bffd95")
 		(at 102.4925 96.1 180)
@@ -9682,12 +9505,6 @@
 		(path "/42e3e1b1-9911-4d5d-8c18-366c2d58b563/490b56fc-a8bf-468e-89d7-07ac09218dae")
 		(sheetname "/POWER/")
 		(sheetfile "untitled.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins "1" "2")
-			)
-		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_rect
@@ -9725,21 +9542,21 @@
 			)
 		)
 		(pad "" smd roundrect
-			(at -0.4325 0 180)
+			(at -0.4325 0)
 			(size 0.458 0.36)
 			(layers "B.Paste")
 			(roundrect_rratio 0.25)
 			(uuid "1a0f70dd-91a5-4b86-a297-6b18155a600a")
 		)
 		(pad "" smd roundrect
-			(at 0.4325 0 180)
+			(at 0.4325 0)
 			(size 0.458 0.36)
 			(layers "B.Paste")
 			(roundrect_rratio 0.25)
 			(uuid "3e40ea42-c4bf-4b76-b26d-ed0b4839bcac")
 		)
 		(pad "1" smd roundrect
-			(at -0.4075 0 180)
+			(at -0.4075 0)
 			(size 0.635 0.4)
 			(layers "B.Cu" "B.Mask")
 			(roundrect_rratio 0.25)
@@ -9748,7 +9565,7 @@
 			(uuid "74abd326-f0fa-436d-b5ca-305099e03794")
 		)
 		(pad "2" smd roundrect
-			(at 0.4075 0 180)
+			(at 0.4075 0)
 			(size 0.635 0.4)
 			(layers "B.Cu" "B.Mask")
 			(roundrect_rratio 0.25)
@@ -9769,7 +9586,7 @@
 			)
 		)
 	)
-	(footprint "v9footprint:LED_0402_1005Metric"
+	(footprint "v9footprintlocal:LED_0402_1005Metric"
 		(layer "B.Cu")
 		(uuid "6c9ac8d9-f8dc-4f38-ab5c-d19ad44ea225")
 		(at 98.25 106.95 -90)
@@ -9828,11 +9645,11 @@
 			)
 		)
 		(property "KiLib_Generator" "Wurth Elektronik"
-			(at 0 0 90)
+			(at 0 0 270)
 			(unlocked yes)
 			(layer "B.Fab")
 			(hide yes)
-			(uuid "fdcee661-0606-4646-a6d2-370d1bf131e0")
+			(uuid "4ba76abf-6193-41e9-8243-9d3928dadebd")
 			(effects
 				(font
 					(size 1 1)
@@ -9898,11 +9715,11 @@
 			)
 		)
 		(property "Manufacturer_Name" "Wurth Elektronik"
-			(at 0 0 270)
+			(at 0 0 90)
 			(unlocked yes)
 			(layer "B.Fab")
 			(hide yes)
-			(uuid "4ba76abf-6193-41e9-8243-9d3928dadebd")
+			(uuid "fdcee661-0606-4646-a6d2-370d1bf131e0")
 			(effects
 				(font
 					(size 1 1)
@@ -9915,12 +9732,6 @@
 		(path "/cf1495d1-d29f-4083-a8fe-52dc0dcdee18")
 		(sheetname "/")
 		(sheetfile "hardware_V9.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins "1" "2")
-			)
-		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -9989,7 +9800,7 @@
 			)
 		)
 		(pad "1" smd roundrect
-			(at -0.485 0 270)
+			(at -0.485 0 90)
 			(size 0.59 0.64)
 			(layers "B.Cu" "B.Mask" "B.Paste")
 			(roundrect_rratio 0.25)
@@ -9999,7 +9810,7 @@
 			(uuid "e9b457fe-c10f-491c-be5e-afe107237b9f")
 		)
 		(pad "2" smd roundrect
-			(at 0.485 0 270)
+			(at 0.485 0 90)
 			(size 0.59 0.64)
 			(layers "B.Cu" "B.Mask" "B.Paste")
 			(roundrect_rratio 0.25)
@@ -10021,7 +9832,7 @@
 			)
 		)
 	)
-	(footprint "v9footprint:USB4110GFA"
+	(footprint "v9footprintlocal:USB4110GFA"
 		(layer "B.Cu")
 		(uuid "6fb130aa-1b80-4ca2-af90-a13d42d1fabc")
 		(at 96.027 100 90)
@@ -10355,7 +10166,7 @@
 			)
 		)
 	)
-	(footprint "v9footprint:PTS845VM20PSMTR4LFS"
+	(footprint "v9footprintlocal:PTS845VM20PSMTR4LFS"
 		(layer "B.Cu")
 		(uuid "73593c6d-2153-46de-9475-c386f6da5ceb")
 		(at 107.65 93.325)
@@ -10365,7 +10176,7 @@
 			(at 0 -0.2 0)
 			(layer "B.SilkS")
 			(hide yes)
-			(uuid "313d387b-12a4-4aa7-bf87-a97a5a155071")
+			(uuid "d67e21d5-f094-4f52-a25a-5d36fe0ee4cc")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10378,7 +10189,7 @@
 			(at 0 -0.2 0)
 			(layer "B.SilkS")
 			(hide yes)
-			(uuid "c47e242e-47d7-45a8-944c-12bac2fd1041")
+			(uuid "16006800-f8be-4cd1-a03c-07bd75588efc")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10391,7 +10202,7 @@
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
-			(uuid "222c0477-5741-4fd5-b1dd-77ef3a4a394b")
+			(uuid "0938ea05-a83f-4fde-8c7b-f9adddd476c5")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10404,7 +10215,7 @@
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
-			(uuid "6ce5c859-2a97-452a-8064-852cb2590260")
+			(uuid "3873f857-5efd-4c3c-baa4-4efad0d68ba5")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10661,7 +10472,7 @@
 			)
 		)
 	)
-	(footprint "v9footprint:C_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
+	(footprint "v9footprintlocal:C_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "83ef7c10-8f7a-4add-97ba-6d274bff257f")
 		(at 105.2 96.6075 90)
@@ -10734,12 +10545,6 @@
 		(path "/42e3e1b1-9911-4d5d-8c18-366c2d58b563/e87d4c7f-48bf-449f-96a0-cd5540acb17a")
 		(sheetname "/POWER/")
 		(sheetfile "untitled.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins "1" "2")
-			)
-		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_rect
@@ -10777,21 +10582,21 @@
 			)
 		)
 		(pad "" smd roundrect
-			(at -0.4325 0 90)
+			(at -0.4325 0 270)
 			(size 0.458 0.36)
 			(layers "B.Paste")
 			(roundrect_rratio 0.25)
 			(uuid "7c4d9498-cffc-41b7-94ac-e9b2bb343ba7")
 		)
 		(pad "" smd roundrect
-			(at 0.4325 0 90)
+			(at 0.4325 0 270)
 			(size 0.458 0.36)
 			(layers "B.Paste")
 			(roundrect_rratio 0.25)
 			(uuid "17d63e3f-81ef-40b7-acde-4c75f8adc099")
 		)
 		(pad "1" smd roundrect
-			(at -0.4075 0 90)
+			(at -0.4075 0 270)
 			(size 0.635 0.4)
 			(layers "B.Cu" "B.Mask")
 			(roundrect_rratio 0.25)
@@ -10800,7 +10605,7 @@
 			(uuid "3d60ac96-0c23-41f1-9af7-ffc397f01989")
 		)
 		(pad "2" smd roundrect
-			(at 0.4075 0 90)
+			(at 0.4075 0 270)
 			(size 0.635 0.4)
 			(layers "B.Cu" "B.Mask")
 			(roundrect_rratio 0.25)
@@ -10821,7 +10626,7 @@
 			)
 		)
 	)
-	(footprint "v9footprint:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
+	(footprint "v9footprintlocal:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "ace0c88f-4f19-439e-8305-d4f2120aecf1")
 		(at 101.45 98.23)
@@ -11012,7 +10817,7 @@
 			)
 		)
 	)
-	(footprint "v9footprint:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
+	(footprint "v9footprintlocal:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
 		(layer "B.Cu")
 		(uuid "cea9fd7f-b0c0-402b-b653-d9071c2f793d")
 		(at 102.1 100.7)
@@ -11203,7 +11008,7 @@
 			)
 		)
 	)
-	(footprint "v9footprint:PTS845VM20PSMTR4LFS"
+	(footprint "v9footprintlocal:PTS845VM20PSMTR4LFS"
 		(layer "B.Cu")
 		(uuid "d0cabaf1-7936-4426-b163-7c35567f5828")
 		(at 113.35 93.45)
@@ -11213,7 +11018,7 @@
 			(at 0 -0.2 0)
 			(layer "B.SilkS")
 			(hide yes)
-			(uuid "bc2d3af8-2578-4ea6-afc2-c1f5aa3ab4ba")
+			(uuid "80a1243a-e012-4d33-86e7-d204712733c3")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11226,7 +11031,7 @@
 			(at 0 -0.2 0)
 			(layer "B.SilkS")
 			(hide yes)
-			(uuid "137580af-90f1-4d86-9ebd-25760b69e46b")
+			(uuid "6e2a2238-21a9-4f6a-8dba-451490160724")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11239,7 +11044,7 @@
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
-			(uuid "60f1c3ff-2759-48fa-ae61-488873b3188b")
+			(uuid "4f23262c-2ba3-49a6-ab14-73104692e1b3")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11252,7 +11057,7 @@
 			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
-			(uuid "1d06ef3f-a34f-4d73-bdc0-12ec71f04bfe")
+			(uuid "da156cc4-724d-400d-9e5c-7fd92f23c01c")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11509,7 +11314,7 @@
 			)
 		)
 	)
-	(footprint "v9footprint:LED_0402_1005Metric"
+	(footprint "v9footprintlocal:LED_0402_1005Metric"
 		(layer "B.Cu")
 		(uuid "da92828a-cdc5-4a72-ba2c-cda673b03f74")
 		(at 97.25 106.95 -90)
@@ -11568,11 +11373,11 @@
 			)
 		)
 		(property "KiLib_Generator" "Wurth Elektronik"
-			(at 0 0 90)
+			(at 0 0 270)
 			(unlocked yes)
 			(layer "B.Fab")
 			(hide yes)
-			(uuid "9a66866d-69e0-4eb9-8332-1a5d42f76bb4")
+			(uuid "43de51a6-b0ca-4664-8d79-a479907e8658")
 			(effects
 				(font
 					(size 1 1)
@@ -11638,11 +11443,11 @@
 			)
 		)
 		(property "Manufacturer_Name" "Wurth Elektronik"
-			(at 0 0 270)
+			(at 0 0 90)
 			(unlocked yes)
 			(layer "B.Fab")
 			(hide yes)
-			(uuid "43de51a6-b0ca-4664-8d79-a479907e8658")
+			(uuid "9a66866d-69e0-4eb9-8332-1a5d42f76bb4")
 			(effects
 				(font
 					(size 1 1)
@@ -11655,12 +11460,6 @@
 		(path "/fd2d3dee-6099-483e-b63e-d25edbff21aa")
 		(sheetname "/")
 		(sheetfile "hardware_V9.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins "1" "2")
-			)
-		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -11729,7 +11528,7 @@
 			)
 		)
 		(pad "1" smd roundrect
-			(at -0.485 0 270)
+			(at -0.485 0 90)
 			(size 0.59 0.64)
 			(layers "B.Cu" "B.Mask" "B.Paste")
 			(roundrect_rratio 0.25)
@@ -11739,7 +11538,7 @@
 			(uuid "a753f346-af69-4ff2-aa59-2c4e89d51687")
 		)
 		(pad "2" smd roundrect
-			(at 0.485 0 270)
+			(at 0.485 0 90)
 			(size 0.59 0.64)
 			(layers "B.Cu" "B.Mask" "B.Paste")
 			(roundrect_rratio 0.25)
@@ -11761,7 +11560,7 @@
 			)
 		)
 	)
-	(footprint "v9footprint:KXT341LHS"
+	(footprint "v9footprintlocal:KXT341LHS"
 		(layer "B.Cu")
 		(uuid "de6ce4b8-3600-4ed1-a4d1-c0ac11e89b00")
 		(at 102.1 106.4 -90)
@@ -12041,7 +11840,7 @@
 			)
 		)
 	)
-	(footprint "v9footprint:LED_0402_1005Metric"
+	(footprint "v9footprintlocal:LED_0402_1005Metric"
 		(layer "B.Cu")
 		(uuid "faa65d3c-5174-477a-a1f5-214ac0368c5c")
 		(at 99.2 106.95 90)
@@ -12187,12 +11986,6 @@
 		(path "/42e3e1b1-9911-4d5d-8c18-366c2d58b563/a2d58fa1-ecc0-4497-9334-a2c08368c194")
 		(sheetname "/POWER/")
 		(sheetfile "untitled.kicad_sch")
-		(units
-			(unit
-				(name "A")
-				(pins "1" "2")
-			)
-		)
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_circle
@@ -12261,7 +12054,7 @@
 			)
 		)
 		(pad "1" smd roundrect
-			(at -0.485 0 90)
+			(at -0.485 0 270)
 			(size 0.59 0.64)
 			(layers "B.Cu" "B.Mask" "B.Paste")
 			(roundrect_rratio 0.25)
@@ -12271,7 +12064,7 @@
 			(uuid "43f3c3ce-a936-4845-aa2d-625e4c70abce")
 		)
 		(pad "2" smd roundrect
-			(at 0.485 0 90)
+			(at 0.485 0 270)
 			(size 0.59 0.64)
 			(layers "B.Cu" "B.Mask" "B.Paste")
 			(roundrect_rratio 0.25)
@@ -16588,73 +16381,6 @@
 		)
 	)
 	(zone
-		(net "/OLED_SDA")
-		(layer "F.Cu")
-		(hatch none 0.1)
-		(priority 30000)
-		(attr
-			(teardrop
-				(type padvia)
-			)
-		)
-		(connect_pads yes
-			(clearance 0)
-		)
-		(min_thickness 0.0254)
-		(fill yes
-			(island_removal_mode 1)
-		)
-		(polygon
-			(pts
-				(xy 96.14 94.185907) (xy 96.26 94.185907) (xy 96.790053 93.596239) (xy 96.19 92.999) (xy 95.600096 93.606389)
-			)
-		)
-		(filled_polygon
-			(layer "F.Cu")
-			(pts
-				(xy 96.198291 93.007255) (xy 96.198394 93.007355) (xy 96.782171 93.588394) (xy 96.785617 93.596659)
-				(xy 96.782618 93.604509) (xy 96.263486 94.182029) (xy 96.255407 94.18589) (xy 96.254785 94.185907)
-				(xy 96.145091 94.185907) (xy 96.136818 94.18248) (xy 96.13653 94.182182) (xy 95.607681 93.614531)
-				(xy 95.604549 93.606142) (xy 95.607848 93.598407) (xy 96.181748 93.007496) (xy 96.189969 93.003949)
-			)
-		)
-	)
-	(zone
-		(net "/SPI_MOSI")
-		(layer "F.Cu")
-		(hatch none 0.1)
-		(priority 30005)
-		(attr
-			(teardrop
-				(type padvia)
-			)
-		)
-		(connect_pads yes
-			(clearance 0)
-		)
-		(min_thickness 0.0254)
-		(fill yes
-			(island_removal_mode 1)
-		)
-		(polygon
-			(pts
-				(xy 115.225 99.645) (xy 115.225 99.525) (xy 114.8 99.16) (xy 114.249 99.585) (xy 114.8 100.01)
-			)
-		)
-		(filled_polygon
-			(layer "F.Cu")
-			(pts
-				(xy 114.804894 99.165167) (xy 114.805652 99.165504) (xy 114.808519 99.167317) (xy 115.219158 99.519983)
-				(xy 115.221972 99.523573) (xy 115.223739 99.527064) (xy 115.225 99.532346) (xy 115.225 99.637297)
-				(xy 115.224109 99.641776) (xy 115.222612 99.645389) (xy 115.219426 99.649786) (xy 114.808992 100.002277)
-				(xy 114.805013 100.004519) (xy 114.802667 100.005288) (xy 114.794836 100.005095) (xy 114.794057 100.004796)
-				(xy 114.791102 100.003137) (xy 114.326788 99.645) (xy 114.26285 99.595683) (xy 114.259851 99.592245)
-				(xy 114.258962 99.590698) (xy 114.257815 99.581833) (xy 114.25785 99.581702) (xy 114.258026 99.581052)
-				(xy 114.262174 99.574837) (xy 114.790617 99.167236) (xy 114.794705 99.165208) (xy 114.797086 99.164564)
-			)
-		)
-	)
-	(zone
 		(net "3.3V_AUX")
 		(layer "F.Cu")
 		(uuid "3fe83501-bbb4-430e-8046-8c566c0d9e7b")
@@ -16815,72 +16541,6 @@
 		)
 	)
 	(zone
-		(net "/SD_DET")
-		(layer "F.Cu")
-		(hatch none 0.1)
-		(priority 30001)
-		(attr
-			(teardrop
-				(type padvia)
-			)
-		)
-		(connect_pads yes
-			(clearance 0)
-		)
-		(min_thickness 0.0254)
-		(fill yes
-			(island_removal_mode 1)
-		)
-		(polygon
-			(pts
-				(xy 108.16 93.65) (xy 108.04 93.65) (xy 107.6 94.15) (xy 108.1 94.751) (xy 108.6 94.15)
-			)
-		)
-		(filled_polygon
-			(layer "F.Cu")
-			(pts
-				(xy 108.162984 93.653427) (xy 108.163494 93.653971) (xy 108.593386 94.142484) (xy 108.596279 94.150958)
-				(xy 108.593597 94.157696) (xy 108.108994 94.740189) (xy 108.101069 94.744357) (xy 108.092517 94.7417)
-				(xy 108.091006 94.740189) (xy 107.989085 94.61768) (xy 107.606401 94.157694) (xy 107.603745 94.149144)
-				(xy 107.606611 94.142486) (xy 108.036506 93.653971) (xy 108.044544 93.650024) (xy 108.045289 93.65)
-				(xy 108.154711 93.65)
-			)
-		)
-	)
-	(zone
-		(net "Net-(J1-CLK)")
-		(layer "F.Cu")
-		(hatch none 0.1)
-		(priority 30002)
-		(attr
-			(teardrop
-				(type padvia)
-			)
-		)
-		(connect_pads yes
-			(clearance 0)
-		)
-		(min_thickness 0.0254)
-		(fill yes
-			(island_removal_mode 1)
-		)
-		(polygon
-			(pts
-				(xy 113.28383 102.231317) (xy 113.368683 102.31617) (xy 114.354939 102.21) (xy 114.250707 101.784293)
-				(xy 113.7 101.594972)
-			)
-		)
-		(filled_polygon
-			(layer "F.Cu")
-			(pts
-				(xy 113.708609 101.597931) (xy 114.244666 101.782216) (xy 114.251375 101.788146) (xy 114.252226 101.790498)
-				(xy 114.351759 102.197015) (xy 114.350398 102.205865) (xy 114.343177 102.211161) (xy 114.341647 102.21143)
-				(xy 113.374248 102.31557) (xy 113.365656 102.313048) (xy 113.364723 102.31221) (xy 113.290551 102.238038)
-				(xy 113.287124 102.229765) (xy 113.28903 102.223364) (xy 113.695016 101.602591) (xy 113.702412 101.597544)
-			)
-		)
-	)
-	(zone
 		(net "+3.3V")
 		(layer "F.Cu")
 		(uuid "61d81f92-68c5-401f-8fb8-9dd9c5da4486")
@@ -17011,6 +16671,72 @@
 		)
 	)
 	(zone
+		(net "/SD_DET")
+		(layer "F.Cu")
+		(hatch none 0.1)
+		(priority 30001)
+		(attr
+			(teardrop
+				(type padvia)
+			)
+		)
+		(connect_pads yes
+			(clearance 0)
+		)
+		(min_thickness 0.0254)
+		(fill yes
+			(island_removal_mode 1)
+		)
+		(polygon
+			(pts
+				(xy 108.16 93.65) (xy 108.04 93.65) (xy 107.6 94.15) (xy 108.1 94.751) (xy 108.6 94.15)
+			)
+		)
+		(filled_polygon
+			(layer "F.Cu")
+			(pts
+				(xy 108.162984 93.653427) (xy 108.163494 93.653971) (xy 108.593386 94.142484) (xy 108.596279 94.150958)
+				(xy 108.593597 94.157696) (xy 108.108994 94.740189) (xy 108.101069 94.744357) (xy 108.092517 94.7417)
+				(xy 108.091006 94.740189) (xy 107.989085 94.61768) (xy 107.606401 94.157694) (xy 107.603745 94.149144)
+				(xy 107.606611 94.142486) (xy 108.036506 93.653971) (xy 108.044544 93.650024) (xy 108.045289 93.65)
+				(xy 108.154711 93.65)
+			)
+		)
+	)
+	(zone
+		(net "/SPI_CS")
+		(layer "F.Cu")
+		(hatch none 0.1)
+		(priority 30007)
+		(attr
+			(teardrop
+				(type padvia)
+			)
+		)
+		(connect_pads yes
+			(clearance 0)
+		)
+		(min_thickness 0.0254)
+		(fill yes
+			(island_removal_mode 1)
+		)
+		(polygon
+			(pts
+				(xy 113.422868 98.188016) (xy 113.338016 98.272868) (xy 113.7 98.767079) (xy 114.250707 98.485707)
+				(xy 113.7 98.06)
+			)
+		)
+		(filled_polygon
+			(layer "F.Cu")
+			(pts
+				(xy 113.705617 98.064342) (xy 114.236111 98.474424) (xy 114.24056 98.482195) (xy 114.238212 98.490837)
+				(xy 114.234278 98.4941) (xy 113.708873 98.762545) (xy 113.699947 98.763257) (xy 113.694112 98.759041)
+				(xy 113.343942 98.280959) (xy 113.341819 98.272261) (xy 113.345107 98.265776) (xy 113.421395 98.189488)
+				(xy 113.424756 98.187143) (xy 113.693555 98.062976) (xy 113.702502 98.062619)
+			)
+		)
+	)
+	(zone
 		(net "vusb")
 		(layer "F.Cu")
 		(uuid "b13871cb-aa65-46ae-ac57-a1712bfd4808")
@@ -17051,10 +16777,10 @@
 		)
 	)
 	(zone
-		(net "/SPI_MOSI")
+		(net "Net-(J1-CLK)")
 		(layer "F.Cu")
 		(hatch none 0.1)
-		(priority 30006)
+		(priority 30002)
 		(attr
 			(teardrop
 				(type padvia)
@@ -17069,20 +16795,52 @@
 		)
 		(polygon
 			(pts
-				(xy 113.275 99.54) (xy 113.275 99.66) (xy 113.7 100.01) (xy 114.251 99.585) (xy 113.7 99.168417)
+				(xy 113.28383 102.231317) (xy 113.368683 102.31617) (xy 114.354939 102.21) (xy 114.250707 101.784293)
+				(xy 113.7 101.594972)
 			)
 		)
 		(filled_polygon
 			(layer "F.Cu")
 			(pts
-				(xy 113.705213 99.173269) (xy 113.70599 99.173559) (xy 113.708953 99.175186) (xy 113.985734 99.384446)
-				(xy 114.236922 99.574357) (xy 114.239952 99.577761) (xy 114.240856 99.579301) (xy 114.242091 99.588168)
-				(xy 114.24209 99.588171) (xy 114.241893 99.588928) (xy 114.237716 99.595245) (xy 113.709228 100.00288)
-				(xy 113.705141 100.004909) (xy 113.702693 100.005572) (xy 113.694994 100.00502) (xy 113.694325 100.004731)
-				(xy 113.691527 100.003022) (xy 113.281058 99.664988) (xy 113.278167 99.661452) (xy 113.276371 99.658077)
-				(xy 113.275 99.652581) (xy 113.275 99.547638) (xy 113.27589 99.543163) (xy 113.276223 99.542358)
-				(xy 113.277402 99.53951) (xy 113.280507 99.535183) (xy 113.691085 99.17621) (xy 113.695039 99.173936)
-				(xy 113.697377 99.173146)
+				(xy 113.708609 101.597931) (xy 114.244666 101.782216) (xy 114.251375 101.788146) (xy 114.252226 101.790498)
+				(xy 114.351759 102.197015) (xy 114.350398 102.205865) (xy 114.343177 102.211161) (xy 114.341647 102.21143)
+				(xy 113.374248 102.31557) (xy 113.365656 102.313048) (xy 113.364723 102.31221) (xy 113.290551 102.238038)
+				(xy 113.287124 102.229765) (xy 113.28903 102.223364) (xy 113.695016 101.602591) (xy 113.702412 101.597544)
+			)
+		)
+	)
+	(zone
+		(net "/SPI_MOSI")
+		(layer "F.Cu")
+		(hatch none 0.1)
+		(priority 30005)
+		(attr
+			(teardrop
+				(type padvia)
+			)
+		)
+		(connect_pads yes
+			(clearance 0)
+		)
+		(min_thickness 0.0254)
+		(fill yes
+			(island_removal_mode 1)
+		)
+		(polygon
+			(pts
+				(xy 115.225 99.645) (xy 115.225 99.525) (xy 114.8 99.16) (xy 114.249 99.585) (xy 114.8 100.01)
+			)
+		)
+		(filled_polygon
+			(layer "F.Cu")
+			(pts
+				(xy 114.804894 99.165167) (xy 114.805652 99.165504) (xy 114.808519 99.167317) (xy 115.219158 99.519983)
+				(xy 115.221972 99.523573) (xy 115.223739 99.527064) (xy 115.225 99.532346) (xy 115.225 99.637297)
+				(xy 115.224109 99.641776) (xy 115.222612 99.645389) (xy 115.219426 99.649786) (xy 114.808992 100.002277)
+				(xy 114.805013 100.004519) (xy 114.802667 100.005288) (xy 114.794836 100.005095) (xy 114.794057 100.004796)
+				(xy 114.791102 100.003137) (xy 114.326788 99.645) (xy 114.26285 99.595683) (xy 114.259851 99.592245)
+				(xy 114.258962 99.590698) (xy 114.257815 99.581833) (xy 114.25785 99.581702) (xy 114.258026 99.581052)
+				(xy 114.262174 99.574837) (xy 114.790617 99.167236) (xy 114.794705 99.165208) (xy 114.797086 99.164564)
 			)
 		)
 	)
@@ -17123,6 +16881,42 @@
 				(xy 98.411272 103.518306) (xy 98.403372 103.488822) (xy 98.4 103.463203) (xy 98.4 102.76468) (xy 98.404843 102.734094)
 				(xy 98.408965 102.721405) (xy 98.444923 102.671906) (xy 98.445522 102.671471) (xy 98.449063 102.6689)
 				(xy 98.507243 102.65) (xy 98.58532 102.65)
+			)
+		)
+	)
+	(zone
+		(net "/SPI_MOSI")
+		(layer "F.Cu")
+		(hatch none 0.1)
+		(priority 30006)
+		(attr
+			(teardrop
+				(type padvia)
+			)
+		)
+		(connect_pads yes
+			(clearance 0)
+		)
+		(min_thickness 0.0254)
+		(fill yes
+			(island_removal_mode 1)
+		)
+		(polygon
+			(pts
+				(xy 113.275 99.54) (xy 113.275 99.66) (xy 113.7 100.01) (xy 114.251 99.585) (xy 113.7 99.168417)
+			)
+		)
+		(filled_polygon
+			(layer "F.Cu")
+			(pts
+				(xy 113.705213 99.173269) (xy 113.70599 99.173559) (xy 113.708953 99.175186) (xy 113.985734 99.384446)
+				(xy 114.236922 99.574357) (xy 114.239952 99.577761) (xy 114.240856 99.579301) (xy 114.242091 99.588168)
+				(xy 114.24209 99.588171) (xy 114.241893 99.588928) (xy 114.237716 99.595245) (xy 113.709228 100.00288)
+				(xy 113.705141 100.004909) (xy 113.702693 100.005572) (xy 113.694994 100.00502) (xy 113.694325 100.004731)
+				(xy 113.691527 100.003022) (xy 113.281058 99.664988) (xy 113.278167 99.661452) (xy 113.276371 99.658077)
+				(xy 113.275 99.652581) (xy 113.275 99.547638) (xy 113.27589 99.543163) (xy 113.276223 99.542358)
+				(xy 113.277402 99.53951) (xy 113.280507 99.535183) (xy 113.691085 99.17621) (xy 113.695039 99.173936)
+				(xy 113.697377 99.173146)
 			)
 		)
 	)
@@ -17237,10 +17031,10 @@
 		)
 	)
 	(zone
-		(net "/SPI_CS")
+		(net "/OLED_SDA")
 		(layer "F.Cu")
 		(hatch none 0.1)
-		(priority 30007)
+		(priority 30000)
 		(attr
 			(teardrop
 				(type padvia)
@@ -17255,17 +17049,16 @@
 		)
 		(polygon
 			(pts
-				(xy 113.422868 98.188016) (xy 113.338016 98.272868) (xy 113.7 98.767079) (xy 114.250707 98.485707)
-				(xy 113.7 98.06)
+				(xy 96.14 94.185907) (xy 96.26 94.185907) (xy 96.790053 93.596239) (xy 96.19 92.999) (xy 95.600096 93.606389)
 			)
 		)
 		(filled_polygon
 			(layer "F.Cu")
 			(pts
-				(xy 113.705617 98.064342) (xy 114.236111 98.474424) (xy 114.24056 98.482195) (xy 114.238212 98.490837)
-				(xy 114.234278 98.4941) (xy 113.708873 98.762545) (xy 113.699947 98.763257) (xy 113.694112 98.759041)
-				(xy 113.343942 98.280959) (xy 113.341819 98.272261) (xy 113.345107 98.265776) (xy 113.421395 98.189488)
-				(xy 113.424756 98.187143) (xy 113.693555 98.062976) (xy 113.702502 98.062619)
+				(xy 96.198291 93.007255) (xy 96.198394 93.007355) (xy 96.782171 93.588394) (xy 96.785617 93.596659)
+				(xy 96.782618 93.604509) (xy 96.263486 94.182029) (xy 96.255407 94.18589) (xy 96.254785 94.185907)
+				(xy 96.145091 94.185907) (xy 96.136818 94.18248) (xy 96.13653 94.182182) (xy 95.607681 93.614531)
+				(xy 95.604549 93.606142) (xy 95.607848 93.598407) (xy 96.181748 93.007496) (xy 96.189969 93.003949)
 			)
 		)
 	)
@@ -21839,40 +21632,6 @@
 		)
 	)
 	(zone
-		(net "/B_PW")
-		(layer "B.Cu")
-		(hatch none 0.1)
-		(priority 30000)
-		(attr
-			(teardrop
-				(type padvia)
-			)
-		)
-		(connect_pads yes
-			(clearance 0)
-		)
-		(min_thickness 0.0254)
-		(fill yes
-			(island_removal_mode 1)
-		)
-		(polygon
-			(pts
-				(xy 113.374748 93.039896) (xy 113.289896 93.124748) (xy 113.05 93.375) (xy 113.350707 94.275707)
-				(xy 113.636866 93.375)
-			)
-		)
-		(filled_polygon
-			(layer "B.Cu")
-			(pts
-				(xy 113.381948 93.049241) (xy 113.382888 93.050303) (xy 113.467709 93.158742) (xy 113.63306 93.370135)
-				(xy 113.635458 93.378762) (xy 113.634995 93.380886) (xy 113.361582 94.241476) (xy 113.355811 94.248323)
-				(xy 113.346888 94.249084) (xy 113.340041 94.243313) (xy 113.339333 94.241638) (xy 113.052237 93.381701)
-				(xy 113.052868 93.372769) (xy 113.054886 93.369902) (xy 113.289865 93.124779) (xy 113.289941 93.124702)
-				(xy 113.365403 93.04924) (xy 113.373675 93.045814)
-			)
-		)
-	)
-	(zone
 		(net "3.3V_GPS")
 		(layer "B.Cu")
 		(uuid "3155a23b-1426-4897-a1f7-add79a82b91e")
@@ -21912,6 +21671,39 @@
 		)
 	)
 	(zone
+		(net "/NRST")
+		(layer "B.Cu")
+		(hatch none 0.1)
+		(priority 30001)
+		(attr
+			(teardrop
+				(type padvia)
+			)
+		)
+		(connect_pads yes
+			(clearance 0)
+		)
+		(min_thickness 0.0254)
+		(fill yes
+			(island_removal_mode 1)
+		)
+		(polygon
+			(pts
+				(xy 101.075 104.74) (xy 101.075 104.86) (xy 101.35 105.05) (xy 102.101 104.775) (xy 101.35 104.518217)
+			)
+		)
+		(filled_polygon
+			(layer "B.Cu")
+			(pts
+				(xy 101.356099 104.520302) (xy 102.069725 104.764306) (xy 102.076445 104.770225) (xy 102.077011 104.779162)
+				(xy 102.071092 104.785882) (xy 102.069963 104.786364) (xy 101.355688 105.047916) (xy 101.346741 105.047542)
+				(xy 101.345014 105.046555) (xy 101.080049 104.863488) (xy 101.075191 104.855966) (xy 101.075 104.853862)
+				(xy 101.075 104.745594) (xy 101.078427 104.737321) (xy 101.079346 104.736494) (xy 101.344977 104.522267)
+				(xy 101.353567 104.519742)
+			)
+		)
+	)
+	(zone
 		(net "/B1")
 		(layer "B.Cu")
 		(hatch none 0.1)
@@ -21940,6 +21732,40 @@
 				(xy 107.658812 94.105617) (xy 107.653976 94.113153) (xy 107.645227 94.115062) (xy 107.637691 94.110226)
 				(xy 107.636199 94.107252) (xy 107.351427 93.254274) (xy 107.351809 93.245872) (xy 107.351909 93.245644)
 				(xy 107.429914 93.067662) (xy 107.432352 93.064094) (xy 107.507773 92.988673) (xy 107.516045 92.985247)
+			)
+		)
+	)
+	(zone
+		(net "/B_PW")
+		(layer "B.Cu")
+		(hatch none 0.1)
+		(priority 30000)
+		(attr
+			(teardrop
+				(type padvia)
+			)
+		)
+		(connect_pads yes
+			(clearance 0)
+		)
+		(min_thickness 0.0254)
+		(fill yes
+			(island_removal_mode 1)
+		)
+		(polygon
+			(pts
+				(xy 113.374748 93.039896) (xy 113.289896 93.124748) (xy 113.05 93.375) (xy 113.350707 94.275707)
+				(xy 113.636866 93.375)
+			)
+		)
+		(filled_polygon
+			(layer "B.Cu")
+			(pts
+				(xy 113.381948 93.049241) (xy 113.382888 93.050303) (xy 113.467709 93.158742) (xy 113.63306 93.370135)
+				(xy 113.635458 93.378762) (xy 113.634995 93.380886) (xy 113.361582 94.241476) (xy 113.355811 94.248323)
+				(xy 113.346888 94.249084) (xy 113.340041 94.243313) (xy 113.339333 94.241638) (xy 113.052237 93.381701)
+				(xy 113.052868 93.372769) (xy 113.054886 93.369902) (xy 113.289865 93.124779) (xy 113.289941 93.124702)
+				(xy 113.365403 93.04924) (xy 113.373675 93.045814)
 			)
 		)
 	)
@@ -22005,39 +21831,6 @@
 				(xy 100.416727 93.498948) (xy 100.4 93.436751) (xy 100.4 92.991829) (xy 100.405023 92.956893) (xy 100.409427 92.941895)
 				(xy 100.447172 92.883144) (xy 100.448541 92.881957) (xy 100.50342 92.854477) (xy 100.510979 92.852833)
 				(xy 100.537332 92.85) (xy 102.0172 92.85)
-			)
-		)
-	)
-	(zone
-		(net "/NRST")
-		(layer "B.Cu")
-		(hatch none 0.1)
-		(priority 30001)
-		(attr
-			(teardrop
-				(type padvia)
-			)
-		)
-		(connect_pads yes
-			(clearance 0)
-		)
-		(min_thickness 0.0254)
-		(fill yes
-			(island_removal_mode 1)
-		)
-		(polygon
-			(pts
-				(xy 101.075 104.74) (xy 101.075 104.86) (xy 101.35 105.05) (xy 102.101 104.775) (xy 101.35 104.518217)
-			)
-		)
-		(filled_polygon
-			(layer "B.Cu")
-			(pts
-				(xy 101.356099 104.520302) (xy 102.069725 104.764306) (xy 102.076445 104.770225) (xy 102.077011 104.779162)
-				(xy 102.071092 104.785882) (xy 102.069963 104.786364) (xy 101.355688 105.047916) (xy 101.346741 105.047542)
-				(xy 101.345014 105.046555) (xy 101.080049 104.863488) (xy 101.075191 104.855966) (xy 101.075 104.853862)
-				(xy 101.075 104.745594) (xy 101.078427 104.737321) (xy 101.079346 104.736494) (xy 101.344977 104.522267)
-				(xy 101.353567 104.519742)
 			)
 		)
 	)
@@ -22354,6 +22147,38 @@
 		)
 	)
 	(zone
+		(net "/OLED_SDA")
+		(layer "In2.Cu")
+		(hatch none 0.1)
+		(priority 30001)
+		(attr
+			(teardrop
+				(type padvia)
+			)
+		)
+		(connect_pads yes
+			(clearance 0)
+		)
+		(min_thickness 0.0254)
+		(fill yes
+			(island_removal_mode 1)
+		)
+		(polygon
+			(pts
+				(xy 96.14 94.185907) (xy 96.26 94.185907) (xy 96.790053 93.596239) (xy 96.19 92.999) (xy 95.600096 93.606389)
+			)
+		)
+		(filled_polygon
+			(layer "In2.Cu")
+			(pts
+				(xy 96.198291 93.007255) (xy 96.198394 93.007355) (xy 96.782171 93.588394) (xy 96.785617 93.596659)
+				(xy 96.782618 93.604509) (xy 96.263486 94.182029) (xy 96.255407 94.18589) (xy 96.254785 94.185907)
+				(xy 96.145091 94.185907) (xy 96.136818 94.18248) (xy 96.13653 94.182182) (xy 95.607681 93.614531)
+				(xy 95.604549 93.606142) (xy 95.607848 93.598407) (xy 96.181748 93.007496) (xy 96.189969 93.003949)
+			)
+		)
+	)
+	(zone
 		(layer "In2.Cu")
 		(uuid "1b08c705-d416-4b9d-8c88-d29983615180")
 		(hatch edge 0.5)
@@ -22446,38 +22271,6 @@
 			(pts
 				(xy 104.8 95.35) (xy 105.15 94.8) (xy 106.23448 94.788084) (xy 107.25 93.75) (xy 107.4 93.15) (xy 108.2 93.15)
 				(xy 108.2 94.1) (xy 106.4 95.9) (xy 105.8 95.3) (xy 105.15 95.4)
-			)
-		)
-	)
-	(zone
-		(net "/OLED_SDA")
-		(layer "In2.Cu")
-		(hatch none 0.1)
-		(priority 30001)
-		(attr
-			(teardrop
-				(type padvia)
-			)
-		)
-		(connect_pads yes
-			(clearance 0)
-		)
-		(min_thickness 0.0254)
-		(fill yes
-			(island_removal_mode 1)
-		)
-		(polygon
-			(pts
-				(xy 96.14 94.185907) (xy 96.26 94.185907) (xy 96.790053 93.596239) (xy 96.19 92.999) (xy 95.600096 93.606389)
-			)
-		)
-		(filled_polygon
-			(layer "In2.Cu")
-			(pts
-				(xy 96.198291 93.007255) (xy 96.198394 93.007355) (xy 96.782171 93.588394) (xy 96.785617 93.596659)
-				(xy 96.782618 93.604509) (xy 96.263486 94.182029) (xy 96.255407 94.18589) (xy 96.254785 94.185907)
-				(xy 96.145091 94.185907) (xy 96.136818 94.18248) (xy 96.13653 94.182182) (xy 95.607681 93.614531)
-				(xy 95.604549 93.606142) (xy 95.607848 93.598407) (xy 96.181748 93.007496) (xy 96.189969 93.003949)
 			)
 		)
 	)

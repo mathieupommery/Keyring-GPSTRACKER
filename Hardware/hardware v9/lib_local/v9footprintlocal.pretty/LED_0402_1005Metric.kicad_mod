@@ -9,7 +9,7 @@
 		(at 0 -1.17 0)
 		(layer "F.SilkS")
 		(hide yes)
-		(uuid "b3b66a52-324a-4e71-8f0e-21e51b0cbfc0")
+		(uuid "e34c047a-5472-404d-aee1-be9f3308d5f2")
 		(effects
 			(font
 				(size 1 1)
@@ -17,11 +17,11 @@
 			)
 		)
 	)
-	(property "Value" "150040BS73240"
+	(property "Value" "150040RS73240"
 		(at 0 1.17 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "7ab71f89-8bb7-4b22-b3c5-8d8a9636afa6")
+		(uuid "821baaaf-03e3-4c11-acdc-c3810588a90b")
 		(effects
 			(font
 				(size 1 1)
@@ -33,7 +33,7 @@
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "1be4c766-b269-4066-92cb-e6ff779b1414")
+		(uuid "27a9d898-529f-4101-98f9-b551c9db1e6c")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -45,7 +45,7 @@
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "d8f0f229-c14b-48bd-a47c-30ce71ebe0d7")
+		(uuid "2fb0da1f-a105-406a-8fef-e9576121ffa3")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -58,7 +58,7 @@
 		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "e1969331-cad5-4a0f-acdb-e301b2adc156")
+		(uuid "b27681b2-75bb-4a66-adb4-28f85d85bf40")
 		(effects
 			(font
 				(size 1 1)
@@ -71,7 +71,7 @@
 		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "550665a3-8bc5-4096-a9b1-2f19162869d8")
+		(uuid "efbf9a2a-8611-46c1-a728-487fd69d5365")
 		(effects
 			(font
 				(size 1 1)
@@ -79,12 +79,12 @@
 			)
 		)
 	)
-	(property "Manufacturer_Part_Number" "150040BS73240"
+	(property "Manufacturer_Part_Number" "150040GS73240"
 		(at 0 0 180)
 		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "ee12a631-2401-4ce3-8baa-17372067b78d")
+		(uuid "2701be41-34e7-4ad9-ad9a-36dba805a693")
 		(effects
 			(font
 				(size 1 1)
@@ -92,12 +92,12 @@
 			)
 		)
 	)
-	(property "Mouser Part Number" "710-150040BS73240"
+	(property "Mouser Part Number" "710-150040GS73240"
 		(at 0 0 180)
 		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "598d002b-ea1e-48d8-9706-2073b9777950")
+		(uuid "8a36ab5b-3c84-404b-8dad-6b9b7ffe97fb")
 		(effects
 			(font
 				(size 1 1)
@@ -105,12 +105,25 @@
 			)
 		)
 	)
-	(property "Mouser Price/Stock" "https://www.mouser.fr/ProductDetail/Wurth-Elektronik/150040BS73240?qs=fAHHVMwC%252BbhvR%252BdBIVVrgw%3D%3D"
+	(property "Mouser Price/Stock" "https://www.mouser.fr/ProductDetail/Wurth-Elektronik/150040GS73240?qs=fAHHVMwC%252Bbgmx0FZHKuCJg%3D%3D"
 		(at 0 0 180)
 		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "40144bba-e70c-4f73-b8c8-2da7a21f41b6")
+		(uuid "e180e6c8-fe55-4430-9b0a-2287618d4605")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Manufacturer_Name" "Wurth Elektronik"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "0189b958-b218-4ac4-a839-c9cf1e03e64c")
 		(effects
 			(font
 				(size 1 1)
@@ -119,8 +132,8 @@
 		)
 	)
 	(property ki_fp_filters "LED* LED_SMD:* LED_THT:*")
-	(sheetname "/")
-	(sheetfile "hardware_V8.kicad_sch")
+	(sheetname "/POWER/")
+	(sheetfile "untitled.kicad_sch")
 	(attr smd)
 	(duplicate_pad_numbers_are_jumpers no)
 	(fp_circle
@@ -132,7 +145,7 @@
 		)
 		(fill no)
 		(layer "F.SilkS")
-		(uuid "14e35c72-14b0-4947-b491-7e16d5b65770")
+		(uuid "4ff7c844-4f83-45ee-82e5-8dab3bec3d32")
 	)
 	(fp_rect
 		(start -0.93 -0.47)
@@ -143,7 +156,7 @@
 		)
 		(fill no)
 		(layer "F.CrtYd")
-		(uuid "871d7dc0-07f7-43f5-aa07-289952fcdfa6")
+		(uuid "d790e113-fb30-4aae-b9b5-19db3dbca4c3")
 	)
 	(fp_line
 		(start -0.3 0.25)
@@ -153,7 +166,7 @@
 			(type solid)
 		)
 		(layer "F.Fab")
-		(uuid "e2a5cf30-29f8-48b1-8c5a-f1e2a3c4506c")
+		(uuid "a2f79183-ea31-4a9b-8678-290cc92d292c")
 	)
 	(fp_line
 		(start -0.4 0.25)
@@ -163,7 +176,7 @@
 			(type solid)
 		)
 		(layer "F.Fab")
-		(uuid "a72f90ff-5a62-43cf-a2e7-babbb3f892bc")
+		(uuid "bdd5b49b-e62e-476c-b4f4-feed1671da40")
 	)
 	(fp_rect
 		(start -0.5 -0.25)
@@ -174,12 +187,12 @@
 		)
 		(fill no)
 		(layer "F.Fab")
-		(uuid "8bc2ab40-dee6-4865-86b4-71c7d40ad2e5")
+		(uuid "62f8c808-efb1-42a2-8d79-bc5ec9e99484")
 	)
 	(fp_text user "${REFERENCE}"
 		(at 0 0 0)
 		(layer "F.Fab")
-		(uuid "40584b43-fd6c-423c-b221-39df074bc80a")
+		(uuid "1567568b-ce96-45d1-b1d2-04704d93e7b1")
 		(effects
 			(font
 				(size 0.25 0.25)
@@ -192,14 +205,14 @@
 		(size 0.59 0.64)
 		(layers "F.Cu" "F.Mask" "F.Paste")
 		(roundrect_rratio 0.25)
-		(uuid "4d2c4e8a-4801-4f69-a82f-391b65b68315")
+		(uuid "6cbbd154-90ed-4772-a8c7-d9a73e1b8070")
 	)
 	(pad "2" smd roundrect
 		(at 0.485 0 180)
 		(size 0.59 0.64)
 		(layers "F.Cu" "F.Mask" "F.Paste")
 		(roundrect_rratio 0.25)
-		(uuid "43896dd4-7d6a-4d3d-9745-9c18a8983366")
+		(uuid "ed830b3e-f355-42ae-80f6-d3cda2d1784f")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/LED_SMD.3dshapes/LED_0402_1005Metric.step"

@@ -2743,7 +2743,7 @@
 	)
 	(wire
 		(pts
-			(xy 120.65 196.85) (xy 120.65 195.58)
+			(xy 219.71 125.73) (xy 219.71 124.46)
 		)
 		(stroke
 			(width 0)
@@ -2893,7 +2893,7 @@
 	)
 	(wire
 		(pts
-			(xy 107.95 196.85) (xy 107.95 195.58)
+			(xy 207.01 125.73) (xy 207.01 124.46)
 		)
 		(stroke
 			(width 0)
@@ -3132,7 +3132,7 @@
 		(uuid "2d1b2169-a23d-43ba-bf70-94acb77cf1ad")
 	)
 	(label "SWCLK"
-		(at 107.95 196.85 270)
+		(at 207.01 125.73 270)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3302,7 +3302,7 @@
 		(uuid "b910605b-4dc7-4dbf-9314-da52f9ca1e5c")
 	)
 	(label "SWDIO"
-		(at 120.65 196.85 270)
+		(at 219.71 125.73 270)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5141,7 +5141,7 @@
 	)
 	(symbol
 		(lib_id "Connector:TestPoint")
-		(at 120.65 195.58 0)
+		(at 219.71 124.46 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -5152,7 +5152,7 @@
 		(fields_autoplaced yes)
 		(uuid "a0dee3eb-744e-4817-a2e5-69bf840ad38d")
 		(property "Reference" "TP4"
-			(at 123.19 191.0079 0)
+			(at 222.25 119.8879 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5163,7 +5163,7 @@
 			)
 		)
 		(property "Value" "SWDIO"
-			(at 123.19 193.5479 0)
+			(at 222.25 122.4279 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5174,7 +5174,7 @@
 			)
 		)
 		(property "Footprint" "v9footprint:pad_0.7mm"
-			(at 125.73 195.58 0)
+			(at 224.79 124.46 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5185,7 +5185,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 125.73 195.58 0)
+			(at 224.79 124.46 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5196,7 +5196,7 @@
 			)
 		)
 		(property "Description" "test point"
-			(at 120.65 195.58 0)
+			(at 219.71 124.46 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5521,7 +5521,7 @@
 	)
 	(symbol
 		(lib_id "Connector:TestPoint")
-		(at 107.95 195.58 0)
+		(at 207.01 124.46 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -5532,7 +5532,7 @@
 		(fields_autoplaced yes)
 		(uuid "e4c7a64b-7297-438c-bdb7-24e466b915fc")
 		(property "Reference" "TP3"
-			(at 110.49 191.0079 0)
+			(at 209.55 119.8879 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5543,7 +5543,7 @@
 			)
 		)
 		(property "Value" "SWCLK"
-			(at 110.49 193.5479 0)
+			(at 209.55 122.4279 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5554,7 +5554,7 @@
 			)
 		)
 		(property "Footprint" "v9footprint:pad_0.7mm"
-			(at 113.03 195.58 0)
+			(at 212.09 124.46 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5565,7 +5565,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 113.03 195.58 0)
+			(at 212.09 124.46 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5576,7 +5576,7 @@
 			)
 		)
 		(property "Description" "test point"
-			(at 107.95 195.58 0)
+			(at 207.01 124.46 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)

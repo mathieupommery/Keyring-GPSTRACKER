@@ -8,7 +8,7 @@
 		(unlocked yes)
 		(layer "F.SilkS")
 		(hide yes)
-		(uuid "d70d89da-2937-4799-86ff-af68e6eea184")
+		(uuid "09e50bea-e1ac-4c53-a8f6-7dbf62be2f4b")
 		(effects
 			(font
 				(size 1 1)
@@ -21,7 +21,7 @@
 		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "26d19502-e976-48df-85b1-5bc9e162b927")
+		(uuid "b357ab64-7617-49f5-a6b4-b4fae732cb62")
 		(effects
 			(font
 				(size 1 1)
@@ -34,7 +34,7 @@
 		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "66456530-50fb-443a-904d-0b0d57d873eb")
+		(uuid "77680f3d-569c-4f0e-8383-a3991a3319f7")
 		(effects
 			(font
 				(size 1 1)
@@ -47,7 +47,7 @@
 		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "678aaba2-7746-4823-a42f-b665088e1f4e")
+		(uuid "f194617c-7c97-4e5d-8a21-27911e76cdd2")
 		(effects
 			(font
 				(size 1 1)
@@ -57,14 +57,14 @@
 	)
 	(property ki_fp_filters "Pin* Test*")
 	(sheetname "/")
-	(sheetfile "hardware_V8.kicad_sch")
+	(sheetfile "hardware_V9.kicad_sch")
 	(attr through_hole dnp)
 	(duplicate_pad_numbers_are_jumpers no)
 	(pad "1" smd circle
 		(at 0 0)
 		(size 0.7 0.7)
 		(layers "F.Cu" "F.Mask" "F.Paste")
-		(uuid "84155ee6-aaae-4a08-aea2-95032265a16e")
+		(uuid "68a1528e-aadb-4f28-9220-ceff4e089566")
 	)
 	(embedded_fonts no)
 )

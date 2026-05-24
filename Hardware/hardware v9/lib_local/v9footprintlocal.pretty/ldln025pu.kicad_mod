@@ -8,7 +8,7 @@
 		(unlocked yes)
 		(layer "F.SilkS")
 		(hide yes)
-		(uuid "d0af54bb-3177-4907-8516-d2d5859103b7")
+		(uuid "62f801fe-7d91-47c3-9c4c-0a4da010dd74")
 		(effects
 			(font
 				(size 1 1)
@@ -21,7 +21,7 @@
 		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "030b237a-9c0b-4c65-a8c5-29bf93907e71")
+		(uuid "42bc9278-6844-4acd-bf5f-f7c38b6ee0f2")
 		(effects
 			(font
 				(size 1 1)
@@ -34,7 +34,7 @@
 		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "d88b1e98-ed64-40b8-99f5-422a28279d3b")
+		(uuid "0ee3feb3-ee11-4d8c-8738-5a655ca547dc")
 		(effects
 			(font
 				(size 1 1)
@@ -47,7 +47,7 @@
 		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "fd0859c1-a5ae-456a-b84d-b7c13a817078")
+		(uuid "c51c9061-3a22-4be7-8b78-3f77acc5e817")
 		(effects
 			(font
 				(size 1 1)
@@ -60,7 +60,7 @@
 		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "028134f2-1fb1-4cdc-8d80-716008d5cdb0")
+		(uuid "5847ea48-68e2-419f-a212-bfcaab58de12")
 		(effects
 			(font
 				(size 1 1)
@@ -73,7 +73,7 @@
 		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "1a406861-9cf1-4a68-b40d-f735e5d4ae87")
+		(uuid "d1ffe279-967c-4407-8216-34b108720716")
 		(effects
 			(font
 				(size 1 1)
@@ -89,7 +89,7 @@
 		(at 0.0075 0.145 180)
 		(unlocked yes)
 		(layer "F.Fab")
-		(uuid "2fe7fd63-0f77-417f-98ba-231993d604ac")
+		(uuid "40c01e8c-91cc-4005-adaf-f1ee99eaf337")
 		(effects
 			(font
 				(size 1 1)
@@ -105,7 +105,7 @@
 		(chamfer_ratio 0.5)
 		(chamfer bottom_right)
 		(thermal_bridge_angle 45)
-		(uuid "2f5e4301-cf98-4671-91ff-14d9ae3bb9d7")
+		(uuid "ad393d91-6db5-4bfb-b1bb-8ae27477a6dd")
 	)
 	(pad "2" smd roundrect
 		(at -0.3925 0.355 180)
@@ -115,14 +115,14 @@
 		(chamfer_ratio 0.5)
 		(chamfer top_right)
 		(thermal_bridge_angle 45)
-		(uuid "e3844eec-17d2-41a5-9b25-6051fdeabc2a")
+		(uuid "b2b0c991-8e70-42c9-8a2d-03a12f1050a1")
 	)
 	(pad "2" smd rect
 		(at 0 0 225)
 		(size 0.5 0.5)
 		(layers "F.Cu" "F.Mask" "F.Paste")
 		(thermal_bridge_angle 45)
-		(uuid "41beecee-efef-4ca8-8af6-c55511e3b310")
+		(uuid "ca328e76-22b2-4be9-a89c-05b52abdcd2c")
 	)
 	(pad "3" smd roundrect
 		(at 0.3925 0.355 180)
@@ -132,7 +132,7 @@
 		(chamfer_ratio 0.5)
 		(chamfer top_left)
 		(thermal_bridge_angle 45)
-		(uuid "5ce72bd8-8d7d-4481-bab6-c1474f4f86ff")
+		(uuid "ae2803f4-3b1c-4614-bdb8-183e721693ee")
 	)
 	(pad "4" smd roundrect
 		(at 0.3925 -0.355 180)
@@ -142,7 +142,18 @@
 		(chamfer_ratio 0.5)
 		(chamfer bottom_left)
 		(thermal_bridge_angle 45)
-		(uuid "53ef5c00-1eac-4be7-bfe8-895949056929")
+		(uuid "0e8e095c-086c-475a-aff9-7b3d4c2f87ed")
 	)
 	(embedded_fonts no)
+	(model "C:/Users/mathi/Documents/GitHub/Keyring-GPSTRACKER/Docs/Libraries/LDLN025PU30R.step"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz -90 -0 -0)
+		)
+	)
 )

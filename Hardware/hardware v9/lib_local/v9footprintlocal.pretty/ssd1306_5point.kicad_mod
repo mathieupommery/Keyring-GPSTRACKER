@@ -8,7 +8,7 @@
 		(unlocked yes)
 		(layer "F.SilkS")
 		(hide yes)
-		(uuid "24c2e907-4fbd-4e16-81da-6d068e0c5bab")
+		(uuid "bc61c0e4-b5ff-4f40-9bdb-e6b331b5e95e")
 		(effects
 			(font
 				(size 1 1)
@@ -21,7 +21,7 @@
 		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "91473f3c-b8c7-4d95-a708-58627e0c13a4")
+		(uuid "1ca820c5-d3e6-46b4-8dbf-cea51ba4cf9a")
 		(effects
 			(font
 				(size 1 1)
@@ -34,7 +34,7 @@
 		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "729edcc0-6a02-4fa3-9daa-6990d8dc9585")
+		(uuid "55126c94-4ab8-4d33-97d7-fc15d12cf0b7")
 		(effects
 			(font
 				(size 1 1)
@@ -47,7 +47,7 @@
 		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "e7f1ac72-232c-4fe2-ab4b-1f0e144ef2aa")
+		(uuid "4754cf18-b399-49fa-bc6a-48305165bd59")
 		(effects
 			(font
 				(size 1 1)
@@ -68,7 +68,7 @@
 		)
 		(fill no)
 		(layer "Eco1.User")
-		(uuid "4d12d5ff-87f6-4320-bbe8-5e44de120f5c")
+		(uuid "fa1b3084-cdd6-43ec-975a-7c7b7bf6897c")
 	)
 	(pad "1" thru_hole rect
 		(at -3.81 -7 270)
@@ -76,7 +76,7 @@
 		(drill 1)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "9242084f-7677-4c7b-9e99-c14e146ea8b9")
+		(uuid "effe251e-4aaa-47a0-8759-61726dd62293")
 	)
 	(pad "2" thru_hole circle
 		(at -1.27 -7 90)
@@ -95,7 +95,7 @@
 			(allow_two_segments yes)
 			(prefer_zone_connections yes)
 		)
-		(uuid "3feac6ba-b23f-4a3a-8c4d-e017255b45ae")
+		(uuid "e3528c2c-7924-4841-bbc4-32c6ee006abe")
 	)
 	(pad "3" thru_hole circle
 		(at 1.27 -7 270)
@@ -114,18 +114,18 @@
 			(allow_two_segments no)
 			(prefer_zone_connections yes)
 		)
-		(uuid "8781f33e-57e8-4174-8587-b15dad44535d")
+		(uuid "1de2244c-4d11-43f1-9167-204324a08460")
 	)
 	(pad "4" thru_hole circle
-		(at 3.81 -7 270)
+		(at 3.81 -7 90)
 		(size 1.7 1.7)
 		(drill 1)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
 		(teardrops
-			(best_length_ratio 0.5)
+			(best_length_ratio 0.2)
 			(max_length 1)
-			(best_width_ratio 1)
+			(best_width_ratio 0.7)
 			(max_width 2)
 			(curved_edges no)
 			(filter_ratio 0.9)
@@ -133,7 +133,7 @@
 			(allow_two_segments no)
 			(prefer_zone_connections yes)
 		)
-		(uuid "674a9fca-6aae-48c5-a46a-762fa61bb645")
+		(uuid "1d103dd7-aeae-48f4-9bfa-32dec4a6dd86")
 	)
 	(pad "5" thru_hole circle
 		(at -4.5 7 270)
@@ -141,7 +141,7 @@
 		(drill 1)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "9976e263-9b72-42f8-be07-12d2dc6e10ca")
+		(uuid "8cbf16f7-536a-4128-bb5d-42c9fb5cc839")
 	)
 	(pad "6" thru_hole circle
 		(at 4.5 7 270)
@@ -149,7 +149,7 @@
 		(drill 1)
 		(layers "*.Cu" "*.Mask")
 		(remove_unused_layers no)
-		(uuid "14e868e0-053b-4142-abe8-28799a6e8ea5")
+		(uuid "0aef57ad-262e-4047-8ece-5bb481fcfe36")
 	)
 	(embedded_fonts no)
 	(model "C:/Users/mathi/Documents/GitHub/Keyring-GPSTRACKER/Hardware/hardware_v9/step/ssd1306.step"

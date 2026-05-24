@@ -9,7 +9,7 @@
 		(at 0 -1.05 0)
 		(layer "F.SilkS")
 		(hide yes)
-		(uuid "30fbd521-5554-4107-b715-841e83c541c6")
+		(uuid "485cd6e6-d089-4203-a4bb-9f5e317a39c1")
 		(effects
 			(font
 				(size 1 1)
@@ -17,11 +17,11 @@
 			)
 		)
 	)
-	(property "Value" "22R"
+	(property "Value" "5.1k"
 		(at 0 1.05 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "dbf06a11-4d3c-4f4f-b2a0-d194a4be837c")
+		(uuid "0893f424-159c-40a1-b95c-abc8cec697e3")
 		(effects
 			(font
 				(size 1 1)
@@ -33,10 +33,11 @@
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "606a30bf-cd7b-4aeb-9c7d-3bf842a2fdbf")
+		(uuid "d585c146-3595-4ad4-b6cd-a0d3f8847287")
 		(effects
 			(font
 				(size 1.27 1.27)
+				(thickness 0.15)
 			)
 		)
 	)
@@ -44,18 +45,46 @@
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "cb509c64-cc4d-43a9-96b6-e717fee7bd61")
+		(uuid "80f89e15-c16c-4616-bbde-4127473d6281")
 		(effects
 			(font
 				(size 1.27 1.27)
+				(thickness 0.15)
 			)
 		)
 	)
-	(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-		(at 0 0 0)
-		(layer "F.SilkS")
+	(property "KiLib_Generator" "https://www.mouser.fr/ProductDetail/YAGEO/AF0201FR-075K1L?qs=tggtontpCXOBTGA3imPYYA%3D%3D"
+		(at 0 0 180)
+		(unlocked yes)
+		(layer "F.Fab")
 		(hide yes)
-		(uuid "a565b213-ccc6-4bad-9d14-85a8acdadfc6")
+		(uuid "a245558f-016d-4fc5-823e-70204efe969c")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Mouser Part Number" "603-AF0201FR-075K1L"
+		(at 0 0 180)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "7b694915-21d6-470f-9465-03b55f5a2234")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Mouser Price/Stock" "https://www.mouser.fr/ProductDetail/YAGEO/AF0201FR-075K1L?qs=tggtontpCXOBTGA3imPYYA%3D%3D"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "15050b37-3cce-4caa-a1bd-b836c03f6f7f")
 		(effects
 			(font
 				(size 1 1)
@@ -64,8 +93,8 @@
 		)
 	)
 	(property ki_fp_filters "R_*")
-	(sheetname "/Peripherial/")
-	(sheetfile "peripherial.kicad_sch")
+	(sheetname "/BTN_CONN/")
+	(sheetfile "BTN_CONN.kicad_sch")
 	(attr smd)
 	(duplicate_pad_numbers_are_jumpers no)
 	(fp_rect
@@ -77,7 +106,7 @@
 		)
 		(fill no)
 		(layer "F.CrtYd")
-		(uuid "dff94345-6547-466b-843d-4fe3d86d3197")
+		(uuid "27e6c7b9-5aae-4557-8c5a-8fb1aa0b14b0")
 	)
 	(fp_rect
 		(start -0.3 -0.15)
@@ -88,12 +117,12 @@
 		)
 		(fill no)
 		(layer "F.Fab")
-		(uuid "2c60c9de-ce4f-4a93-a6a9-9a6af56c2698")
+		(uuid "a1f78281-bf85-4d6f-9541-8bd330823342")
 	)
 	(fp_text user "${REFERENCE}"
 		(at 0 -0.68 0)
 		(layer "F.Fab")
-		(uuid "286ef37b-339c-4ed9-b4c7-f347888cb860")
+		(uuid "4bf51ff9-b131-433b-b714-1f103d32d4a5")
 		(effects
 			(font
 				(size 0.25 0.25)
@@ -106,28 +135,28 @@
 		(size 0.458 0.36)
 		(layers "F.Paste")
 		(roundrect_rratio 0.25)
-		(uuid "df6de4e9-d41b-4b64-990e-29a2e0ed5cff")
+		(uuid "65015274-6c83-45cb-aa92-aeea64b50290")
 	)
 	(pad "" smd roundrect
 		(at 0.4325 0 180)
 		(size 0.458 0.36)
 		(layers "F.Paste")
 		(roundrect_rratio 0.25)
-		(uuid "f20b70a5-9c6e-425d-94cd-3643353d43fb")
+		(uuid "e963ce9d-9783-45d8-9a35-7ca4b1f1cd8b")
 	)
 	(pad "1" smd roundrect
 		(at -0.4075 0 180)
 		(size 0.635 0.4)
 		(layers "F.Cu" "F.Mask")
 		(roundrect_rratio 0.25)
-		(uuid "d2e5fc3a-e714-4f1e-b356-8fd249f9143b")
+		(uuid "ff79b57e-685a-477d-8c9b-a85ca7577a6f")
 	)
 	(pad "2" smd roundrect
 		(at 0.4075 0 180)
 		(size 0.635 0.4)
 		(layers "F.Cu" "F.Mask")
 		(roundrect_rratio 0.25)
-		(uuid "9aa9672c-016c-41ce-a2be-6b36d1b0f35a")
+		(uuid "d13050ca-6f26-48e1-a7a0-e59a604cf2b1")
 	)
 	(embedded_fonts no)
 	(model "${KICAD10_3DMODEL_DIR}/Resistor_SMD.3dshapes/R_0201_0603Metric.step"

@@ -9,7 +9,7 @@
 		(at 0 -0.536 0)
 		(layer "F.SilkS")
 		(hide yes)
-		(uuid "31928d51-dd38-4155-91b6-a0ca309d8ddd")
+		(uuid "76b94904-ccb7-48e0-9b29-04bdafee68a4")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -21,7 +21,7 @@
 		(at 0 -0.536 0)
 		(layer "F.SilkS")
 		(hide yes)
-		(uuid "5e391623-de96-4ca8-91ac-e38ea53fadb4")
+		(uuid "f0b43047-7bbc-47ee-af4e-f763260cb472")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -33,7 +33,7 @@
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "6f90d58f-ed69-4ffb-9ec1-79ef295ace38")
+		(uuid "c44b18bf-0d69-4eee-b058-b6ca5b42743e")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -45,7 +45,7 @@
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "808f219b-e1e9-4665-b53b-84ef9a3c4a28")
+		(uuid "1024fd1f-ec8c-4fd4-9ff5-90df3081d849")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -58,7 +58,7 @@
 		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "d9bdd52b-74b1-452a-9a9b-3a2631632468")
+		(uuid "d74b5042-b3dd-406d-8b12-404d568defda")
 		(effects
 			(font
 				(size 1 1)
@@ -71,7 +71,7 @@
 		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "632544ff-f5be-4ed6-8f7d-ec1922fe9be6")
+		(uuid "499e7f36-67c4-4522-b08c-11c9a3e0da82")
 		(effects
 			(font
 				(size 1 1)
@@ -84,7 +84,7 @@
 		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "56be1726-73cc-4b7e-bf89-72219dd3775d")
+		(uuid "d6d72dc9-3dee-4a70-93dc-4a8959b36437")
 		(effects
 			(font
 				(size 1 1)
@@ -97,7 +97,7 @@
 		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "960759c2-d613-45e8-b7e8-1177790faf70")
+		(uuid "93b7bcb1-6d71-4927-ae3f-9bb6e87b440c")
 		(effects
 			(font
 				(size 1 1)
@@ -110,7 +110,7 @@
 		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "87a0d026-8e61-46bd-9ccf-7883c130d91a")
+		(uuid "1c40deb7-fca4-4607-adf1-fbef336d9d7b")
 		(effects
 			(font
 				(size 1 1)
@@ -126,132 +126,132 @@
 		(at -3.35 -3.678 180)
 		(size 0.3 1.15)
 		(layers "F.Cu" "F.Mask" "F.Paste")
-		(uuid "6b759d14-171b-45a8-8223-725ef392f1fc")
+		(uuid "7cc91e8e-78cf-4cb4-a7a0-75cf50bb5dab")
 	)
 	(pad "A4" smd rect
 		(at -2.55 -3.678 180)
 		(size 0.3 1.15)
 		(layers "F.Cu" "F.Mask" "F.Paste")
-		(uuid "18c26af0-f593-4e0e-b0d2-e1095c4992a7")
+		(uuid "987b9993-4fc0-43d5-b1e4-0d9aab84a3b0")
 	)
 	(pad "A5" smd rect
 		(at -1.25 -3.678 180)
 		(size 0.3 1.15)
 		(layers "F.Cu" "F.Mask" "F.Paste")
-		(uuid "9c034980-6e6f-404b-87e4-2943a514e509")
+		(uuid "c4a3432f-6a1f-4202-b333-f19f2a1d9be1")
 	)
 	(pad "A6" smd rect
 		(at -0.25 -3.678 180)
 		(size 0.3 1.15)
 		(layers "F.Cu" "F.Mask" "F.Paste")
-		(uuid "f092fe0a-f646-43e6-b248-e83739a9c96e")
+		(uuid "929bdb38-3b6a-497d-bdfe-430bcb550d0e")
 	)
 	(pad "A7" smd rect
 		(at 0.25 -3.678 180)
 		(size 0.3 1.15)
 		(layers "F.Cu" "F.Mask" "F.Paste")
-		(uuid "50678988-ae5c-478a-a707-a04289bcde92")
+		(uuid "f4008f03-d352-4e64-8f69-2b4d18feaa6b")
 	)
 	(pad "A8" smd rect
 		(at 1.25 -3.678 180)
 		(size 0.3 1.15)
 		(layers "F.Cu" "F.Mask" "F.Paste")
-		(uuid "35917a81-2453-4336-a166-850b38d7dec3")
+		(uuid "7c09fb6f-2c10-4770-b187-89c6ae839527")
 	)
 	(pad "A9" smd rect
 		(at 2.55 -3.678 180)
 		(size 0.3 1.15)
 		(layers "F.Cu" "F.Mask" "F.Paste")
-		(uuid "0dc3f320-a68d-409e-a0e9-5d90951e5973")
+		(uuid "92e517d1-e604-4150-9a9f-3eb7a5607ad1")
 	)
 	(pad "A12" smd rect
 		(at 3.35 -3.678 180)
 		(size 0.3 1.15)
 		(layers "F.Cu" "F.Mask" "F.Paste")
-		(uuid "280f09a4-1728-42ab-a91d-ac74fa496236")
+		(uuid "8db73838-f786-4f4b-b822-20c748e98c13")
 	)
 	(pad "B1" smd rect
 		(at 3.05 -3.678 180)
 		(size 0.3 1.15)
 		(layers "F.Cu" "F.Mask" "F.Paste")
-		(uuid "4e8d2d02-da27-4cea-9536-50e01e563c02")
+		(uuid "a38c0903-1663-4e74-a38a-3c72684be56e")
 	)
 	(pad "B4" smd rect
 		(at 2.25 -3.678 180)
 		(size 0.3 1.15)
 		(layers "F.Cu" "F.Mask" "F.Paste")
-		(uuid "a0f60dcd-85c6-46b4-826b-fa03b9da988e")
+		(uuid "4acd4381-a003-4e9f-b5c0-a76e3ce0db3f")
 	)
 	(pad "B5" smd rect
 		(at 1.75 -3.678 180)
 		(size 0.3 1.15)
 		(layers "F.Cu" "F.Mask" "F.Paste")
-		(uuid "55fd8d31-6fb8-4a38-8404-38538faad408")
+		(uuid "e9fc84bd-e466-4392-be11-7691c79a3cae")
 	)
 	(pad "B6" smd rect
 		(at 0.75 -3.678 180)
 		(size 0.3 1.15)
 		(layers "F.Cu" "F.Mask" "F.Paste")
-		(uuid "ef5b8d53-7f0b-4b1d-85de-700caaf0337d")
+		(uuid "4dd270c6-891c-4236-821b-bcf10250622e")
 	)
 	(pad "B7" smd rect
 		(at -0.75 -3.678 180)
 		(size 0.3 1.15)
 		(layers "F.Cu" "F.Mask" "F.Paste")
-		(uuid "803364aa-9d4c-4802-9ab4-6ae8b57d6a24")
+		(uuid "f0424e3d-346a-4248-ba7c-22462c94a663")
 	)
 	(pad "B8" smd rect
 		(at -1.75 -3.678 180)
 		(size 0.3 1.15)
 		(layers "F.Cu" "F.Mask" "F.Paste")
-		(uuid "5682ba54-cd30-4c57-9ec6-7f816571bf82")
+		(uuid "3eac8b73-4b77-4ed5-abbe-29dedb94a47b")
 	)
 	(pad "B9" smd rect
 		(at -2.25 -3.678 180)
 		(size 0.3 1.15)
 		(layers "F.Cu" "F.Mask" "F.Paste")
-		(uuid "9d306869-3cae-46f2-a2ca-76671e9a7abb")
+		(uuid "236d1c85-1558-4174-9039-268abf7f0b94")
 	)
 	(pad "B12" smd rect
 		(at -3.05 -3.678 180)
 		(size 0.3 1.15)
 		(layers "F.Cu" "F.Mask" "F.Paste")
-		(uuid "e9b80725-91ad-4f94-a2cb-fea825a095e6")
+		(uuid "6cb0cde9-0dc4-43a8-9bb1-b719187b875a")
 	)
 	(pad "MP1" smd rect
 		(at -4.82 0.827 270)
 		(size 2 1.6)
 		(layers "F.Cu" "F.Mask" "F.Paste")
-		(uuid "a51a1f58-cdf2-4f17-8224-eb07a648a4ed")
+		(uuid "c771ff2a-6027-4bfe-bcd1-c5519abd56f1")
 	)
 	(pad "MP2" smd rect
 		(at 4.82 0.827 270)
 		(size 2 1.6)
 		(layers "F.Cu" "F.Mask" "F.Paste")
-		(uuid "3fecd69d-ad8e-41ab-9782-afc4f8542000")
+		(uuid "4cddce34-d0ae-41d2-9343-5512421870e2")
 	)
 	(pad "MP3" smd rect
 		(at -4.82 -3.103 270)
 		(size 2 1.6)
 		(layers "F.Cu" "F.Mask" "F.Paste")
-		(uuid "dbe37ac1-8131-4c45-8556-2990f70b0e12")
+		(uuid "0c1b39b1-4427-489f-9c4f-03a34b0eddc6")
 	)
 	(pad "MP4" smd rect
 		(at 4.82 -3.103 270)
 		(size 2 1.6)
 		(layers "F.Cu" "F.Mask" "F.Paste")
-		(uuid "bae9051c-1ff5-406b-976d-edacd9b18550")
+		(uuid "42ab46e2-7dcb-43b2-9be5-3268f9f58f66")
 	)
 	(embedded_fonts no)
-	(model "C:\\Users\\mathi\\Desktop\\libloader\\SamacSys_Parts.3dshapes\\USB4110-GF-A.stp"
+	(model "C:/Users/mathi/Desktop/projet/libloader/SamacSys_Parts.3dshapes/USB4110-GF-A.stp"
 		(offset
-			(xyz 0 2.599999866 0)
+			(xyz 0 2.55 0)
 		)
 		(scale
 			(xyz 1 1 1)
 		)
 		(rotate
-			(xyz -90 0 0)
+			(xyz -90 -0 -0)
 		)
 	)
 )
