@@ -785,25 +785,13 @@
         "uuid": "e491fdb3-646d-47e4-8ebb-9632fba4f524"
       }
     ],
-    "used_designators": "",
+    "used_designators": "#PWR16,#PWR36,#PWR48,#PWR65-66,R3,R19,#FLG4,J2,TP1-2,C14",
     "variants": []
   },
   "sheets": [
     [
       "e491fdb3-646d-47e4-8ebb-9632fba4f524",
-      "hardware_V9"
-    ],
-    [
-      "42e3e1b1-9911-4d5d-8c18-366c2d58b563",
-      "POWER"
-    ],
-    [
-      "25c4fb51-bd59-4678-ba4a-7c4659e70c53",
-      "BTN_CONN"
-    ],
-    [
-      "84aae796-102b-48fc-8d1d-620f5c7b8bfd",
-      "Peripherial"
+      "aux_flex_pcb"
     ]
   ],
   "text_variables": {},
