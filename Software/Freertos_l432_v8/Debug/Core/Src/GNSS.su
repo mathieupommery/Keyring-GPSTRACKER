@@ -1,4 +1,4 @@
 ../Core/Src/GNSS.c:15:6:GNSS_Init	16	static
 ../Core/Src/GNSS.c:39:6:GNSS_ParsePVTData	48	static
 ../Core/Src/GNSS.c:106:19:GNSS_Process	32	static
-../Core/Src/GNSS.c:164:8:distancecalc	64	static
+../Core/Src/GNSS.c:163:8:distancecalc	64	static

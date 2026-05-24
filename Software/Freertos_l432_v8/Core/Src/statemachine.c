@@ -12,21 +12,26 @@
 extern uint8_t bufferscreen[50];
 extern AdcContext_t gAdc;
 
+static void utility_function(AppStateMachineContext * ctx,GNSS_StateHandle*gps){
 
-void StateMachine_Run(AppStateMachineContext *ctx,GNSS_StateHandle*gps,Buttons_t *buttons,AdcContext_t *gAdc)
+	if (gps->fixType >= 2 && ctx->rtc_synced == 0) {
+	        ctx->HR        = gps->hour;
+	        ctx->MINUTE    = gps->min;
+	        ctx->SEC       = gps->sec;
+	        ctx->JOURS     = gps->day;
+	        ctx->MOIS      = gps->month;
+	        ctx->ANNEE     =(uint16_t ) gps->year;
+	        set_time(ctx->HR, ctx->MINUTE, ctx->SEC);
+	        ctx->rtc_synced = 1 ;
+	    }
+
+}
+
+
+
+void StateMachine_Run(AppStateMachineContext *ctx,GNSS_StateHandle*gps,Buttons_t *buttons,AdcContext_t *gAdc,SDCard_struct *sd)
 {
-    ctx->flag_usb_mounted =(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_4) == GPIO_PIN_RESET) ? 0 : 1;
-
-    if (ctx->settimeen == 0) {
-        ctx->settimeen = 1;
-        ctx->HR        = gps->hour;
-        ctx->MINUTE    = gps->min;
-        ctx->SEC       = gps->sec;
-        ctx->JOURS     = gps->day;
-        ctx->MOIS      = gps->month;
-        ctx->ANNEE     =(uint16_t ) gps->year;
-        set_time(ctx->HR, ctx->MINUTE, ctx->SEC);
-    }
+	utility_function(ctx,gps);
 
     switch (ctx->state)
     {
@@ -140,14 +145,37 @@ void StateMachine_Run(AppStateMachineContext *ctx,GNSS_StateHandle*gps,Buttons_t
     {
         ssd1306_Fill(Black);
 
-        ssd1306_SetCursor(32, 32);
-        snprintf((char *)bufferscreen, 15, "usb: %d", ctx->flag_usb_mounted);
-        ssd1306_WriteString((char *)bufferscreen, Font_7x10, White);
+
 
         switch (ctx->balisestate)
         {
         case BALISESTATE1:
             ssd1306_SetCursor(32, 32);
+            if((sd->isthereasdcard == 0) || (sd->mscconnected == 1) || (gps->numSV < 3 )){
+            if(sd->mscconnected == 1){
+            	snprintf((char *)bufferscreen, 15, "usb");
+            	ssd1306_WriteString((char *)bufferscreen, Font_7x10, White);
+                    }
+            if(sd->isthereasdcard == 0){
+            	ssd1306_SetCursor(32, 42);
+                snprintf((char *)bufferscreen, 15, "no sd");
+                ssd1306_WriteString((char *)bufferscreen, Font_7x10, White);
+                 }
+            if(gps->numSV < 3 ){
+                        	ssd1306_SetCursor(32, 52);
+                            snprintf((char *)bufferscreen, 15, "no gps");
+                            ssd1306_WriteString((char *)bufferscreen, Font_7x10, White);
+                             }
+            }
+
+            else{
+            	ssd1306_SetCursor(32, 32);
+            	snprintf((char *)bufferscreen, 15, "OK");
+            	ssd1306_WriteString((char *)bufferscreen, Font_16x24, White);
+            	ssd1306_SetCursor(32, 56);
+            	snprintf((char *)bufferscreen, 15, "sat:%d",gps->numSV);
+            	ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
+
 
             if (buttons->BTN_B_LONG >= 1) {
                 ctx->balisestate++;
@@ -155,7 +183,8 @@ void StateMachine_Run(AppStateMachineContext *ctx,GNSS_StateHandle*gps,Buttons_t
                 buttons->BTN_A      = 0;
                 ctx->oldlat         = gps->fLat;
                 ctx->oldlong        = gps->fLon;
-                // osThreadResume(BALISEHandle);
+                sd->is_recording=1;
+            }
             }
 
             if (buttons->BTN_A >= 1) {
@@ -174,24 +203,36 @@ void StateMachine_Run(AppStateMachineContext *ctx,GNSS_StateHandle*gps,Buttons_t
         case BALISESTATE2:
             ssd1306_SetCursor(32, 32);
 
+            if (sd->is_recording == 0) {
+                ctx->balisestate = BALISESTATE1;
+                break;
+             }
+
+            uint8_t any_button_pressed = (buttons->BTN_A >= 1 || buttons->BTN_B >= 1 || buttons->BTN_A_LONG >= 1 || buttons->BTN_B_LONG >= 1);
+            if (any_button_pressed) {
+                 ctx->last_action_tick = HAL_GetTick();
+                 }
+            if ((HAL_GetTick() - ctx->last_action_tick) > 20000)
+                        {
+
+                            if ((HAL_GetTick() / 500) % 2) {
+                                ssd1306_SetCursor(40, 38);
+                                ssd1306_WriteString("REC", Font_16x24, White);
+                            }
+
+                            if (any_button_pressed) {
+                                                buttons->BTN_A = 0; buttons->BTN_B = 0;
+                                                buttons->BTN_A_LONG = 0; buttons->BTN_B_LONG = 0;
+                                            }
+
+
+                        }
+                        else
+                        {
             switch (ctx->ecranstate)
             {
             case ECRANBALISESTATE1:
-                snprintf((char *)bufferscreen, 50, "no data");
-                ssd1306_WriteString((char *)bufferscreen, Font_7x10, White);
-
-                ssd1306_SetCursor(32, 42);
-                ssd1306_WriteString("Capacity", Font_6x8, White);
-
-                if (buttons->BTN_B >= 1) {
-                    ctx->ecranstate++;
-                    buttons->BTN_B = 0;
-                    buttons->BTN_A = 0;
-                }
-                break;
-
-            case ECRANBALISESTATE2:
-                snprintf((char *)bufferscreen, 50, "%0.3lf", gps->distance_parcouru);
+                snprintf((char *)bufferscreen, 50, "%0.3f",(float) gps->distance_parcouru);
                 ssd1306_WriteString((char *)bufferscreen, Font_7x10, White);
 
                 ssd1306_SetCursor(32, 42);
@@ -204,7 +245,7 @@ void StateMachine_Run(AppStateMachineContext *ctx,GNSS_StateHandle*gps,Buttons_t
                 }
                 break;
 
-            case ECRANBALISESTATE3:
+            case ECRANBALISESTATE2:
                 snprintf((char *)bufferscreen, 50, "%0.1f", gps->fgSpeed * 3.6f);
                 ssd1306_WriteString((char *)bufferscreen, Font_7x10, White);
 
@@ -218,7 +259,7 @@ void StateMachine_Run(AppStateMachineContext *ctx,GNSS_StateHandle*gps,Buttons_t
                 }
                 break;
 
-            case ECRANBALISESTATE5:
+            case ECRANBALISESTATE3:
                 snprintf((char *)bufferscreen, 50, "%0.1f", gAdc->vbat);
                 ssd1306_WriteString((char *)bufferscreen, Font_7x10, White);
 
@@ -232,7 +273,7 @@ void StateMachine_Run(AppStateMachineContext *ctx,GNSS_StateHandle*gps,Buttons_t
                 }
                 break;
 
-            case ECRANBALISESTATE6:
+            case ECRANBALISESTATE4:
                 snprintf((char *)bufferscreen, 50, "%0.1f", ctx->vitmax * 3.6f);
                 ssd1306_WriteString((char *)bufferscreen, Font_7x10, White);
 
@@ -240,7 +281,7 @@ void StateMachine_Run(AppStateMachineContext *ctx,GNSS_StateHandle*gps,Buttons_t
                 ssd1306_WriteString("MaxV", Font_6x8, White);
 
                 if (buttons->BTN_B >= 1) {
-                    ctx->ecranstate -= 4;
+                    ctx->ecranstate -= 3;
                     buttons->BTN_B = 0;
                     buttons->BTN_A = 0;
                 }
@@ -265,31 +306,10 @@ void StateMachine_Run(AppStateMachineContext *ctx,GNSS_StateHandle*gps,Buttons_t
                 ctx->balisestate--;
                 buttons->BTN_B_LONG = 0;
                 buttons->BTN_A      = 0;
-                // osThreadSuspend(BALISEHandle);
-                HAL_GPIO_WritePin(GPIOB, GPIO_PIN_1, GPIO_PIN_RESET);
+                sd->is_recording=0;
             }
+          }
             break;
-
-        case BALISESTATE3:
-            ssd1306_SetCursor(32, 32);
-            ssd1306_WriteString("fin de", Font_6x8, White);
-            ssd1306_SetCursor(32, 42);
-            ssd1306_WriteString("memoire", Font_6x8, White);
-
-            if (buttons->BTN_A >= 1) {
-                ctx->state++;
-                buttons->BTN_A   = 0;
-                buttons->BTN_B   = 0;
-                ctx->settimeen   = 0;
-            }
-            if (buttons->BTN_A_LONG >= 1) {
-                ctx->state--;
-                buttons->BTN_A   = 0;
-                buttons->BTN_B   = 0;
-                buttons->BTN_A_LONG = 0;
-            }
-            break;
-
         default:
             ctx->balisestate = BALISESTATE1;
             break;
@@ -518,7 +538,9 @@ void StateMachine_Run(AppStateMachineContext *ctx,GNSS_StateHandle*gps,Buttons_t
         ssd1306_WriteString((char *)bufferscreen, Font_7x10, White);
 
         if (buttons->BTN_A >= 1) {
-            ctx->state++;
+            ctx->state--;
+            ctx->state--;
+            ctx->state--;
             buttons->BTN_A = 0;
             buttons->BTN_B = 0;
         }
@@ -530,166 +552,6 @@ void StateMachine_Run(AppStateMachineContext *ctx,GNSS_StateHandle*gps,Buttons_t
         }
     }
         break;
-
-    /* --------------------------------------------------------------------- */
-    /*                             STATE_ACCEL                               */
-    /* --------------------------------------------------------------------- */
-    case STATE_ACCEL:
-    {
-        ssd1306_Fill(Black);
-        ssd1306_SetCursor(32, 32);
-        ssd1306_WriteString("0-100", Font_6x8, White);
-
-        switch (ctx->accelstate)
-        {
-        case WAITFORGPS:
-            ssd1306_SetCursor(32, 40);
-            ssd1306_WriteString("GPS fix", Font_7x10, White);
-
-            if (gps->fixType >= 2) {
-                ctx->accelstate++;
-            }
-
-            if (buttons->BTN_A >= 1) {
-                ctx->state -= 4;
-                buttons->BTN_A = 0;
-                buttons->BTN_B = 0;
-            }
-            if (buttons->BTN_A_LONG >= 1) {
-                ctx->state--;
-                buttons->BTN_A      = 0;
-                buttons->BTN_B      = 0;
-                buttons->BTN_A_LONG = 0;
-            }
-            break;
-
-        case WAITFORPUSH:
-            ctx->timecounter++;
-            if (ctx->timecounter >= 10) {
-                ctx->timecounter = 0;
-            }
-
-            if ((ctx->timecounter % 2) == 0) {
-                ssd1306_SetCursor(32, 40);
-                ssd1306_WriteString("Push B", Font_7x10, White);
-            }
-
-            if (buttons->BTN_B_LONG >= 1) {
-                ctx->accelstate++;
-                buttons->BTN_B_LONG = 0;
-            } else {
-                if (buttons->BTN_A >= 1) {
-                    ctx->state -= 4;
-                    buttons->BTN_A = 0;
-                    buttons->BTN_B = 0;
-                }
-                if (buttons->BTN_A_LONG >= 1) {
-                    ctx->state--;
-                    buttons->BTN_A      = 0;
-                    buttons->BTN_B      = 0;
-                    buttons->BTN_A_LONG = 0;
-                }
-            }
-            break;
-
-        case WAITFORSTOP:
-            if (gps->fgSpeed <= 1.0f) {
-                ssd1306_SetCursor(56, 40);
-                snprintf((char *)bufferscreen, 15, "%d", 3 - ctx->counterforstart);
-                ssd1306_WriteString((char *)bufferscreen, Font_16x24, White);
-
-                ctx->indexcounterforstart++;
-                if ((ctx->indexcounterforstart % 10) == 0) {
-                    ctx->counterforstart++;
-                }
-
-                if (ctx->counterforstart == 3) {
-                    ctx->accelstate++;
-                    ctx->counterforstart      = 0;
-                    ctx->indexcounterforstart = 0;
-                    ctx->accel_start_time=uwTick;
-                }
-            } else {
-                ssd1306_SetCursor(32, 40);
-                ssd1306_WriteString("Please stop", Font_6x8, White);
-                ctx->counterforstart      = 0;
-                ctx->indexcounterforstart = 0;
-            }
-            break;
-
-        case INRUN:
-        {
-            float speed_kmh = gps->fgSpeed * 3.6f;
-
-            if ((speed_kmh >= 50.0f) && (ctx->flag_50kmh == 0)) {
-                ctx->time50kmh  = (float)(uwTick-ctx->accel_start_time)/1000.0f;
-                ctx->flag_50kmh = 1;
-            }
-
-            if ((speed_kmh >= 100.0f) && (ctx->flag_100kmh == 0)) {
-                ctx->time100kmh  = (float)(uwTick-ctx->accel_start_time)/1000.0f;
-                ctx->flag_100kmh = 1;
-                ctx->accelstate++;
-            }
-
-            ssd1306_SetCursor(32, 40);
-            snprintf((char *)bufferscreen, 15, "%0.1f", speed_kmh);
-            ssd1306_WriteString((char *)bufferscreen, Font_16x24, White);
-
-            if ((buttons->BTN_B_LONG >= 1) || ((ctx->flag_100kmh == 1)&&(ctx->flag_50kmh == 1))) {
-                ctx->accelstate++;
-                buttons->BTN_B_LONG = 0;
-            }
-        }
-            break;
-
-        case RESULT:
-            ssd1306_Fill(Black);
-
-            ssd1306_SetCursor(32, 32);
-            ssd1306_WriteString("0-50kmh", Font_6x8, White);
-            ssd1306_SetCursor(32, 40);
-            snprintf((char *)bufferscreen, 15, "%0.1fs", ctx->time50kmh);
-            ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
-
-            ssd1306_SetCursor(32, 48);
-            ssd1306_WriteString("0-100kmh", Font_6x8, White);
-            ssd1306_SetCursor(32, 56);
-            snprintf((char *)bufferscreen, 15, "%0.1fs", ctx->time100kmh);
-            ssd1306_WriteString((char *)bufferscreen, Font_6x8, White);
-
-            if ((buttons->BTN_A >= 1) ||(buttons->BTN_B >= 1) ||(buttons->BTN_A_LONG >= 1)) {
-
-                ctx->time50kmh   = 0.0f;
-                ctx->time100kmh  = 0.0f;
-                ctx->flag_50kmh  = 0;
-                ctx->flag_100kmh = 0;
-                ctx->accelstate  = WAITFORGPS;
-            }
-
-            if (buttons->BTN_A >= 1) {
-                ctx->state -= 4;
-                buttons->BTN_A = 0;
-                buttons->BTN_B = 0;
-            }
-            if (buttons->BTN_A_LONG >= 1) {
-                ctx->state--;
-                buttons->BTN_A      = 0;
-                buttons->BTN_B      = 0;
-                buttons->BTN_A_LONG = 0;
-            }
-            if (buttons->BTN_B >= 1) {
-                buttons->BTN_B = 0;
-            }
-            break;
-
-        default:
-            ctx->accelstate = WAITFORGPS;
-            break;
-        }
-    }
-        break;
-
     default:
         ctx->state = STATE_SPEED;
         break;
@@ -743,4 +605,6 @@ void get_time_date(AppStateMachineContext * context)
   context->MOIS=gDate.Month;
   context->ANNEE=gDate.Year+2000;
 }
+
+
 

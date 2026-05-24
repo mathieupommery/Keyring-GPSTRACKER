@@ -90,7 +90,7 @@ void MX_GPIO_Init(void)
   /*Configure GPIO pin : B2_Pin */
   GPIO_InitStruct.Pin = B2_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING_FALLING;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(B2_GPIO_Port, &GPIO_InitStruct);
 
   /* EXTI interrupt init*/

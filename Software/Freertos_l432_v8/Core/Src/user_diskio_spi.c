@@ -26,6 +26,7 @@
 
 #include "stm32l4xx_hal.h" /* Provide the low-level HAL functions */
 #include "user_diskio_spi.h"
+#include <string.h>
 #include "main.h"
 
 
@@ -38,7 +39,7 @@ extern SPI_HandleTypeDef SD_SPI_HANDLE;
 
 //(Note that the _256 is used as a mask to clear the prescalar bits as it provides binary 111 in the correct position)
 #define FCLK_SLOW() { MODIFY_REG(SD_SPI_HANDLE.Instance->CR1, SPI_BAUDRATEPRESCALER_256, SPI_BAUDRATEPRESCALER_128); }	/* Set SCLK = slow, approx 280 KBits/s*/
-#define FCLK_FAST() { MODIFY_REG(SD_SPI_HANDLE.Instance->CR1, SPI_BAUDRATEPRESCALER_256, SPI_BAUDRATEPRESCALER_8); }	/* Set SCLK = fast, approx 4.5 MBits/s */
+#define FCLK_FAST() { MODIFY_REG(SD_SPI_HANDLE.Instance->CR1, SPI_BAUDRATEPRESCALER_256, SPI_BAUDRATEPRESCALER_4); }	/* Set SCLK = fast, approx 4.5 MBits/s */
 
 #define CS_HIGH()	{HAL_GPIO_WritePin(SPI1_CS_GPIO_Port, SPI1_CS_Pin, GPIO_PIN_SET);}
 #define CS_LOW()	{HAL_GPIO_WritePin(SPI1_CS_GPIO_Port, SPI1_CS_Pin, GPIO_PIN_RESET);}
@@ -101,42 +102,96 @@ uint8_t SPI_Timer_Status() {
 /* SPI controls (Platform dependent)                                     */
 /*-----------------------------------------------------------------------*/
 
-/* Exchange a byte */
-static
-BYTE xchg_spi (
-	BYTE dat	/* Data to send */
-)
+//
+///* Exchange a byte */
+//static
+//BYTE xchg_spi (
+//	BYTE dat	/* Data to send */
+//)
+//{
+//	BYTE rxDat;
+//    HAL_SPI_TransmitReceive(&SD_SPI_HANDLE, &dat, &rxDat, 1, 50);
+//    return rxDat;
+//}
+//
+//
+///* Receive multiple byte */
+//static
+//void rcvr_spi_multi (
+//	BYTE *buff,		/* Pointer to data buffer */
+//	UINT btr		/* Number of bytes to receive (even number) */
+//)
+//{
+//	for(UINT i=0; i<btr; i++) {
+//		*(buff+i) = xchg_spi(0xFF);
+//	}
+//}
+//
+//
+//#if _USE_WRITE
+///* Send multiple byte */
+//static
+//void xmit_spi_multi (
+//	const BYTE *buff,	/* Pointer to the data */
+//	UINT btx			/* Number of bytes to send (even number) */
+//)
+//{
+//	for(UINT i=0; i<btx; i++) {
+//		xchg_spi(*(buff+i));
+//	}
+//}
+//#endif
+
+/* Exchange a byte (Transfert classique) */
+static BYTE xchg_spi(BYTE dat)
 {
-	BYTE rxDat;
+    BYTE rxDat;
     HAL_SPI_TransmitReceive(&SD_SPI_HANDLE, &dat, &rxDat, 1, 50);
     return rxDat;
 }
 
-
-/* Receive multiple byte */
-static
-void rcvr_spi_multi (
-	BYTE *buff,		/* Pointer to data buffer */
-	UINT btr		/* Number of bytes to receive (even number) */
-)
+/* Receive multiple byte (OPTIMISÉ avec gros TransmitReceive) */
+static void rcvr_spi_multi(BYTE *buff, UINT btr)
 {
-	for(UINT i=0; i<btr; i++) {
-		*(buff+i) = xchg_spi(0xFF);
-	}
+    // Buffer local rempli de 0xFF pour maintenir le signal MOSI à l'état haut (VITAL pour la carte SD)
+    uint8_t tx_dummy[512];
+    memset(tx_dummy, 0xFF, sizeof(tx_dummy));
+
+    UINT bytes_left = btr;
+    UINT offset = 0;
+
+    // Si on demande à lire plus de 512 octets, on découpe en paquets de 512 (sécurité RAM)
+    while (bytes_left > 0) {
+        UINT chunk = (bytes_left > 512) ? 512 : bytes_left;
+
+        // Envoi des 0xFF en bloc, et réception des vraies données dans buff
+        HAL_SPI_TransmitReceive(&SD_SPI_HANDLE, tx_dummy, buff + offset, chunk, HAL_MAX_DELAY);
+
+        bytes_left -= chunk;
+        offset += chunk;
+    }
 }
 
-
 #if _USE_WRITE
-/* Send multiple byte */
-static
-void xmit_spi_multi (
-	const BYTE *buff,	/* Pointer to the data */
-	UINT btx			/* Number of bytes to send (even number) */
-)
+/* Send multiple byte (OPTIMISÉ avec gros TransmitReceive) */
+static void xmit_spi_multi(const BYTE *buff, UINT btx)
 {
-	for(UINT i=0; i<btx; i++) {
-		xchg_spi(*(buff+i));
-	}
+    // Buffer local "poubelle" pour stocker ce que la carte SD renvoie pendant qu'on écrit
+    uint8_t rx_dummy[512];
+
+    UINT bytes_left = btx;
+    UINT offset = 0;
+
+    while (bytes_left > 0) {
+        UINT chunk = (bytes_left > 512) ? 512 : bytes_left;
+
+        // Envoi des vraies données, et réception factice dans la poubelle pour vider le flux matériel
+        // Le cast (uint8_t *) sert juste à satisfaire le compilateur pour le HAL
+        HAL_SPI_TransmitReceive(&SD_SPI_HANDLE, (uint8_t *)(buff + offset), rx_dummy, chunk, HAL_MAX_DELAY);
+
+        bytes_left -= chunk;
+        offset += chunk;
+    }
 }
 #endif
 

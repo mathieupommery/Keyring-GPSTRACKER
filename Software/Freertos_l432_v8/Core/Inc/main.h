@@ -81,6 +81,26 @@ void Error_Handler(void);
 
 /* USER CODE BEGIN Private defines */
 
+//#define DEBUG1
+
+#ifdef DEBUG
+
+typedef struct
+{
+    uint32_t statetime;
+    uint32_t statetimemax;
+    uint32_t gpstime;
+    uint32_t gpstimemax;
+    uint32_t sdtime;
+    uint32_t sdtimemax;
+} debugtime;
+
+
+
+#endif
+
+#define SYSMEM_ADDRESS 0x1FFF0000
+
 #define STM32L432_VREFINT_CAL_ADDR   ((volatile uint16_t*)0x1FFF75AAu)
 #define STM32L432_TS_CAL1_ADDR       ((volatile uint16_t*)0x1FFF75A8u)
 #define STM32L432_TS_CAL2_ADDR       ((volatile uint16_t*)0x1FFF75CAu)

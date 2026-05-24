@@ -13,6 +13,7 @@
 #include "GNSS.h"
 #include "rtc.h"
 #include "math.h"
+#include "sd_app.h"
 
 
 
@@ -21,8 +22,7 @@ typedef enum{
 	STATE_SPEED,
 	STATE_BALISE,
 	STATE_POS,
-	STATE_CHRONOMETER,
-	STATE_ACCEL
+	STATE_CHRONOMETER
 
 }STATE_TYPE;
 
@@ -75,9 +75,7 @@ typedef enum{
 	ECRANBALISESTATE1,
 	ECRANBALISESTATE2,
 	ECRANBALISESTATE3,
-	ECRANBALISESTATE4,
-	ECRANBALISESTATE5,
-	ECRANBALISESTATE6
+	ECRANBALISESTATE4
 
 }ECRANBALISESTATE;
 
@@ -101,36 +99,24 @@ typedef struct
     uint8_t ecranstate;
     uint8_t posstate;
     uint8_t chronostate;
-    uint8_t accelstate;
-
-    uint8_t  flag_usb_mounted;
 
     float    vitmax;
 
+    uint32_t last_action_tick;
+
     /* Gestion heure/date */
-    uint8_t  settimeen;
     uint8_t  SEC;
     uint8_t  MINUTE;
     uint8_t  HR;
     uint8_t JOURS;
     uint8_t MOIS;
     uint16_t ANNEE;
+    uint8_t rtc_synced;
 
     /* Chronomètre */
     uint32_t calctime;
     uint32_t starttime;
     uint32_t timehandler;
-
-    /* Accélération 0-50 / 0-100 */
-    uint16_t timecounter;
-    uint8_t  counterforstart;
-    uint16_t indexcounterforstart;
-
-    uint32_t accel_start_time;
-    float    time50kmh;
-    float    time100kmh;
-    uint8_t  flag_50kmh;
-    uint8_t  flag_100kmh;
 
     /* Position de départ de balise */
     float    oldlat;
@@ -139,7 +125,7 @@ typedef struct
 } AppStateMachineContext;
 
 
-void StateMachine_Run(AppStateMachineContext *ctx,GNSS_StateHandle *gps,Buttons_t *buttons,AdcContext_t *gAdc);
+void StateMachine_Run(AppStateMachineContext *ctx,GNSS_StateHandle*gps,Buttons_t *buttons,AdcContext_t *gAdc,SDCard_struct *sd);
 void set_time (uint8_t hr, uint8_t min, uint8_t sec);
 void set_date (uint8_t year, uint8_t month, uint8_t date, uint8_t day);
 void get_time_date(AppStateMachineContext * context);

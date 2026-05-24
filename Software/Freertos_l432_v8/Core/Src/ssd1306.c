@@ -10,14 +10,28 @@ void ssd1306_Reset(void) {
 }
 
 // Send a byte to the command register
+//void ssd1306_WriteCommand(uint8_t byte) {
+//    HAL_I2C_Mem_Write(&SSD1306_I2C_PORT, SSD1306_I2C_ADDR, 0x00, 1, &byte, 1, HAL_MAX_DELAY);
+//}
+//
+//// Send data
+//void ssd1306_WriteData(uint8_t* buffer, size_t buff_size) {
+//    HAL_I2C_Mem_Write(&SSD1306_I2C_PORT, SSD1306_I2C_ADDR, 0x40, 1, buffer, buff_size, HAL_MAX_DELAY);
+//}
+
+// Send a byte to the command register
 void ssd1306_WriteCommand(uint8_t byte) {
+    while (HAL_I2C_GetState(&SSD1306_I2C_PORT) != HAL_I2C_STATE_READY) {
+    }
     HAL_I2C_Mem_Write(&SSD1306_I2C_PORT, SSD1306_I2C_ADDR, 0x00, 1, &byte, 1, HAL_MAX_DELAY);
 }
 
-// Send data
 void ssd1306_WriteData(uint8_t* buffer, size_t buff_size) {
-    HAL_I2C_Mem_Write(&SSD1306_I2C_PORT, SSD1306_I2C_ADDR, 0x40, 1, buffer, buff_size, HAL_MAX_DELAY);
+    if (HAL_I2C_GetState(&SSD1306_I2C_PORT) == HAL_I2C_STATE_READY) {
+        HAL_I2C_Mem_Write_DMA(&SSD1306_I2C_PORT, SSD1306_I2C_ADDR, 0x40, 1, buffer, buff_size);
+    }
 }
+
 
 // Screenbuffer
 static uint8_t SSD1306_Buffer[SSD1306_BUFFER_SIZE];
@@ -156,7 +170,10 @@ void ssd1306_UpdateScreen(void) {
         ssd1306_WriteCommand(0x10 + SSD1306_X_OFFSET_UPPER);
         ssd1306_WriteData(&SSD1306_Buffer[SSD1306_WIDTH*i],SSD1306_WIDTH);
     }
+
+
 }
+
 
 /*
  * Draw one pixel in the screenbuffer

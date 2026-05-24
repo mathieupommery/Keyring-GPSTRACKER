@@ -1,4 +1,5 @@
-../Core/Src/statemachine.c:16:6:StateMachine_Run	80	static
-../Core/Src/statemachine.c:699:6:set_time	40	static
-../Core/Src/statemachine.c:713:6:set_date	32	static
-../Core/Src/statemachine.c:729:6:get_time_date	40	static
+../Core/Src/statemachine.c:15:13:utility_function	16	static
+../Core/Src/statemachine.c:32:6:StateMachine_Run	80	static
+../Core/Src/statemachine.c:561:6:set_time	40	static
+../Core/Src/statemachine.c:575:6:set_date	32	static
+../Core/Src/statemachine.c:591:6:get_time_date	40	static

@@ -26,7 +26,7 @@
 #include "usart.h"
 #include "rtc.h"
 #include "spi.h"
-#include "usb.h"
+#include "usb_device.h"
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
@@ -35,6 +35,7 @@
 #include "statemachine.h"
 #include "GNSS.h"
 #include "pwr.h"
+#include "sd_app.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -63,13 +64,13 @@ AppStateMachineContext state_struct = {
     .ecranstate   = ECRANBALISESTATE1,
     .posstate     = STATE_SUMMARY1,
     .chronostate  = STATE_RESET,
-    .accelstate   = WAITFORGPS,
 };
 
 GNSS_StateHandle GNSSData;
 Buttons_t gButtons = {0};
 AdcContext_t gAdc = {0};
 uint8_t bufferscreen[50];
+SDCard_struct sdcard;
 
 const unsigned char startimg[] = {
 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
@@ -111,11 +112,13 @@ const unsigned char startimg[] = {
 void SystemClock_Config(void);
 void MX_FREERTOS_Init(void);
 /* USER CODE BEGIN PFP */
-
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+
+
+
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
     /* -------------------- BTN_A sur PA15 -------------------- */
@@ -123,33 +126,33 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
     {
         if (HAL_GPIO_ReadPin(B2_GPIO_Port, B2_Pin) == GPIO_PIN_RESET)
         {
-            gButtons.pressStart_A_ms = HAL_GetTick();
+            gButtons.pressStart_B_ms = HAL_GetTick();
         }
         else
         {
             uint32_t now = HAL_GetTick();
             uint32_t dur = 0;
 
-            if (gButtons.pressStart_A_ms != 0){
-                dur = now - gButtons.pressStart_A_ms;
+            if (gButtons.pressStart_B_ms != 0){
+                dur = now - gButtons.pressStart_B_ms;
 
-            gButtons.time_A_ms       = dur;
-            gButtons.pressStart_A_ms = 0;
+            gButtons.time_B_ms       = dur;
+            gButtons.pressStart_B_ms = 0;
 
             if (dur >= 50 && dur <= 400)
             {
-                gButtons.BTN_A      = 1;
-                gButtons.BTN_A_LONG = 0;
+                gButtons.BTN_B      = 1;
+                gButtons.BTN_B_LONG = 0;
             }
             else if (dur >= 400)
             {
-                gButtons.BTN_A_LONG = 1;
-                gButtons.BTN_A      = 0;
+                gButtons.BTN_B_LONG = 1;
+                gButtons.BTN_B      = 0;
             }
             else
             {
-                gButtons.BTN_A      = 0;
-                gButtons.BTN_A_LONG = 0;
+                gButtons.BTN_B      = 0;
+                gButtons.BTN_B_LONG = 0;
             }
         }
         }
@@ -190,7 +193,6 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
         gAdc.temp =((ts_data_3v - ts_cal1) *(STM32L432_TS_CAL2_TEMP_C - STM32L432_TS_CAL1_TEMP_C) /(ts_cal2 - ts_cal1)) +STM32L432_TS_CAL1_TEMP_C;
 
         gAdc.vbat = 2.0f * (adc_vbat / 4095.0f) * gAdc.vrefint;
-        HAL_ADC_Start_DMA(hadc, (uint32_t*)gAdc.raw, 3);
     }
 
 }
@@ -236,7 +238,9 @@ int main(void)
 
   /* USER CODE BEGIN Init */
 
+#ifndef DEBUG1
   PWR_StartupCheckButton();
+#endif
   /* USER CODE END Init */
 
   /* Configure the system clock */
@@ -255,7 +259,6 @@ int main(void)
   MX_ADC1_Init();
   MX_FATFS_Init();
   MX_RTC_Init();
-  MX_USB_PCD_Init();
   /* USER CODE BEGIN 2 */
 
   HAL_GPIO_WritePin(AUX_EN_GPIO_Port, AUX_EN_Pin,GPIO_PIN_SET);
@@ -277,6 +280,13 @@ int main(void)
 	HAL_UART_Receive_DMA(&hlpuart1, (uint8_t *)GNSSData.circular_buffer, 512);
 	__HAL_DMA_ENABLE_IT(hlpuart1.hdmarx, DMA_IT_HT);
 
+	Init_Sd(&sdcard);
+
+#ifdef DEBUG1
+	    CoreDebug->DEMCR |= CoreDebug_DEMCR_TRCENA_Msk;
+	    DWT->CYCCNT = 0;
+	    DWT->CTRL |= DWT_CTRL_CYCCNTENA_Msk;
+#endif
 
 
 	ssd1306_Fill(Black);

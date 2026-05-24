@@ -143,7 +143,6 @@ HAL_StatusTypeDef GNSS_Process(GNSS_StateHandle * GNSS){
 						GNSS->uartWorkingBuffer[i]=GNSS->circular_buffer[(index+i)%512];
 					}
 					GNSS_ParsePVTData(GNSS);
-					HAL_GPIO_TogglePin(LED_BLUE_GPIO_Port,LED_BLUE_Pin);
 					GNSS->read_index= (GNSS->read_index + 90)%512;
 					return HAL_OK;
 					}

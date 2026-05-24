@@ -29,6 +29,8 @@
 #include "statemachine.h"
 #include "GNSS.h"
 #include "pwr.h"
+#include "sd_app.h"
+#include "adc.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -53,6 +55,17 @@ extern AppStateMachineContext state_struct;
 extern GNSS_StateHandle GNSSData;
 extern Buttons_t gButtons;
 extern AdcContext_t gAdc;
+extern SDCard_struct sdcard;
+
+
+#ifdef DEBUG1
+debugtime dbgtime;
+
+UBaseType_t stackstate;
+UBaseType_t stackgps;
+UBaseType_t stacktrk;
+
+#endif
 /* USER CODE END Variables */
 osThreadId MainTaskHandle;
 osThreadId SensorTaskHandle;
@@ -69,6 +82,7 @@ void StartSensorTask(void const * argument);
 void StartTrackerTask(void const * argument);
 void StartPWRTask(void const * argument);
 
+extern void MX_USB_DEVICE_Init(void);
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
 /* GetIdleTaskMemory prototype (linked to static allocation support) */
@@ -94,6 +108,15 @@ void vApplicationGetIdleTaskMemory( StaticTask_t **ppxIdleTaskTCBBuffer, StackTy
   */
 void MX_FREERTOS_Init(void) {
   /* USER CODE BEGIN Init */
+
+#ifdef DEBUG1
+     dbgtime.gpstime=0;
+     dbgtime.gpstimemax=0;
+     dbgtime.sdtime=0;
+     dbgtime.sdtimemax=0;
+     dbgtime.statetime=0;
+     dbgtime.statetimemax=0;
+#endif
 
   /* USER CODE END Init */
 
@@ -123,7 +146,7 @@ void MX_FREERTOS_Init(void) {
   SensorTaskHandle = osThreadCreate(osThread(SensorTask), NULL);
 
   /* definition and creation of TrackerTask */
-  osThreadDef(TrackerTask, StartTrackerTask, osPriorityNormal, 0, 512);
+  osThreadDef(TrackerTask, StartTrackerTask, osPriorityNormal, 0, 1024);
   TrackerTaskHandle = osThreadCreate(osThread(TrackerTask), NULL);
 
   /* definition and creation of PWRTask */
@@ -145,16 +168,35 @@ void MX_FREERTOS_Init(void) {
 /* USER CODE END Header_StartMainTask */
 void StartMainTask(void const * argument)
 {
+  /* init code for USB_DEVICE */
+  MX_USB_DEVICE_Init();
   /* USER CODE BEGIN StartMainTask */
   TickType_t xLastWakeTime;
-  const TickType_t period = pdMS_TO_TICKS(50);
+  const TickType_t period = pdMS_TO_TICKS(200);
+#ifdef DEBUG1
+  uint32_t cycles_actuels = DWT->CYCCNT;
+#endif
   xLastWakeTime = xTaskGetTickCount();
   /* Infinite loop */
   for(;;)
   {
+#ifdef DEBUG1
+      cycles_actuels = DWT->CYCCNT;
+#endif
+
 	  HAL_GPIO_TogglePin(LED_GREEN_GPIO_Port,LED_GREEN_Pin);
-	  StateMachine_Run(&state_struct,&GNSSData,&gButtons,&gAdc);
+	  StateMachine_Run(&state_struct,&GNSSData,&gButtons,&gAdc,&sdcard);
 	  ssd1306_UpdateScreen();
+#ifdef DEBUG1
+	  dbgtime.statetime=DWT->CYCCNT - cycles_actuels;
+	  if(dbgtime.statetime > dbgtime.statetimemax){
+		  dbgtime.statetimemax=dbgtime.statetime;
+	  }
+	  stackstate = uxTaskGetStackHighWaterMark(NULL);
+#endif
+
+
+
 	  vTaskDelayUntil(&xLastWakeTime, period);
   }
   /* USER CODE END StartMainTask */
@@ -172,11 +214,35 @@ void StartSensorTask(void const * argument)
   /* USER CODE BEGIN StartSensorTask */
 	  TickType_t xLastWakeTime;
 	  const TickType_t period = pdMS_TO_TICKS(100);
+	  uint8_t counter=0;
+#ifdef DEBUG1
+	  uint32_t cycles_actuels = DWT->CYCCNT;
+#endif
 	  xLastWakeTime = xTaskGetTickCount();
   /* Infinite loop */
   for(;;)
   {
+#ifdef DEBUG1
+      cycles_actuels = DWT->CYCCNT;
+#endif
 		GNSS_Process(&GNSSData);
+		counter = counter + 1 ;
+		if(counter == 10){
+			counter=0;
+			HAL_ADC_Start_DMA(&hadc1, (uint32_t*)gAdc.raw, 3);
+		}
+
+
+#ifdef DEBUG1
+		  dbgtime.gpstime=DWT->CYCCNT - cycles_actuels;
+		  if(dbgtime.gpstime > dbgtime.gpstimemax){
+			  dbgtime.gpstimemax=dbgtime.gpstime;
+		  }
+
+
+		  stackgps = uxTaskGetStackHighWaterMark(NULL);
+
+#endif
 
 	  vTaskDelayUntil(&xLastWakeTime, period);
   }
@@ -194,13 +260,39 @@ void StartTrackerTask(void const * argument)
 {
   /* USER CODE BEGIN StartTrackerTask */
 	  TickType_t xLastWakeTime;
-	  const TickType_t period = pdMS_TO_TICKS(200);
+	  const TickType_t period = pdMS_TO_TICKS(1000);
+#ifdef DEBUG1
+	  uint32_t cycles_actuels = DWT->CYCCNT;
+	  uint32_t sd_history[5] = {0};
+	  	uint8_t history_idx = 0;
+	  	uint8_t history_count = 0;
+#endif
 	  xLastWakeTime = xTaskGetTickCount();
   /* Infinite loop */
   for(;;)
   {
+#ifdef DEBUG1
+      cycles_actuels = DWT->CYCCNT;
+#endif
+	  SD_Manager(&sdcard,&GNSSData,&gAdc);
+#ifdef DEBUG1
+	  uint32_t current_time = DWT->CYCCNT - cycles_actuels;
+	  sd_history[history_idx] = current_time;
+	  history_idx = (history_idx + 1) % 5;
+	  if (history_count < 5) {
+		  history_count++;
+	  }
+	  uint64_t sum = 0;
+	  for(uint8_t i = 0; i < history_count; i++) {
+		  sum += sd_history[i];
+	  }
+	  dbgtime.sdtime = (uint32_t)(sum / history_count);
+	  if(current_time > dbgtime.sdtimemax){
+		  dbgtime.sdtimemax = current_time;
+	  }
 
-
+	  stacktrk = uxTaskGetStackHighWaterMark(NULL);
+#endif
 	  vTaskDelayUntil(&xLastWakeTime, period);
   }
   /* USER CODE END StartTrackerTask */
@@ -217,12 +309,14 @@ void StartPWRTask(void const * argument)
 {
   /* USER CODE BEGIN StartPWRTask */
 	  TickType_t xLastWakeTime;
-	  const TickType_t period = pdMS_TO_TICKS(5);
+	  const TickType_t period = pdMS_TO_TICKS(10);
 	  xLastWakeTime = xTaskGetTickCount();
   /* Infinite loop */
   for(;;)
   {
+
 	  PWR_ProcessPWButton(&gButtons);
+
 	  vTaskDelayUntil(&xLastWakeTime, period);
   }
   /* USER CODE END StartPWRTask */
