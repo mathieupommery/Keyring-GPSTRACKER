@@ -1,9 +1,0 @@
-Manufacturer=QST
-PartNumber=QMC5883L
-PartCategory=Integrated Circuit
-PackageCategory=Other
-PinCount=16
-Version=1.2
-Released=2022-03-27 04:54:40
-Downloaded=2024-03-03 01:18:33
-3D=Y
