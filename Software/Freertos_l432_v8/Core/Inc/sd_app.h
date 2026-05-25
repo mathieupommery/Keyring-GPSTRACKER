@@ -22,6 +22,8 @@ typedef struct {
 
     // Paramètres de configuration
     volatile uint8_t is_recording;
+
+    uint8_t sync_counter;
     RecordFormat_t format;
     RecordFreq_t frequency;
 

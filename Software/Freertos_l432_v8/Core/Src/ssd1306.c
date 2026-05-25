@@ -597,14 +597,14 @@ void batterygauge(float vbat,int x, int y,int currentsquare){
 
 }
 
-void percentage(float percent){
-	ssd1306_FillRectangle(32, 40, floor(0.63*percent+32), 56, White);
-	ssd1306_DrawRectangle(32, 40, 95, 56, White);
-	snprintf((char  *)bufferscreen,20,"%0.2f %%",(float) percent);
-	ssd1306_SetCursor(45,44);
-	ssd1306_WriteString((char  *)bufferscreen,Font_6x8,White);
-
-
-}
+//void percentage(float percent){
+//	ssd1306_FillRectangle(32, 40, floor(0.63*percent+32), 56, White);
+//	ssd1306_DrawRectangle(32, 40, 95, 56, White);
+//	snprintf((char  *)bufferscreen,20,"%0.2f %%",(float) percent);
+//	ssd1306_SetCursor(45,44);
+//	ssd1306_WriteString((char  *)bufferscreen,Font_6x8,White);
+//
+//
+//}
 
 

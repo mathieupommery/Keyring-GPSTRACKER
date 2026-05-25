@@ -108,7 +108,6 @@ HAL_StatusTypeDef GNSS_Process(GNSS_StateHandle * GNSS){
 	HAL_StatusTypeDef result=HAL_BUSY;
 	uint16_t index=GNSS->read_index;
 	uint16_t available=0;
-	uint8_t state=0;
 
 	if (GNSS->write_index >= GNSS->read_index) {
 		available = GNSS->write_index - GNSS->read_index;

@@ -82,6 +82,7 @@ void Error_Handler(void);
 /* USER CODE BEGIN Private defines */
 
 //#define DEBUG1
+#define USE_FAST_PRINT
 
 #ifdef DEBUG
 
@@ -149,6 +150,20 @@ typedef struct
 
 } AdcContext_t;
 
+#ifdef USE_FAST_PRINT
+typedef enum {
+    POS_PREFIX, // Le texte est avant la valeur
+    POS_SUFFIX  // Le texte est après la valeur
+} PosType;
+
+typedef enum {
+    TYPE_INT,
+    TYPE_FLOAT
+} ValType;
+
+void fast_printf(char *buf, const char *text, float val, ValType type, int precision, PosType pos);
+
+#endif
 
 /* USER CODE END Private defines */
 

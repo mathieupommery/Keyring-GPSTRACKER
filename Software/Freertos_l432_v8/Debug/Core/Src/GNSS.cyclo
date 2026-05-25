@@ -1,4 +1,4 @@
 ../Core/Src/GNSS.c:15:6:GNSS_Init	1
 ../Core/Src/GNSS.c:39:6:GNSS_ParsePVTData	9
 ../Core/Src/GNSS.c:106:19:GNSS_Process	11
-../Core/Src/GNSS.c:163:8:distancecalc	1
+../Core/Src/GNSS.c:162:8:distancecalc	1

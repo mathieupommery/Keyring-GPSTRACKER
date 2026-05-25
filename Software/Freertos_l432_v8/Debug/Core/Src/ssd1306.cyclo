@@ -24,4 +24,3 @@
 ../Core/Src/ssd1306.c:530:6:ssd1306_SetDisplayOn	2
 ../Core/Src/ssd1306.c:542:9:ssd1306_GetDisplayOn	1
 ../Core/Src/ssd1306.c:547:6:batterygauge	11
-../Core/Src/ssd1306.c:600:6:percentage	1
