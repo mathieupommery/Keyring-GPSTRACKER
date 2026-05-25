@@ -177,12 +177,35 @@ void StartMainTask(void const * argument)
   uint32_t cycles_actuels = DWT->CYCCNT;
 #endif
   xLastWakeTime = xTaskGetTickCount();
+  TickType_t last_action_tick = xTaskGetTickCount();
   /* Infinite loop */
   for(;;)
   {
 #ifdef DEBUG1
       cycles_actuels = DWT->CYCCNT;
 #endif
+      if (gButtons.BTN_A >= 1 || gButtons.BTN_B >= 1 || gButtons.BTN_A_LONG >= 1 || gButtons.BTN_B_LONG >= 1)
+      {
+          last_action_tick = xTaskGetTickCount();
+
+          if (state_struct.state == STATE_SCREENSAVER) {
+
+              state_struct.state = state_struct.previous_state;
+
+              gButtons.BTN_A = 0;
+              gButtons.BTN_B = 0;
+              gButtons.BTN_A_LONG = 0;
+              gButtons.BTN_B_LONG = 0;
+          }
+      }
+
+      if ((xTaskGetTickCount() - last_action_tick) >= pdMS_TO_TICKS(10000))
+      {
+          if (state_struct.state != STATE_SCREENSAVER) {
+              state_struct.previous_state = state_struct.state;
+              state_struct.state = STATE_SCREENSAVER;
+          }
+      }
 
 	  HAL_GPIO_TogglePin(LED_GREEN_GPIO_Port,LED_GREEN_Pin);
 	  StateMachine_Run(&state_struct,&GNSSData,&gButtons,&gAdc,&sdcard);
@@ -308,16 +331,18 @@ void StartTrackerTask(void const * argument)
 void StartPWRTask(void const * argument)
 {
   /* USER CODE BEGIN StartPWRTask */
-	  TickType_t xLastWakeTime;
-	  const TickType_t period = pdMS_TO_TICKS(10);
-	  xLastWakeTime = xTaskGetTickCount();
+    TickType_t xLastWakeTime;
+    const TickType_t period = pdMS_TO_TICKS(10);
+    xLastWakeTime = xTaskGetTickCount();
+
   /* Infinite loop */
   for(;;)
   {
+      PWR_ProcessPWButton(&gButtons);
 
-	  PWR_ProcessPWButton(&gButtons);
 
-	  vTaskDelayUntil(&xLastWakeTime, period);
+
+      vTaskDelayUntil(&xLastWakeTime, period);
   }
   /* USER CODE END StartPWRTask */
 }

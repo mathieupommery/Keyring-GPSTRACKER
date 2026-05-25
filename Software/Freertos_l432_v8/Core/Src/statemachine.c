@@ -622,92 +622,90 @@ void StateMachine_Run(AppStateMachineContext *ctx, GNSS_StateHandle *gps,
 		}
 	}
 		break;
-
 		/* --------------------------------------------------------------------- */
-		/*                         STATE_CHRONOMETER                             */
+		/* STATE_SETTINGS                                                        */
 		/* --------------------------------------------------------------------- */
-	case STATE_CHRONOMETER: {
-		ssd1306_Fill(Black);
-		ssd1306_SetCursor(32, 32);
-		ssd1306_WriteString("chrono", Font_6x8, White);
-		ssd1306_SetCursor(32, 40);
+	case STATE_SETTINGS: {
 
-		switch (ctx->chronostate) {
-		case STATE_RESET:
-			ctx->calctime = 0;
-			ctx->timehandler = 0;
+		// --- AFFICHAGE ET CONFIGURATION ---
+		switch (ctx->settingstate) {
+		case SETTING_FREQ:
+			ssd1306_SetCursor(32, 32);
+			ssd1306_WriteString("Freq:", Font_7x10, White);
+
+			ssd1306_SetCursor(62, 32);
+			if (sd->frequency == SD_FREQ_1HZ)
+				ssd1306_WriteString("1Hz ", Font_7x10, White);
+			else if (sd->frequency == SD_FREQ_10HZ)
+				ssd1306_WriteString("10Hz ", Font_7x10, White);
+			else
+				ssd1306_WriteString("0.1Hz", Font_7x10, White);
 
 			if (buttons->BTN_B >= 1) {
-				ctx->chronostate++;
+				if (sd->frequency == SD_FREQ_1HZ)
+					sd->frequency = SD_FREQ_1HZ;
+				else if (sd->frequency == SD_FREQ_10HZ)
+					sd->frequency = SD_FREQ_10HZ;
+				else
+					sd->frequency = SD_FREQ_01HZ;
 				buttons->BTN_B = 0;
-				ctx->starttime = uwTick;
 			}
 			break;
 
-		case STATE_RUN:
-			ctx->calctime = uwTick - ctx->starttime + ctx->timehandler;
+		case SETTING_FORMAT:
+			ssd1306_SetCursor(42, 32);
+			ssd1306_WriteString("Type:", Font_7x10, White);
 
+			ssd1306_SetCursor(42, 62);
+			if (sd->format == SD_FORMAT_GPX)
+				ssd1306_WriteString("GPX", Font_7x10, White);
+			else
+				ssd1306_WriteString("CSV", Font_7x10, White);
+
+			// Clic B Court : Basculer le format
 			if (buttons->BTN_B >= 1) {
-				ctx->chronostate++;
+				sd->format =(sd->format == SD_FORMAT_GPX) ?SD_FORMAT_CSV : SD_FORMAT_GPX;
 				buttons->BTN_B = 0;
-			}
-			break;
-
-		case STATE_PAUSE:
-			ctx->timehandler = ctx->calctime;
-
-			if (buttons->BTN_B >= 1) {
-				ctx->chronostate--;
-				buttons->BTN_B = 0;
-				ctx->starttime = uwTick;
-			}
-			if (buttons->BTN_B_LONG >= 1) {
-				ctx->chronostate -= 2;
-				buttons->BTN_B_LONG = 0;
-				ctx->timehandler = 0;
 			}
 			break;
 
 		default:
-			ctx->chronostate = STATE_RESET;
+			ctx->settingstate = SETTING_FREQ;
 			break;
 		}
 
-		float min = floorf((float) ctx->calctime / 60000.0f);
-		float seconde = (float) (ctx->calctime - (uint32_t) (min * 60000.0f))
-				/ 1000.0f;
+		// --- BANDEAU D'AIDE (BAS DE L'ÉCRAN) ---
+		ssd1306_SetCursor(32, 56);
+		ssd1306_WriteString("Hold B : Next", Font_6x8, White);
 
-#ifndef USE_FAST_PRINT
-        snprintf((char *)bufferscreen, 15, "%0.0fmin", min);
-#else
-		fast_printf((char*) bufferscreen, " min", min, TYPE_FLOAT, 0,
-				POS_SUFFIX);
-#endif
-
-		ssd1306_WriteString((char*) bufferscreen, Font_7x10, White);
-
-		ssd1306_SetCursor(32, 50);
-
-#ifndef USE_FAST_PRINT
-        snprintf((char *)bufferscreen, 15, "%0.3f s", seconde);
-#else
-		fast_printf((char*) bufferscreen, " s", seconde, TYPE_FLOAT, 3,
-				POS_SUFFIX);
-#endif
-		ssd1306_WriteString((char*) bufferscreen, Font_7x10, White);
+		if (buttons->BTN_B_LONG >= 1) {
+			ctx->settingstate =(ctx->settingstate == SETTING_FREQ) ?SETTING_FORMAT : SETTING_FREQ;
+			buttons->BTN_B_LONG = 0;
+			buttons->BTN_A = 0;
+		}
 
 		if (buttons->BTN_A >= 1) {
-			ctx->state--;
-			ctx->state--;
-			ctx->state--;
+			ctx->state = STATE_SPEED;
 			buttons->BTN_A = 0;
 			buttons->BTN_B = 0;
 		}
 		if (buttons->BTN_A_LONG >= 1) {
 			ctx->state--;
-			buttons->BTN_A = 0;
-			buttons->BTN_B = 0;
 			buttons->BTN_A_LONG = 0;
+			buttons->BTN_B = 0;
+		}
+	}
+		break;
+
+	case STATE_SCREENSAVER: {
+		if (sd->is_recording) {
+			if ((HAL_GetTick() / 500) % 2) {
+				ssd1306_SetCursor(40, 20);
+				ssd1306_WriteString("REC", Font_16x24, White);
+			}
+		} else {
+
+			batterygauge_screensaver(gAdc->vbat, 32, 32);
 		}
 	}
 		break;

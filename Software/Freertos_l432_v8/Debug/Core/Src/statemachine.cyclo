@@ -1,5 +1,5 @@
 ../Core/Src/statemachine.c:13:13:utility_function	3
-../Core/Src/statemachine.c:28:6:StateMachine_Run	74
-../Core/Src/statemachine.c:720:6:set_time	2
-../Core/Src/statemachine.c:732:6:set_date	2
-../Core/Src/statemachine.c:746:6:get_time_date	1
+../Core/Src/statemachine.c:28:6:StateMachine_Run	79
+../Core/Src/statemachine.c:718:6:set_time	2
+../Core/Src/statemachine.c:730:6:set_date	2
+../Core/Src/statemachine.c:744:6:get_time_date	1

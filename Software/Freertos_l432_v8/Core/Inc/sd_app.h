@@ -12,7 +12,8 @@ typedef enum {
 
 typedef enum {
     SD_FREQ_1HZ = 1000, // 1000 ms
-    SD_FREQ_10HZ = 100  // 100 ms
+    SD_FREQ_10HZ = 100,  // 100 ms
+	SD_FREQ_01HZ = 10000 // 1000 ms
 } RecordFreq_t;
 
 typedef struct {

@@ -22,16 +22,10 @@ typedef enum{
 	STATE_SPEED,
 	STATE_BALISE,
 	STATE_POS,
-	STATE_CHRONOMETER
+	STATE_SETTINGS,
+	STATE_SCREENSAVER
 
 }STATE_TYPE;
-
-typedef enum{
-	STATE_HEURES,
-	STATE_MINUTE,
-	STATE_VALID
-
-}COMPTEUR;
 
 typedef enum{
 	STATE_GROS,
@@ -51,19 +45,6 @@ typedef enum{
 }POS;
 
 typedef enum{
-	STATE_RESET,
-	STATE_RUN,
-	STATE_PAUSE
-
-}CHRONO;
-
-typedef enum{
-	STATE_MARCHE,
-	STATE_REPOS
-
-}KEYBOARD;
-
-typedef enum{
 	BALISESTATE1,
 	BALISESTATE2,
 	BALISESTATE3
@@ -79,26 +60,21 @@ typedef enum{
 
 }ECRANBALISESTATE;
 
-typedef enum{
-	WAITFORGPS,
-	WAITFORPUSH,
-	WAITFORSTOP,
-	INRUN,
-	RESULT
-
-
-
-}ACCELSTATE;
+typedef enum {
+    SETTING_FREQ,
+    SETTING_FORMAT
+} SETTING_STATE;
 
 typedef struct
 {
     /* Etats principaux et sous-états */
     uint8_t state;
+    uint8_t previous_state;
     uint8_t spdstate;
     uint8_t balisestate;
     uint8_t ecranstate;
     uint8_t posstate;
-    uint8_t chronostate;
+    uint8_t settingstate;
 
     float    vitmax;
 
@@ -112,11 +88,6 @@ typedef struct
     uint8_t MOIS;
     uint16_t ANNEE;
     uint8_t rtc_synced;
-
-    /* Chronomètre */
-    uint32_t calctime;
-    uint32_t starttime;
-    uint32_t timehandler;
 
     /* Position de départ de balise */
     float    oldlat;

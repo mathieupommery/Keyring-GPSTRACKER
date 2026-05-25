@@ -548,7 +548,7 @@ void batterygauge(float vbat,int x, int y,int currentsquare){
 	ssd1306_Line(x+15,y+1,x+15,y+5, White);
 	ssd1306_Line(x+16,y+1,x+16,y+5, White);
 	ssd1306_DrawRectangle(x, y, x+14, y+6, White);
-	if(vbat<=3.7){
+	if(vbat<=3.6){
 		ssd1306_DrawRectangle(x+2, y+2, x+3, y+4, White);
 		if(currentsquare==1){
 			ssd1306_DrawRectangle(x+2, y+2, x+3, y+4, White);
@@ -557,7 +557,7 @@ void batterygauge(float vbat,int x, int y,int currentsquare){
 
 		}
 	}
-	if(vbat>3.7 && vbat<= 3.9){
+	if(vbat>3.6 && vbat<= 3.8){
 		ssd1306_DrawRectangle(x+2, y+2, x+3, y+4, White);
 		if(currentsquare==1){
 			ssd1306_DrawRectangle(x+5, y+2, x+6, y+4, White);
@@ -567,7 +567,7 @@ void batterygauge(float vbat,int x, int y,int currentsquare){
 				}
 
 	}
-	if(vbat>3.9 && vbat<=4.1){
+	if(vbat>3.8 && vbat<=4.05){
 		ssd1306_DrawRectangle(x+2, y+2, x+3, y+4, White);
 		ssd1306_DrawRectangle(x+5, y+2, x+6, y+4, White);
 
@@ -580,7 +580,7 @@ void batterygauge(float vbat,int x, int y,int currentsquare){
 				}
 	}
 
-	if(vbat>4.1){
+	if(vbat>4.05){
 		ssd1306_DrawRectangle(x+2, y+2, x+3, y+4, White);
 		ssd1306_DrawRectangle(x+5, y+2, x+6, y+4, White);
 		ssd1306_DrawRectangle(x+8, y+2, x+9, y+4, White);
@@ -591,20 +591,35 @@ void batterygauge(float vbat,int x, int y,int currentsquare){
 
 				}
 	}
-
-
-
-
 }
 
-//void percentage(float percent){
-//	ssd1306_FillRectangle(32, 40, floor(0.63*percent+32), 56, White);
-//	ssd1306_DrawRectangle(32, 40, 95, 56, White);
-//	snprintf((char  *)bufferscreen,20,"%0.2f %%",(float) percent);
-//	ssd1306_SetCursor(45,44);
-//	ssd1306_WriteString((char  *)bufferscreen,Font_6x8,White);
-//
-//
-//}
+void batterygauge_screensaver(float vbat, uint8_t x, uint8_t y) {
+    // --------------------------------------------------------
+    // 1. DESSIN DU CONTOUR (72x40 au total)
+    // --------------------------------------------------------
+    ssd1306_DrawRectangle(x, y, x + 65, y + 40, White);
+    ssd1306_FillRectangle(x + 65, y + 12, x + 71, y + 28, White);
 
+    // --------------------------------------------------------
+    // 2. LOGIQUE DU NIVEAU DE BATTERIE (1 à 4 barres)
+    // --------------------------------------------------------
+    uint8_t max_bars = 0;
+    if (vbat > 4.0f)      max_bars = 4;
+    else if (vbat > 3.8f) max_bars = 3;
+    else if (vbat > 3.6f) max_bars = 2;
+    else                  max_bars = 1;
+
+    // --------------------------------------------------------
+    // 3. LE MOTEUR D'ANIMATION FAÇON "DJI"
+    // --------------------------------------------------------
+    uint8_t active_bars = (HAL_GetTick() / 500) % (max_bars + 1);
+
+    // --------------------------------------------------------
+    // 4. DESSIN DES BARRES PLEINES
+    // --------------------------------------------------------
+    for (uint8_t i = 0; i < active_bars; i++) {
+        uint8_t bar_x = x + 4 + (i * 15);
+        ssd1306_FillRectangle(bar_x, y + 3, bar_x + 12, y + 37, White);
+    }
+}
 

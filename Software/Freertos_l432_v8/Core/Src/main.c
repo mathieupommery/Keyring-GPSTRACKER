@@ -60,7 +60,7 @@
 AppStateMachineContext state_struct = { .state = STATE_SPEED, .spdstate =
 		STATE_GROS, .balisestate = BALISESTATE1,
 		.ecranstate = ECRANBALISESTATE1, .posstate = STATE_SUMMARY1,
-		.chronostate = STATE_RESET, };
+};
 
 GNSS_StateHandle GNSSData;
 Buttons_t gButtons = { 0 };
