@@ -597,8 +597,8 @@ void batterygauge_screensaver(float vbat, uint8_t x, uint8_t y) {
     // --------------------------------------------------------
     // 1. DESSIN DU CONTOUR (72x40 au total)
     // --------------------------------------------------------
-    ssd1306_DrawRectangle(x, y, x + 65, y + 40, White);
-    ssd1306_FillRectangle(x + 65, y + 12, x + 71, y + 28, White);
+    ssd1306_DrawRectangle(x+1, y+1, x + 59, y + 30, White);
+    ssd1306_FillRectangle(x+1 + 59, y+10, x + 69, y + 21, White);
 
     // --------------------------------------------------------
     // 2. LOGIQUE DU NIVEAU DE BATTERIE (1 à 4 barres)
@@ -618,8 +618,8 @@ void batterygauge_screensaver(float vbat, uint8_t x, uint8_t y) {
     // 4. DESSIN DES BARRES PLEINES
     // --------------------------------------------------------
     for (uint8_t i = 0; i < active_bars; i++) {
-        uint8_t bar_x = x + 4 + (i * 15);
-        ssd1306_FillRectangle(bar_x, y + 3, bar_x + 12, y + 37, White);
+        uint8_t bar_x = x + 4 + (i * 14);
+        ssd1306_FillRectangle(bar_x, y + 4, bar_x + 10, y + 27, White);
     }
 }
 

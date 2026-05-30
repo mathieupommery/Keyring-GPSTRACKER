@@ -2364,7 +2364,7 @@
 				)
 			)
 		)
-		(property "Footprint" "v9footprint:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
+		(property "Footprint" "v9footprintlocal:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
 			(at 81.28 74.93 0)
 			(hide yes)
 			(show_name no)
@@ -2524,7 +2524,7 @@
 				)
 			)
 		)
-		(property "Footprint" "v9footprint:C_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
+		(property "Footprint" "v9footprintlocal:C_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
 			(at 92.71 90.17 0)
 			(hide yes)
 			(show_name no)
@@ -2687,7 +2687,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "v9footprint:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
+		(property "Footprint" "v9footprintlocal:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
 			(at 92.71 59.69 0)
 			(hide yes)
 			(show_name no)
@@ -2789,7 +2789,7 @@
 				)
 			)
 		)
-		(property "Footprint" "v9footprint:PA1010D"
+		(property "Footprint" "v9footprintlocal:PA1010D"
 			(at 213.36 42.926 0)
 			(hide yes)
 			(show_name no)
@@ -2972,7 +2972,7 @@
 				)
 			)
 		)
-		(property "Footprint" "v9footprint:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
+		(property "Footprint" "v9footprintlocal:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
 			(at 201.93 66.04 0)
 			(hide yes)
 			(show_name no)
@@ -3134,7 +3134,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "v9footprint:C_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
+		(property "Footprint" "v9footprintlocal:C_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
 			(at 265.43 33.02 0)
 			(hide yes)
 			(show_name no)
@@ -3215,7 +3215,7 @@
 				)
 			)
 		)
-		(property "Footprint" "v9footprint:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
+		(property "Footprint" "v9footprintlocal:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
 			(at 257.81 49.53 0)
 			(hide yes)
 			(show_name no)
@@ -3317,7 +3317,7 @@
 				)
 			)
 		)
-		(property "Footprint" "v9footprint:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
+		(property "Footprint" "v9footprintlocal:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
 			(at 203.2 59.69 0)
 			(hide yes)
 			(show_name no)
@@ -3400,7 +3400,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "v9footprint:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
+		(property "Footprint" "v9footprintlocal:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
 			(at 40.64 64.77 0)
 			(hide yes)
 			(show_name no)
@@ -3505,7 +3505,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "v9footprint:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
+		(property "Footprint" "v9footprintlocal:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
 			(at 74.93 80.01 0)
 			(hide yes)
 			(show_name no)
@@ -3847,7 +3847,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "v9footprint:C_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
+		(property "Footprint" "v9footprintlocal:C_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
 			(at 41.91 35.56 0)
 			(hide yes)
 			(show_name no)
@@ -3930,7 +3930,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "v9footprint:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
+		(property "Footprint" "v9footprintlocal:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
 			(at 30.48 64.77 0)
 			(hide yes)
 			(show_name no)
@@ -4034,7 +4034,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "v9footprint:C_0402_1005Metric"
+		(property "Footprint" "v9footprintlocal:LED_0402_1005Metric"
 			(at 31.75 35.56 0)
 			(hide yes)
 			(show_name no)
@@ -4114,7 +4114,7 @@
 				)
 			)
 		)
-		(property "Footprint" "v9footprint:microSD_HC_Molex_104031-0811"
+		(property "Footprint" "v9footprintlocal:microSD_HC_Molex_104031-0811"
 			(at 170.18 57.15 0)
 			(hide yes)
 			(show_name no)

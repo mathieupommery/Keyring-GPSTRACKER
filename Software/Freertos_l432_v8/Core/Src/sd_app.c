@@ -61,6 +61,8 @@ void SD_Close_File(SDCard_struct *sd) {
 }
 
 void SD_Manager(SDCard_struct *sd, GNSS_StateHandle *gps, AdcContext_t *gAdc) {
+	int len = 0;
+	UINT bytesWrote; // Déclaré UNE SEULE FOIS ici pour tout le code
 
 	if (!Is_SD_Present()) {
 		if (sd->file_is_open)
@@ -103,10 +105,16 @@ void SD_Manager(SDCard_struct *sd, GNSS_StateHandle *gps, AdcContext_t *gAdc) {
 
 	/* === À PARTIR D'ICI : ON DOIT ENREGISTRER === */
 
-	/* 4. MONTAGE FATFS (Si ce n'est pas déjà fait) */
+	/* --- NOUVEAU : FILTRE DE FRÉQUENCE (Puisque la tâche tourne à 10Hz) --- */
+	static uint8_t last_recorded_sec = 60;
+	if (sd->frequency == SD_FREQ_1HZ) {
+		if (gps->sec == last_recorded_sec) {
+			return; // On a déjà écrit un point pour cette seconde, on saute le reste !
+		}
+		last_recorded_sec = gps->sec;
+	}
 
-	int len = 0;
-	UINT bytesWrote;
+	/* 4. MONTAGE FATFS (Si ce n'est pas déjà fait) */
 	if (!sd->is_mounted) {
 		sd->fresult = f_mount(&sd->FatFs, "", 1);
 		if (sd->fresult == FR_OK) {
@@ -118,96 +126,103 @@ void SD_Manager(SDCard_struct *sd, GNSS_StateHandle *gps, AdcContext_t *gAdc) {
 
 	/* 6. CRÉATION / OUVERTURE DU FICHIER ET EN-TÊTE */
 	if (!sd->file_is_open) {
-
 		const char *ext = (sd->format == SD_FORMAT_GPX) ? "GPX" : "CSV";
 		FILINFO fno;
 
 		while (1) {
 			sprintf(sd->current_filename, "TRK_%03d.%s", sd->tracknumber, ext);
-
-			// Si le fichier existe, on incrémente
 			if (f_stat(sd->current_filename, &fno) == FR_OK) {
 				sd->tracknumber++;
-				if (sd->tracknumber > 999)
-					break;
+				if (sd->tracknumber > 999) break;
 			} else {
 				break;
 			}
 		}
-		sd->fresult = f_open(&sd->fil, sd->current_filename,
-				FA_WRITE | FA_OPEN_APPEND | FA_CREATE_ALWAYS);
+		sd->fresult = f_open(&sd->fil, sd->current_filename, FA_WRITE | FA_OPEN_APPEND | FA_CREATE_ALWAYS);
 
 		if (sd->fresult == FR_OK) {
 			sd->file_is_open = 1;
 
+			// Sécurité pour la reprise d'enregistrement (Remise à zéro des ms)
+			gps->sec = 60;
+
 			if (sd->format == SD_FORMAT_GPX) {
 				const char gpx_header[] =
 						"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
-								"<gpx version=\"1.1\" creator=\"STM32\">\n  <trk>\n    <trkseg>\n";
-
-				f_write(&sd->fil, gpx_header, sizeof(gpx_header) - 1,
-						&bytesWrote);
-
-			} else { // CSV
-				const char csv_header[] = "Lat,Lon,Ele,Sat,Vbat\n";
-
-				f_write(&sd->fil, csv_header, sizeof(csv_header) - 1,
-						&bytesWrote);
+						"<gpx version=\"1.1\" creator=\"STM32\">\n  <trk>\n    <trkseg>\n";
+				f_write(&sd->fil, gpx_header, sizeof(gpx_header) - 1, &bytesWrote);
+			} else {
+				const char csv_header[] = "Time,Lat,Lon,Ele,Sat,Hdop,Vbat\n";
+				f_write(&sd->fil, csv_header, sizeof(csv_header) - 1, &bytesWrote);
 			}
 		} else {
-			return; // Impossible d'ouvrir le fichier
+			return;
 		}
 	}
 
-	/* 7. FORMATAGE DES DONNÉES (Ultra Rapide - Zéro FPU Complexe) */
-	float lat = gps->fLat;
-	if (lat < 0)
-		lat = -lat;
-	float lon = gps->fLon;
-	if (lon < 0)
-		lon = -lon;
-	float ele = gps->fheight;
-	if (ele < 0)
-		ele = -ele;
+	/* --- GESTION DES MILLISECONDES --- */
+	static uint8_t last_sec = 60;
+	static uint16_t ms_interpolated = 0;
 
-	char lat_sign = (gps->fLat < 0) ? '-' : ' ';
-	char lon_sign = (gps->fLon < 0) ? '-' : ' ';
-	char ele_sign = (gps->fheight < 0) ? '-' : ' ';
+	if (gps->sec != last_sec) {
+		ms_interpolated = 0;
+		last_sec = gps->sec;
+	} else {
+		if (sd->frequency == SD_FREQ_10HZ) ms_interpolated += 100;
+	}
+
+	/* 7. FORMATAGE DES DONNÉES (Ultra Rapide - Zéro FPU Complexe) */
+	float lat = gps->fLat;       if (lat < 0) lat = -lat;
+	float lon = gps->fLon;       if (lon < 0) lon = -lon;
+	float ele = gps->fheight;    if (ele < 0) ele = -ele;
+	float hdop = gps->fhACC;
+
+	// CORRECTION CRITIQUE (Plus de %c avec espace, on utilise %s pour XML Valide)
+	const char *lat_sign = (gps->fLat < 0) ? "-" : "";
+	const char *lon_sign = (gps->fLon < 0) ? "-" : "";
+	const char *ele_sign = (gps->fheight < 0) ? "-" : "";
 
 	uint32_t lat_int = (uint32_t) lat;
 	uint32_t lat_frac = (uint32_t) ((lat - lat_int) * 1000000.0f);
-
 	uint32_t lon_int = (uint32_t) lon;
 	uint32_t lon_frac = (uint32_t) ((lon - lon_int) * 1000000.0f);
-
 	uint32_t ele_int = (uint32_t) ele;
 	uint32_t ele_frac = (uint32_t) ((ele - ele_int) * 10.0f);
+	uint32_t hdop_int = (uint32_t) hdop;
+	uint32_t hdop_frac = (uint32_t) ((hdop - hdop_int) * 10.0f);
 
 	if (sd->format == SD_FORMAT_GPX) {
-		len = snprintf(sd->sdcardbuffer, sizeof(sd->sdcardbuffer),
-				"      <trkpt lat=\"%c%lu.%06lu\" lon=\"%c%lu.%06lu\">\n"
-						"        <ele>%c%lu.%01lu</ele>\n"
-						"        <time>%04d-%02d-%02dT%02d:%02d:%02dZ</time>\n"
-						"      </trkpt>\n", (lat_sign == '-' ? '-' : ' '),
-				lat_int, lat_frac, (lon_sign == '-' ? '-' : ' '), lon_int,
-				lon_frac, (ele_sign == '-' ? '-' : ' '), ele_int, ele_frac,
-				gps->year, gps->month, gps->day, gps->hour, gps->min, gps->sec);
+		len = snprintf((char*)sd->sdcardbuffer, sizeof(sd->sdcardbuffer),
+				"      <trkpt lat=\"%s%lu.%06lu\" lon=\"%s%lu.%06lu\">\n"
+				"        <ele>%s%lu.%01lu</ele>\n"
+				"        <time>%04d-%02d-%02dT%02d:%02d:%02d.%03dZ</time>\n"
+				"        <sat>%d</sat>\n"
+				"        <hdop>%lu.%01lu</hdop>\n"
+				"      </trkpt>\n",
+				lat_sign, lat_int, lat_frac,
+				lon_sign, lon_int, lon_frac,
+				ele_sign, ele_int, ele_frac,
+				gps->year, gps->month, gps->day, gps->hour, gps->min, gps->sec, ms_interpolated,
+				gps->satCount,
+				hdop_int, hdop_frac);
 
 	} else {
 		uint32_t vbat_int = (uint32_t) gAdc->vbat;
 		uint32_t vbat_frac = (uint32_t) ((gAdc->vbat - vbat_int) * 100.0f);
 
-		len = snprintf(sd->sdcardbuffer, sizeof(sd->sdcardbuffer),
-				"%c%lu.%06lu,%c%lu.%06lu,%c%lu.%01lu,%d,%lu.%02lu\n",
-				(lat_sign == '-' ? '-' : ' '), lat_int, lat_frac,
-				(lon_sign == '-' ? '-' : ' '), lon_int, lon_frac,
-				(ele_sign == '-' ? '-' : ' '), ele_int, ele_frac, gps->satCount,
+		len = snprintf((char*)sd->sdcardbuffer, sizeof(sd->sdcardbuffer),
+				"%02d:%02d:%02d.%03d,%s%lu.%06lu,%s%lu.%06lu,%s%lu.%01lu,%d,%lu.%01lu,%lu.%02lu\n",
+				gps->hour, gps->min, gps->sec, ms_interpolated,
+				lat_sign, lat_int, lat_frac,
+				lon_sign, lon_int, lon_frac,
+				ele_sign, ele_int, ele_frac,
+				gps->satCount,
+				hdop_int, hdop_frac,
 				vbat_int, vbat_frac);
 	}
 
 	/* 8. ÉCRITURE ET SMART SYNCHRONISATION */
 	if (len > 0) {
-		UINT bytesWrote;
 		sd->fresult = f_write(&sd->fil, sd->sdcardbuffer, len, &bytesWrote);
 
 		if (sd->fresult == FR_OK) {

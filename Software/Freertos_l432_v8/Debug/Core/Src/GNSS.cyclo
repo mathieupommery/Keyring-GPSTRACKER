@@ -1,4 +1,10 @@
-../Core/Src/GNSS.c:15:6:GNSS_Init	1
-../Core/Src/GNSS.c:39:6:GNSS_ParsePVTData	9
-../Core/Src/GNSS.c:106:19:GNSS_Process	11
-../Core/Src/GNSS.c:162:8:distancecalc	1
+../Core/Src/GNSS.c:10:6:GNSS_Init	1
+../Core/Src/GNSS.c:33:6:GNSS_ParsePVTData	9
+../Core/Src/GNSS.c:100:19:GNSS_Process	11
+../Core/Src/GNSS.c:157:13:UBX_Send_Message	4
+../Core/Src/GNSS.c:189:13:GPS_Send_VALSET	2
+../Core/Src/GNSS.c:208:13:GPS_Send_VALGET	2
+../Core/Src/GNSS.c:227:6:GPS_Set_LowPower_10s	1
+../Core/Src/GNSS.c:250:6:GPS_Set_Normal_Mode	1
+../Core/Src/GNSS.c:263:6:GPS_Verify_Config	1
+../Core/Src/GNSS.c:274:8:distancecalc	1

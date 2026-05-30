@@ -5,11 +5,11 @@
 	(layer "F.Cu")
 	(descr "PTS845")
 	(tags "Switch")
-	(property "Reference" "REF**"
+	(property "Reference" "S**"
 		(at 0 0.2 0)
 		(layer "F.SilkS")
 		(hide yes)
-		(uuid "4a75b751-0644-48b0-9ff8-2b558964fd49")
+		(uuid "edde0a9c-ec20-439e-a0bb-9feafaeeac8b")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17,11 +17,11 @@
 			)
 		)
 	)
-	(property "Value" "PTS845VM20PSMTR4_LFS"
+	(property "Value" "PTS845VM20PSMTR4LFS"
 		(at 0 0.2 0)
 		(layer "F.SilkS")
 		(hide yes)
-		(uuid "9eaf6d79-5239-4171-8aeb-03de287f3711")
+		(uuid "4238eff1-40fd-4f4f-aeac-3c7721f48d4d")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -29,11 +29,11 @@
 			)
 		)
 	)
-	(property "Datasheet" "https://www.ckswitches.com/media/3009/pts845.pdf"
+	(property "Datasheet" ""
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "6d0a5a5d-3542-45e4-b521-32144eb24ea8")
+		(uuid "cd687e26-cecf-4e63-8b2b-ae64a8556553")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -41,11 +41,11 @@
 			)
 		)
 	)
-	(property "Description" "Tactile Switches 50mA 12VDC, 80gf, Grey Actuator"
+	(property "Description" ""
 		(at 0 0 0)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "a9b845ac-df63-4718-b105-eeba7f1f7b12")
+		(uuid "38909d0c-4ccd-481f-9c24-08cdc4a279c5")
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -53,130 +53,17 @@
 			)
 		)
 	)
-	(property "Height" "3.3"
-		(at 0 0 180)
-		(unlocked yes)
-		(layer "F.Fab")
-		(hide yes)
-		(uuid "8e013a9c-2315-4f2b-98a7-0ab53df400ef")
-		(effects
-			(font
-				(size 1 1)
-				(thickness 0.15)
-			)
-		)
-	)
-	(property "Manufacturer_Name" "C & K COMPONENTS"
-		(at 0 0 180)
-		(unlocked yes)
-		(layer "F.Fab")
-		(hide yes)
-		(uuid "a898038e-fb39-4c7d-9b4c-b7c5ffc647b3")
-		(effects
-			(font
-				(size 1 1)
-				(thickness 0.15)
-			)
-		)
-	)
-	(property "Manufacturer_Part_Number" "PTS845VM20PSMTR4 LFS"
-		(at 0 0 180)
-		(unlocked yes)
-		(layer "F.Fab")
-		(hide yes)
-		(uuid "536a2d36-a598-4b12-8f11-aa3ef46a7a30")
-		(effects
-			(font
-				(size 1 1)
-				(thickness 0.15)
-			)
-		)
-	)
-	(property "Mouser Part Number" "611-PTS845VM20PSMTR4"
-		(at 0 0 180)
-		(unlocked yes)
-		(layer "F.Fab")
-		(hide yes)
-		(uuid "29c9d517-4345-4890-a1b7-5fde504626a0")
-		(effects
-			(font
-				(size 1 1)
-				(thickness 0.15)
-			)
-		)
-	)
-	(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/CK/PTS845VM20PSMTR4-LFS?qs=81r%252BiQLm7BQxQDX8di0zbw%3D%3D"
-		(at 0 0 180)
-		(unlocked yes)
-		(layer "F.Fab")
-		(hide yes)
-		(uuid "74c2dda7-2c4a-4a2c-adc6-3c6cc189d616")
-		(effects
-			(font
-				(size 1 1)
-				(thickness 0.15)
-			)
-		)
-	)
-	(property "Arrow Part Number" "PTS845VM20PSMTR4 LFS"
-		(at 0 0 180)
-		(unlocked yes)
-		(layer "F.Fab")
-		(hide yes)
-		(uuid "a6eca1a1-7280-4e06-b391-8b2a7621f833")
-		(effects
-			(font
-				(size 1 1)
-				(thickness 0.15)
-			)
-		)
-	)
-	(property "Arrow Price/Stock" "https://www.arrow.com/en/products/pts845vm20psmtr4lfs/ck?region=nac"
-		(at 0 0 180)
-		(unlocked yes)
-		(layer "F.Fab")
-		(hide yes)
-		(uuid "d70674d6-ed5e-4674-aa77-641a5a167f09")
-		(effects
-			(font
-				(size 1 1)
-				(thickness 0.15)
-			)
-		)
-	)
-	(sheetname "/BTN_CONN/")
-	(sheetfile "BTN_CONN.kicad_sch")
 	(attr through_hole)
 	(duplicate_pad_numbers_are_jumpers no)
 	(fp_line
-		(start 2.25 1.275)
-		(end 2.25 -1.275)
+		(start -2.25 -1.275)
+		(end -2.25 1.275)
 		(stroke
 			(width 0.1)
 			(type solid)
 		)
 		(layer "F.Fab")
-		(uuid "235792f5-b28d-41cd-aefb-cb84aff9d1cb")
-	)
-	(fp_line
-		(start 2.25 -1.275)
-		(end -2.25 -1.275)
-		(stroke
-			(width 0.1)
-			(type solid)
-		)
-		(layer "F.Fab")
-		(uuid "9e2e8aa0-a5e7-4892-abef-9051adeec0e3")
-	)
-	(fp_line
-		(start -1 1.275)
-		(end 1 1.275)
-		(stroke
-			(width 0.1)
-			(type solid)
-		)
-		(layer "F.Fab")
-		(uuid "76972f5c-dc7f-4ab7-84c8-86e1ed2f55cf")
+		(uuid "2a7e302e-88e8-4d75-8d55-df67d4ce41fe")
 	)
 	(fp_line
 		(start -2.25 1.275)
@@ -186,45 +73,68 @@
 			(type solid)
 		)
 		(layer "F.Fab")
-		(uuid "fe528050-8f1c-484a-b12d-6b99fabfcf3b")
+		(uuid "47f18c6a-7f49-4ca5-a476-1677b7b537be")
 	)
 	(fp_line
-		(start -2.25 -1.275)
-		(end -2.25 1.275)
+		(start -1 1.275)
+		(end 1 1.275)
 		(stroke
 			(width 0.1)
 			(type solid)
 		)
 		(layer "F.Fab")
-		(uuid "89785a31-53f1-4a28-b924-908fe369731e")
+		(uuid "ac46e3a8-9a5c-4812-89dc-6d567f23dc1a")
+	)
+	(fp_line
+		(start 2.25 -1.275)
+		(end -2.25 -1.275)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "feaca594-9a5f-4b27-99a6-19635fa6056e")
+	)
+	(fp_line
+		(start 2.25 1.275)
+		(end 2.25 -1.275)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "d4af1454-33b7-4a60-916f-7ca69b3e0fe8")
 	)
 	(pad "" np_thru_hole circle
-		(at -2.125 0.075 180)
+		(at -2.125 0.075)
 		(size 0.9 0.9)
 		(drill 0.9)
 		(layers "*.Cu" "*.Mask")
-		(uuid "9beb861f-bc55-4ed2-b8a0-c4460923bfdb")
+		(uuid "b9a1f5c9-bf05-4219-98a3-821f2a653f1a")
 	)
 	(pad "" np_thru_hole circle
-		(at 2.125 0.075 180)
+		(at 2.125 0.075)
 		(size 0.9 0.9)
 		(drill 0.9)
 		(layers "*.Cu" "*.Mask")
-		(uuid "42583dd5-86cd-4163-b67a-64035c5b8f3c")
+		(uuid "bb2c2a8d-fc17-4e83-b14a-c90178ef10cc")
 	)
 	(pad "1" smd rect
-		(at -1.225 -0.825 180)
+		(at -1.225 -0.825)
 		(size 0.75 1.8)
 		(layers "F.Cu" "F.Mask" "F.Paste")
 		(zone_connect 1)
-		(thermal_bridge_width 0.2)
+		(thermal_bridge_width 0.3)
 		(thermal_gap 0.15)
-		(uuid "d1854e98-859e-4b6a-b7ba-14272f29b442")
+		(uuid "99453796-037c-45bd-875a-ae0267d5d1c1")
 	)
 	(pad "2" smd rect
-		(at 0 -0.825 180)
+		(at 0 -0.825)
 		(size 0.6 1.8)
 		(layers "F.Cu" "F.Mask" "F.Paste")
+		(zone_connect 1)
+		(thermal_bridge_width 0.3)
+		(thermal_gap 0.15)
 		(teardrops
 			(best_length_ratio 0.5)
 			(max_length 1)
@@ -236,39 +146,39 @@
 			(allow_two_segments yes)
 			(prefer_zone_connections yes)
 		)
-		(uuid "2ffcc709-6a48-402a-a7ce-804f49839bbc")
+		(uuid "85db8f30-37ae-40d6-b98d-192c4f4100bc")
 	)
 	(pad "3" smd rect
-		(at 1.225 -0.825 180)
+		(at 1.225 -0.825)
 		(size 0.75 1.8)
 		(layers "F.Cu" "F.Mask" "F.Paste")
 		(zone_connect 1)
-		(thermal_bridge_width 0.2)
+		(thermal_bridge_width 0.3)
 		(thermal_gap 0.15)
-		(uuid "a7658ee9-6a56-4525-aecd-4632a209af56")
+		(uuid "9a11394f-8057-4432-8ce2-a6c542f6bd45")
 	)
 	(pad "MP1" smd rect
-		(at -1.85 1.125 270)
+		(at -1.85 1.125 90)
 		(size 0.9 1.3)
 		(layers "F.Cu" "F.Mask" "F.Paste")
-		(uuid "f14792a4-afcb-444d-81eb-f412b742b4b2")
+		(uuid "141b3d73-a4a5-4d5d-990c-66ea6bbbcb64")
 	)
 	(pad "MP2" smd rect
-		(at 1.85 1.125 270)
+		(at 1.85 1.125 90)
 		(size 0.9 1.3)
 		(layers "F.Cu" "F.Mask" "F.Paste")
-		(uuid "dd62f267-0c06-4429-9b23-7fc53e739acb")
+		(uuid "86f6efe4-871c-4f31-8175-29c3f981ca7a")
 	)
 	(embedded_fonts no)
-	(model "C:/Users/mathi/Desktop/projet/libloader/SamacSys_Parts.3dshapes/PTS845VM20PSMTR4_LFS.stp"
+	(model "C:\\Users\\mathi\\Desktop\\libloader2\\SamacSys_Parts.3dshapes\\PTS845VK20PSMTR4_LFS.stp"
 		(offset
-			(xyz -2 1.35 0)
+			(xyz -1.99999997 1.419999936 0.05999999776)
 		)
 		(scale
 			(xyz 1 1 1)
 		)
 		(rotate
-			(xyz -90 -0 -0)
+			(xyz -90 0 0)
 		)
 	)
 )

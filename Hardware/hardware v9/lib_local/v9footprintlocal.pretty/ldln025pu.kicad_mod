@@ -4,11 +4,10 @@
 	(generator_version "10.0")
 	(layer "F.Cu")
 	(property "Reference" "REF**"
-		(at -0.05 13.73 180)
+		(at -0.05 13.73 0)
 		(unlocked yes)
 		(layer "F.SilkS")
-		(hide yes)
-		(uuid "62f801fe-7d91-47c3-9c4c-0a4da010dd74")
+		(uuid "e7ff916c-3903-44c0-9bdb-5602fe9dca1f")
 		(effects
 			(font
 				(size 1 1)
@@ -17,11 +16,10 @@
 		)
 	)
 	(property "Value" "ldln025pu"
-		(at -0.05 15.23 180)
+		(at -0.05 15.23 0)
 		(unlocked yes)
 		(layer "F.Fab")
-		(hide yes)
-		(uuid "42bc9278-6844-4acd-bf5f-f7c38b6ee0f2")
+		(uuid "81e091f3-a765-4213-a435-923a1df806f7")
 		(effects
 			(font
 				(size 1 1)
@@ -30,11 +28,11 @@
 		)
 	)
 	(property "Datasheet" ""
-		(at 0 0 180)
+		(at 0 0 0)
 		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "0ee3feb3-ee11-4d8c-8738-5a655ca547dc")
+		(uuid "766fd27e-b35e-417f-9d5c-fe1d8e07b158")
 		(effects
 			(font
 				(size 1 1)
@@ -43,11 +41,11 @@
 		)
 	)
 	(property "Description" ""
-		(at 0 0 180)
+		(at 0 0 0)
 		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "c51c9061-3a22-4be7-8b78-3f77acc5e817")
+		(uuid "1d531a11-f725-498d-9362-d74cd0abef6b")
 		(effects
 			(font
 				(size 1 1)
@@ -55,41 +53,13 @@
 			)
 		)
 	)
-	(property "Mouser Part Number" "511-LDLN025PU33R"
-		(at 0 0 180)
-		(unlocked yes)
-		(layer "F.Fab")
-		(hide yes)
-		(uuid "5847ea48-68e2-419f-a212-bfcaab58de12")
-		(effects
-			(font
-				(size 1 1)
-				(thickness 0.15)
-			)
-		)
-	)
-	(property "Mouser Price/Stock" "https://www.mouser.fr/ProductDetail/STMicroelectronics/LDLN025PU33R?qs=aVyJF2WnouRLo66BkrxZ7g%3D%3D"
-		(at 0 0 180)
-		(unlocked yes)
-		(layer "F.Fab")
-		(hide yes)
-		(uuid "d1ffe279-967c-4407-8216-34b108720716")
-		(effects
-			(font
-				(size 1 1)
-				(thickness 0.15)
-			)
-		)
-	)
-	(sheetname "/POWER/")
-	(sheetfile "untitled.kicad_sch")
 	(attr through_hole)
 	(duplicate_pad_numbers_are_jumpers no)
 	(fp_text user "${REFERENCE}"
-		(at 0.0075 0.145 180)
+		(at -0.05 16.73 0)
 		(unlocked yes)
 		(layer "F.Fab")
-		(uuid "40c01e8c-91cc-4005-adaf-f1ee99eaf337")
+		(uuid "022d699f-8371-4040-8028-0d22b18f2718")
 		(effects
 			(font
 				(size 1 1)
@@ -98,62 +68,51 @@
 		)
 	)
 	(pad "1" smd roundrect
-		(at -0.3925 -0.355 180)
+		(at -0.3925 -0.355)
 		(size 0.415 0.3)
 		(layers "F.Cu" "F.Mask" "F.Paste")
 		(roundrect_rratio 0)
 		(chamfer_ratio 0.5)
 		(chamfer bottom_right)
 		(thermal_bridge_angle 45)
-		(uuid "ad393d91-6db5-4bfb-b1bb-8ae27477a6dd")
+		(uuid "aed78b0d-ed4b-4e41-9bb3-04a8ac704552")
 	)
 	(pad "2" smd roundrect
-		(at -0.3925 0.355 180)
+		(at -0.3925 0.355)
 		(size 0.415 0.3)
 		(layers "F.Cu" "F.Mask" "F.Paste")
 		(roundrect_rratio 0)
 		(chamfer_ratio 0.5)
 		(chamfer top_right)
 		(thermal_bridge_angle 45)
-		(uuid "b2b0c991-8e70-42c9-8a2d-03a12f1050a1")
+		(uuid "5aa13466-b942-4b14-a6a1-79fa413649eb")
 	)
 	(pad "2" smd rect
-		(at 0 0 225)
+		(at 0 0 45)
 		(size 0.5 0.5)
 		(layers "F.Cu" "F.Mask" "F.Paste")
 		(thermal_bridge_angle 45)
-		(uuid "ca328e76-22b2-4be9-a89c-05b52abdcd2c")
+		(uuid "b09a00ba-94b7-4f9c-8b17-bf7b92aa6cf4")
 	)
 	(pad "3" smd roundrect
-		(at 0.3925 0.355 180)
+		(at 0.3925 0.355)
 		(size 0.415 0.3)
 		(layers "F.Cu" "F.Mask" "F.Paste")
 		(roundrect_rratio 0)
 		(chamfer_ratio 0.5)
 		(chamfer top_left)
 		(thermal_bridge_angle 45)
-		(uuid "ae2803f4-3b1c-4614-bdb8-183e721693ee")
+		(uuid "f3f2b2a8-9b31-48d2-9eda-a198eeec0e72")
 	)
 	(pad "4" smd roundrect
-		(at 0.3925 -0.355 180)
+		(at 0.3925 -0.355)
 		(size 0.415 0.3)
 		(layers "F.Cu" "F.Mask" "F.Paste")
 		(roundrect_rratio 0)
 		(chamfer_ratio 0.5)
 		(chamfer bottom_left)
 		(thermal_bridge_angle 45)
-		(uuid "0e8e095c-086c-475a-aff9-7b3d4c2f87ed")
+		(uuid "c29f363e-becd-4e05-bd30-20b680fe18d0")
 	)
 	(embedded_fonts no)
-	(model "C:/Users/mathi/Documents/GitHub/Keyring-GPSTRACKER/Docs/Libraries/LDLN025PU30R.step"
-		(offset
-			(xyz 0 0 0)
-		)
-		(scale
-			(xyz 1 1 1)
-		)
-		(rotate
-			(xyz -90 -0 -0)
-		)
-	)
 )

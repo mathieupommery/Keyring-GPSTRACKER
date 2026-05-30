@@ -5,129 +5,6 @@
 	(uuid "0546fec9-4384-4440-89ea-083d86fff154")
 	(paper "A4")
 	(lib_symbols
-		(symbol "Connector:TestPoint"
-			(pin_numbers
-				(hide yes)
-			)
-			(pin_names
-				(offset 0.762)
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "TP"
-				(at 0 6.858 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "TestPoint"
-				(at 0 5.08 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 5.08 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 5.08 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Description" "test point"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_keywords" "test point tp"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_fp_filters" "Pin* Test*"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "TestPoint_0_1"
-				(circle
-					(center 0 3.302)
-					(radius 0.762)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "TestPoint_1_1"
-				(pin passive line
-					(at 0 0 90)
-					(length 2.54)
-					(name "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "Device:C_Small"
 			(pin_numbers
 				(hide yes)
@@ -1388,6 +1265,348 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "samacsys2:BM29B0.6-2DS_2-0.35V_53_"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "J"
+				(at 21.59 12.7 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+				)
+			)
+			(property "Value" "BM29B0.6-2DS_2-0.35V_53_"
+				(at 21.59 10.16 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+				)
+			)
+			(property "Footprint" "BM29B062DS2035V53"
+				(at 21.59 -89.84 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+				)
+			)
+			(property "Datasheet" "https://www.mouser.ch/ProductDetail/Hirose-Connector/BM29B0.6-2DS-2-0.35V53?qs=NniTrqY%252BJ%252BULjtWh9kFSwA%3D%3D"
+				(at 21.59 -189.84 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+				)
+			)
+			(property "Description" "Board to Board & Mezzanine Connectors 0.35MM 2 SGNL/2 PWR RECEP SMT VRT MNT"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Height" "0.7"
+				(at 21.59 -389.84 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+				)
+			)
+			(property "Manufacturer_Name" "Hirose"
+				(at 21.59 -489.84 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+				)
+			)
+			(property "Manufacturer_Part_Number" "BM29B0.6-2DS/2-0.35V(53)"
+				(at 21.59 -589.84 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+				)
+			)
+			(property "Mouser Part Number" "798-BM29B62DS2035V53"
+				(at 21.59 -689.84 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+				)
+			)
+			(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Hirose-Connector/BM29B0.6-2DS-2-0.35V53?qs=NniTrqY%252BJ%252BULjtWh9kFSwA%3D%3D"
+				(at 21.59 -789.84 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+				)
+			)
+			(property "Arrow Part Number" ""
+				(at 21.59 -889.84 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+				)
+			)
+			(property "Arrow Price/Stock" ""
+				(at 21.59 -989.84 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+				)
+			)
+			(symbol "BM29B0.6-2DS_2-0.35V_53__1_1"
+				(rectangle
+					(start 5.08 7.62)
+					(end 20.32 -10.16)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin passive line
+					(at 10.16 -15.24 90)
+					(length 5.08)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 10.16 12.7 270)
+					(length 5.08)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 12.7 -15.24 90)
+					(length 5.08)
+					(name "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 12.7 12.7 270)
+					(length 5.08)
+					(name "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 15.24 -15.24 90)
+					(length 5.08)
+					(name "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 15.24 12.7 270)
+					(length 5.08)
+					(name "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -2.54 0)
+					(length 5.08)
+					(name "MP1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "MP1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 0 0)
+					(length 5.08)
+					(name "MP2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "MP2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 25.4 -2.54 180)
+					(length 5.08)
+					(name "MP3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "MP3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 25.4 0 180)
+					(length 5.08)
+					(name "MP4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "MP4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "samacsys2:ssd1306_5point"
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -2118,8 +2337,8 @@
 		(uuid "6025b7c0-f185-4244-8137-ab35129a9fda")
 	)
 	(rectangle
-		(start 137.16 101.6)
-		(end 193.04 142.875)
+		(start 143.51 101.6)
+		(end 199.39 142.875)
 		(stroke
 			(width 0)
 			(type default)
@@ -2140,18 +2359,6 @@
 			(type none)
 		)
 		(uuid "a8d487c5-027e-491d-8525-09716f9de7d1")
-	)
-	(rectangle
-		(start 90.17 100.965)
-		(end 121.92 150.495)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(fill
-			(type none)
-		)
-		(uuid "abaf66e0-1f1d-48fd-83d8-106d7dcc9a64")
 	)
 	(text "AUX\n"
 		(exclude_from_sim no)
@@ -2195,7 +2402,7 @@
 	)
 	(text "OLED"
 		(exclude_from_sim no)
-		(at 139.954 104.14 0)
+		(at 146.304 104.14 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2262,10 +2469,22 @@
 		(uuid "8b62a4ad-285c-43a7-b8b1-59044a7abce7")
 	)
 	(junction
+		(at 115.57 129.54)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "91126180-89e9-4c1c-86f7-d2823f8e1e50")
+	)
+	(junction
 		(at 262.89 39.37)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "d1ba2839-749d-4421-907d-d78048141d92")
+	)
+	(junction
+		(at 90.17 129.54)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "d9879c3e-233b-4eb5-8ed1-f326cf3e544f")
 	)
 	(junction
 		(at 31.75 140.97)
@@ -2341,13 +2560,23 @@
 	)
 	(wire
 		(pts
-			(xy 154.94 118.11) (xy 158.75 118.11)
+			(xy 161.29 118.11) (xy 165.1 118.11)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "204cb62e-f7cf-4e83-bc23-0dd35f2b82b0")
+	)
+	(wire
+		(pts
+			(xy 115.57 127) (xy 115.57 129.54)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2b73971e-7d1a-4f06-bc96-7f8e8daaec95")
 	)
 	(wire
 		(pts
@@ -2381,7 +2610,7 @@
 	)
 	(wire
 		(pts
-			(xy 154.94 121.92) (xy 158.75 121.92)
+			(xy 161.29 121.92) (xy 165.1 121.92)
 		)
 		(stroke
 			(width 0)
@@ -2481,7 +2710,7 @@
 	)
 	(wire
 		(pts
-			(xy 154.94 114.3) (xy 158.75 114.3)
+			(xy 161.29 114.3) (xy 165.1 114.3)
 		)
 		(stroke
 			(width 0)
@@ -2541,6 +2770,26 @@
 	)
 	(wire
 		(pts
+			(xy 115.57 129.54) (xy 115.57 130.81)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "976f2259-1e53-4945-8ba9-35e87f8e6978")
+	)
+	(wire
+		(pts
+			(xy 90.17 127) (xy 90.17 129.54)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "97ad5085-c299-4ceb-ab29-c184d556ce74")
+	)
+	(wire
+		(pts
 			(xy 234.95 93.98) (xy 240.03 93.98)
 		)
 		(stroke
@@ -2571,7 +2820,7 @@
 	)
 	(wire
 		(pts
-			(xy 154.94 125.73) (xy 158.75 125.73)
+			(xy 161.29 125.73) (xy 165.1 125.73)
 		)
 		(stroke
 			(width 0)
@@ -2641,6 +2890,16 @@
 	)
 	(wire
 		(pts
+			(xy 90.17 129.54) (xy 90.17 130.81)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e714ef29-708b-47ec-a782-4705abbd74f3")
+	)
+	(wire
+		(pts
 			(xy 233.68 40.64) (xy 246.38 40.64)
 		)
 		(stroke
@@ -2682,6 +2941,30 @@
 		(uuid "0f132728-5c69-474c-88ac-e798c32445f2")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 41.91 165.3638 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+	)
+	(global_label "BAT+"
+		(shape input)
+		(at 100.33 114.3 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "116a8e31-0e45-40e4-b65e-69ee2b8f9777")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 92.4462 114.3 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2741,30 +3024,6 @@
 			)
 		)
 	)
-	(global_label "BAT+"
-		(shape input)
-		(at 102.87 124.46 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "243862e5-3dea-4781-ada8-2f3dccccacf5")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 94.9862 124.46 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-	)
 	(global_label "vusb"
 		(shape input)
 		(at 78.74 41.91 0)
@@ -2789,9 +3048,33 @@
 			)
 		)
 	)
+	(global_label "BAT+"
+		(shape input)
+		(at 100.33 142.24 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "542f4be1-72a0-4a58-9ccd-9a62fcde3750")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 92.4462 142.24 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+	)
 	(global_label "3.3V_AUX"
 		(shape input)
-		(at 154.94 118.11 180)
+		(at 161.29 118.11 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -2801,7 +3084,7 @@
 		)
 		(uuid "e5052871-f1f0-414b-9b88-49aa28bd32ba")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 143.2462 118.11 0)
+			(at 149.5962 118.11 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2845,6 +3128,28 @@
 			(justify left)
 		)
 		(uuid "12cd4fa7-0e2c-472f-8f07-1a0aa0782ddb")
+	)
+	(hierarchical_label "bat_sens"
+		(shape input)
+		(at 102.87 142.24 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "2a177efa-d744-48b2-9060-17c0b6acd018")
+	)
+	(hierarchical_label "bat_sens"
+		(shape input)
+		(at 102.87 114.3 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "5aed0437-2435-4229-9372-ed49c5310836")
 	)
 	(hierarchical_label "D-"
 		(shape input)
@@ -2903,7 +3208,7 @@
 	)
 	(hierarchical_label "OLED_SDA"
 		(shape input)
-		(at 154.94 125.73 180)
+		(at 161.29 125.73 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2914,7 +3219,7 @@
 	)
 	(hierarchical_label "OLED_SCL"
 		(shape input)
-		(at 154.94 121.92 180)
+		(at 161.29 121.92 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3193,7 +3498,7 @@
 				)
 			)
 		)
-		(property "Footprint" "v9footprint:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
+		(property "Footprint" "v9footprintlocal:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
 			(at 177.8 30.48 0)
 			(hide yes)
 			(show_name no)
@@ -3376,7 +3681,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "v9footprint:C_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
+		(property "Footprint" "v9footprintlocal:C_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
 			(at 262.89 41.91 0)
 			(hide yes)
 			(show_name no)
@@ -3459,7 +3764,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "v9footprint:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
+		(property "Footprint" "v9footprintlocal:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
 			(at 240.03 86.36 0)
 			(hide yes)
 			(show_name no)
@@ -3564,7 +3869,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "v9footprint:C_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
+		(property "Footprint" "v9footprintlocal:C_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
 			(at 172.72 40.64 0)
 			(hide yes)
 			(show_name no)
@@ -3607,6 +3912,85 @@
 			(project "hardware_V9"
 				(path "/e491fdb3-646d-47e4-8ebb-9632fba4f524/25c4fb51-bd59-4678-ba4a-7c4659e70c53"
 					(reference "C14")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 105.41 142.24 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "416cd75e-19bc-4a08-a478-9ef30125137d")
+		(property "Reference" "#PWR034"
+			(at 111.76 142.24 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 109.22 142.2399 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" ""
+			(at 105.41 142.24 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 105.41 142.24 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 105.41 142.24 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "401fb200-cc4f-4dc0-bc0a-6ada1cc77dbb")
+		)
+		(instances
+			(project "hardware_V9"
+				(path "/e491fdb3-646d-47e4-8ebb-9632fba4f524/25c4fb51-bd59-4678-ba4a-7c4659e70c53"
+					(reference "#PWR034")
 					(unit 1)
 				)
 			)
@@ -3686,6 +4070,84 @@
 			(project "hardware_V9"
 				(path "/e491fdb3-646d-47e4-8ebb-9632fba4f524/25c4fb51-bd59-4678-ba4a-7c4659e70c53"
 					(reference "#PWR049")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 115.57 130.81 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "48496f1c-3c7b-4dc4-a7e1-9a2bc3855007")
+		(property "Reference" "#PWR020"
+			(at 115.57 137.16 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 115.57 135.89 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 115.57 130.81 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 115.57 130.81 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 115.57 130.81 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "c2b61f45-ce73-4bc2-a574-5f5f1058216c")
+		)
+		(instances
+			(project "hardware_V9"
+				(path "/e491fdb3-646d-47e4-8ebb-9632fba4f524/25c4fb51-bd59-4678-ba4a-7c4659e70c53"
+					(reference "#PWR020")
 					(unit 1)
 				)
 			)
@@ -3849,6 +4311,196 @@
 		)
 	)
 	(symbol
+		(lib_id "samacsys2:BM29B0.6-2DS_2-0.35V_53_")
+		(at 90.17 127 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "561731d6-a085-4621-8417-f57f5969f03e")
+		(property "Reference" "J4"
+			(at 125.73 120.5798 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "BM29B0.6-2DS_2-0.35V_53_"
+			(at 125.73 123.1198 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "BM29B062DS2035V53"
+			(at 111.76 216.84 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(property "Datasheet" "https://www.mouser.ch/ProductDetail/Hirose-Connector/BM29B0.6-2DS-2-0.35V53?qs=NniTrqY%252BJ%252BULjtWh9kFSwA%3D%3D"
+			(at 111.76 316.84 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(property "Description" "Board to Board & Mezzanine Connectors 0.35MM 2 SGNL/2 PWR RECEP SMT VRT MNT"
+			(at 90.17 127 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Height" "0.7"
+			(at 111.76 516.84 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(property "Manufacturer_Name" "Hirose"
+			(at 111.76 616.84 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(property "Manufacturer_Part_Number" "BM29B0.6-2DS/2-0.35V(53)"
+			(at 111.76 716.84 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(property "Mouser Part Number" "798-BM29B62DS2035V53"
+			(at 111.76 816.84 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Hirose-Connector/BM29B0.6-2DS-2-0.35V53?qs=NniTrqY%252BJ%252BULjtWh9kFSwA%3D%3D"
+			(at 111.76 916.84 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(property "Arrow Part Number" ""
+			(at 111.76 1016.84 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(property "Arrow Price/Stock" ""
+			(at 111.76 1116.84 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "6"
+			(uuid "80ddf609-d548-4533-ab8c-744e43014cb4")
+		)
+		(pin "2"
+			(uuid "a4db4bfd-e6da-424b-bb69-29a813e362b5")
+		)
+		(pin "MP4"
+			(uuid "fe35288e-2bab-4936-be27-e70d2116d006")
+		)
+		(pin "3"
+			(uuid "b51e839e-e9ea-411d-b926-8f14ec776dc7")
+		)
+		(pin "5"
+			(uuid "5e3ac27c-1dfc-456a-aebc-6997ec995acc")
+		)
+		(pin "MP1"
+			(uuid "e43f6199-da21-49ff-92bd-885a5f1dd978")
+		)
+		(pin "MP2"
+			(uuid "3216beac-14b1-4105-896b-2e7a1b519065")
+		)
+		(pin "1"
+			(uuid "c9e2e376-738a-4a01-861e-f783f040a847")
+		)
+		(pin "4"
+			(uuid "6c56b2d5-3861-4d9f-b8d4-b8fbcde49aef")
+		)
+		(pin "MP3"
+			(uuid "d9b6b2ed-bf7a-4514-93c6-ff750a3a686e")
+		)
+		(instances
+			(project "hardware_V9"
+				(path "/e491fdb3-646d-47e4-8ebb-9632fba4f524/25c4fb51-bd59-4678-ba4a-7c4659e70c53"
+					(reference "J4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 261.62 99.06 0)
 		(unit 1)
@@ -3962,7 +4614,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "v9footprint:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
+		(property "Footprint" "v9footprintlocal:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
 			(at 252.73 41.91 0)
 			(hide yes)
 			(show_name no)
@@ -4065,7 +4717,7 @@
 				)
 			)
 		)
-		(property "Footprint" "v9footprint:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
+		(property "Footprint" "v9footprintlocal:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
 			(at 86.36 53.34 0)
 			(hide yes)
 			(show_name no)
@@ -4248,7 +4900,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "v9footprint:C_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
+		(property "Footprint" "v9footprintlocal:C_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
 			(at 261.62 95.25 0)
 			(hide yes)
 			(show_name no)
@@ -4297,8 +4949,8 @@
 		)
 	)
 	(symbol
-		(lib_id "Connector:TestPoint")
-		(at 102.87 115.57 270)
+		(lib_id "power:GND")
+		(at 105.41 114.3 90)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -4307,31 +4959,31 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "8a8c681d-e1c1-4316-9dce-f661171f41e5")
-		(property "Reference" "TP1"
-			(at 107.95 114.2999 90)
+		(uuid "8a9be86f-11e7-4401-953d-4f38fe684b8d")
+		(property "Reference" "#PWR035"
+			(at 111.76 114.3 0)
+			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
 			)
 		)
-		(property "Value" "TestPoint"
-			(at 107.95 116.8399 90)
+		(property "Value" "GND"
+			(at 109.22 114.2999 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+				(justify right)
 			)
 		)
-		(property "Footprint" "v9footprint:BAT_PAD_1mm"
-			(at 102.87 120.65 0)
+		(property "Footprint" ""
+			(at 105.41 114.3 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4342,7 +4994,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 102.87 120.65 0)
+			(at 105.41 114.3 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4352,8 +5004,8 @@
 				)
 			)
 		)
-		(property "Description" "test point"
-			(at 102.87 115.57 0)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 105.41 114.3 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4364,12 +5016,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "7c9da40e-a5be-4491-b833-68a800f8ca09")
+			(uuid "ffdaaa78-91d0-42e3-8f89-c80434d77b02")
 		)
 		(instances
 			(project "hardware_V9"
 				(path "/e491fdb3-646d-47e4-8ebb-9632fba4f524/25c4fb51-bd59-4678-ba4a-7c4659e70c53"
-					(reference "TP1")
+					(reference "#PWR035")
 					(unit 1)
 				)
 			)
@@ -4563,7 +5215,7 @@
 				)
 			)
 		)
-		(property "Footprint" "v9footprint:PTS845VM20PSMTR4LFS"
+		(property "Footprint" "v9footprintlocal:PTS845VM20PSMTR4LFS"
 			(at 229.87 133.02 0)
 			(hide yes)
 			(show_name no)
@@ -4708,7 +5360,7 @@
 	)
 	(symbol
 		(lib_id "samacsys2:ssd1306_5point")
-		(at 167.64 110.49 0)
+		(at 173.99 110.49 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -4719,7 +5371,7 @@
 		(fields_autoplaced yes)
 		(uuid "9afabb93-c71a-4be1-bafb-ec6d4113acce")
 		(property "Reference" "U4"
-			(at 167.64 110.49 0)
+			(at 173.99 110.49 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4730,7 +5382,7 @@
 			)
 		)
 		(property "Value" ""
-			(at 182.88 121.2849 0)
+			(at 189.23 121.2849 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4740,8 +5392,8 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "v9footprint:ssd1306_5point"
-			(at 167.64 110.49 0)
+		(property "Footprint" "v9footprintlocal:ssd1306_5point"
+			(at 173.99 110.49 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4752,7 +5404,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 167.64 110.49 0)
+			(at 173.99 110.49 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4763,7 +5415,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 167.64 110.49 0)
+			(at 173.99 110.49 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4912,7 +5564,7 @@
 				)
 			)
 		)
-		(property "Footprint" "v9footprint:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
+		(property "Footprint" "v9footprintlocal:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
 			(at 177.8 40.64 0)
 			(hide yes)
 			(show_name no)
@@ -4983,85 +5635,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Connector:TestPoint")
-		(at 102.87 124.46 270)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "a6d2ef4c-1321-4431-a30b-a0dce48bc9bf")
-		(property "Reference" "TP2"
-			(at 107.95 123.1899 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "TestPoint"
-			(at 107.95 125.7299 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "v9footprint:BAT_PAD_1mm"
-			(at 102.87 129.54 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 102.87 129.54 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "test point"
-			(at 102.87 124.46 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "d0f0e400-33f2-4e8d-92da-153b42c0132f")
-		)
-		(instances
-			(project "hardware_V9"
-				(path "/e491fdb3-646d-47e4-8ebb-9632fba4f524/25c4fb51-bd59-4678-ba4a-7c4659e70c53"
-					(reference "TP2")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "samacsys:USB4110-GF-A")
 		(at 58.42 53.34 0)
 		(unit 1)
@@ -5095,7 +5668,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "v9footprint:USB4110GFA"
+		(property "Footprint" "v9footprintlocal:USB4110GFA"
 			(at 61.976 33.274 0)
 			(hide yes)
 			(show_name no)
@@ -5291,7 +5864,7 @@
 				)
 			)
 		)
-		(property "Footprint" "v9footprint:PTS845VM20PSMTR4LFS"
+		(property "Footprint" "v9footprintlocal:PTS845VM20PSMTR4LFS"
 			(at 231.14 186.36 0)
 			(hide yes)
 			(show_name no)
@@ -5592,6 +6165,84 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 90.17 130.81 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "ba88e517-1184-4c09-b055-a26125f0634f")
+		(property "Reference" "#PWR019"
+			(at 90.17 137.16 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 90.17 135.89 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 90.17 130.81 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 90.17 130.81 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 90.17 130.81 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "3f2b1070-c053-44a3-baeb-e2ee1371db9c")
+		)
+		(instances
+			(project "hardware_V9"
+				(path "/e491fdb3-646d-47e4-8ebb-9632fba4f524/25c4fb51-bd59-4678-ba4a-7c4659e70c53"
+					(reference "#PWR019")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_name "R_Small_1")
 		(lib_id "Device:R_Small")
 		(at 86.36 45.72 90)
@@ -5624,7 +6275,7 @@
 				)
 			)
 		)
-		(property "Footprint" "v9footprint:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
+		(property "Footprint" "v9footprintlocal:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
 			(at 86.36 45.72 0)
 			(hide yes)
 			(show_name no)
@@ -5774,85 +6425,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 102.87 115.57 270)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "c6ccc0e8-9f27-4aa3-8cf1-109524499770")
-		(property "Reference" "#PWR016"
-			(at 96.52 115.57 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "GND"
-			(at 101.6 111.76 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 102.87 115.57 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 102.87 115.57 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 102.87 115.57 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "66d1aceb-f065-4207-9080-e27bd510041d")
-		)
-		(instances
-			(project "hardware_V9"
-				(path "/e491fdb3-646d-47e4-8ebb-9632fba4f524/25c4fb51-bd59-4678-ba4a-7c4659e70c53"
-					(reference "#PWR016")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 154.94 114.3 270)
+		(at 161.29 114.3 270)
 		(mirror x)
 		(unit 1)
 		(body_style 1)
@@ -5864,7 +6437,7 @@
 		(fields_autoplaced yes)
 		(uuid "e1e20c80-5196-4d2b-aae6-cb78bea0d6a3")
 		(property "Reference" "#PWR017"
-			(at 148.59 114.3 0)
+			(at 154.94 114.3 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5875,7 +6448,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 151.13 114.3001 90)
+			(at 157.48 114.3001 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -5886,7 +6459,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 154.94 114.3 0)
+			(at 161.29 114.3 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5897,7 +6470,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 154.94 114.3 0)
+			(at 161.29 114.3 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5908,7 +6481,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 154.94 114.3 0)
+			(at 161.29 114.3 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6042,7 +6615,7 @@
 				)
 			)
 		)
-		(property "Footprint" "v9footprint:5035480622"
+		(property "Footprint" "v9footprintlocal:5035480622"
 			(at 53.34 228.27 0)
 			(hide yes)
 			(show_name no)

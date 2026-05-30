@@ -239,28 +239,6 @@ void StateMachine_Run(AppStateMachineContext *ctx, GNSS_StateHandle *gps,
 				ctx->balisestate = BALISESTATE1;
 				break;
 			}
-
-			uint8_t any_button_pressed = (buttons->BTN_A >= 1
-					|| buttons->BTN_B >= 1 || buttons->BTN_A_LONG >= 1
-					|| buttons->BTN_B_LONG >= 1);
-			if (any_button_pressed) {
-				ctx->last_action_tick = HAL_GetTick();
-			}
-			if ((HAL_GetTick() - ctx->last_action_tick) > 20000) {
-
-				if ((HAL_GetTick() / 500) % 2) {
-					ssd1306_SetCursor(40, 38);
-					ssd1306_WriteString("REC", Font_16x24, White);
-				}
-
-				if (any_button_pressed) {
-					buttons->BTN_A = 0;
-					buttons->BTN_B = 0;
-					buttons->BTN_A_LONG = 0;
-					buttons->BTN_B_LONG = 0;
-				}
-
-			} else {
 				switch (ctx->ecranstate) {
 				case ECRANBALISESTATE1:
 
@@ -372,7 +350,6 @@ void StateMachine_Run(AppStateMachineContext *ctx, GNSS_StateHandle *gps,
 					buttons->BTN_A = 0;
 					sd->is_recording = 0;
 				}
-			}
 			break;
 		default:
 			ctx->balisestate = BALISESTATE1;
@@ -626,45 +603,53 @@ void StateMachine_Run(AppStateMachineContext *ctx, GNSS_StateHandle *gps,
 		/* STATE_SETTINGS                                                        */
 		/* --------------------------------------------------------------------- */
 	case STATE_SETTINGS: {
+		ssd1306_Fill(Black);
+		ssd1306_SetCursor(32, 32);
+		ssd1306_WriteString("Frq:", Font_7x10, White);
+		ssd1306_SetCursor(32, 42);
+		ssd1306_WriteString("Type:", Font_7x10, White);
 
-		// --- AFFICHAGE ET CONFIGURATION ---
+
+		ssd1306_SetCursor(62, 32);
+		if (sd->frequency == SD_FREQ_1HZ)
+			ssd1306_WriteString("1Hz ", Font_7x10, White);
+		else if (sd->frequency == SD_FREQ_10HZ)
+			ssd1306_WriteString("10Hz ", Font_7x10, White);
+		else
+			ssd1306_WriteString("0.1Hz", Font_7x10, White);
+
+
+
+		ssd1306_SetCursor(62, 42);
+		if (sd->format == SD_FORMAT_GPX)
+			ssd1306_WriteString("GPX", Font_7x10, White);
+		else
+			ssd1306_WriteString("CSV", Font_7x10, White);
+
 		switch (ctx->settingstate) {
 		case SETTING_FREQ:
-			ssd1306_SetCursor(32, 32);
-			ssd1306_WriteString("Freq:", Font_7x10, White);
 
-			ssd1306_SetCursor(62, 32);
-			if (sd->frequency == SD_FREQ_1HZ)
-				ssd1306_WriteString("1Hz ", Font_7x10, White);
-			else if (sd->frequency == SD_FREQ_10HZ)
-				ssd1306_WriteString("10Hz ", Font_7x10, White);
-			else
-				ssd1306_WriteString("0.1Hz", Font_7x10, White);
 
 			if (buttons->BTN_B >= 1) {
-				if (sd->frequency == SD_FREQ_1HZ)
-					sd->frequency = SD_FREQ_1HZ;
-				else if (sd->frequency == SD_FREQ_10HZ)
+				if (sd->frequency == SD_FREQ_1HZ){
 					sd->frequency = SD_FREQ_10HZ;
-				else
-					sd->frequency = SD_FREQ_01HZ;
+				}
+				else if (sd->frequency == SD_FREQ_10HZ){
+					sd->frequency = SD_FREQ_1HZ;
+				}
 				buttons->BTN_B = 0;
 			}
 			break;
 
 		case SETTING_FORMAT:
-			ssd1306_SetCursor(42, 32);
-			ssd1306_WriteString("Type:", Font_7x10, White);
 
-			ssd1306_SetCursor(42, 62);
-			if (sd->format == SD_FORMAT_GPX)
-				ssd1306_WriteString("GPX", Font_7x10, White);
-			else
-				ssd1306_WriteString("CSV", Font_7x10, White);
-
-			// Clic B Court : Basculer le format
 			if (buttons->BTN_B >= 1) {
-				sd->format =(sd->format == SD_FORMAT_GPX) ?SD_FORMAT_CSV : SD_FORMAT_GPX;
+				if (sd->format == SD_FORMAT_GPX){
+					sd->format = SD_FORMAT_CSV;
+				}
+				else if (sd->format == SD_FORMAT_CSV){
+					sd->format = SD_FORMAT_GPX;
+				}
 				buttons->BTN_B = 0;
 			}
 			break;
@@ -673,10 +658,8 @@ void StateMachine_Run(AppStateMachineContext *ctx, GNSS_StateHandle *gps,
 			ctx->settingstate = SETTING_FREQ;
 			break;
 		}
-
-		// --- BANDEAU D'AIDE (BAS DE L'ÉCRAN) ---
 		ssd1306_SetCursor(32, 56);
-		ssd1306_WriteString("Hold B : Next", Font_6x8, White);
+		ssd1306_WriteString("Hold B:Next", Font_6x8, White);
 
 		if (buttons->BTN_B_LONG >= 1) {
 			ctx->settingstate =(ctx->settingstate == SETTING_FREQ) ?SETTING_FORMAT : SETTING_FREQ;
@@ -698,9 +681,10 @@ void StateMachine_Run(AppStateMachineContext *ctx, GNSS_StateHandle *gps,
 		break;
 
 	case STATE_SCREENSAVER: {
+		ssd1306_Fill(Black);
 		if (sd->is_recording) {
 			if ((HAL_GetTick() / 500) % 2) {
-				ssd1306_SetCursor(40, 20);
+				ssd1306_SetCursor(42, 36);
 				ssd1306_WriteString("REC", Font_16x24, White);
 			}
 		} else {

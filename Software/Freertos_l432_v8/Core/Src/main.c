@@ -316,9 +316,9 @@ int main(void) {
 	    DWT->CYCCNT = 0;
 	    DWT->CTRL |= DWT_CTRL_CYCCNTENA_Msk;
 #endif
-
-	ssd1306_Fill(Black);
 	HAL_Delay(200);
+	ssd1306_Fill(Black);
+
 	/* USER CODE END 2 */
 
 	/* Call init function for freertos objects (in cmsis_os2.c) */

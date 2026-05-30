@@ -2270,10 +2270,6 @@
 		(uuid "8fdd07cb-4012-4a58-bf12-861df38fa35a")
 	)
 	(no_connect
-		(at 125.73 109.22)
-		(uuid "b2696c4a-a18f-48ea-873c-212bf54409ea")
-	)
-	(no_connect
 		(at 125.73 88.9)
 		(uuid "be36a628-da97-4ebc-ac1d-2339c7cdbb37")
 	)
@@ -2380,6 +2376,16 @@
 			(type default)
 		)
 		(uuid "23be8b6b-c18f-4ffb-bd09-59af9c42cc16")
+	)
+	(wire
+		(pts
+			(xy 326.39 148.59) (xy 331.47 148.59)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "245825b6-f1c0-4810-8082-c805792fe866")
 	)
 	(wire
 		(pts
@@ -3121,6 +3127,16 @@
 		)
 		(uuid "249283eb-2cef-4a5d-8393-0a6bf0c36f69")
 	)
+	(label "BAT_SENS"
+		(at 326.39 148.59 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "27cb16e3-062a-460a-8475-963f9c98e40e")
+	)
 	(label "GPS_TX"
 		(at 328.93 33.02 180)
 		(effects
@@ -3280,6 +3296,16 @@
 			(justify right bottom)
 		)
 		(uuid "b00215af-76d7-446c-84ea-45a71420f9b1")
+	)
+	(label "BAT_SENS"
+		(at 125.73 109.22 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "b3f1f45b-491a-4575-9341-1d11ca5b8732")
 	)
 	(label "USB_DETECT"
 		(at 153.67 96.52 0)
@@ -3747,7 +3773,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "v9footprint:C_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
+		(property "Footprint" "v9footprintlocal:C_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
 			(at 116.84 44.45 0)
 			(hide yes)
 			(show_name no)
@@ -3985,7 +4011,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "v9footprint:KXT341LHS"
+		(property "Footprint" "v9footprintlocal:KXT341LHS"
 			(at 74.93 155.88 0)
 			(hide yes)
 			(show_name no)
@@ -4151,7 +4177,7 @@
 				)
 			)
 		)
-		(property "Footprint" "v9footprint:C_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
+		(property "Footprint" "v9footprintlocal:C_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
 			(at 119.38 68.58 0)
 			(hide yes)
 			(show_name no)
@@ -4233,7 +4259,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "v9footprint:QFN-32-1EP_5x5mm_P0.5mm_EP3.45x3.45mm"
+		(property "Footprint" "v9footprintlocal:QFN-32-1EP_5x5mm_P0.5mm_EP3.45x3.45mm"
 			(at 128.27 119.38 0)
 			(hide yes)
 			(show_name no)
@@ -4432,7 +4458,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "v9footprint:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
+		(property "Footprint" "v9footprintlocal:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
 			(at 208.28 74.93 0)
 			(hide yes)
 			(show_name no)
@@ -4536,7 +4562,7 @@
 				)
 			)
 		)
-		(property "Footprint" "v9footprint:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
+		(property "Footprint" "v9footprintlocal:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
 			(at 107.95 116.84 0)
 			(hide yes)
 			(show_name no)
@@ -4640,7 +4666,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "v9footprint:C_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
+		(property "Footprint" "v9footprintlocal:C_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
 			(at 130.81 44.45 0)
 			(hide yes)
 			(show_name no)
@@ -4723,7 +4749,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "v9footprint:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
+		(property "Footprint" "v9footprintlocal:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
 			(at 199.39 67.31 0)
 			(hide yes)
 			(show_name no)
@@ -4827,7 +4853,7 @@
 				)
 			)
 		)
-		(property "Footprint" "v9footprint:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
+		(property "Footprint" "v9footprintlocal:R_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
 			(at 107.95 107.95 0)
 			(hide yes)
 			(show_name no)
@@ -4931,7 +4957,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "v9footprint:C_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
+		(property "Footprint" "v9footprintlocal:C_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
 			(at 199.39 74.93 0)
 			(hide yes)
 			(show_name no)
@@ -5013,7 +5039,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "v9footprint:C_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
+		(property "Footprint" "v9footprintlocal:C_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
 			(at 105.41 44.45 0)
 			(hide yes)
 			(show_name no)
@@ -5173,7 +5199,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "v9footprint:pad_0.7mm"
+		(property "Footprint" "v9footprintlocal:pad_0.7mm"
 			(at 224.79 124.46 0)
 			(hide yes)
 			(show_name no)
@@ -5252,7 +5278,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "v9footprint:C_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
+		(property "Footprint" "v9footprintlocal:C_0201_0603Metric_Pad0.64x0.40mm_HandSolder"
 			(at 138.43 44.45 0)
 			(hide yes)
 			(show_name no)
@@ -5334,7 +5360,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "v9footprint:LED_0402_1005Metric"
+		(property "Footprint" "v9footprintlocal:LED_0402_1005Metric"
 			(at 93.98 107.95 90)
 			(hide yes)
 			(show_name no)
@@ -5471,7 +5497,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "v9footprint:C_0402_1005Metric"
+		(property "Footprint" "v9footprintlocal:C_0402_1005Metric"
 			(at 92.71 44.45 0)
 			(hide yes)
 			(show_name no)
@@ -5553,7 +5579,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "v9footprint:pad_0.7mm"
+		(property "Footprint" "v9footprintlocal:pad_0.7mm"
 			(at 212.09 124.46 0)
 			(hide yes)
 			(show_name no)
@@ -5631,7 +5657,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "v9footprint:LED_0402_1005Metric"
+		(property "Footprint" "v9footprintlocal:LED_0402_1005Metric"
 			(at 93.98 116.84 90)
 			(hide yes)
 			(show_name no)
@@ -6004,6 +6030,16 @@
 		(pin "GPIO_SUP" input
 			(at 331.47 144.78 180)
 			(uuid "298ee3fe-677f-4e0e-a0dc-b4d24e1e1cd8")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "bat_sens" input
+			(at 331.47 148.59 180)
+			(uuid "d9a970b7-1827-481b-b26c-7f9ddfaece17")
 			(effects
 				(font
 					(size 1.27 1.27)

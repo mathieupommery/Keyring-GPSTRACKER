@@ -2,4 +2,4 @@
 ../Core/Src/sd_app.c:22:16:Is_Connected_To_PC	8	static
 ../Core/Src/sd_app.c:34:6:Init_Sd	16	static
 ../Core/Src/sd_app.c:50:6:SD_Close_File	32	static
-../Core/Src/sd_app.c:63:6:SD_Manager	320	static
+../Core/Src/sd_app.c:63:6:SD_Manager	328	static

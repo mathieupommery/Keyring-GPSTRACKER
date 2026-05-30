@@ -84,7 +84,7 @@ void Error_Handler(void);
 //#define DEBUG1
 #define USE_FAST_PRINT
 
-#ifdef DEBUG
+#ifdef DEBUG1
 
 typedef struct
 {

@@ -172,7 +172,7 @@ void StartMainTask(void const * argument)
   MX_USB_DEVICE_Init();
   /* USER CODE BEGIN StartMainTask */
   TickType_t xLastWakeTime;
-  const TickType_t period = pdMS_TO_TICKS(200);
+  const TickType_t period = pdMS_TO_TICKS(100);
 #ifdef DEBUG1
   uint32_t cycles_actuels = DWT->CYCCNT;
 #endif
@@ -283,7 +283,7 @@ void StartTrackerTask(void const * argument)
 {
   /* USER CODE BEGIN StartTrackerTask */
 	  TickType_t xLastWakeTime;
-	  const TickType_t period = pdMS_TO_TICKS(1000);
+	  const TickType_t period = pdMS_TO_TICKS(100);
 #ifdef DEBUG1
 	  uint32_t cycles_actuels = DWT->CYCCNT;
 	  uint32_t sd_history[5] = {0};
