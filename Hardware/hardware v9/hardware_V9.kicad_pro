@@ -602,7 +602,7 @@
       "gencad": "",
       "idf": "",
       "netlist": "",
-      "plot": "../fab_file/gps_tracker_v9/",
+      "plot": "../fab_file/gps_tracker_v10/",
       "pos_files": "",
       "specctra_dsn": "",
       "step": "../../3d schématic/pcb/boardv9.step",
@@ -785,7 +785,7 @@
         "uuid": "e491fdb3-646d-47e4-8ebb-9632fba4f524"
       }
     ],
-    "used_designators": "J4,#PWR19-20,#PWR34-35",
+    "used_designators": "",
     "variants": []
   },
   "sheets": [

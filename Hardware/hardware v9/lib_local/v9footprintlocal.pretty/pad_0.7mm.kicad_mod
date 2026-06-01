@@ -8,7 +8,7 @@
 		(unlocked yes)
 		(layer "F.SilkS")
 		(hide yes)
-		(uuid "09e50bea-e1ac-4c53-a8f6-7dbf62be2f4b")
+		(uuid "09d1a9ce-57f6-4d9f-8e4c-09cce11a1167")
 		(effects
 			(font
 				(size 1 1)
@@ -21,7 +21,7 @@
 		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "b357ab64-7617-49f5-a6b4-b4fae732cb62")
+		(uuid "66ae087a-f09a-4dcc-8ecd-c4781b6d5cb9")
 		(effects
 			(font
 				(size 1 1)
@@ -34,7 +34,7 @@
 		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "77680f3d-569c-4f0e-8383-a3991a3319f7")
+		(uuid "2810b030-8dff-4e80-8eb2-72d6427093cb")
 		(effects
 			(font
 				(size 1 1)
@@ -47,7 +47,7 @@
 		(unlocked yes)
 		(layer "F.Fab")
 		(hide yes)
-		(uuid "f194617c-7c97-4e5d-8a21-27911e76cdd2")
+		(uuid "aadc772f-fbd3-4f03-ab12-4c5d7a4c9483")
 		(effects
 			(font
 				(size 1 1)
@@ -64,7 +64,18 @@
 		(at 0 0)
 		(size 0.7 0.7)
 		(layers "F.Cu" "F.Mask" "F.Paste")
-		(uuid "68a1528e-aadb-4f28-9220-ceff4e089566")
+		(teardrops
+			(best_length_ratio 0.5)
+			(max_length 1)
+			(best_width_ratio 0.6)
+			(max_width 2)
+			(curved_edges no)
+			(filter_ratio 0.9)
+			(enabled yes)
+			(allow_two_segments yes)
+			(prefer_zone_connections yes)
+		)
+		(uuid "16c7f0a7-ec66-4dd4-ba39-527359bc2dc2")
 	)
 	(embedded_fonts no)
 )
