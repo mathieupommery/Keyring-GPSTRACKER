@@ -11,9 +11,9 @@
 #include "main.h"
 #include "ssd1306.h"
 #include "GNSS.h"
-#include "rtc.h"
 #include "math.h"
 #include "sd_app.h"
+#include <string.h>
 
 
 
@@ -22,6 +22,7 @@ typedef enum{
 	STATE_SPEED,
 	STATE_BALISE,
 	STATE_POS,
+	//STATE_CITY,
 	STATE_SETTINGS,
 	STATE_SCREENSAVER
 
@@ -65,6 +66,20 @@ typedef enum {
     SETTING_FORMAT
 } SETTING_STATE;
 
+#pragma pack(push, 1)
+typedef struct {
+    int32_t lat;
+    int32_t lon;
+    uint32_t pop;
+    char country[2];
+    char name[18];
+} CityRecord;
+#pragma pack(pop)
+
+#define PI_F 3.1415926535f
+#define DEG_TO_RAD (PI_F / 180.0f)
+
+
 typedef struct
 {
     /* Etats principaux et sous-états */
@@ -80,14 +95,12 @@ typedef struct
 
     uint32_t last_action_tick;
 
-    /* Gestion heure/date */
-    uint8_t  SEC;
-    uint8_t  MINUTE;
-    uint8_t  HR;
-    uint8_t JOURS;
-    uint8_t MOIS;
-    uint16_t ANNEE;
-    uint8_t rtc_synced;
+
+    uint8_t city_search_done; // Flag pour ne chercher qu'une fois toutes les 30s
+    char city_name[18];       // Nom de la ville (17 caractères max + '\0')
+    char city_country[3];     // Code pays (2 caractères + '\0')
+    uint32_t city_pop;        // Population
+    float city_dist_km;
 
     /* Position de départ de balise */
     float    oldlat;

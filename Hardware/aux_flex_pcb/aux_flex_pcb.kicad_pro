@@ -50,7 +50,7 @@
         "silk_text_thickness": 0.1,
         "silk_text_upright": false,
         "zones": {
-          "min_clearance": 0.0
+          "min_clearance": 0.15
         }
       },
       "diff_pair_dimensions": [
@@ -145,8 +145,8 @@
         "min_text_thickness": 0.08,
         "min_through_hole_diameter": 0.3,
         "min_track_width": 0.1,
-        "min_via_annular_width": 0.05,
-        "min_via_diameter": 0.4,
+        "min_via_annular_width": 0.075,
+        "min_via_diameter": 0.55,
         "solder_mask_to_copper_clearance": 0.0,
         "use_height_for_length_calcs": true
       },
@@ -519,7 +519,7 @@
         "schematic_color": "rgba(0, 0, 0, 0.000)",
         "track_width": 0.12,
         "tuning_profile": "",
-        "via_diameter": 0.4,
+        "via_diameter": 0.55,
         "via_drill": 0.3,
         "wire_width": 6
       },
@@ -533,28 +533,13 @@
         "microvia_drill": 0.1,
         "name": "POWER",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": 1,
+        "priority": 0,
         "schematic_color": "rgba(0, 0, 0, 0.000)",
         "track_width": 0.2,
         "tuning_profile": "",
-        "via_diameter": 0.4,
+        "via_diameter": 0.55,
         "via_drill": 0.3,
         "wire_width": 6
-      },
-      {
-        "clearance": 0.1,
-        "diff_pair_gap": 0.25,
-        "diff_pair_width": 0.2,
-        "microvia_diameter": 0.3,
-        "microvia_drill": 0.1,
-        "name": "USB",
-        "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": 0,
-        "schematic_color": "rgba(0, 0, 0, 0.000)",
-        "track_width": 0.16,
-        "tuning_profile": "",
-        "via_diameter": 0.4,
-        "via_drill": 0.3
       }
     ],
     "meta": {
@@ -569,27 +554,11 @@
       },
       {
         "netclass": "POWER",
-        "pattern": "vusb"
-      },
-      {
-        "netclass": "POWER",
-        "pattern": "GNDGPS"
-      },
-      {
-        "netclass": "POWER",
         "pattern": "BAT+"
       },
       {
         "netclass": "POWER",
-        "pattern": "+3.3V"
-      },
-      {
-        "netclass": "POWER",
         "pattern": "3.3V_AUX"
-      },
-      {
-        "netclass": "POWER",
-        "pattern": "3.3V_GPS"
       },
       {
         "netclass": "Default",
@@ -799,6 +768,25 @@
     "meta": {
       "version": 0
     },
-    "tuning_profiles_impedance_geometric": []
+    "tuning_profiles_impedance_geometric": [
+      {
+        "enable_time_domain_tuning": true,
+        "layer_entries": [
+          {
+            "bottom_reference_layer": "B.Cu",
+            "delay": 5292600,
+            "diff_pair_gap": 0,
+            "signal_layer": "F.Cu",
+            "top_reference_layer": "F.Cu",
+            "width": 94102
+          }
+        ],
+        "profile_name": "RF",
+        "target_impedance": 35.0,
+        "type": 0,
+        "via_overrides": [],
+        "via_prop_delay": 0
+      }
+    ]
   }
 }

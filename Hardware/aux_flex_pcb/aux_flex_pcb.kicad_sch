@@ -835,204 +835,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "samacsys2:2450AT14A0100001T"
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "ANT"
-				(at 19.05 7.62 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-				)
-			)
-			(property "Value" "2450AT14A0100001T"
-				(at 19.05 5.08 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-				)
-			)
-			(property "Footprint" "2450AT14A0100001T"
-				(at 19.05 -94.92 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-				)
-			)
-			(property "Datasheet" "https://www.johansontechnology.com/docs/1501/2450AT14A0100001T_FpfowyN.pdf"
-				(at 19.05 -194.92 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-				)
-			)
-			(property "Description" "2.4GHz Chip RF Antness 2,4GHz ? 2.4GHz 0.5dBi Soldersel Mount Mount , 2W , 50 , -40C to +125C"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Height" "0.5"
-				(at 19.05 -394.92 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-				)
-			)
-			(property "Manufacturer_Name" "JOHANSON TECHNOLOGY"
-				(at 19.05 -494.92 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-				)
-			)
-			(property "Manufacturer_Part_Number" "2450AT14A0100001T"
-				(at 19.05 -594.92 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-				)
-			)
-			(property "Mouser Part Number" "609-2450AT14A0100001"
-				(at 19.05 -694.92 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-				)
-			)
-			(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Johanson-Technology/2450AT14A0100001T?qs=jRuttqqUwMQZYc8mALOh0A%3D%3D"
-				(at 19.05 -794.92 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-				)
-			)
-			(property "Arrow Part Number" ""
-				(at 19.05 -894.92 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-				)
-			)
-			(property "Arrow Price/Stock" ""
-				(at 19.05 -994.92 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-				)
-			)
-			(symbol "2450AT14A0100001T_1_1"
-				(rectangle
-					(start 5.08 2.54)
-					(end 17.78 -5.08)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type background)
-					)
-				)
-				(pin passive line
-					(at 0 0 0)
-					(length 5.08)
-					(name "FEED"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin no_connect line
-					(at 0 -2.54 0)
-					(length 5.08)
-					(name "NC"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "samacsys2:503552-0622"
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -3103,6 +2905,10 @@
 		(uuid "12ca67d4-7df1-46ea-8c22-19ce59fb2138")
 	)
 	(no_connect
+		(at 182.88 114.3)
+		(uuid "27e1a4df-69a3-4f4f-91e4-89659382857d")
+	)
+	(no_connect
 		(at 138.43 153.67)
 		(uuid "42351728-cd2e-4b5b-9f27-cbbf70160ac6")
 	)
@@ -3194,6 +3000,16 @@
 	)
 	(wire
 		(pts
+			(xy 147.32 67.31) (xy 170.18 67.31)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0c884485-c297-4886-bd27-242e43a4cff6")
+	)
+	(wire
+		(pts
 			(xy 67.31 81.28) (xy 67.31 86.36)
 		)
 		(stroke
@@ -3201,16 +3017,6 @@
 			(type default)
 		)
 		(uuid "16a3fe03-c79c-4c26-acf6-9865bb4a98c0")
-	)
-	(wire
-		(pts
-			(xy 148.59 67.31) (xy 170.18 67.31)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "17432cd0-a3a5-4de0-a1aa-2002e4121d3b")
 	)
 	(wire
 		(pts
@@ -3251,6 +3057,16 @@
 			(type default)
 		)
 		(uuid "1d17b79f-96f6-45a9-8a77-d7891b327cdd")
+	)
+	(wire
+		(pts
+			(xy 170.18 76.2) (xy 106.68 76.2)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1d333ff8-e5a0-43dc-a698-b11f04de33b4")
 	)
 	(wire
 		(pts
@@ -3304,16 +3120,6 @@
 	)
 	(wire
 		(pts
-			(xy 100.33 59.69) (xy 148.59 59.69)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3fc76d18-0813-4bc7-a289-a5eaa60483c2")
-	)
-	(wire
-		(pts
 			(xy 82.55 54.61) (xy 91.44 54.61)
 		)
 		(stroke
@@ -3344,16 +3150,6 @@
 	)
 	(wire
 		(pts
-			(xy 147.32 69.85) (xy 170.18 69.85)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "62717a55-9a08-44f0-a5ed-6735855c7da0")
-	)
-	(wire
-		(pts
 			(xy 168.91 114.3) (xy 182.88 114.3)
 		)
 		(stroke
@@ -3381,16 +3177,6 @@
 			(type default)
 		)
 		(uuid "6790acb1-ac10-43f5-821b-db08aed675d9")
-	)
-	(wire
-		(pts
-			(xy 148.59 59.69) (xy 148.59 67.31)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "6a38f753-3255-420b-ae0e-8456a74bc21a")
 	)
 	(wire
 		(pts
@@ -3441,6 +3227,16 @@
 			(type default)
 		)
 		(uuid "80fd9dce-e7fa-4b72-a2d1-b386a9cc3914")
+	)
+	(wire
+		(pts
+			(xy 106.68 76.2) (xy 106.68 69.85)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "82fff137-bbd9-4b50-9c83-222a5f684abe")
 	)
 	(wire
 		(pts
@@ -3524,6 +3320,16 @@
 	)
 	(wire
 		(pts
+			(xy 170.18 69.85) (xy 170.18 76.2)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a8b54699-e459-4895-b330-a1de50b02add")
+	)
+	(wire
+		(pts
 			(xy 166.37 64.77) (xy 170.18 64.77)
 		)
 		(stroke
@@ -3594,16 +3400,6 @@
 	)
 	(wire
 		(pts
-			(xy 100.33 72.39) (xy 100.33 59.69)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d021ff55-150b-45f6-b6b3-3ba2ed85a24a")
-	)
-	(wire
-		(pts
 			(xy 101.6 248.92) (xy 101.6 246.38)
 		)
 		(stroke
@@ -3661,16 +3457,6 @@
 			(type default)
 		)
 		(uuid "f6c7da01-df80-4702-9ff9-22e795419c04")
-	)
-	(wire
-		(pts
-			(xy 106.68 72.39) (xy 100.33 72.39)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "fb7ad001-e35a-4c58-b00a-21929dac7f49")
 	)
 	(wire
 		(pts
@@ -15712,8 +15498,8 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 147.32 72.39 90)
-		(mirror x)
+		(at 147.32 69.85 0)
+		(mirror y)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -15723,7 +15509,7 @@
 		(dnp no)
 		(uuid "15299251-790f-4083-964a-db0cfe6d5fbe")
 		(property "Reference" "#PWR043"
-			(at 153.67 72.39 0)
+			(at 147.32 76.2 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -15734,7 +15520,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 148.5899 74.93 0)
+			(at 144.78 71.1199 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -15745,7 +15531,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 147.32 72.39 0)
+			(at 147.32 69.85 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -15756,7 +15542,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 147.32 72.39 0)
+			(at 147.32 69.85 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -15767,7 +15553,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 147.32 72.39 0)
+			(at 147.32 69.85 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -16605,174 +16391,6 @@
 		)
 	)
 	(symbol
-		(lib_id "samacsys2:2450AT14A0100001T")
-		(at 182.88 114.3 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "5a1cdb80-e57c-44e3-b0b1-520fe19ed21e")
-		(property "Reference" "ANT1"
-			(at 201.93 114.2999 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "2450AT14A0100001T"
-			(at 201.93 116.8399 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "samacsys2:2450AT14A0100001T"
-			(at 201.93 209.22 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-			)
-		)
-		(property "Datasheet" "https://www.johansontechnology.com/docs/1501/2450AT14A0100001T_FpfowyN.pdf"
-			(at 201.93 309.22 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-			)
-		)
-		(property "Description" "2.4GHz Chip RF Antness 2,4GHz ? 2.4GHz 0.5dBi Soldersel Mount Mount , 2W , 50 , -40C to +125C"
-			(at 182.88 114.3 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Height" "0.5"
-			(at 201.93 509.22 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-			)
-		)
-		(property "Manufacturer_Name" "JOHANSON TECHNOLOGY"
-			(at 201.93 609.22 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-			)
-		)
-		(property "Manufacturer_Part_Number" "2450AT14A0100001T"
-			(at 201.93 709.22 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-			)
-		)
-		(property "Mouser Part Number" "609-2450AT14A0100001"
-			(at 201.93 809.22 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-			)
-		)
-		(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Johanson-Technology/2450AT14A0100001T?qs=jRuttqqUwMQZYc8mALOh0A%3D%3D"
-			(at 201.93 909.22 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-			)
-		)
-		(property "Arrow Part Number" ""
-			(at 201.93 1009.22 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-			)
-		)
-		(property "Arrow Price/Stock" ""
-			(at 201.93 1109.22 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-			)
-		)
-		(pin "1"
-			(uuid "4d7d4e3e-6d1b-41f9-85a9-451f4e5cb013")
-		)
-		(pin "2"
-			(uuid "cf35ad4a-3ce2-4b1d-8e2f-e737f4ecf6bf")
-		)
-		(instances
-			(project "aux_flex_pcb"
-				(path "/e491fdb3-646d-47e4-8ebb-9632fba4f524"
-					(reference "ANT1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:PWR_FLAG")
 		(at 43.18 99.06 90)
 		(unit 1)
@@ -16851,7 +16469,7 @@
 	)
 	(symbol
 		(lib_id "samacsys2:830108254201")
-		(at 106.68 69.85 0)
+		(at 106.68 67.31 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -16862,7 +16480,7 @@
 		(fields_autoplaced yes)
 		(uuid "5c9a5b24-e8d7-4a06-970f-068755559f7b")
 		(property "Reference" "Y1"
-			(at 127 62.23 0)
+			(at 127 59.69 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -16872,7 +16490,7 @@
 			)
 		)
 		(property "Value" "830108254201"
-			(at 127 64.77 0)
+			(at 127 62.23 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -16882,7 +16500,7 @@
 			)
 		)
 		(property "Footprint" "samacsys2:830108254201"
-			(at 143.51 164.77 0)
+			(at 143.51 162.23 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -16894,7 +16512,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.we-online.com/catalog/datasheet/830108254201.pdf"
-			(at 143.51 264.77 0)
+			(at 143.51 262.23 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -16906,7 +16524,7 @@
 			)
 		)
 		(property "Description" "WE-XTAL Quartz Crystal IQXC-240; 1.2 x 1.0mm; 32.0 MHz; Tol = +/-7 ppm; Stab = +/-15 ppm; Temp Range: -30 to 85 C ; Load Cap = 5 pF;"
-			(at 106.68 69.85 0)
+			(at 106.68 67.31 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -16917,7 +16535,7 @@
 			)
 		)
 		(property "Height" "0.33"
-			(at 143.51 464.77 0)
+			(at 143.51 462.23 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -16929,7 +16547,7 @@
 			)
 		)
 		(property "Manufacturer_Name" "Wurth Elektronik"
-			(at 143.51 564.77 0)
+			(at 143.51 562.23 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -16941,7 +16559,7 @@
 			)
 		)
 		(property "Manufacturer_Part_Number" "830108254201"
-			(at 143.51 664.77 0)
+			(at 143.51 662.23 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -16953,7 +16571,7 @@
 			)
 		)
 		(property "Mouser Part Number" "710-830108254201"
-			(at 143.51 764.77 0)
+			(at 143.51 762.23 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -16965,7 +16583,7 @@
 			)
 		)
 		(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Wurth-Elektronik/830108254201?qs=4qgZ1GHix0XcvpMI5%252BHKPA%3D%3D"
-			(at 143.51 864.77 0)
+			(at 143.51 862.23 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -16977,7 +16595,7 @@
 			)
 		)
 		(property "Arrow Part Number" ""
-			(at 143.51 964.77 0)
+			(at 143.51 962.23 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -16989,7 +16607,7 @@
 			)
 		)
 		(property "Arrow Price/Stock" ""
-			(at 143.51 1064.77 0)
+			(at 143.51 1062.23 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)

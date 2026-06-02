@@ -81,7 +81,7 @@ void Error_Handler(void);
 
 /* USER CODE BEGIN Private defines */
 
-//#define DEBUG1
+#define DEBUG1
 #define USE_FAST_PRINT
 
 #ifdef DEBUG1

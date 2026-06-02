@@ -1,5 +1,5 @@
-../Core/Src/sd_app.c:15:16:Is_SD_Present	8	static
-../Core/Src/sd_app.c:22:16:Is_Connected_To_PC	8	static
-../Core/Src/sd_app.c:34:6:Init_Sd	16	static
-../Core/Src/sd_app.c:50:6:SD_Close_File	32	static
-../Core/Src/sd_app.c:63:6:SD_Manager	328	static
+../Core/Src/sd_app.c:16:9:Is_SD_Present	8	static
+../Core/Src/sd_app.c:23:9:Is_Connected_To_PC	8	static
+../Core/Src/sd_app.c:35:6:Init_Sd	16	static
+../Core/Src/sd_app.c:51:6:SD_Close_File	32	static
+../Core/Src/sd_app.c:64:6:SD_Manager	328	static

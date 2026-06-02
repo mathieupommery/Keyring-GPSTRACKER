@@ -44,6 +44,8 @@ typedef struct {
 void Init_Sd(SDCard_struct *sd);
 void SD_Manager(SDCard_struct *sd, GNSS_StateHandle *gps, AdcContext_t *gAdc);
 void SD_Close_File(SDCard_struct *sd);
+uint8_t Is_SD_Present(void);
+uint8_t Is_Connected_To_PC(void);
 
 #endif /* INC_SD_APP_H_ */
 

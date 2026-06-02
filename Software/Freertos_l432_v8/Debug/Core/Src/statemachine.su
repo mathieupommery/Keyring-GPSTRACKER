@@ -1,5 +1,9 @@
-../Core/Src/statemachine.c:13:13:utility_function	16	static
-../Core/Src/statemachine.c:28:6:StateMachine_Run	64	static
-../Core/Src/statemachine.c:702:6:set_time	40	static
-../Core/Src/statemachine.c:714:6:set_date	32	static
-../Core/Src/statemachine.c:728:6:get_time_date	40	static
+../Core/Src/statemachine.c:23:13:FindClosestCity	664	static
+../Core/Src/statemachine.c:84:13:Handle_Global_Navigation	24	static
+../Core/Src/statemachine.c:122:13:Handle_State_Speed	64	static
+../Core/Src/statemachine.c:243:13:Handle_State_Balise	32	static
+../Core/Src/statemachine.c:403:13:Handle_State_Pos	32	static
+../Core/Src/statemachine.c:581:13:Handle_State_City	40	static
+../Core/Src/statemachine.c:657:13:Handle_State_Settings	24	static
+../Core/Src/statemachine.c:716:13:Handle_State_Screensaver	24	static
+../Core/Src/statemachine.c:732:6:StateMachine_Run	32	static

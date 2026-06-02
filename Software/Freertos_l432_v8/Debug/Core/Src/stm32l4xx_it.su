@@ -1,8 +1,8 @@
-../Core/Src/stm32l4xx_it.c:78:6:NMI_Handler	8	static
-../Core/Src/stm32l4xx_it.c:96:6:HardFault_Handler	8	static
-../Core/Src/stm32l4xx_it.c:114:6:MemManage_Handler	8	static
-../Core/Src/stm32l4xx_it.c:132:6:BusFault_Handler	8	static
-../Core/Src/stm32l4xx_it.c:150:6:UsageFault_Handler	8	static
+../Core/Src/stm32l4xx_it.c:78:6:NMI_Handler	4	static
+../Core/Src/stm32l4xx_it.c:96:6:HardFault_Handler	4	static
+../Core/Src/stm32l4xx_it.c:114:6:MemManage_Handler	4	static
+../Core/Src/stm32l4xx_it.c:132:6:BusFault_Handler	4	static
+../Core/Src/stm32l4xx_it.c:150:6:UsageFault_Handler	4	static
 ../Core/Src/stm32l4xx_it.c:168:6:DebugMon_Handler	4	static
 ../Core/Src/stm32l4xx_it.c:188:6:EXTI0_IRQHandler	8	static
 ../Core/Src/stm32l4xx_it.c:202:6:EXTI3_IRQHandler	8	static

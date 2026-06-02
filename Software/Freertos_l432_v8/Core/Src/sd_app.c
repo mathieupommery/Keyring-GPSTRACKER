@@ -12,14 +12,15 @@
 
 extern USBD_HandleTypeDef hUsbDeviceFS;
 
-static uint8_t Is_SD_Present(void) {
+
+uint8_t Is_SD_Present(void) {
 	return (HAL_GPIO_ReadPin(SD_DET_GPIO_Port, SD_DET_Pin) == GPIO_PIN_RESET);
 }
 
 /**
  * @brief Vérifie si l'appareil est connecté à un VRAI ordinateur (pas un chargeur)
  */
-static uint8_t Is_Connected_To_PC(void) {
+uint8_t Is_Connected_To_PC(void) {
 	if (HAL_GPIO_ReadPin(USB_DET_GPIO_Port, USB_DET_Pin) == GPIO_PIN_SET) {
 		if (hUsbDeviceFS.dev_state == USBD_STATE_CONFIGURED) {
 			return 1; // PC énuméré
