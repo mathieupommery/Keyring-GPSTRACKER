@@ -1,6 +1,6 @@
 ../Core/Src/freertos.c:95:6:vApplicationGetIdleTaskMemory	1
 ../Core/Src/freertos.c:109:6:MX_FREERTOS_Init	1
-../Core/Src/freertos.c:169:6:StartMainTask	2
-../Core/Src/freertos.c:213:6:StartSensorTask	3
-../Core/Src/freertos.c:260:6:StartTrackerTask	4
+../Core/Src/freertos.c:169:6:StartMainTask	1
+../Core/Src/freertos.c:213:6:StartSensorTask	2
+../Core/Src/freertos.c:260:6:StartTrackerTask	1
 ../Core/Src/freertos.c:309:6:StartPWRTask	1
