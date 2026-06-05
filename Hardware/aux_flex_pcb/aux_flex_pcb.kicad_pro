@@ -202,7 +202,8 @@
         0.18972,
         0.275,
         0.3,
-        0.4
+        0.4,
+        0.5
       ],
       "tuning_pattern_settings": {
         "diff_pair_defaults": {
@@ -571,7 +572,7 @@
       "gencad": "",
       "idf": "",
       "netlist": "",
-      "plot": "../fab_file/gps_tracker_v9/",
+      "plot": "../fab_file/flex_pcb/",
       "pos_files": "",
       "specctra_dsn": "",
       "step": "../../3d schématic/pcb/boardv9.step",
