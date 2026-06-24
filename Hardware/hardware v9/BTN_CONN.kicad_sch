@@ -4318,7 +4318,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BM29B062DS2035V53"
+		(property "Footprint" "samacsys2:BM29B062DS2035V53"
 			(at 111.76 216.84 0)
 			(hide yes)
 			(show_name no)

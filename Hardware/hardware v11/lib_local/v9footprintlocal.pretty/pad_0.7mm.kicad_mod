@@ -1,0 +1,81 @@
+(footprint "pad_0.7mm"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(property "Reference" "REF**"
+		(at 1.31 8.24 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(hide yes)
+		(uuid "09d1a9ce-57f6-4d9f-8e4c-09cce11a1167")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "SWCLK"
+		(at 1.31 9.74 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "66ae087a-f09a-4dcc-8ecd-c4781b6d5cb9")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "2810b030-8dff-4e80-8eb2-72d6427093cb")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" "test point"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "aadc772f-fbd3-4f03-ab12-4c5d7a4c9483")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property ki_fp_filters "Pin* Test*")
+	(sheetname "/")
+	(sheetfile "hardware_V9.kicad_sch")
+	(attr through_hole dnp)
+	(duplicate_pad_numbers_are_jumpers no)
+	(pad "1" smd circle
+		(at 0 0)
+		(size 0.7 0.7)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(teardrops
+			(best_length_ratio 0.5)
+			(max_length 1)
+			(best_width_ratio 0.6)
+			(max_width 2)
+			(curved_edges no)
+			(filter_ratio 0.9)
+			(enabled yes)
+			(allow_two_segments yes)
+			(prefer_zone_connections yes)
+		)
+		(uuid "16c7f0a7-ec66-4dd4-ba39-527359bc2dc2")
+	)
+	(embedded_fonts no)
+)

@@ -66,9 +66,10 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h \
  ../USB_DEVICE/Target/usbd_conf.h ../Core/Inc/gpio.h \
  ../Core/Inc/ssd1306.h ../Core/Inc/ssd1306_conf.h \
- ../Core/Inc/ssd1306_fonts.h ../Core/Inc/statemachine.h \
- ../Core/Inc/ssd1306.h ../Core/Inc/GNSS.h ../Core/Inc/sd_app.h \
- ../Core/Inc/GNSS.h ../Core/Inc/pwr.h ../Core/Inc/sd_app.h
+ ../Core/Inc/screen_bitmaps.h ../Core/Inc/ssd1306_fonts.h \
+ ../Core/Inc/statemachine.h ../Core/Inc/ssd1306.h ../Core/Inc/GNSS.h \
+ ../Core/Inc/sd_app.h ../Core/Inc/GNSS.h ../Core/Inc/pwr.h \
+ ../Core/Inc/sd_app.h
 ../Core/Inc/main.h:
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h:
 ../Core/Inc/stm32l4xx_hal_conf.h:
@@ -146,6 +147,7 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Core/Inc/gpio.h:
 ../Core/Inc/ssd1306.h:
 ../Core/Inc/ssd1306_conf.h:
+../Core/Inc/screen_bitmaps.h:
 ../Core/Inc/ssd1306_fonts.h:
 ../Core/Inc/statemachine.h:
 ../Core/Inc/ssd1306.h:

@@ -1,0 +1,306 @@
+(footprint "SON50P200X200X80-7N-D"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(descr "6-Lead Plastic DFN-")
+	(tags "Integrated Circuit")
+	(property "Reference" "REF**"
+		(at 0 0 180)
+		(layer "F.SilkS")
+		(hide yes)
+		(uuid "35e44ad7-15db-4d5e-93a8-c59c9e6a2245")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+			)
+		)
+	)
+	(property "Value" "LTC4065EDC#TRMPBF"
+		(at 0 0 180)
+		(layer "F.SilkS")
+		(hide yes)
+		(uuid "c1b03cd6-e401-4a2b-86e4-b7959e723087")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+			)
+		)
+	)
+	(property "Datasheet" "https://www.arrow.com/en/products/ltc4065edctrmpbf/analog-devices"
+		(at 0 0 180)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "253ae168-9d74-46d6-bd4a-4efa0bd017b9")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" "Battery Charger Li-Ion 500mA 4.2V 6-Pin DFN EP T/R"
+		(at 0 0 180)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "22c4e0db-9bd6-4317-8986-bf8972085fcf")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Height" "0.8"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "c8a2ea61-f5a0-4ffe-8224-81d71b12fb45")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Manufacturer_Name" "Analog Devices"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "b22b3383-187f-47d2-881c-2d94d202d191")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Manufacturer_Part_Number" "LTC4065EDC#TRMPBF"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "1ca5cffd-5358-437b-9056-95da25b90fa7")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Mouser Part Number" "584-LTC4065EDCTRMPBF"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "cd63b5e1-3a7d-4ec1-aa3f-24bfd8d77cb1")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Analog-Devices/LTC4065EDCTRMPBF?qs=hVkxg5c3xu%252BjxEjwXqRRgQ%3D%3D"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "2900b353-4ac5-42e1-a086-ab9a5d7a05a9")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Arrow Part Number" "LTC4065EDC#TRMPBF"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "b9f0ae50-be3c-4e39-86b5-bc1d0e9f883b")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Arrow Price/Stock" "https://www.arrow.com/en/products/ltc4065edctrmpbf/analog-devices?region=nac"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "3e163777-15e3-4068-a16e-08259e22f982")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(sheetname "/POWER/")
+	(sheetfile "untitled.kicad_sch")
+	(attr smd)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_circle
+		(center -1.375 -1.15)
+		(end -1.375 -1.025)
+		(stroke
+			(width 0.25)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "a6523b53-1189-4af0-8c2c-f635053a05de")
+	)
+	(fp_line
+		(start -1.625 -1.3)
+		(end 1.625 -1.3)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "95248cee-3b1a-4537-86e5-699e45d69412")
+	)
+	(fp_line
+		(start -1.625 1.3)
+		(end -1.625 -1.3)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "6aa20908-0fc2-4f2b-93d3-077ad8a3a447")
+	)
+	(fp_line
+		(start 1.625 -1.3)
+		(end 1.625 1.3)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "159e015a-5110-479e-bf25-f50bee97b2a8")
+	)
+	(fp_line
+		(start 1.625 1.3)
+		(end -1.625 1.3)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "06961799-c8e5-483e-bf4a-c535010d3dc7")
+	)
+	(fp_line
+		(start -1 -1)
+		(end 1 -1)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "eafac9de-fc2b-4afc-9113-65be3952ff59")
+	)
+	(fp_line
+		(start -1 -0.5)
+		(end -0.5 -1)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "e3e6a2b8-d182-4802-98ee-abae5e09bf06")
+	)
+	(fp_line
+		(start -1 1)
+		(end -1 -1)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "0fee0cb9-0919-49a8-b79c-c7be30be843b")
+	)
+	(fp_line
+		(start 1 -1)
+		(end 1 1)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "a1356464-e924-4af2-9c3a-367a069d5054")
+	)
+	(fp_line
+		(start 1 1)
+		(end -1 1)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "5da2bde5-eb0b-4ced-bcd8-a4d9441038bb")
+	)
+	(pad "1" smd rect
+		(at -0.95 -0.5 90)
+		(size 0.3 0.85)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "eb168465-9f33-4684-a3b5-3f9287c76f4f")
+	)
+	(pad "2" smd rect
+		(at -0.95 0 90)
+		(size 0.3 0.85)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "ad6b84c7-6ecd-49f6-b186-c623586557c6")
+	)
+	(pad "3" smd rect
+		(at -0.95 0.5 90)
+		(size 0.3 0.85)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "8aee9bc9-0c57-4a51-8553-2dcadf3e9e5e")
+	)
+	(pad "4" smd rect
+		(at 0.95 0.5 90)
+		(size 0.3 0.85)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "f9ca1442-bdca-482e-bd1b-13e1c6dee519")
+	)
+	(pad "5" smd rect
+		(at 0.95 0 90)
+		(size 0.3 0.85)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "baeb8ae1-88ea-40d7-9e52-3104914db3fa")
+	)
+	(pad "6" smd rect
+		(at 0.95 -0.5 90)
+		(size 0.3 0.85)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "894669b6-7ff7-4410-b20e-f8fd166d62ef")
+	)
+	(pad "7" smd rect
+		(at 0 0)
+		(size 0.61 1.42)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "77c4cd32-2b85-47ca-be27-5d236b11f9a9")
+	)
+	(embedded_fonts no)
+	(model "C:/Users/mathi/Desktop/projet/libloader2/SamacSys_Parts.3dshapes/LTC4065EDC#TRMPBF.stp"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+)

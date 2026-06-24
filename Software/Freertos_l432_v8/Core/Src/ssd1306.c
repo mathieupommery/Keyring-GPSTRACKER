@@ -2,6 +2,7 @@
 #include <math.h>
 #include <stdlib.h>
 #include <string.h>  // For memcpy
+#include "screen_bitmaps.h"
 
 extern uint8_t bufferscreen[50];
 
@@ -9,17 +10,6 @@ void ssd1306_Reset(void) {
     /* for I2C - do nothing */
 }
 
-// Send a byte to the command register
-//void ssd1306_WriteCommand(uint8_t byte) {
-//    HAL_I2C_Mem_Write(&SSD1306_I2C_PORT, SSD1306_I2C_ADDR, 0x00, 1, &byte, 1, HAL_MAX_DELAY);
-//}
-//
-//// Send data
-//void ssd1306_WriteData(uint8_t* buffer, size_t buff_size) {
-//    HAL_I2C_Mem_Write(&SSD1306_I2C_PORT, SSD1306_I2C_ADDR, 0x40, 1, buffer, buff_size, HAL_MAX_DELAY);
-//}
-
-// Send a byte to the command register
 void ssd1306_WriteCommand(uint8_t byte) {
     while (HAL_I2C_GetState(&SSD1306_I2C_PORT) != HAL_I2C_STATE_READY) {
     }
@@ -173,14 +163,6 @@ void ssd1306_UpdateScreen(void) {
 
 
 }
-
-
-/*
- * Draw one pixel in the screenbuffer
- * X => X Coordinate
- * Y => Y Coordinate
- * color => Pixel color
- */
 void ssd1306_DrawPixel(uint8_t x, uint8_t y, SSD1306_COLOR color) {
     if(x >= SSD1306_WIDTH || y >= SSD1306_HEIGHT) {
         // Don't write outside the buffer
@@ -194,13 +176,6 @@ void ssd1306_DrawPixel(uint8_t x, uint8_t y, SSD1306_COLOR color) {
         SSD1306_Buffer[x + (y / 8) * SSD1306_WIDTH] &= ~(1 << (y % 8));
     }
 }
-
-/*
- * Draw 1 char to the screen buffer
- * ch       => char om weg te schrijven
- * Font     => Font waarmee we gaan schrijven
- * color    => Black or White
- */
 char ssd1306_WriteChar(char ch, FontDef Font, SSD1306_COLOR color) {
     uint32_t i, b, j;
     
@@ -620,6 +595,92 @@ void batterygauge_screensaver(float vbat, uint8_t x, uint8_t y) {
     for (uint8_t i = 0; i < active_bars; i++) {
         uint8_t bar_x = x + 4 + (i * 14);
         ssd1306_FillRectangle(bar_x, y + 4, bar_x + 10, y + 27, White);
+    }
+}
+
+/* --- Etat interne de l'animation --- */
+static uint8_t        s_active = 0;
+static uint8_t        s_phase  = 0;   /* 0 = glissement, 1 = maintien */
+static uint8_t        s_frame  = 0;
+static uint8_t        s_dir    = 0;
+static const uint8_t *s_left   = 0;
+static const uint8_t *s_right  = 0;
+
+static inline uint8_t bmp_pixel(const uint8_t *bmp, uint8_t x, uint8_t y) {
+    return (bmp[(uint16_t) y * (WIN_W / 8) + (x >> 3)] >> (7 - (x & 7))) & 0x01;
+}
+
+static void render(const uint8_t *left, const uint8_t *right, int16_t viewport) {
+    ssd1306_Fill(Black);
+
+    for (uint8_t vx = 0; vx < WIN_W; vx++) {
+        int16_t world = viewport + vx;
+        const uint8_t *src;
+        uint8_t col;
+        if (world < WIN_W) { src = left;  col = (uint8_t) world; }
+        else               { src = right; col = (uint8_t) (world - WIN_W); }
+
+        for (uint8_t vy = 0; vy < WIN_H; vy++) {
+            ssd1306_DrawPixel(SCR_OX + vx, SCR_OY + vy,
+                              bmp_pixel(src, col, vy) ? White : Black);
+        }
+    }
+    ssd1306_UpdateScreen();
+}
+
+
+static int16_t ease(int16_t from, int16_t to, uint8_t f, uint8_t n) {
+    if (f >= n) return to;
+    float p = (float) f / (float) n;
+    p = p * p * (3.0f - 2.0f * p);
+    return (int16_t) (from + (float) (to - from) * p);
+}
+
+void ScreenAnim_Start(uint8_t old_state, uint8_t new_state, uint8_t dir) {
+    const uint8_t *o = ScreenAnim_GetBitmap(old_state);
+    const uint8_t *n = ScreenAnim_GetBitmap(new_state);
+    if (o == 0 || n == 0) { s_active = 0; return; }   /* pas d'image -> pas d'anim */
+
+    if (dir == ANIM_DIR_NEXT) { s_left = o; s_right = n; }  /* nouvelle vient de droite */
+    else                      { s_left = n; s_right = o; }  /* nouvelle vient de gauche */
+
+    s_dir   = dir;
+    s_phase = 0;
+    s_frame = 0;
+    s_active = 1;
+}
+
+uint8_t ScreenAnim_IsActive(void) {
+    return s_active;
+}
+
+uint8_t ScreenAnim_InHold(void) {
+    return (uint8_t) (s_active && s_phase == 1);
+}
+
+void ScreenAnim_Step(void) {
+    if (!s_active) return;
+
+    int16_t vp_end = (s_dir == ANIM_DIR_NEXT) ? WIN_W : 0;
+
+    if (s_phase == 0) {
+        /* --- Phase glissement --- */
+        int16_t vp_start = (s_dir == ANIM_DIR_NEXT) ? 0 : WIN_W;
+        int16_t vp = ease(vp_start, vp_end, s_frame, ANIM_SLIDE_FRAMES);
+        render(s_left, s_right, vp);
+
+        s_frame++;
+        if (s_frame > ANIM_SLIDE_FRAMES) {
+            s_phase = 1;
+            s_frame = 0;
+        }
+    } else {
+        render(s_left, s_right, vp_end);
+
+        s_frame++;
+        if (s_frame >= ANIM_HOLD_FRAMES) {
+            s_active = 0;
+        }
     }
 }
 

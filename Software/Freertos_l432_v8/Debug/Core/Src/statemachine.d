@@ -40,8 +40,9 @@ Core/Src/statemachine.o: ../Core/Src/statemachine.c \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h \
  ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart_ex.h \
  ../Core/Inc/ssd1306.h ../Core/Inc/ssd1306_conf.h \
- ../Core/Inc/ssd1306_fonts.h ../Core/Inc/GNSS.h ../Core/Inc/sd_app.h \
- ../FATFS/App/fatfs.h ../Middlewares/Third_Party/FatFs/src/ff.h \
+ ../Core/Inc/screen_bitmaps.h ../Core/Inc/ssd1306_fonts.h \
+ ../Core/Inc/GNSS.h ../Core/Inc/sd_app.h ../FATFS/App/fatfs.h \
+ ../Middlewares/Third_Party/FatFs/src/ff.h \
  ../Middlewares/Third_Party/FatFs/src/integer.h ../FATFS/Target/ffconf.h \
  ../Core/Inc/main.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h \
@@ -63,7 +64,9 @@ Core/Src/statemachine.o: ../Core/Src/statemachine.c \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h \
  ../Middlewares/Third_Party/FatFs/src/ff_gen_drv.h \
  ../Middlewares/Third_Party/FatFs/src/diskio.h \
- ../Middlewares/Third_Party/FatFs/src/ff.h ../FATFS/Target/user_diskio.h
+ ../Middlewares/Third_Party/FatFs/src/ff.h ../FATFS/Target/user_diskio.h \
+ ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h \
+ ../USB_DEVICE/Target/usbd_conf.h
 ../Core/Inc/statemachine.h:
 ../Core/Inc/main.h:
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h:
@@ -107,6 +110,7 @@ Core/Src/statemachine.o: ../Core/Src/statemachine.c \
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart_ex.h:
 ../Core/Inc/ssd1306.h:
 ../Core/Inc/ssd1306_conf.h:
+../Core/Inc/screen_bitmaps.h:
 ../Core/Inc/ssd1306_fonts.h:
 ../Core/Inc/GNSS.h:
 ../Core/Inc/sd_app.h:
@@ -136,3 +140,5 @@ Core/Src/statemachine.o: ../Core/Src/statemachine.c \
 ../Middlewares/Third_Party/FatFs/src/diskio.h:
 ../Middlewares/Third_Party/FatFs/src/ff.h:
 ../FATFS/Target/user_diskio.h:
+../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h:
+../USB_DEVICE/Target/usbd_conf.h:

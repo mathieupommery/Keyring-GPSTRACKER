@@ -6,9 +6,7 @@
  */
 
 #include "sd_app.h"
-#include "usbd_def.h"
-#include "stdio.h"
-#include "string.h"
+
 
 extern USBD_HandleTypeDef hUsbDeviceFS;
 
@@ -204,7 +202,7 @@ void SD_Manager(SDCard_struct *sd, GNSS_StateHandle *gps, AdcContext_t *gAdc) {
 				lon_sign, lon_int, lon_frac,
 				ele_sign, ele_int, ele_frac,
 				gps->year, gps->month, gps->day, gps->hour, gps->min, gps->sec, ms_interpolated,
-				gps->satCount,
+				gps->numSV,
 				hdop_int, hdop_frac);
 
 	} else {
@@ -217,7 +215,7 @@ void SD_Manager(SDCard_struct *sd, GNSS_StateHandle *gps, AdcContext_t *gAdc) {
 				lat_sign, lat_int, lat_frac,
 				lon_sign, lon_int, lon_frac,
 				ele_sign, ele_int, ele_frac,
-				gps->satCount,
+				gps->numSV,
 				hdop_int, hdop_frac,
 				vbat_int, vbat_frac);
 	}
@@ -243,3 +241,7 @@ void SD_Manager(SDCard_struct *sd, GNSS_StateHandle *gps, AdcContext_t *gAdc) {
 		}
 	}
 }
+
+
+
+

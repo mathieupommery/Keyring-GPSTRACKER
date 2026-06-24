@@ -56,16 +56,17 @@ Core/Src/freertos.o: ../Core/Src/freertos.c \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h \
  ../Core/Inc/ssd1306.h ../Core/Inc/ssd1306_conf.h \
- ../Core/Inc/ssd1306_fonts.h ../Core/Inc/main.h \
- ../Core/Inc/statemachine.h ../Core/Inc/ssd1306.h ../Core/Inc/GNSS.h \
- ../Core/Inc/sd_app.h ../FATFS/App/fatfs.h \
+ ../Core/Inc/screen_bitmaps.h ../Core/Inc/ssd1306_fonts.h \
+ ../Core/Inc/main.h ../Core/Inc/statemachine.h ../Core/Inc/ssd1306.h \
+ ../Core/Inc/GNSS.h ../Core/Inc/sd_app.h ../FATFS/App/fatfs.h \
  ../Middlewares/Third_Party/FatFs/src/ff.h \
  ../Middlewares/Third_Party/FatFs/src/integer.h ../FATFS/Target/ffconf.h \
  ../Middlewares/Third_Party/FatFs/src/ff_gen_drv.h \
  ../Middlewares/Third_Party/FatFs/src/diskio.h \
  ../Middlewares/Third_Party/FatFs/src/ff.h ../FATFS/Target/user_diskio.h \
- ../Core/Inc/GNSS.h ../Core/Inc/pwr.h ../Core/Inc/sd_app.h \
- ../Core/Inc/adc.h
+ ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h \
+ ../USB_DEVICE/Target/usbd_conf.h ../Core/Inc/GNSS.h ../Core/Inc/pwr.h \
+ ../Core/Inc/sd_app.h ../Core/Inc/adc.h
 ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h:
 ../Core/Inc/FreeRTOSConfig.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h:
@@ -125,6 +126,7 @@ Core/Src/freertos.o: ../Core/Src/freertos.c \
 ../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h:
 ../Core/Inc/ssd1306.h:
 ../Core/Inc/ssd1306_conf.h:
+../Core/Inc/screen_bitmaps.h:
 ../Core/Inc/ssd1306_fonts.h:
 ../Core/Inc/main.h:
 ../Core/Inc/statemachine.h:
@@ -139,6 +141,8 @@ Core/Src/freertos.o: ../Core/Src/freertos.c \
 ../Middlewares/Third_Party/FatFs/src/diskio.h:
 ../Middlewares/Third_Party/FatFs/src/ff.h:
 ../FATFS/Target/user_diskio.h:
+../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h:
+../USB_DEVICE/Target/usbd_conf.h:
 ../Core/Inc/GNSS.h:
 ../Core/Inc/pwr.h:
 ../Core/Inc/sd_app.h:

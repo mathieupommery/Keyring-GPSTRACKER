@@ -11,14 +11,11 @@
 #include <stddef.h>
 #include <_ansi.h>
 #include <ssd1306_conf.h>
-
-_BEGIN_STD_C
-
+#include <stdint.h>
+#include "screen_bitmaps.h"
 #include "ssd1306_fonts.h"
-
-
-
 #include "stm32l4xx_hal.h"
+#include "main.h"
 
 
 
@@ -30,18 +27,12 @@ _BEGIN_STD_C
 #define SSD1306_X_OFFSET_UPPER 0
 #endif
 
-#include "ssd1306_fonts.h"
-#include "main.h"
-/* vvv I2C config vvv */
+
+
 
 
 #define SSD1306_I2C_PORT        hi2c1
 #define SSD1306_I2C_ADDR        (0x3C << 1)
-
-
-/* ^^^ I2C config ^^^ */
-
-/* vvv SPI config vvv */
 
 
 #if defined(SSD1306_USE_I2C)
@@ -65,6 +56,17 @@ extern SPI_HandleTypeDef SSD1306_SPI_PORT;
 #ifndef SSD1306_BUFFER_SIZE
 #define SSD1306_BUFFER_SIZE   SSD1306_WIDTH * SSD1306_HEIGHT / 8
 #endif
+
+#define SCR_OX  32
+#define SCR_OY  32
+#define WIN_W   64
+#define WIN_H   32
+
+#define ANIM_SLIDE_FRAMES  4
+#define ANIM_HOLD_FRAMES   5
+
+#define ANIM_DIR_NEXT  0
+#define ANIM_DIR_PREV  1
 
 // Enumeration for screen colors
 typedef enum {
@@ -110,6 +112,10 @@ void ssd1306_DrawBitmap(uint8_t x, uint8_t y, const unsigned char* bitmap, uint8
 void batterygauge(float vbat,int x, int y,int currentsquare);
 void batterygauge_screensaver(float vbat, uint8_t x, uint8_t y);
 void percentage(float percent);
+void    ScreenAnim_Start(uint8_t old_state, uint8_t new_state, uint8_t dir);
+uint8_t ScreenAnim_IsActive(void);
+uint8_t ScreenAnim_InHold(void);
+void    ScreenAnim_Step(void);
 /**
  * @brief Sets the contrast of the display.
  * @param[in] value contrast to set.
@@ -136,7 +142,5 @@ void ssd1306_Reset(void);
 void ssd1306_WriteCommand(uint8_t byte);
 void ssd1306_WriteData(uint8_t* buffer, size_t buff_size);
 SSD1306_Error_t ssd1306_FillBuffer(uint8_t* buf, uint32_t len);
-
-_END_STD_C
 
 #endif // __SSD1306_H__

@@ -14,6 +14,7 @@
 #include "math.h"
 #include "sd_app.h"
 #include <string.h>
+#include <math.h>
 
 
 
@@ -22,7 +23,7 @@ typedef enum{
 	STATE_SPEED,
 	STATE_BALISE,
 	STATE_POS,
-	//STATE_CITY,
+	STATE_CITY,
 	STATE_SETTINGS,
 	STATE_SCREENSAVER
 
@@ -57,7 +58,10 @@ typedef enum{
 	ECRANBALISESTATE1,
 	ECRANBALISESTATE2,
 	ECRANBALISESTATE3,
-	ECRANBALISESTATE4
+	ECRANBALISESTATE4,
+	ECRANBALISESTATE5,
+	ECRANBALISESTATE6,
+	ECRANBALISESTATE7
 
 }ECRANBALISESTATE;
 
@@ -75,6 +79,13 @@ typedef struct {
     char name[18];
 } CityRecord;
 #pragma pack(pop)
+
+typedef enum{
+	CITY,
+	MOUNTAIN
+
+}SEARCHSTATE;
+
 
 #define PI_F 3.1415926535f
 #define DEG_TO_RAD (PI_F / 180.0f)
@@ -96,11 +107,18 @@ typedef struct
     uint32_t last_action_tick;
 
 
-    uint8_t city_search_done; // Flag pour ne chercher qu'une fois toutes les 30s
-    char city_name[18];       // Nom de la ville (17 caractères max + '\0')
-    char city_country[3];     // Code pays (2 caractères + '\0')
-    uint32_t city_pop;        // Population
-    float city_dist_km;
+    SEARCHSTATE searchstate;
+    uint8_t search_initialised;
+    uint8_t city_search_done;
+    uint8_t mountain_search_done;
+    char found_name[18];
+    char found_country[3];
+    float found_lat;
+    float found_lon;
+    uint32_t city_pop;
+    uint32_t mountain_alt;
+    float found_dist_km;
+    uint8_t distance_calc_counter;
 
     /* Position de départ de balise */
     float    oldlat;
@@ -113,5 +131,6 @@ void StateMachine_Run(AppStateMachineContext *ctx,GNSS_StateHandle*gps,Buttons_t
 void set_time (uint8_t hr, uint8_t min, uint8_t sec);
 void set_date (uint8_t year, uint8_t month, uint8_t date, uint8_t day);
 void get_time_date(AppStateMachineContext * context);
+void FindClosest(GNSS_StateHandle *gps, AppStateMachineContext *ctx, SDCard_struct *sd);
 
 #endif /* INC_STATEMACHINE_H_ */

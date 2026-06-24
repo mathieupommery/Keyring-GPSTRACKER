@@ -45,15 +45,26 @@ void MX_GPIO_Init(void)
   GPIO_InitTypeDef GPIO_InitStruct = {0};
 
   /* GPIO Ports Clock Enable */
+  __HAL_RCC_GPIOC_CLK_ENABLE();
   __HAL_RCC_GPIOA_CLK_ENABLE();
   __HAL_RCC_GPIOB_CLK_ENABLE();
   __HAL_RCC_GPIOH_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPS_EN_GPIO_Port, GPS_EN_Pin, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(FLASH_CS_GPIO_Port, FLASH_CS_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, GPS_EN_Pin|AUX_EN_Pin|LED_GREEN_Pin|LED_BLUE_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOB, AUX_EN_Pin|LED_GREEN_Pin|LED_BLUE_Pin, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin : GPS_EN_Pin */
+  GPIO_InitStruct.Pin = GPS_EN_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPS_EN_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pin : PWR_BTN_Pin */
   GPIO_InitStruct.Pin = PWR_BTN_Pin;
@@ -68,29 +79,23 @@ void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(FLASH_CS_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : GPS_EN_Pin AUX_EN_Pin LED_GREEN_Pin LED_BLUE_Pin */
-  GPIO_InitStruct.Pin = GPS_EN_Pin|AUX_EN_Pin|LED_GREEN_Pin|LED_BLUE_Pin;
+  /*Configure GPIO pins : AUX_EN_Pin LED_GREEN_Pin LED_BLUE_Pin */
+  GPIO_InitStruct.Pin = AUX_EN_Pin|LED_GREEN_Pin|LED_BLUE_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : USB_DET_Pin */
-  GPIO_InitStruct.Pin = USB_DET_Pin;
+  /*Configure GPIO pins : USB_DET_Pin SD_DET_Pin */
+  GPIO_InitStruct.Pin = USB_DET_Pin|SD_DET_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(USB_DET_GPIO_Port, &GPIO_InitStruct);
-
-  /*Configure GPIO pin : SD_DET_Pin */
-  GPIO_InitStruct.Pin = SD_DET_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(SD_DET_GPIO_Port, &GPIO_InitStruct);
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
   /*Configure GPIO pin : B2_Pin */
   GPIO_InitStruct.Pin = B2_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING_FALLING;
-  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(B2_GPIO_Port, &GPIO_InitStruct);
 
   /* EXTI interrupt init*/

@@ -56,6 +56,7 @@ extern GNSS_StateHandle GNSSData;
 extern Buttons_t gButtons;
 extern AdcContext_t gAdc;
 extern SDCard_struct sdcard;
+extern uint32_t lat_index[182];
 
 
 #ifdef DEBUG1
@@ -177,7 +178,6 @@ void StartMainTask(void const * argument)
   uint32_t cycles_actuels = DWT->CYCCNT;
 #endif
   xLastWakeTime = xTaskGetTickCount();
-  TickType_t last_action_tick = xTaskGetTickCount();
   /* Infinite loop */
   for(;;)
   {
@@ -260,6 +260,8 @@ void StartSensorTask(void const * argument)
 void StartTrackerTask(void const * argument)
 {
   /* USER CODE BEGIN StartTrackerTask */
+	state_struct.search_initialised=0;
+	state_struct.city_search_done=1;
 	  TickType_t xLastWakeTime;
 	  const TickType_t period = pdMS_TO_TICKS(100);
 #ifdef DEBUG1
@@ -276,6 +278,7 @@ void StartTrackerTask(void const * argument)
       cycles_actuels = DWT->CYCCNT;
 #endif
 	  SD_Manager(&sdcard,&GNSSData,&gAdc);
+	  FindClosest(&GNSSData,&state_struct,&sdcard);
 #ifdef DEBUG1
 	  uint32_t current_time = DWT->CYCCNT - cycles_actuels;
 	  sd_history[history_idx] = current_time;

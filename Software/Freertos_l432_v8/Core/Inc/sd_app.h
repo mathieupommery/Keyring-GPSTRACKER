@@ -4,6 +4,9 @@
 #include "main.h"
 #include "fatfs.h"
 #include "GNSS.h"
+#include "usbd_def.h"
+#include "stdio.h"
+#include "string.h"
 
 typedef enum {
     SD_FORMAT_CSV = 0,
@@ -19,6 +22,7 @@ typedef enum {
 typedef struct {
     FATFS FatFs;      // FATFS handle
     FIL fil;          // File handle
+    FIL f_villes;
     FRESULT fresult;
 
     // Paramètres de configuration

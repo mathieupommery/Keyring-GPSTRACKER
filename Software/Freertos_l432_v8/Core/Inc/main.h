@@ -58,22 +58,22 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define GPS_EN_Pin GPIO_PIN_15
+#define GPS_EN_GPIO_Port GPIOC
 #define PWR_BTN_Pin GPIO_PIN_0
 #define PWR_BTN_GPIO_Port GPIOA
 #define PWR_BTN_EXTI_IRQn EXTI0_IRQn
 #define FLASH_CS_Pin GPIO_PIN_4
 #define FLASH_CS_GPIO_Port GPIOA
-#define GPS_EN_Pin GPIO_PIN_0
-#define GPS_EN_GPIO_Port GPIOB
 #define AUX_EN_Pin GPIO_PIN_1
 #define AUX_EN_GPIO_Port GPIOB
 #define USB_DET_Pin GPIO_PIN_8
 #define USB_DET_GPIO_Port GPIOA
-#define SD_DET_Pin GPIO_PIN_4
-#define SD_DET_GPIO_Port GPIOB
-#define LED_GREEN_Pin GPIO_PIN_5
+#define SD_DET_Pin GPIO_PIN_15
+#define SD_DET_GPIO_Port GPIOA
+#define LED_GREEN_Pin GPIO_PIN_4
 #define LED_GREEN_GPIO_Port GPIOB
-#define LED_BLUE_Pin GPIO_PIN_6
+#define LED_BLUE_Pin GPIO_PIN_5
 #define LED_BLUE_GPIO_Port GPIOB
 #define B2_Pin GPIO_PIN_3
 #define B2_GPIO_Port GPIOH
@@ -99,8 +99,6 @@ typedef struct
 
 
 #endif
-
-#define SYSMEM_ADDRESS 0x1FFF0000
 
 #define STM32L432_VREFINT_CAL_ADDR   ((volatile uint16_t*)0x1FFF75AAu)
 #define STM32L432_TS_CAL1_ADDR       ((volatile uint16_t*)0x1FFF75A8u)
