@@ -24,11 +24,18 @@ The core of the tracker, engineered to maximize available I/O ports while mainta
 * **Storage & Connectivity:** MicroSD card slot operating in SPI mode + external DA14531 BLE module support.
 * **Power & Charging:** LTC4065 LiPo battery charger with USB-C connector.
 
+<p align="center">
+  <img width="48%" alt="v12side" src="https://github.com/user-attachments/assets/96f011da-12fb-4d81-9a8f-0a27fd8f81d3" />
+  <img width="48%" alt="v12top" src="https://github.com/user-attachments/assets/7a0c73cc-767e-4207-bbfc-9a4213295369" />
+</p>
+
+#### BLE Expansion Module (DA14531)
+To keep the mainboard ultra-compact while allowing wireless smartphone communication, wireless connectivity is offloaded to a dedicated mini extension PCB. Connected directly to the back of the mainboard via a board-to-board connector, this add-on integrates the ultra-low-power **Renesas DA14531 CodeLess BLE module**.
 
 <p align="center">
-  <img width="32%" alt="v12side" src="https://github.com/user-attachments/assets/96f011da-12fb-4d81-9a8f-0a27fd8f81d3" />
-  <img width="32%" alt="v12top" src="https://github.com/user-attachments/assets/7a0c73cc-767e-4207-bbfc-9a4213295369" />
-  <img width="32%" alt="v12back" src="https://github.com/user-attachments/assets/fd9b3578-7140-435d-9f69-262bb5a640db" />
+  <img width="48%" alt="Mainboard Back - Without BLE Module" src="https://github.com/user-attachments/assets/fd9b3578-7140-435d-9f69-262bb5a640db" />
+  <img width="48%" alt="backv12withda14531" src="https://github.com/user-attachments/assets/2f8fd850-f3b8-40d5-a29a-017e2e539ae4" />
+
 </p>
 
 
