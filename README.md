@@ -25,10 +25,11 @@ The core of the tracker, engineered to maximize available I/O ports while mainta
 * **Power & Charging:** LTC4065 LiPo battery charger with USB-C connector.
 
 
-<img width="553" height="332" alt="v12side" src="https://github.com/user-attachments/assets/96f011da-12fb-4d81-9a8f-0a27fd8f81d3" />
-<img width="555" height="410" alt="v12top" src="https://github.com/user-attachments/assets/7a0c73cc-767e-4207-bbfc-9a4213295369" />
-<img width="469" height="381" alt="v12back" src="https://github.com/user-attachments/assets/fd9b3578-7140-435d-9f69-262bb5a640db" />
-
+<p align="center">
+  <img width="32%" alt="v12side" src="https://github.com/user-attachments/assets/96f011da-12fb-4d81-9a8f-0a27fd8f81d3" />
+  <img width="32%" alt="v12top" src="https://github.com/user-attachments/assets/7a0c73cc-767e-4207-bbfc-9a4213295369" />
+  <img width="32%" alt="v12back" src="https://github.com/user-attachments/assets/fd9b3578-7140-435d-9f69-262bb5a640db" />
+</p>
 
 
 ### 2. Custom GNSS Receiver Board (6-Layer)
