@@ -1,7 +1,8 @@
 # Keyring-GPSTRACKER (v12.0)
 
-https://github.com/user-attachments/assets/1a3d3f26-0a68-42e8-81eb-b6b98553143f
-
+<p align="center">
+  <video src="https://github.com/user-attachments/assets/1a3d3f26-0a68-42e8-81eb-b6b98553143f" width="600" controls autoplay loop muted></video>
+</p>
 
 An ultra-compact, highly integrated modular GPS logger built around the STM32G0B1KE and a custom u-blox MIA-M10Q implementation. This project is designed as a fully functional, wearable GNSS tracker featuring worldwide offline geographical awareness, high-frequency SD card logging, Bluetooth connectivity, extreme power management (2µA shutdown draw), and modular waterproof enclosures.
 
